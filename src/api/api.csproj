@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyTitle>NeoFS.API</AssemblyTitle>
+    <PackageId>NeoFS.API</PackageId>
+    <Product>NeoFS.API</Product>
+    <Description>NeoFS.API</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../gogoprotobuf/gogoprotobuf.csproj" />
+    <ProjectReference Include="../netmap/netmap.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.11.3" />
+    <PackageReference Include="Grpc" Version="2.27.0" />
+    <PackageReference Include="Grpc.Core" Version="2.27.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.27.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

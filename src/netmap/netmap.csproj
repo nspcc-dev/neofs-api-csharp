@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyTitle>Netmap</AssemblyTitle>
+    <PackageId>Netmap</PackageId>
+    <Product>Netmap</Product>
+    <Description>Netmap</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../gogoprotobuf/gogoprotobuf.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.11.3" />
+  </ItemGroup>
+</Project>
