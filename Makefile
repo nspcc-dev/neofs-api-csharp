@@ -33,12 +33,6 @@ deps:
 	@go mod vendor
 
 	@printf "${B}${G}⇒ Cleanup old files ${R}\n"
-	@find src/api -depth -type d -empty -delete
-	@find src/netmap -depth -type d -empty -delete
-	@find src/api -type f -name '*.pb.cs' -exec rm {} \;
-	@find src/netmap -type f -name '*.pb.cs' -exec rm {} \;
-	@find src/api -type f -name '*Grpc.cs' -exec rm {} \;
-	@find src/netmap -type f -name '*Grpc.cs' -exec rm {} \;
 	@find src/api -type f -name '*.proto' -not -name '*_test.proto' -exec rm {} \;
 	@find src/netmap -type f -name '*.proto' -not -name '*_test.proto' -exec rm {} \;
 
@@ -73,6 +67,14 @@ docgen: deps
 
 # Regenerate proto files:
 protoc: deps
+	@printf "${B}${G}⇒ Cleanup old files ${R}\n"
+	@find src/api -depth -type d -empty -delete
+	@find src/netmap -depth -type d -empty -delete
+	@find src/api -type f -name '*.pb.cs' -exec rm {} \;
+	@find src/netmap -type f -name '*.pb.cs' -exec rm {} \;
+	@find src/api -type f -name '*Grpc.cs' -exec rm {} \;
+	@find src/netmap -type f -name '*Grpc.cs' -exec rm {} \;
+	
 	@printf "${B}${G}⇒ Install specific version for gogo-proto ${R}\n"
 	@go list -f '{{.Path}}/...@{{.Version}}' -m github.com/gogo/protobuf | xargs go get -v
 	@printf "${B}${G}⇒ Install specific version for protobuf lib ${R}\n"
