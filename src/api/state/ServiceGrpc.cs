@@ -23,6 +23,8 @@ namespace NeoFS.API.State {
     static readonly grpc::Marshaller<global::NeoFS.API.State.HealthResponse> __Marshaller_state_HealthResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.State.HealthResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::NeoFS.API.State.DumpRequest> __Marshaller_state_DumpRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.State.DumpRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::NeoFS.API.State.DumpResponse> __Marshaller_state_DumpResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.State.DumpResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::NeoFS.API.State.DumpVarsRequest> __Marshaller_state_DumpVarsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.State.DumpVarsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::NeoFS.API.State.DumpVarsResponse> __Marshaller_state_DumpVarsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.State.DumpVarsResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::NeoFS.API.State.NetmapRequest, global::NeoFS.API.Bootstrap.SpreadMap> __Method_Netmap = new grpc::Method<global::NeoFS.API.State.NetmapRequest, global::NeoFS.API.Bootstrap.SpreadMap>(
         grpc::MethodType.Unary,
@@ -51,6 +53,13 @@ namespace NeoFS.API.State {
         "DumpConfig",
         __Marshaller_state_DumpRequest,
         __Marshaller_state_DumpResponse);
+
+    static readonly grpc::Method<global::NeoFS.API.State.DumpVarsRequest, global::NeoFS.API.State.DumpVarsResponse> __Method_DumpVars = new grpc::Method<global::NeoFS.API.State.DumpVarsRequest, global::NeoFS.API.State.DumpVarsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DumpVars",
+        __Marshaller_state_DumpVarsRequest,
+        __Marshaller_state_DumpVarsResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -268,6 +277,58 @@ namespace NeoFS.API.State {
       public virtual grpc::AsyncUnaryCall<global::NeoFS.API.State.DumpResponse> DumpConfigAsync(global::NeoFS.API.State.DumpRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_DumpConfig, null, options, request);
+      }
+      /// <summary>
+      /// DumpVars returns debug variables for the current node.
+      /// To permit access, used server config options.
+      /// The request should be signed.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::NeoFS.API.State.DumpVarsResponse DumpVars(global::NeoFS.API.State.DumpVarsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DumpVars(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// DumpVars returns debug variables for the current node.
+      /// To permit access, used server config options.
+      /// The request should be signed.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::NeoFS.API.State.DumpVarsResponse DumpVars(global::NeoFS.API.State.DumpVarsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DumpVars, null, options, request);
+      }
+      /// <summary>
+      /// DumpVars returns debug variables for the current node.
+      /// To permit access, used server config options.
+      /// The request should be signed.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::NeoFS.API.State.DumpVarsResponse> DumpVarsAsync(global::NeoFS.API.State.DumpVarsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DumpVarsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// DumpVars returns debug variables for the current node.
+      /// To permit access, used server config options.
+      /// The request should be signed.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::NeoFS.API.State.DumpVarsResponse> DumpVarsAsync(global::NeoFS.API.State.DumpVarsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DumpVars, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override StatusClient NewInstance(ClientBaseConfiguration configuration)

@@ -41,14 +41,19 @@ namespace NeoFS.API.State {
             "bXBSZXF1ZXN0EjIKBE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRh",
             "SGVhZGVyQgjQ3h8ByN4fABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJl",
             "cXVlc3RWZXJpZmljYXRpb25IZWFkZXJCCNDeHwHI3h8AIh4KDER1bXBSZXNw",
-            "b25zZRIOCgZDb25maWcYASABKAwy6wEKBlN0YXR1cxI0CgZOZXRtYXASFC5z",
-            "dGF0ZS5OZXRtYXBSZXF1ZXN0GhQuYm9vdHN0cmFwLlNwcmVhZE1hcBI4CgdN",
-            "ZXRyaWNzEhUuc3RhdGUuTWV0cmljc1JlcXVlc3QaFi5zdGF0ZS5NZXRyaWNz",
-            "UmVzcG9uc2USOgoLSGVhbHRoQ2hlY2sSFC5zdGF0ZS5IZWFsdGhSZXF1ZXN0",
-            "GhUuc3RhdGUuSGVhbHRoUmVzcG9uc2USNQoKRHVtcENvbmZpZxISLnN0YXRl",
-            "LkR1bXBSZXF1ZXN0GhMuc3RhdGUuRHVtcFJlc3BvbnNlQjxaJGdpdGh1Yi5j",
-            "b20vbnNwY2MtZGV2L25lb2ZzLWFwaS9zdGF0ZaoCD05lb0ZTLkFQSS5TdGF0",
-            "ZdjiHgFiBnByb3RvMw=="));
+            "b25zZRIOCgZDb25maWcYASABKAwigwEKD0R1bXBWYXJzUmVxdWVzdBIyCgRN",
+            "ZXRhGGIgASgLMhouc2VydmljZS5SZXF1ZXN0TWV0YUhlYWRlckII0N4fAcje",
+            "HwASPAoGVmVyaWZ5GGMgASgLMiIuc2VydmljZS5SZXF1ZXN0VmVyaWZpY2F0",
+            "aW9uSGVhZGVyQgjQ3h8ByN4fACIlChBEdW1wVmFyc1Jlc3BvbnNlEhEKCVZh",
+            "cmlhYmxlcxgBIAEoDDKoAgoGU3RhdHVzEjQKBk5ldG1hcBIULnN0YXRlLk5l",
+            "dG1hcFJlcXVlc3QaFC5ib290c3RyYXAuU3ByZWFkTWFwEjgKB01ldHJpY3MS",
+            "FS5zdGF0ZS5NZXRyaWNzUmVxdWVzdBoWLnN0YXRlLk1ldHJpY3NSZXNwb25z",
+            "ZRI6CgtIZWFsdGhDaGVjaxIULnN0YXRlLkhlYWx0aFJlcXVlc3QaFS5zdGF0",
+            "ZS5IZWFsdGhSZXNwb25zZRI1CgpEdW1wQ29uZmlnEhIuc3RhdGUuRHVtcFJl",
+            "cXVlc3QaEy5zdGF0ZS5EdW1wUmVzcG9uc2USOwoIRHVtcFZhcnMSFi5zdGF0",
+            "ZS5EdW1wVmFyc1JlcXVlc3QaFy5zdGF0ZS5EdW1wVmFyc1Jlc3BvbnNlQjxa",
+            "JGdpdGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS9zdGF0ZaoCD05lb0ZT",
+            "LkFQSS5TdGF0ZdjiHgFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.Service.MetaReflection.Descriptor, global::NeoFS.API.Service.VerifyReflection.Descriptor, global::NeoFS.API.Bootstrap.TypesReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -58,7 +63,9 @@ namespace NeoFS.API.State {
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.State.HealthRequest), global::NeoFS.API.State.HealthRequest.Parser, new[]{ "Meta", "Verify" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.State.HealthResponse), global::NeoFS.API.State.HealthResponse.Parser, new[]{ "Healthy", "Status" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.State.DumpRequest), global::NeoFS.API.State.DumpRequest.Parser, new[]{ "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.State.DumpResponse), global::NeoFS.API.State.DumpResponse.Parser, new[]{ "Config" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.State.DumpResponse), global::NeoFS.API.State.DumpResponse.Parser, new[]{ "Config" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.State.DumpVarsRequest), global::NeoFS.API.State.DumpVarsRequest.Parser, new[]{ "Meta", "Verify" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.State.DumpVarsResponse), global::NeoFS.API.State.DumpVarsResponse.Parser, new[]{ "Variables" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1194,6 +1201,317 @@ namespace NeoFS.API.State {
             break;
           case 10: {
             Config = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// DumpVarsRequest message to fetch current server debug variables.
+  /// </summary>
+  public sealed partial class DumpVarsRequest : pb::IMessage<DumpVarsRequest> {
+    private static readonly pb::MessageParser<DumpVarsRequest> _parser = new pb::MessageParser<DumpVarsRequest>(() => new DumpVarsRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DumpVarsRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.State.ServiceReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DumpVarsRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DumpVarsRequest(DumpVarsRequest other) : this() {
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
+      verify_ = other.verify_ != null ? other.verify_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DumpVarsRequest Clone() {
+      return new DumpVarsRequest(this);
+    }
+
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 98;
+    private global::NeoFS.API.Service.RequestMetaHeader meta_;
+    /// <summary>
+    /// RequestMetaHeader contains information about request meta headers (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.RequestMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Verify" field.</summary>
+    public const int VerifyFieldNumber = 99;
+    private global::NeoFS.API.Service.RequestVerificationHeader verify_;
+    /// <summary>
+    /// RequestVerificationHeader is a set of signatures of every NeoFS Node that processed request (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.RequestVerificationHeader Verify {
+      get { return verify_; }
+      set {
+        verify_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DumpVarsRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DumpVarsRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Meta, other.Meta)) return false;
+      if (!object.Equals(Verify, other.Verify)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (meta_ != null) hash ^= Meta.GetHashCode();
+      if (verify_ != null) hash ^= Verify.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (meta_ != null) {
+        output.WriteRawTag(146, 6);
+        output.WriteMessage(Meta);
+      }
+      if (verify_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Verify);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
+      }
+      if (verify_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Verify);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DumpVarsRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.RequestMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
+      }
+      if (other.verify_ != null) {
+        if (verify_ == null) {
+          Verify = new global::NeoFS.API.Service.RequestVerificationHeader();
+        }
+        Verify.MergeFrom(other.Verify);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 786: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.RequestMetaHeader();
+            }
+            input.ReadMessage(Meta);
+            break;
+          }
+          case 794: {
+            if (verify_ == null) {
+              Verify = new global::NeoFS.API.Service.RequestVerificationHeader();
+            }
+            input.ReadMessage(Verify);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// DumpVarsResponse message contains current server debug variables.
+  /// Variables stored in JSON encoded into slice of bytes.
+  /// </summary>
+  public sealed partial class DumpVarsResponse : pb::IMessage<DumpVarsResponse> {
+    private static readonly pb::MessageParser<DumpVarsResponse> _parser = new pb::MessageParser<DumpVarsResponse>(() => new DumpVarsResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DumpVarsResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.State.ServiceReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DumpVarsResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DumpVarsResponse(DumpVarsResponse other) : this() {
+      variables_ = other.variables_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DumpVarsResponse Clone() {
+      return new DumpVarsResponse(this);
+    }
+
+    /// <summary>Field number for the "Variables" field.</summary>
+    public const int VariablesFieldNumber = 1;
+    private pb::ByteString variables_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString Variables {
+      get { return variables_; }
+      set {
+        variables_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DumpVarsResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DumpVarsResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Variables != other.Variables) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Variables.Length != 0) hash ^= Variables.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Variables.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Variables);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Variables.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Variables);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DumpVarsResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Variables.Length != 0) {
+        Variables = other.Variables;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Variables = input.ReadBytes();
             break;
           }
         }
