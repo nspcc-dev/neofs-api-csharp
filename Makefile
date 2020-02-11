@@ -3,6 +3,11 @@ SHELL := /bin/bash
 PROTO_VERSION=master
 PROTO_URL=https://bitbucket.org/nspcc-dev/neofs-proto/get/$(PROTO_VERSION).tar.gz
 
+NETMAP_VERSION=v1.6.1
+NETMAP_URL=https://github.com/nspcc-dev/netmap/archive/$(NETMAP_VERSION).tar.gz
+GOGO_VERSION=v1.3.1
+GOGO_URL=https://github.com/gogo/protobuf/archive/$(GOGO_VERSION).tar.gz
+
 B=\033[0;1m
 G=\033[0;92m
 R=\033[0m
@@ -28,18 +33,25 @@ PROTO_TOOLS_BIN=$(PROTO_TOOLS_PATH)/$(PROTO_TOOLS_VERSION)/tools/$(os_type)_$(os
 
 # Dependencies
 deps:
-	@printf "${B}${G}⇒ Install Go-dependencies ${R}\n"
-	@go mod tidy -v
-	@go mod vendor
-
 	@printf "${B}${G}⇒ Cleanup old files ${R}\n"
+	@rm -rf vendor/proto
+	@rm -rf vendor/github.com/gogo/protobuf
+	@rm -rf vendor/github.com/nspcc-dev/netmap
 	@find src/api -type f -name '*.proto' -not -name '*_test.proto' -exec rm {} \;
 	@find src/netmap -type f -name '*.proto' -not -name '*_test.proto' -exec rm {} \;
 
-	@printf "${B}${G}⇒ NeoFS Proto files ${R}\n"
+	@printf "${B}${G}⇒ Install Proto-dependencies ${R}\n"
 	@mkdir -p vendor/proto
+	@mkdir -p vendor/github.com/gogo/protobuf
+	@mkdir -p vendor/github.com/nspcc-dev/netmap
 	@curl -sL -o vendor/proto.tar.gz $(PROTO_URL)
 	@tar -xzf vendor/proto.tar.gz --strip-components 1 -C vendor/proto
+	@curl -sL -o vendor/gogo.tar.gz $(GOGO_URL)
+	@tar -xzf vendor/gogo.tar.gz --strip-components 1 -C vendor/github.com/gogo/protobuf
+	@curl -sL -o vendor/netmap.tar.gz $(NETMAP_URL)
+	@tar -xzf vendor/netmap.tar.gz --strip-components 1 -C vendor/github.com/nspcc-dev/netmap
+
+	@printf "${B}${G}⇒ NeoFS Proto files ${R}\n"
 	@for f in `find vendor/proto -type f -name '*.proto' -exec dirname {} \; | sort -u `; do \
 		mkdir -p src/api/$$(basename $$f); \
 		cp $$f/*.proto src/api/$$(basename $$f)/; \
@@ -52,7 +64,9 @@ deps:
 
 	@printf "${B}${G}⇒ Cleanup ${R}\n"
 	@rm -rf vendor/proto
+	@rm -rf vendor/gogo.tar.gz
 	@rm -rf vendor/proto.tar.gz
+	@rm -rf vendor/netmap.tar.gz
 
 # Regenerate documentation for protot files:
 docgen: deps
@@ -74,11 +88,6 @@ protoc: deps
 	@find src/netmap -type f -name '*.pb.cs' -exec rm {} \;
 	@find src/api -type f -name '*Grpc.cs' -exec rm {} \;
 	@find src/netmap -type f -name '*Grpc.cs' -exec rm {} \;
-	
-	@printf "${B}${G}⇒ Install specific version for gogo-proto ${R}\n"
-	@go list -f '{{.Path}}/...@{{.Version}}' -m github.com/gogo/protobuf | xargs go get -v
-	@printf "${B}${G}⇒ Install specific version for protobuf lib ${R}\n"
-	@go list -f '{{.Path}}/...@{{.Version}}' -m  github.com/golang/protobuf | xargs go get -v
 	@printf "${B}${G}⇒ Protoc generate ${R}\n"
 	@for f in `find src/api -type f -name '*.proto'`; do \
  		printf "${B}${G}⇒ Processing $$f ${R}\n"; \
