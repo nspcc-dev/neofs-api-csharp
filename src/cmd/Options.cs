@@ -29,6 +29,12 @@ namespace cmd
     [Verb("get", HelpText = "get file from the container")]
     public class GetOptions
     {
+        [Option('h', "host",
+            Default = "s01.fs.nspcc.ru:8080",
+            Required = false,
+            HelpText = "Host that would be used to fetch object from it")]
+        public string Host { get; set; }
+
         [Option("cid",
             Required = true,
             HelpText = "Container ID, that would be getting the file from it")]

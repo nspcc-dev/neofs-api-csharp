@@ -1,29 +1,23 @@
 ﻿<Properties StartupConfiguration="CLI">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/crypto/Key.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/cmd/ObjectGet.cs">
     <Files>
-      <File FileName="src/cmd/Program.cs" Line="10" Column="10" />
-      <File FileName="src/cmd/ObjectGet.cs" Line="74" Column="22" />
-      <File FileName="src/api/service/verify.proto" Line="30" Column="13" />
-      <File FileName="src/api/object/Service.pb.cs" Line="242" Column="36" />
+      <File FileName="src/cmd/Program.cs" Line="9" Column="26" />
+      <File FileName="src/api/service/verify.proto" Line="32" Column="1" />
       <File FileName="src/api/api.csproj" Line="12" Column="23" />
       <File FileName="src/netmap/netmap.csproj" Line="20" Column="1" />
       <File FileName="src/api/service/Interfaces.cs" Line="78" Column="39" />
-      <File FileName="src/crypto/Key.cs" Line="47" Column="27" />
+      <File FileName="src/cmd/ObjectPut.cs" Line="17" Column="2" />
+      <File FileName="src/cmd/ObjectGet.cs" Line="24" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="neofs-api-sharp" expanded="True">
             <Node name="src" expanded="True">
-              <Node name="api" expanded="True">
-                <Node name="object" expanded="True" />
-                <Node name="service" expanded="True" />
-                <Node name="state" expanded="True" />
+              <Node name="cmd" expanded="True">
+                <Node name="ObjectGet.cs" selected="True" />
               </Node>
-              <Node name="cmd" expanded="True" />
-              <Node name="crypto" expanded="True">
-                <Node name="Key.cs" selected="True" />
-              </Node>
+              <Node name="crypto" expanded="True" />
               <Node name="gogoprotobuf" expanded="True" />
             </Node>
           </Node>

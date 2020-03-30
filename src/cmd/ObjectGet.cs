@@ -4,6 +4,8 @@ using Grpc.Core;
 using NeoFS.Crypto;
 using NeoFS.API.Service;
 using System.Text;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace cmd
 {
@@ -13,16 +15,23 @@ namespace cmd
 
         const string privateKey = "307702010104201dd37fba80fec4e6a6f13fd708d8dcb3b29def768017052f6c930fa1c5d90bbba00a06082a8648ce3d030107a144034200041a6c6fbbdf02ca351745fa86b9ba5a9452d785ac4f7fc2b7548ca2a46c4fcf4a6e3ae669b7a7126ebd9495ac304e44b89b1f3a3a85922c2b9b5aafa8acec98b1";
 
-        static async void ObjectGet(GetOptions opts)
+        static async Task ObjectGet(GetOptions opts)
         {
             byte[] cid;
             Guid oid;
+            FileStream file;
 
             var key = privateKey.FromHex().LoadKey();
 
-            //var key = File.ReadAllBytes("/Users/kulikov/Projects/NSPCC/neofs-node/keys/user.key").LoadKey();
-
-            //Console.WriteLine("{0} {1} {2}", opts.CID, opts.OID, opts.Out);
+            try
+            {
+                file = new FileStream(opts.Out, FileMode.Create, FileAccess.Write);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("can't prepare file: {0}", err.Message);
+                return;
+            }
 
             try
             {
@@ -44,10 +53,9 @@ namespace cmd
                 return;
             }
 
-            //Console.WriteLine("{0} {1} {2} {3}", cid, oid, oid.GetType(), oid.GetHashCode());
+            Console.WriteLine("Used host: {0}", opts.Host);
 
-
-            var channel = new Channel("s01.fs.nspcc.ru:8080", ChannelCredentials.Insecure);
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 
             { // check that node healthy:
                 var hReq = new NeoFS.API.State.HealthRequest();
@@ -66,7 +74,7 @@ namespace cmd
                 Address = new NeoFS.API.Refs.Address
                 {
                     CID = Google.Protobuf.ByteString.CopyFrom(cid),
-                    ObjectID = Google.Protobuf.ByteString.CopyFrom(oid.ToByteArray()),
+                    ObjectID = Google.Protobuf.ByteString.CopyFrom(oid.Bytes()),
                 },
             };
 
@@ -75,17 +83,44 @@ namespace cmd
 
             var client = new NeoFS.API.Object.Service.ServiceClient(channel);
 
+            Console.WriteLine("call GET");
+
             using (var call = client.Get(req))
             {
-                Console.WriteLine("call GET");
 
                 while (await call.ResponseStream.MoveNext())
                 {
-                    Console.WriteLine("{0}", call.ResponseStream.Current);
+                    var res = call.ResponseStream.Current;
+
+                    if (res.Object != null)
+                    {
+                        Console.WriteLine("Received object");
+                        Console.WriteLine("PayloadLength = {0}", res.Object.SystemHeader.PayloadLength);
+
+                        Console.WriteLine("Headers:");
+                        for (var i = 0; i < res.Object.Headers.Count; i++)
+                        {
+                            Console.WriteLine(res.Object.Headers[i]);
+                        }
+
+
+                        if (res.Object.Payload.Length > 0)
+                        {
+                            res.Object.Payload.WriteTo(file);
+                        }
+                        continue;
+                    }
+                    else if (res.Chunk != null && res.Chunk.Length > 0)
+                    {
+                        res.Chunk.WriteTo(file);
+                    }
                 }
             }
 
+            Console.WriteLine("Close file");
+            file.Close();
 
+            Console.WriteLine("Shutdown connection.");
             channel.ShutdownAsync().Wait();
         }
     }

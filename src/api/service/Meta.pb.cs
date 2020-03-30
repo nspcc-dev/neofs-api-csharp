@@ -27,12 +27,14 @@ namespace NeoFS.API.Service {
             "ChJzZXJ2aWNlL21ldGEucHJvdG8SB3NlcnZpY2UaLWdpdGh1Yi5jb20vZ29n",
             "by9wcm90b2J1Zi9nb2dvcHJvdG8vZ29nby5wcm90byJAChFSZXF1ZXN0TWV0",
             "YUhlYWRlchILCgNUVEwYASABKA0SDQoFRXBvY2gYAiABKAQSDwoHVmVyc2lv",
-            "bhgDIAEoDUJAWiZnaXRodWIuY29tL25zcGNjLWRldi9uZW9mcy1hcGkvc2Vy",
-            "dmljZaoCEU5lb0ZTLkFQSS5TZXJ2aWNl2OIeAWIGcHJvdG8z"));
+            "bhgDIAEoDSI0ChJSZXNwb25zZU1ldGFIZWFkZXISDQoFRXBvY2gYASABKAQS",
+            "DwoHVmVyc2lvbhgCIAEoDUJAWiZnaXRodWIuY29tL25zcGNjLWRldi9uZW9m",
+            "cy1hcGkvc2VydmljZaoCEU5lb0ZTLkFQSS5TZXJ2aWNl2OIeAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Service.RequestMetaHeader), global::NeoFS.API.Service.RequestMetaHeader.Parser, new[]{ "TTL", "Epoch", "Version" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Service.RequestMetaHeader), global::NeoFS.API.Service.RequestMetaHeader.Parser, new[]{ "TTL", "Epoch", "Version" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Service.ResponseMetaHeader), global::NeoFS.API.Service.ResponseMetaHeader.Parser, new[]{ "Epoch", "Version" }, null, null, null, null)
           }));
     }
     #endregion
@@ -229,6 +231,174 @@ namespace NeoFS.API.Service {
             break;
           }
           case 24: {
+            Version = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// ResponseMetaHeader contains meta information based on request processing by server
+  /// (should be embedded into message)
+  /// </summary>
+  public sealed partial class ResponseMetaHeader : pb::IMessage<ResponseMetaHeader> {
+    private static readonly pb::MessageParser<ResponseMetaHeader> _parser = new pb::MessageParser<ResponseMetaHeader>(() => new ResponseMetaHeader());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ResponseMetaHeader> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.Service.MetaReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseMetaHeader() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseMetaHeader(ResponseMetaHeader other) : this() {
+      epoch_ = other.epoch_;
+      version_ = other.version_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseMetaHeader Clone() {
+      return new ResponseMetaHeader(this);
+    }
+
+    /// <summary>Field number for the "Epoch" field.</summary>
+    public const int EpochFieldNumber = 1;
+    private ulong epoch_;
+    /// <summary>
+    /// Current NeoFS epoch on server
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong Epoch {
+      get { return epoch_; }
+      set {
+        epoch_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Version" field.</summary>
+    public const int VersionFieldNumber = 2;
+    private uint version_;
+    /// <summary>
+    /// Version defines protocol version
+    /// TODO: not used for now, should be implemented in future
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Version {
+      get { return version_; }
+      set {
+        version_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ResponseMetaHeader);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ResponseMetaHeader other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Epoch != other.Epoch) return false;
+      if (Version != other.Version) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Epoch != 0UL) hash ^= Epoch.GetHashCode();
+      if (Version != 0) hash ^= Version.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Epoch != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Epoch);
+      }
+      if (Version != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Version);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Epoch != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Epoch);
+      }
+      if (Version != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Version);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ResponseMetaHeader other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Epoch != 0UL) {
+        Epoch = other.Epoch;
+      }
+      if (other.Version != 0) {
+        Version = other.Version;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Epoch = input.ReadUInt64();
+            break;
+          }
+          case 16: {
             Version = input.ReadUInt32();
             break;
           }

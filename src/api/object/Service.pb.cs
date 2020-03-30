@@ -31,73 +31,81 @@ namespace NeoFS.API.Object {
             "AQoKR2V0UmVxdWVzdBIkCgdBZGRyZXNzGAEgASgLMg0ucmVmcy5BZGRyZXNz",
             "QgTI3h8AEgsKA1JhdxgCIAEoCBIyCgRNZXRhGGIgASgLMhouc2VydmljZS5S",
             "ZXF1ZXN0TWV0YUhlYWRlckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIu",
-            "c2VydmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJF",
+            "c2VydmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJ6",
             "CgtHZXRSZXNwb25zZRIgCgZvYmplY3QYASABKAsyDi5vYmplY3QuT2JqZWN0",
-            "SAASDwoFQ2h1bmsYAiABKAxIAEIDCgFSIpACCgpQdXRSZXF1ZXN0Ei4KBkhl",
-            "YWRlchgBIAEoCzIcLm9iamVjdC5QdXRSZXF1ZXN0LlB1dEhlYWRlckgAEg8K",
-            "BUNodW5rGAIgASgMSAASMgoETWV0YRhiIAEoCzIaLnNlcnZpY2UuUmVxdWVz",
-            "dE1ldGFIZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhjIAEoCzIiLnNlcnZp",
-            "Y2UuUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4fAcjeHwAaSgoJUHV0",
-            "SGVhZGVyEh4KBk9iamVjdBgBIAEoCzIOLm9iamVjdC5PYmplY3QSHQoFVG9r",
-            "ZW4YAiABKAsyDi5zZXNzaW9uLlRva2VuQgMKAVIiMwoLUHV0UmVzcG9uc2US",
-            "JAoHQWRkcmVzcxgBIAEoCzINLnJlZnMuQWRkcmVzc0IEyN4fACLoAQoNRGVs",
-            "ZXRlUmVxdWVzdBIkCgdBZGRyZXNzGAEgASgLMg0ucmVmcy5BZGRyZXNzQgTI",
-            "3h8AEiAKB093bmVySUQYAiABKAxCD8jeHwDa3h8HT3duZXJJRBIdCgVUb2tl",
-            "bhgDIAEoCzIOLnNlc3Npb24uVG9rZW4SMgoETWV0YRhiIAEoCzIaLnNlcnZp",
-            "Y2UuUmVxdWVzdE1ldGFIZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhjIAEo",
-            "CzIiLnNlcnZpY2UuUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4fAcje",
-            "HwAiEAoORGVsZXRlUmVzcG9uc2Ui0gEKC0hlYWRSZXF1ZXN0Ei8KB0FkZHJl",
-            "c3MYASABKAsyDS5yZWZzLkFkZHJlc3NCD8jeHwDa3h8HQWRkcmVzcxITCgtG",
-            "dWxsSGVhZGVycxgCIAEoCBILCgNSYXcYAyABKAgSMgoETWV0YRhiIAEoCzIa",
-            "LnNlcnZpY2UuUmVxdWVzdE1ldGFIZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlm",
-            "eRhjIAEoCzIiLnNlcnZpY2UuUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlckII",
-            "0N4fAcjeHwAiLgoMSGVhZFJlc3BvbnNlEh4KBk9iamVjdBgBIAEoCzIOLm9i",
-            "amVjdC5PYmplY3QiyAEKDVNlYXJjaFJlcXVlc3QSIAoLQ29udGFpbmVySUQY",
-            "ASABKAxCC8jeHwDa3h8DQ0lEEg0KBVF1ZXJ5GAIgASgMEhQKDFF1ZXJ5VmVy",
-            "c2lvbhgDIAEoDRIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1ZXN0TWV0",
-            "YUhlYWRlckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIuc2VydmljZS5S",
-            "ZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACI4Cg5TZWFyY2hS",
-            "ZXNwb25zZRImCglBZGRyZXNzZXMYASADKAsyDS5yZWZzLkFkZHJlc3NCBMje",
-            "HwAizQEKD0dldFJhbmdlUmVxdWVzdBIkCgdBZGRyZXNzGAEgASgLMg0ucmVm",
-            "cy5BZGRyZXNzQgTI3h8AEiIKBVJhbmdlGAIgASgLMg0ub2JqZWN0LlJhbmdl",
-            "QgTI3h8AEjIKBE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVh",
-            "ZGVyQgjQ3h8ByN4fABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVl",
-            "c3RWZXJpZmljYXRpb25IZWFkZXJCCNDeHwHI3h8AIiQKEEdldFJhbmdlUmVz",
-            "cG9uc2USEAoIRnJhZ21lbnQYASABKAwi4AEKE0dldFJhbmdlSGFzaFJlcXVl",
-            "c3QSJAoHQWRkcmVzcxgBIAEoCzINLnJlZnMuQWRkcmVzc0IEyN4fABIjCgZS",
-            "YW5nZXMYAiADKAsyDS5vYmplY3QuUmFuZ2VCBMjeHwASDAoEU2FsdBgDIAEo",
-            "DBIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1ZXN0TWV0YUhlYWRlckII",
+            "SAASDwoFQ2h1bmsYAiABKAxIABIzCgRNZXRhGGMgASgLMhsuc2VydmljZS5S",
+            "ZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8AQgMKAVIikAIKClB1dFJlcXVl",
+            "c3QSLgoGSGVhZGVyGAEgASgLMhwub2JqZWN0LlB1dFJlcXVlc3QuUHV0SGVh",
+            "ZGVySAASDwoFQ2h1bmsYAiABKAxIABIyCgRNZXRhGGIgASgLMhouc2Vydmlj",
+            "ZS5SZXF1ZXN0TWV0YUhlYWRlckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgL",
+            "MiIuc2VydmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4f",
+            "ABpKCglQdXRIZWFkZXISHgoGT2JqZWN0GAEgASgLMg4ub2JqZWN0Lk9iamVj",
+            "dBIdCgVUb2tlbhgCIAEoCzIOLnNlc3Npb24uVG9rZW5CAwoBUiJoCgtQdXRS",
+            "ZXNwb25zZRIkCgdBZGRyZXNzGAEgASgLMg0ucmVmcy5BZGRyZXNzQgTI3h8A",
+            "EjMKBE1ldGEYYyABKAsyGy5zZXJ2aWNlLlJlc3BvbnNlTWV0YUhlYWRlckII",
+            "0N4fAcjeHwAi6AEKDURlbGV0ZVJlcXVlc3QSJAoHQWRkcmVzcxgBIAEoCzIN",
+            "LnJlZnMuQWRkcmVzc0IEyN4fABIgCgdPd25lcklEGAIgASgMQg/I3h8A2t4f",
+            "B093bmVySUQSHQoFVG9rZW4YAyABKAsyDi5zZXNzaW9uLlRva2VuEjIKBE1l",
+            "dGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVhZGVyQgjQ3h8ByN4f",
+            "ABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVlc3RWZXJpZmljYXRp",
+            "b25IZWFkZXJCCNDeHwHI3h8AIkUKDkRlbGV0ZVJlc3BvbnNlEjMKBE1ldGEY",
+            "YyABKAsyGy5zZXJ2aWNlLlJlc3BvbnNlTWV0YUhlYWRlckII0N4fAcjeHwAi",
+            "0gEKC0hlYWRSZXF1ZXN0Ei8KB0FkZHJlc3MYASABKAsyDS5yZWZzLkFkZHJl",
+            "c3NCD8jeHwDa3h8HQWRkcmVzcxITCgtGdWxsSGVhZGVycxgCIAEoCBILCgNS",
+            "YXcYAyABKAgSMgoETWV0YRhiIAEoCzIaLnNlcnZpY2UuUmVxdWVzdE1ldGFI",
+            "ZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhjIAEoCzIiLnNlcnZpY2UuUmVx",
+            "dWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4fAcjeHwAiYwoMSGVhZFJlc3Bv",
+            "bnNlEh4KBk9iamVjdBgBIAEoCzIOLm9iamVjdC5PYmplY3QSMwoETWV0YRhj",
+            "IAEoCzIbLnNlcnZpY2UuUmVzcG9uc2VNZXRhSGVhZGVyQgjQ3h8ByN4fACLI",
+            "AQoNU2VhcmNoUmVxdWVzdBIgCgtDb250YWluZXJJRBgBIAEoDEILyN4fANre",
+            "HwNDSUQSDQoFUXVlcnkYAiABKAwSFAoMUXVlcnlWZXJzaW9uGAMgASgNEjIK",
+            "BE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVhZGVyQgjQ3h8B",
+            "yN4fABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVlc3RWZXJpZmlj",
+            "YXRpb25IZWFkZXJCCNDeHwHI3h8AIm0KDlNlYXJjaFJlc3BvbnNlEiYKCUFk",
+            "ZHJlc3NlcxgBIAMoCzINLnJlZnMuQWRkcmVzc0IEyN4fABIzCgRNZXRhGGMg",
+            "ASgLMhsuc2VydmljZS5SZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8AIs0B",
+            "Cg9HZXRSYW5nZVJlcXVlc3QSJAoHQWRkcmVzcxgBIAEoCzINLnJlZnMuQWRk",
+            "cmVzc0IEyN4fABIiCgVSYW5nZRgCIAEoCzINLm9iamVjdC5SYW5nZUIEyN4f",
+            "ABIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1ZXN0TWV0YUhlYWRlckII",
             "0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIuc2VydmljZS5SZXF1ZXN0VmVy",
-            "aWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACI0ChRHZXRSYW5nZUhhc2hSZXNw",
-            "b25zZRIcCgZIYXNoZXMYASADKAxCDNreHwRIYXNoyN4fADKgAwoHU2Vydmlj",
-            "ZRIwCgNHZXQSEi5vYmplY3QuR2V0UmVxdWVzdBoTLm9iamVjdC5HZXRSZXNw",
-            "b25zZTABEjAKA1B1dBISLm9iamVjdC5QdXRSZXF1ZXN0GhMub2JqZWN0LlB1",
-            "dFJlc3BvbnNlKAESNwoGRGVsZXRlEhUub2JqZWN0LkRlbGV0ZVJlcXVlc3Qa",
-            "Fi5vYmplY3QuRGVsZXRlUmVzcG9uc2USMQoESGVhZBITLm9iamVjdC5IZWFk",
-            "UmVxdWVzdBoULm9iamVjdC5IZWFkUmVzcG9uc2USOQoGU2VhcmNoEhUub2Jq",
-            "ZWN0LlNlYXJjaFJlcXVlc3QaFi5vYmplY3QuU2VhcmNoUmVzcG9uc2UwARI/",
-            "CghHZXRSYW5nZRIXLm9iamVjdC5HZXRSYW5nZVJlcXVlc3QaGC5vYmplY3Qu",
-            "R2V0UmFuZ2VSZXNwb25zZTABEkkKDEdldFJhbmdlSGFzaBIbLm9iamVjdC5H",
-            "ZXRSYW5nZUhhc2hSZXF1ZXN0Ghwub2JqZWN0LkdldFJhbmdlSGFzaFJlc3Bv",
-            "bnNlQj5aJWdpdGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS9vYmplY3Sq",
-            "AhBOZW9GUy5BUEkuT2JqZWN02OIeAWIGcHJvdG8z"));
+            "aWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJZChBHZXRSYW5nZVJlc3BvbnNl",
+            "EhAKCEZyYWdtZW50GAEgASgMEjMKBE1ldGEYYyABKAsyGy5zZXJ2aWNlLlJl",
+            "c3BvbnNlTWV0YUhlYWRlckII0N4fAcjeHwAi4AEKE0dldFJhbmdlSGFzaFJl",
+            "cXVlc3QSJAoHQWRkcmVzcxgBIAEoCzINLnJlZnMuQWRkcmVzc0IEyN4fABIj",
+            "CgZSYW5nZXMYAiADKAsyDS5vYmplY3QuUmFuZ2VCBMjeHwASDAoEU2FsdBgD",
+            "IAEoDBIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1ZXN0TWV0YUhlYWRl",
+            "ckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIuc2VydmljZS5SZXF1ZXN0",
+            "VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJpChRHZXRSYW5nZUhhc2hS",
+            "ZXNwb25zZRIcCgZIYXNoZXMYASADKAxCDNreHwRIYXNoyN4fABIzCgRNZXRh",
+            "GGMgASgLMhsuc2VydmljZS5SZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8A",
+            "MqADCgdTZXJ2aWNlEjAKA0dldBISLm9iamVjdC5HZXRSZXF1ZXN0GhMub2Jq",
+            "ZWN0LkdldFJlc3BvbnNlMAESMAoDUHV0EhIub2JqZWN0LlB1dFJlcXVlc3Qa",
+            "Ey5vYmplY3QuUHV0UmVzcG9uc2UoARI3CgZEZWxldGUSFS5vYmplY3QuRGVs",
+            "ZXRlUmVxdWVzdBoWLm9iamVjdC5EZWxldGVSZXNwb25zZRIxCgRIZWFkEhMu",
+            "b2JqZWN0LkhlYWRSZXF1ZXN0GhQub2JqZWN0LkhlYWRSZXNwb25zZRI5CgZT",
+            "ZWFyY2gSFS5vYmplY3QuU2VhcmNoUmVxdWVzdBoWLm9iamVjdC5TZWFyY2hS",
+            "ZXNwb25zZTABEj8KCEdldFJhbmdlEhcub2JqZWN0LkdldFJhbmdlUmVxdWVz",
+            "dBoYLm9iamVjdC5HZXRSYW5nZVJlc3BvbnNlMAESSQoMR2V0UmFuZ2VIYXNo",
+            "Ehsub2JqZWN0LkdldFJhbmdlSGFzaFJlcXVlc3QaHC5vYmplY3QuR2V0UmFu",
+            "Z2VIYXNoUmVzcG9uc2VCPlolZ2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMt",
+            "YXBpL29iamVjdKoCEE5lb0ZTLkFQSS5PYmplY3TY4h4BYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.Refs.TypesReflection.Descriptor, global::NeoFS.API.Object.TypesReflection.Descriptor, global::NeoFS.API.Session.TypesReflection.Descriptor, global::NeoFS.API.Service.MetaReflection.Descriptor, global::NeoFS.API.Service.VerifyReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRequest), global::NeoFS.API.Object.GetRequest.Parser, new[]{ "Address", "Raw", "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetResponse), global::NeoFS.API.Object.GetResponse.Parser, new[]{ "Object", "Chunk" }, new[]{ "R" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetResponse), global::NeoFS.API.Object.GetResponse.Parser, new[]{ "Object", "Chunk", "Meta" }, new[]{ "R" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutRequest), global::NeoFS.API.Object.PutRequest.Parser, new[]{ "Header", "Chunk", "Meta", "Verify" }, new[]{ "R" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutRequest.Types.PutHeader), global::NeoFS.API.Object.PutRequest.Types.PutHeader.Parser, new[]{ "Object", "Token" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutResponse), global::NeoFS.API.Object.PutResponse.Parser, new[]{ "Address" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutResponse), global::NeoFS.API.Object.PutResponse.Parser, new[]{ "Address", "Meta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.DeleteRequest), global::NeoFS.API.Object.DeleteRequest.Parser, new[]{ "Address", "OwnerID", "Token", "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.DeleteResponse), global::NeoFS.API.Object.DeleteResponse.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.DeleteResponse), global::NeoFS.API.Object.DeleteResponse.Parser, new[]{ "Meta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.HeadRequest), global::NeoFS.API.Object.HeadRequest.Parser, new[]{ "Address", "FullHeaders", "Raw", "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.HeadResponse), global::NeoFS.API.Object.HeadResponse.Parser, new[]{ "Object" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.HeadResponse), global::NeoFS.API.Object.HeadResponse.Parser, new[]{ "Object", "Meta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.SearchRequest), global::NeoFS.API.Object.SearchRequest.Parser, new[]{ "ContainerID", "Query", "QueryVersion", "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.SearchResponse), global::NeoFS.API.Object.SearchResponse.Parser, new[]{ "Addresses" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.SearchResponse), global::NeoFS.API.Object.SearchResponse.Parser, new[]{ "Addresses", "Meta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRangeRequest), global::NeoFS.API.Object.GetRangeRequest.Parser, new[]{ "Address", "Range", "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRangeResponse), global::NeoFS.API.Object.GetRangeResponse.Parser, new[]{ "Fragment" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRangeResponse), global::NeoFS.API.Object.GetRangeResponse.Parser, new[]{ "Fragment", "Meta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRangeHashRequest), global::NeoFS.API.Object.GetRangeHashRequest.Parser, new[]{ "Address", "Ranges", "Salt", "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRangeHashResponse), global::NeoFS.API.Object.GetRangeHashResponse.Parser, new[]{ "Hashes" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRangeHashResponse), global::NeoFS.API.Object.GetRangeHashResponse.Parser, new[]{ "Hashes", "Meta" }, null, null, null, null)
           }));
     }
     #endregion
@@ -372,6 +380,7 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GetResponse(GetResponse other) : this() {
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       switch (other.RCase) {
         case ROneofCase.Object:
           Object = other.Object.Clone();
@@ -417,6 +426,20 @@ namespace NeoFS.API.Object {
       }
     }
 
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 99;
+    private global::NeoFS.API.Service.ResponseMetaHeader meta_;
+    /// <summary>
+    /// ResponseMetaHeader contains meta information based on request processing by server (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.ResponseMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
+    }
+
     private object r_;
     /// <summary>Enum of possible cases for the "R" oneof.</summary>
     public enum ROneofCase {
@@ -451,6 +474,7 @@ namespace NeoFS.API.Object {
       }
       if (!object.Equals(Object, other.Object)) return false;
       if (Chunk != other.Chunk) return false;
+      if (!object.Equals(Meta, other.Meta)) return false;
       if (RCase != other.RCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -460,6 +484,7 @@ namespace NeoFS.API.Object {
       int hash = 1;
       if (rCase_ == ROneofCase.Object) hash ^= Object.GetHashCode();
       if (rCase_ == ROneofCase.Chunk) hash ^= Chunk.GetHashCode();
+      if (meta_ != null) hash ^= Meta.GetHashCode();
       hash ^= (int) rCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -482,6 +507,10 @@ namespace NeoFS.API.Object {
         output.WriteRawTag(18);
         output.WriteBytes(Chunk);
       }
+      if (meta_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Meta);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -496,6 +525,9 @@ namespace NeoFS.API.Object {
       if (rCase_ == ROneofCase.Chunk) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Chunk);
       }
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -506,6 +538,12 @@ namespace NeoFS.API.Object {
     public void MergeFrom(GetResponse other) {
       if (other == null) {
         return;
+      }
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
       }
       switch (other.RCase) {
         case ROneofCase.Object:
@@ -541,6 +579,13 @@ namespace NeoFS.API.Object {
           }
           case 18: {
             Chunk = input.ReadBytes();
+            break;
+          }
+          case 794: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+            }
+            input.ReadMessage(Meta);
             break;
           }
         }
@@ -1033,6 +1078,7 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PutResponse(PutResponse other) : this() {
       address_ = other.address_ != null ? other.address_.Clone() : null;
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1055,6 +1101,20 @@ namespace NeoFS.API.Object {
       }
     }
 
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 99;
+    private global::NeoFS.API.Service.ResponseMetaHeader meta_;
+    /// <summary>
+    /// ResponseMetaHeader contains meta information based on request processing by server (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.ResponseMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as PutResponse);
@@ -1069,6 +1129,7 @@ namespace NeoFS.API.Object {
         return true;
       }
       if (!object.Equals(Address, other.Address)) return false;
+      if (!object.Equals(Meta, other.Meta)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1076,6 +1137,7 @@ namespace NeoFS.API.Object {
     public override int GetHashCode() {
       int hash = 1;
       if (address_ != null) hash ^= Address.GetHashCode();
+      if (meta_ != null) hash ^= Meta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1093,6 +1155,10 @@ namespace NeoFS.API.Object {
         output.WriteRawTag(10);
         output.WriteMessage(Address);
       }
+      if (meta_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Meta);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1103,6 +1169,9 @@ namespace NeoFS.API.Object {
       int size = 0;
       if (address_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Address);
+      }
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1121,6 +1190,12 @@ namespace NeoFS.API.Object {
         }
         Address.MergeFrom(other.Address);
       }
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1137,6 +1212,13 @@ namespace NeoFS.API.Object {
               Address = new global::NeoFS.API.Refs.Address();
             }
             input.ReadMessage(Address);
+            break;
+          }
+          case 794: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+            }
+            input.ReadMessage(Meta);
             break;
           }
         }
@@ -1454,12 +1536,27 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public DeleteResponse(DeleteResponse other) : this() {
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public DeleteResponse Clone() {
       return new DeleteResponse(this);
+    }
+
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 99;
+    private global::NeoFS.API.Service.ResponseMetaHeader meta_;
+    /// <summary>
+    /// ResponseMetaHeader contains meta information based on request processing by server (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.ResponseMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1475,12 +1572,14 @@ namespace NeoFS.API.Object {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Meta, other.Meta)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (meta_ != null) hash ^= Meta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1494,6 +1593,10 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (meta_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Meta);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1502,6 +1605,9 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1512,6 +1618,12 @@ namespace NeoFS.API.Object {
     public void MergeFrom(DeleteResponse other) {
       if (other == null) {
         return;
+      }
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1524,6 +1636,13 @@ namespace NeoFS.API.Object {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 794: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+            }
+            input.ReadMessage(Meta);
+            break;
+          }
         }
       }
     }
@@ -1830,6 +1949,7 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public HeadResponse(HeadResponse other) : this() {
       object_ = other.object_ != null ? other.object_.Clone() : null;
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1852,6 +1972,20 @@ namespace NeoFS.API.Object {
       }
     }
 
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 99;
+    private global::NeoFS.API.Service.ResponseMetaHeader meta_;
+    /// <summary>
+    /// ResponseMetaHeader contains meta information based on request processing by server (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.ResponseMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as HeadResponse);
@@ -1866,6 +2000,7 @@ namespace NeoFS.API.Object {
         return true;
       }
       if (!object.Equals(Object, other.Object)) return false;
+      if (!object.Equals(Meta, other.Meta)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1873,6 +2008,7 @@ namespace NeoFS.API.Object {
     public override int GetHashCode() {
       int hash = 1;
       if (object_ != null) hash ^= Object.GetHashCode();
+      if (meta_ != null) hash ^= Meta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1890,6 +2026,10 @@ namespace NeoFS.API.Object {
         output.WriteRawTag(10);
         output.WriteMessage(Object);
       }
+      if (meta_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Meta);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1900,6 +2040,9 @@ namespace NeoFS.API.Object {
       int size = 0;
       if (object_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Object);
+      }
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1918,6 +2061,12 @@ namespace NeoFS.API.Object {
         }
         Object.MergeFrom(other.Object);
       }
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1934,6 +2083,13 @@ namespace NeoFS.API.Object {
               Object = new global::NeoFS.API.Object.Object();
             }
             input.ReadMessage(Object);
+            break;
+          }
+          case 794: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+            }
+            input.ReadMessage(Meta);
             break;
           }
         }
@@ -2236,6 +2392,7 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public SearchResponse(SearchResponse other) : this() {
       addresses_ = other.addresses_.Clone();
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2257,6 +2414,20 @@ namespace NeoFS.API.Object {
       get { return addresses_; }
     }
 
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 99;
+    private global::NeoFS.API.Service.ResponseMetaHeader meta_;
+    /// <summary>
+    /// ResponseMetaHeader contains meta information based on request processing by server (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.ResponseMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as SearchResponse);
@@ -2271,6 +2442,7 @@ namespace NeoFS.API.Object {
         return true;
       }
       if(!addresses_.Equals(other.addresses_)) return false;
+      if (!object.Equals(Meta, other.Meta)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2278,6 +2450,7 @@ namespace NeoFS.API.Object {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= addresses_.GetHashCode();
+      if (meta_ != null) hash ^= Meta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2292,6 +2465,10 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       addresses_.WriteTo(output, _repeated_addresses_codec);
+      if (meta_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Meta);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2301,6 +2478,9 @@ namespace NeoFS.API.Object {
     public int CalculateSize() {
       int size = 0;
       size += addresses_.CalculateSize(_repeated_addresses_codec);
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2313,6 +2493,12 @@ namespace NeoFS.API.Object {
         return;
       }
       addresses_.Add(other.addresses_);
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2326,6 +2512,13 @@ namespace NeoFS.API.Object {
             break;
           case 10: {
             addresses_.AddEntriesFrom(input, _repeated_addresses_codec);
+            break;
+          }
+          case 794: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+            }
+            input.ReadMessage(Meta);
             break;
           }
         }
@@ -2609,6 +2802,7 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GetRangeResponse(GetRangeResponse other) : this() {
       fragment_ = other.fragment_;
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2631,6 +2825,20 @@ namespace NeoFS.API.Object {
       }
     }
 
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 99;
+    private global::NeoFS.API.Service.ResponseMetaHeader meta_;
+    /// <summary>
+    /// ResponseMetaHeader contains meta information based on request processing by server (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.ResponseMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as GetRangeResponse);
@@ -2645,6 +2853,7 @@ namespace NeoFS.API.Object {
         return true;
       }
       if (Fragment != other.Fragment) return false;
+      if (!object.Equals(Meta, other.Meta)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2652,6 +2861,7 @@ namespace NeoFS.API.Object {
     public override int GetHashCode() {
       int hash = 1;
       if (Fragment.Length != 0) hash ^= Fragment.GetHashCode();
+      if (meta_ != null) hash ^= Meta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2669,6 +2879,10 @@ namespace NeoFS.API.Object {
         output.WriteRawTag(10);
         output.WriteBytes(Fragment);
       }
+      if (meta_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Meta);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2679,6 +2893,9 @@ namespace NeoFS.API.Object {
       int size = 0;
       if (Fragment.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Fragment);
+      }
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2694,6 +2911,12 @@ namespace NeoFS.API.Object {
       if (other.Fragment.Length != 0) {
         Fragment = other.Fragment;
       }
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2707,6 +2930,13 @@ namespace NeoFS.API.Object {
             break;
           case 10: {
             Fragment = input.ReadBytes();
+            break;
+          }
+          case 794: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+            }
+            input.ReadMessage(Meta);
             break;
           }
         }
@@ -3007,6 +3237,7 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GetRangeHashResponse(GetRangeHashResponse other) : this() {
       hashes_ = other.hashes_.Clone();
+      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3028,6 +3259,20 @@ namespace NeoFS.API.Object {
       get { return hashes_; }
     }
 
+    /// <summary>Field number for the "Meta" field.</summary>
+    public const int MetaFieldNumber = 99;
+    private global::NeoFS.API.Service.ResponseMetaHeader meta_;
+    /// <summary>
+    /// ResponseMetaHeader contains meta information based on request processing by server (should be embedded into message)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Service.ResponseMetaHeader Meta {
+      get { return meta_; }
+      set {
+        meta_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as GetRangeHashResponse);
@@ -3042,6 +3287,7 @@ namespace NeoFS.API.Object {
         return true;
       }
       if(!hashes_.Equals(other.hashes_)) return false;
+      if (!object.Equals(Meta, other.Meta)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3049,6 +3295,7 @@ namespace NeoFS.API.Object {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= hashes_.GetHashCode();
+      if (meta_ != null) hash ^= Meta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3063,6 +3310,10 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       hashes_.WriteTo(output, _repeated_hashes_codec);
+      if (meta_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Meta);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3072,6 +3323,9 @@ namespace NeoFS.API.Object {
     public int CalculateSize() {
       int size = 0;
       size += hashes_.CalculateSize(_repeated_hashes_codec);
+      if (meta_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3084,6 +3338,12 @@ namespace NeoFS.API.Object {
         return;
       }
       hashes_.Add(other.hashes_);
+      if (other.meta_ != null) {
+        if (meta_ == null) {
+          Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+        }
+        Meta.MergeFrom(other.Meta);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -3097,6 +3357,13 @@ namespace NeoFS.API.Object {
             break;
           case 10: {
             hashes_.AddEntriesFrom(input, _repeated_hashes_codec);
+            break;
+          }
+          case 794: {
+            if (meta_ == null) {
+              Meta = new global::NeoFS.API.Service.ResponseMetaHeader();
+            }
+            input.ReadMessage(Meta);
             break;
           }
         }

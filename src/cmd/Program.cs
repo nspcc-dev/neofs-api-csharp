@@ -1,23 +1,34 @@
 ﻿using CommandLine;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace cmd
 {
     partial class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            Parser.Default.ParseArguments<PutOptions, GetOptions>(args)
-              .WithParsed<PutOptions>(ObjectPut)
-              .WithParsed<GetOptions>(ObjectGet)
-              .WithNotParsed(HandleParseError);
-            Console.ReadLine();
+            await Parser.Default
+                .ParseArguments<PutOptions, GetOptions>(args)
+                .MapResult(
+                    (PutOptions opts) => ObjectPut(opts),
+                    (GetOptions opts) => ObjectGet(opts),
+                    errs => HandleParseError(errs)
+                );
+                //.WithParsed<PutOptions>(ObjectPut)
+                //.WithParsed<GetOptions>(ObjectGet)
+                //.WithNotParsed(HandleParseError);
         }
 
-        static void HandleParseError(IEnumerable<Error> errors)
+        static async Task HandleParseError(IEnumerable<Error> errors)
         {
             Console.WriteLine("Parse error (do smth with that).");
+
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
+
+            return;
         }
     }
 }
