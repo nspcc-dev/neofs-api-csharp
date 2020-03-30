@@ -1,4 +1,5 @@
 ﻿using System;
+using NeoFS.Utils;
 
 namespace NeoFS.Crypto
 {

@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="../api/api.csproj" />
     <ProjectReference Include="../crypto/crypto.csproj" />
+    <ProjectReference Include="../utils/utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

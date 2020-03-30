@@ -12,6 +12,7 @@
     <ProjectReference Include="../gogoprotobuf/gogoprotobuf.csproj" />
     <ProjectReference Include="../netmap/netmap.csproj" />
     <ProjectReference Include="../crypto/crypto.csproj" />
+    <ProjectReference Include="../utils/utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

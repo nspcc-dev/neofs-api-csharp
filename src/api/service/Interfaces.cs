@@ -1,8 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
+
 using Google.Protobuf;
+
 using NeoFS.Crypto;
+using NeoFS.Utils;
+
 using static NeoFS.API.Service.RequestVerificationHeader.Types;
 
 namespace NeoFS.API.Service

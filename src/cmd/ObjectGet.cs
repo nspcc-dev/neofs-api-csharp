@@ -2,9 +2,8 @@
 using System.IO;
 using Grpc.Core;
 using NeoFS.Crypto;
+using NeoFS.Utils;
 using NeoFS.API.Service;
-using System.Text;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace cmd
