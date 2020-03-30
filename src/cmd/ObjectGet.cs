@@ -82,7 +82,7 @@ namespace cmd
 
             var client = new NeoFS.API.Object.Service.ServiceClient(channel);
 
-            Console.WriteLine("call GET");
+            Console.WriteLine();
 
             using (var call = client.Get(req))
             {
@@ -107,13 +107,18 @@ namespace cmd
                         {
                             res.Object.Payload.WriteTo(file);
                         }
+
+                        Console.WriteLine("\nWait for chunks");
                         continue;
                     }
                     else if (res.Chunk != null && res.Chunk.Length > 0)
                     {
+                        Console.Write("..");
                         res.Chunk.WriteTo(file);
                     }
                 }
+
+                Console.WriteLine();
             }
 
             Console.WriteLine("Close file");
