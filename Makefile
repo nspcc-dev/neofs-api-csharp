@@ -111,3 +111,12 @@ protoc: deps
 			--proto_path=src/netmap:vendor:/usr/local/include \
 			$$f; \
  	done
+
+image:
+	@docker build \
+		-f .docker/Dockerfile \
+		-t nspccdev/neofs-api-csharp:example \
+		.
+
+publish:
+	@docker publish nspccdev/neofs-api-csharp:example
