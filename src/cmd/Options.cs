@@ -25,6 +25,12 @@ namespace cmd
             HelpText = "File path, that would be putting into container")]
         public string File { get; set; }
 
+        [Option('e', "expired",
+            Default = 15,
+            Required = false,
+            HelpText = "Object expires in minutes")]
+        public ulong Expired { get; set; }
+
         [Option('d', "debug",
             Default = false,
             Required = false,

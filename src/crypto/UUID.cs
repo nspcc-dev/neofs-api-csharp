@@ -1,10 +1,21 @@
 ﻿using System;
+using Google.Protobuf;
 using NeoFS.Utils;
 
 namespace NeoFS.Crypto
 {
     public static class UUIDExtension
     {
+        public static string ToCID(this ByteString id)
+        {
+            return Base58.Encode(id.ToByteArray());
+        }
+
+        public static Guid ToUUID(this ByteString id)
+        {
+            return Guid.Parse(id.ToByteArray().ToHex());
+        }
+
         public static byte[] Bytes(this Guid id)
         {
             if (id == null)

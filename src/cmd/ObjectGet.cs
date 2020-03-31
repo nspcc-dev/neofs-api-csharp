@@ -12,8 +12,6 @@ namespace cmd
     {
         const uint SingleForwardedTTL = 2;
 
-        const string privateKey = "307702010104201dd37fba80fec4e6a6f13fd708d8dcb3b29def768017052f6c930fa1c5d90bbba00a06082a8648ce3d030107a144034200041a6c6fbbdf02ca351745fa86b9ba5a9452d785ac4f7fc2b7548ca2a46c4fcf4a6e3ae669b7a7126ebd9495ac304e44b89b1f3a3a85922c2b9b5aafa8acec98b1";
-
         static async Task ObjectGet(GetOptions opts)
         {
             byte[] cid;

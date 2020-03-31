@@ -7,4 +7,8 @@
   <ItemGroup>
     <ProjectReference Include="../utils/utils.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RIPEMD160" Version="1.0.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.11.4" />
+  </ItemGroup>
 </Project>

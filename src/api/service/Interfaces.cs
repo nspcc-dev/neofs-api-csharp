@@ -23,7 +23,7 @@ namespace NeoFS.API.Service
 
     public static class SignerExtention
     {
-        public static void SignHeader(this IMessage req, ECDsa key)
+        public static void SignHeader(this IMessage req, ECDsa key, bool debug = false)
         {
             RequestMetaHeader meta = null;
 
@@ -43,9 +43,12 @@ namespace NeoFS.API.Service
                     v.Verify = new RequestVerificationHeader();
                 }
 
-                var data = req.SignMessage(key);
+                var data = req.SignMessage(key, debug);
 
-                Console.WriteLine("Hash = {0}", data.ToHex());
+                if (debug)
+                {
+                    Console.WriteLine("Hash = {0}", data.ToHex());
+                }
 
                 var sign = new Signature
                 {
@@ -67,32 +70,65 @@ namespace NeoFS.API.Service
                 }
             }
         }
+        public static void SignHeader(this IMessage req, ECDsa key)
+        {
+            req.SignHeader(key, true);
+        }
+
+        public static byte[] SignMessage(this byte[] data, ECDsa key)
+        {
+            var hash = new byte[65];
+            hash[0] = 0x4;
+
+            key
+                .SignHash(SHA512.Create().ComputeHash(data))
+                .CopyTo(hash, 1);
+
+            return hash;
+        }
+
+        public static byte[] SignMessage(this ByteString data, ECDsa key)
+        {
+            return data.ToByteArray().SignMessage(key);
+        }
 
         public static byte[] SignMessage(this IMessage req, ECDsa key)
+        {
+            return req.SignMessage(key, true);
+        }
+
+        public static byte[] SignMessage(this IMessage req, ECDsa key, bool debug = false)
         {
             using (MemoryStream buf = new MemoryStream(req.CalculateSize()))
             {
                 req.WriteTo(buf);
-                var data = new byte[65];
-                byte[] hash;
-                data[0] = 0x4;
 
-                Console.WriteLine("\nMessage = {0} => {1}",
+                if (debug)
+                {
+                    Console.WriteLine("\nMessage = {0} => {1}",
                     req.GetType().FullName,
                     buf.ToArray().ToHex());
-
-                using (var sha = SHA512.Create())
-                {
-                    hash = sha.ComputeHash(buf.ToArray());
-                    key.SignHash(hash).CopyTo(data, 1);
                 }
 
-                return data;
+                return buf.ToArray().SignMessage(key);
+
+                //var data = new byte[65];
+                //byte[] hash;
+                //data[0] = 0x4;
+
+
+                //using (var sha = SHA512.Create())
+                //{
+                //    hash = sha.ComputeHash(buf.ToArray());
+                //    key.SignHash(hash).CopyTo(data, 1);
+                //}
+
+                //return data;
             }
         }
     }
 
-    public static class TTLExtention
+    public static class TTLExtension
     {
         public static void SetTTL(this IMeta req, uint ttl)
         {
@@ -100,6 +136,7 @@ namespace NeoFS.API.Service
             {
                 req.Meta = new RequestMetaHeader
                 {
+                    Epoch = 0,
                     TTL = ttl,
                 };
             }
