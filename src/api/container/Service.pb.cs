@@ -54,9 +54,9 @@ namespace NeoFS.API.Container {
             "bnRhaW5lci5EZWxldGVSZXF1ZXN0GhkuY29udGFpbmVyLkRlbGV0ZVJlc3Bv",
             "bnNlEjQKA0dldBIVLmNvbnRhaW5lci5HZXRSZXF1ZXN0GhYuY29udGFpbmVy",
             "LkdldFJlc3BvbnNlEjcKBExpc3QSFi5jb250YWluZXIuTGlzdFJlcXVlc3Qa",
-            "Fy5jb250YWluZXIuTGlzdFJlc3BvbnNlQkRaKGdpdGh1Yi5jb20vbnNwY2Mt",
-            "ZGV2L25lb2ZzLWFwaS9jb250YWluZXKqAhNOZW9GUy5BUEkuQ29udGFpbmVy",
-            "2OIeAWIGcHJvdG8z"));
+            "Fy5jb250YWluZXIuTGlzdFJlc3BvbnNlQkdaK2dpdGh1Yi5jb20vbnNwY2Mt",
+            "ZGV2L25lb2ZzLWFwaS1nby9jb250YWluZXKqAhNOZW9GUy5BUEkuQ29udGFp",
+            "bmVy2OIeAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.Service.MetaReflection.Descriptor, global::NeoFS.API.Service.VerifyReflection.Descriptor, global::NeoFS.API.Container.TypesReflection.Descriptor, global::Netmap.SelectorReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -29,8 +29,9 @@ namespace NeoFS.API.Query {
             "ZRgBIAEoDjISLnF1ZXJ5LkZpbHRlci5UeXBlQgji3h8EVHlwZRIMCgROYW1l",
             "GAIgASgJEg0KBVZhbHVlGAMgASgJIhwKBFR5cGUSCQoFRXhhY3QQABIJCgVS",
             "ZWdleBABOgSYoB8AIjMKBVF1ZXJ5EiQKB0ZpbHRlcnMYASADKAsyDS5xdWVy",
-            "eS5GaWx0ZXJCBMjeHwA6BJigHwBCPFokZ2l0aHViLmNvbS9uc3BjYy1kZXYv",
-            "bmVvZnMtYXBpL3F1ZXJ5qgIPTmVvRlMuQVBJLlF1ZXJ52OIeAWIGcHJvdG8z"));
+            "eS5GaWx0ZXJCBMjeHwA6BJigHwBCP1onZ2l0aHViLmNvbS9uc3BjYy1kZXYv",
+            "bmVvZnMtYXBpLWdvL3F1ZXJ5qgIPTmVvRlMuQVBJLlF1ZXJ52OIeAWIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

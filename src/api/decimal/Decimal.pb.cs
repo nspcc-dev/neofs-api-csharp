@@ -26,9 +26,9 @@ namespace NeoFS.API.Decimal {
           string.Concat(
             "ChVkZWNpbWFsL2RlY2ltYWwucHJvdG8SB2RlY2ltYWwaLWdpdGh1Yi5jb20v",
             "Z29nby9wcm90b2J1Zi9nb2dvcHJvdG8vZ29nby5wcm90byIxCgdEZWNpbWFs",
-            "Eg0KBVZhbHVlGAEgASgDEhEKCVByZWNpc2lvbhgCIAEoDToEmKAfAEJAWiZn",
-            "aXRodWIuY29tL25zcGNjLWRldi9uZW9mcy1hcGkvZGVjaW1hbKoCEU5lb0ZT",
-            "LkFQSS5EZWNpbWFs2OIeAWIGcHJvdG8z"));
+            "Eg0KBVZhbHVlGAEgASgDEhEKCVByZWNpc2lvbhgCIAEoDToEmKAfAEJDWiln",
+            "aXRodWIuY29tL25zcGNjLWRldi9uZW9mcy1hcGktZ28vZGVjaW1hbKoCEU5l",
+            "b0ZTLkFQSS5EZWNpbWFs2OIeAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

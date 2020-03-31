@@ -32,9 +32,9 @@ namespace NeoFS.API.StorageGroup {
             "Qgzi3h8ITGlmZXRpbWUakAEKCExpZmV0aW1lEkAKBHVuaXQYASABKA4yKC5z",
             "dG9yYWdlZ3JvdXAuU3RvcmFnZUdyb3VwLkxpZmV0aW1lLlVuaXRCCOLeHwRV",
             "bml0Eg0KBVZhbHVlGAIgASgDIjMKBFVuaXQSDQoJVW5saW1pdGVkEAASDgoK",
-            "TmVvRlNFcG9jaBABEgwKCFVuaXhUaW1lEAI6BJigHwBCSlorZ2l0aHViLmNv",
-            "bS9uc3BjYy1kZXYvbmVvZnMtYXBpL3N0b3JhZ2Vncm91cKoCFk5lb0ZTLkFQ",
-            "SS5TdG9yYWdlR3JvdXDY4h4BYgZwcm90bzM="));
+            "TmVvRlNFcG9jaBABEgwKCFVuaXhUaW1lEAI6BJigHwBCTVouZ2l0aHViLmNv",
+            "bS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3N0b3JhZ2Vncm91cKoCFk5lb0ZT",
+            "LkFQSS5TdG9yYWdlR3JvdXDY4h4BYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

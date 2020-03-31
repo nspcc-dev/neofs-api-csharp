@@ -1,9 +1,9 @@
 SHELL := /bin/bash
 
 PROTO_VERSION=master
-PROTO_URL=https://bitbucket.org/nspcc-dev/neofs-proto/get/$(PROTO_VERSION).tar.gz
+PROTO_URL=https://github.com/nspcc-dev/neofs-api/archive/$(PROTO_VERSION).tar.gz
 
-NETMAP_VERSION=v1.6.1
+NETMAP_VERSION=v1.7.0
 NETMAP_URL=https://github.com/nspcc-dev/netmap/archive/$(NETMAP_VERSION).tar.gz
 GOGO_VERSION=v1.3.1
 GOGO_URL=https://github.com/gogo/protobuf/archive/$(GOGO_VERSION).tar.gz

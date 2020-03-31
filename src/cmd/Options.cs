@@ -9,6 +9,12 @@ namespace cmd
     [Verb("put", HelpText = "put file into the container")]
     public class PutOptions
     {
+        [Option("host",
+            Default = "s01.fs.nspcc.ru:8080",
+            Required = false,
+            HelpText = "Host that would be used to fetch object from it")]
+        public string Host { get; set; }
+
         [Option("cid",
             Required = true,
             HelpText = "Container ID, required for putting file into")]
@@ -29,7 +35,7 @@ namespace cmd
     [Verb("get", HelpText = "get file from the container")]
     public class GetOptions
     {
-        [Option('h', "host",
+        [Option("host",
             Default = "s01.fs.nspcc.ru:8080",
             Required = false,
             HelpText = "Host that would be used to fetch object from it")]
