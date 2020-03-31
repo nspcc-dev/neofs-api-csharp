@@ -21,7 +21,7 @@ namespace NeoFS.API.Service
         RequestVerificationHeader Verify { get; set; }
     }
 
-    public static class SignerExtention
+    public static class SignerExtension
     {
         public static void SignHeader(this IMessage req, ECDsa key, bool debug = false)
         {
