@@ -68,6 +68,7 @@ namespace cmd
             
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }
+
         static async Task ObjectHead(ObjectHeadOptions opts)
         {
             byte[] cid;
@@ -101,6 +102,7 @@ namespace cmd
 
             var req = new NeoFS.API.Object.HeadRequest
             {
+                FullHeaders = opts.Full,
                 Address = new NeoFS.API.Refs.Address
                 {
                     CID = Google.Protobuf.ByteString.CopyFrom(cid),
@@ -130,10 +132,14 @@ namespace cmd
                 res.Object.SystemHeader.CID.ToCID(),
                 res.Object.SystemHeader.CreatedAt);
 
-            Console.WriteLine("Headers:");
-            for (var i = 0; i < res.Object.Headers.Count; i++)
+            if (opts.Full)
             {
-                Console.WriteLine(res.Object.Headers[i]);
+                Console.WriteLine("Headers:");
+                for (var i = 0; i < res.Object.Headers.Count; i++)
+                {
+                    Console.WriteLine(res.Object.Headers[i]);
+                }
+                Console.WriteLine();
             }
 
             Console.WriteLine("Meta:\n{0}", res.Meta);

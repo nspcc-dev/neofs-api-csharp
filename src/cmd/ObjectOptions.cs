@@ -153,6 +153,12 @@ namespace cmd
             HelpText = "Object ID, that would be getting from the container")]
         public string OID { get; set; }
 
+        [Option("full",
+            Default = false,
+            Required = false,
+            HelpText = "Fetch full headers")]
+        public bool Full { get; set; }
+
         [Option('d', "debug",
             Default = false,
             Required = false,
