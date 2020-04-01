@@ -6,11 +6,11 @@ namespace cmd
 {
     // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
     // So they suggest to use hyphenation on such subcommands.
-    [Verb("put", HelpText = "put file into the container")]
+    [Verb("object:put", HelpText = "put file into the container")]
     public class PutOptions
     {
         [Option('e', "expired",
-            Default = (ulong) 15,
+            Default = (ulong)15,
             Required = false,
             HelpText = "Object expires in minutes")]
         public ulong Expired { get; set; }
@@ -38,7 +38,7 @@ namespace cmd
         public bool Debug { get; set; }
     }
 
-    [Verb("get", HelpText = "get file from the container")]
+    [Verb("object:get", HelpText = "get file from the container")]
     public class GetOptions
     {
         [Option("host",

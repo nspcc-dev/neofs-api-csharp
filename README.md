@@ -18,7 +18,6 @@ $ make docgen protoc
 `docker pull nspccdev/neofs-api-csharp:example`
 
 ```
-→ docker run -it nspccdev/neofs-api-csharp:example
 Examples for NeoFS API Library:
 
 → /app/cmd help
@@ -27,7 +26,7 @@ Examples for NeoFS API Library:
   help       Display more information on a specific command.
   version    Display version information.
 
-→ /app/cmd get \
+→ /app/cmd object:get \
   --host s01.fs.nspcc.ru:8080 \
   --cid 35Zg4Mj8y998VDftVyQygFrQCPRTPvG8QK6WXhGUWPMH \
   --oid 72b94cce-a3fc-4c25-90e4-1817999fb2ad \
@@ -48,10 +47,10 @@ Headers:
 { "PayloadChecksum": "LUDSUA86ltTmNpsPsJXarUukxnLKnjXx9AB7918jQMI=" }
 { "Integrity": { "HeadersChecksum": "O9BxaOqS2h5mC99d+Sj4pvKquKjB6URPOOIGALDbyhk=", "ChecksumSignature": "BA/Ou75HR/56Aey45xd6UNfviwHgEiKtZ/ss0m6VxeWaGCetsLRQUzP4J9axwIIKX6ynopodbq5ben8ctuW7Tb8=" } }
 
-Received chunks: #########
+Received chunks: Done!
 Close file
 
-→ /app/cmd put \
+→ /app/cmd object:put \
   --host s01.fs.nspcc.ru:8080 \
   --cid 35Zg4Mj8y998VDftVyQygFrQCPRTPvG8QK6WXhGUWPMH \
   -i /tmp/1.mp4
@@ -59,9 +58,7 @@ Close file
 Used host: s01.fs.nspcc.ru:8080
 HealthResponse = { "Healthy": true, "Status": "OK" }
 
-Write chunk: 0 / 24150016 [1048576]
-...
-Write chunk: 24117248 / 24150016 [1048576]
+Write chunks: Done!
 
 Object stored:
 URL: https://cdn.fs.neo.org/35Zg4Mj8y998VDftVyQygFrQCPRTPvG8QK6WXhGUWPMH/72b94cce-a3fc-4c25-90e4-1817999fb2ad
