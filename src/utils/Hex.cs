@@ -1,9 +1,15 @@
 ﻿using System;
+using Google.Protobuf;
 
 namespace NeoFS.Utils
 {
     public static class HexExtension
     {
+        public static string ToHex(this ByteString data)
+        {
+            return data.ToByteArray().ToHex();
+        }
+
         public static string ToHex(this byte[] data)
         {
             return BitConverter.

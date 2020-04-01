@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
+using Google.Protobuf;
 
 namespace NeoFS.Crypto
 {
@@ -38,6 +39,11 @@ namespace NeoFS.Crypto
             address.Take(21).CheckSum().CopyTo(address, 21);
 
             return address;
+        }
+
+        public static string ToAddress(this ByteString owner)
+        {
+            return Base58.Encode(owner.ToByteArray());
         }
 
         public static string ToAddress(this ECDsa key)
