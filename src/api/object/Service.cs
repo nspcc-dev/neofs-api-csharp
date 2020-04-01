@@ -123,4 +123,5 @@ namespace NeoFS.API.Object
     public sealed partial class GetRequest : IMeta, IVerify { }
     public sealed partial class HeadRequest : IMeta, IVerify { }
     public sealed partial class SearchRequest : IMeta, IVerify { }
+    public sealed partial class DeleteRequest : IMeta, IVerify { }
 }

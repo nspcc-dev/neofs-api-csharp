@@ -6,11 +6,68 @@ using NeoFS.Utils;
 using NeoFS.API.Service;
 using System.Threading.Tasks;
 using NeoFS.API.State;
+using Google.Protobuf;
+using NeoFS.API.Session;
 
 namespace cmd
 {
     partial class Program
     {
+        static async Task ObjectDelete(ObjectDeleteOptions opts)
+        {
+            byte[] cid;
+            Guid oid;
+
+            var key = privateKey.FromHex().LoadKey();
+
+            try
+            {
+                cid = Base58.Decode(opts.CID);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong cid format: {0}", err.Message);
+                return;
+            }
+
+            try
+            {
+                oid = Guid.Parse(opts.OID.ToCharArray());
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong oid format: {0}", err.Message);
+                return;
+            }
+
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+
+            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
+
+            var token = await channel.EstablishSession(oid, SingleForwardedTTL, key, opts.Debug);
+
+            var req = new NeoFS.API.Object.DeleteRequest
+            {
+                Token = token,
+                OwnerID = ByteString.CopyFrom(key.Address()),
+                Address = new NeoFS.API.Refs.Address
+                {
+                    CID = Google.Protobuf.ByteString.CopyFrom(cid),
+                    ObjectID = Google.Protobuf.ByteString.CopyFrom(oid.Bytes()),
+                },
+            };
+
+            req.SetTTL(SingleForwardedTTL);
+            req.SignHeader(key, opts.Debug);
+
+            var res = new NeoFS.API.Object.Service.ServiceClient(channel).Delete(req);
+
+            Console.WriteLine();
+
+            Console.WriteLine("Result: {0}", res);
+            
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
+        }
         static async Task ObjectHead(ObjectHeadOptions opts)
         {
             byte[] cid;
