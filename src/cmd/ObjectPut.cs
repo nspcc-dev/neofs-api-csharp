@@ -7,6 +7,7 @@ using Grpc.Core;
 using NeoFS.API.Object;
 using NeoFS.API.Service;
 using NeoFS.API.Session;
+using NeoFS.API.State;
 using NeoFS.Crypto;
 using NeoFS.Utils;
 
@@ -15,7 +16,7 @@ namespace cmd
     partial class Program
     {
 
-        static async Task ObjectPut(PutOptions opts)
+        static async Task ObjectPut(ObjectPutOptions opts)
         {
             const int ChunkSize = 1 << 10 * 2;
 
@@ -46,23 +47,11 @@ namespace cmd
             var key = privateKey.FromHex().LoadKey();
             var obj = NeoFS.API.Object.Object.Prepare(cid, oid, (ulong) file.Length, key);
 
-            Console.WriteLine("Used host: {0}", opts.Host);
-
             obj.SetPluginHeaders(opts.Expired, opts.File);
 
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 
-            { // check that node healthy:
-                var hReq = new NeoFS.API.State.HealthRequest();
-
-                hReq.SetTTL(SingleForwardedTTL);
-                hReq.SignHeader(key, opts.Debug);
-
-                var cli = new NeoFS.API.State.Status.StatusClient(channel);
-
-                var resp = cli.HealthCheck(hReq);
-                Console.WriteLine("HealthResponse = {0}", resp);
-            }
+            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
             Token token;
 

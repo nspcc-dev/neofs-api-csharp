@@ -1,13 +1,11 @@
-﻿using System;
-using CommandLine;
-using CommandLine.Text;
+﻿using CommandLine;
 
 namespace cmd
 {
     // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
     // So they suggest to use hyphenation on such subcommands.
     [Verb("object:put", HelpText = "put file into the container")]
-    public class PutOptions
+    public class ObjectPutOptions
     {
         [Option('e', "expired",
             Default = (ulong)15,
@@ -39,7 +37,7 @@ namespace cmd
     }
 
     [Verb("object:get", HelpText = "get file from the container")]
-    public class GetOptions
+    public class ObjectGetOptions
     {
         [Option("host",
             Default = "s01.fs.nspcc.ru:8080",

@@ -7,11 +7,14 @@ namespace cmd
 {
     partial class Program
     {
+        const uint SingleForwardedTTL = 2;
+
         const string privateKey =
             "30770201010420347bc2bd9eb7b9f41a217a26dc5a3d2a3c25ece1c8bff1d5a146a" +
             "af4156e3436a00a06082a8648ce3d030107a14403420004b3622bf4017bdfe317c5" +
             "8aed5f4c753f206b7db896046fa7d774bbc4bf7f8dc2af9c7b29759df7f3d92052a" +
             "5b9bc545bcd31c6a7a3463e90c768a6c3e45b1036";
+
         //const string privateKey =
         //    "307702010104201dd37fba80fec4e6a6f13fd708d8dcb3b29def768017052f6c930" +
         //    "fa1c5d90bbba00a06082a8648ce3d030107a144034200041a6c6fbbdf02ca351745" +
@@ -22,10 +25,17 @@ namespace cmd
         {
             await Parser
                 .Default
-                .ParseArguments<PutOptions, GetOptions>(args)
+                .ParseArguments<
+                    ObjectPutOptions,
+                    ObjectGetOptions,
+                    ContainerListOptions>(args)
                 .MapResult(
-                    (PutOptions opts) => ObjectPut(opts),
-                    (GetOptions opts) => ObjectGet(opts),
+
+                    (ObjectPutOptions opts) => ObjectPut(opts),
+                    (ObjectGetOptions opts) => ObjectGet(opts),
+
+                    (ContainerListOptions opts) => ContainerList(opts),
+
                     errs => Errors(errs)
                 );
         }

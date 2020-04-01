@@ -5,14 +5,13 @@ using NeoFS.Crypto;
 using NeoFS.Utils;
 using NeoFS.API.Service;
 using System.Threading.Tasks;
+using NeoFS.API.State;
 
 namespace cmd
 {
     partial class Program
     {
-        const uint SingleForwardedTTL = 2;
-
-        static async Task ObjectGet(GetOptions opts)
+        static async Task ObjectGet(ObjectGetOptions opts)
         {
             byte[] cid;
             Guid oid;
@@ -50,21 +49,9 @@ namespace cmd
                 return;
             }
 
-            Console.WriteLine("Used host: {0}", opts.Host);
-
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 
-            { // check that node healthy:
-                var hReq = new NeoFS.API.State.HealthRequest();
-
-                hReq.SetTTL(SingleForwardedTTL);
-                hReq.SignHeader(key, opts.Debug);
-
-                var cli = new NeoFS.API.State.Status.StatusClient(channel);
-
-                var resp = cli.HealthCheck(hReq);
-                Console.WriteLine("HealthResponse = {0}", resp);
-            }
+            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
             var req = new NeoFS.API.Object.GetRequest
             {
@@ -110,7 +97,7 @@ namespace cmd
 
                         if (res.Object.Payload.Length > 0)
                         {
-                            off += (double) res.Object.Payload.Length;
+                            off += (double)res.Object.Payload.Length;
                             res.Object.Payload.WriteTo(file);
                         }
 
@@ -127,7 +114,7 @@ namespace cmd
                         if (progress != null)
                         {
 
-                            progress.Report(off/ len);
+                            progress.Report(off / len);
                         }
                     }
                 }
