@@ -52,66 +52,7 @@ namespace cmd
 
             channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
-            Token token;
-
-            using(var tkn = new Session.SessionClient(channel).Create())
-            { // Prepare Session and Token:
-                var publey = ByteString.CopyFrom(key.Peer());
-                var owner = ByteString.CopyFrom(key.Address());
-                var empty = new byte[0];
-
-                token = new Token
-                {
-                    OwnerID = owner,
-                    LastEpoch = ulong.MaxValue,
-                    FirstEpoch = ulong.MinValue,
-
-                    // empty TokenID
-                    ID = ByteString.CopyFrom(new byte[16]),
-
-                    // initialize verification header
-                    Header = new VerificationHeader
-                    {
-                        PublicKey = ByteString.CopyFrom(empty),
-                        KeySignature = ByteString.CopyFrom(empty),
-                    },
-                };
-
-                // Set Owner ID:
-                token.PublicKeys.Add(publey);
-
-                // Set Object ID:
-                token.ObjectID.Add(ByteString.CopyFrom(oid));
-
-                // Send token to node
-                await tkn.RequestStream.WriteAsync(token.PrepareInit(SingleForwardedTTL, key, opts.Debug));
-
-                // Wait to complete request
-                await tkn.ResponseStream.MoveNext();
-
-                // Receive session token
-                var response = tkn.ResponseStream.Current;
-
-                if (!response.Unsigned.IsSame(token))
-                {
-                    throw new Exception("wrong token received");
-                }
-
-
-                // Sign received token
-                token = response.Unsigned;
-                token.Sign(key);
-
-                // Send signed token
-                await tkn.RequestStream.WriteAsync(token.PrepareSigned(SingleForwardedTTL, key, opts.Debug));
-
-                // Wait to complete request
-                await tkn.ResponseStream.MoveNext();
-                await tkn.RequestStream.CompleteAsync();
-
-                // Store received token:
-                token = tkn.ResponseStream.Current.Result;
-            }
+            Token token = await channel.EstablishSession(oid, SingleForwardedTTL, key, opts.Debug);
 
             using (var put = new Service.ServiceClient(channel).Put())
             { // Send Object to node
