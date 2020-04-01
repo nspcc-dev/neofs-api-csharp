@@ -84,15 +84,22 @@ namespace cmd
 
             using (var call = client.Get(req))
             {
+                ProgressBar progress = null;
+
+                double len = 0;
+                double off = 0;
 
                 while (await call.ResponseStream.MoveNext())
                 {
                     var res = call.ResponseStream.Current;
 
+
                     if (res.Object != null)
                     {
+                        len = (double)res.Object.SystemHeader.PayloadLength;
+
                         Console.WriteLine("Received object");
-                        Console.WriteLine("PayloadLength = {0}", res.Object.SystemHeader.PayloadLength);
+                        Console.WriteLine("PayloadLength = {0}", len);
 
                         Console.WriteLine("Headers:");
                         for (var i = 0; i < res.Object.Headers.Count; i++)
@@ -103,18 +110,36 @@ namespace cmd
 
                         if (res.Object.Payload.Length > 0)
                         {
+                            off += (double) res.Object.Payload.Length;
                             res.Object.Payload.WriteTo(file);
                         }
 
-                        Console.Write("\nReceived chunks: ");
-                        continue;
+                        Console.Write("Receive chunks: ");
+                        progress = new ProgressBar();
                     }
                     else if (res.Chunk != null && res.Chunk.Length > 0)
                     {
-                        Console.Write("#");
+                        //Console.Write("#");
+                        off += res.Chunk.Length;
+
                         res.Chunk.WriteTo(file);
+
+                        if (progress != null)
+                        {
+
+                            progress.Report(off/ len);
+                        }
                     }
                 }
+
+                await Task.Delay(TimeSpan.FromMilliseconds(100));
+
+                if (progress != null)
+                {
+                    progress.Dispose();
+                }
+
+                Console.Write("Done!");
 
                 Console.WriteLine();
             }

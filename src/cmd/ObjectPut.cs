@@ -134,25 +134,35 @@ namespace cmd
                     //Console.WriteLine(put.ResponseAsync.Result);
                 }
 
+                double len = file.Length;
+
                 {// send chunks:
                     byte[] chunk = new byte[ChunkSize];
                     int off = 0;
 
                     Console.WriteLine();
-                    for (int num; ; off += num)
+                    Console.Write("Write chunks: ");
+                    using (var progress = new ProgressBar())
                     {
-                        num = file.Read(chunk);
-                        if (num == 0)
+                        for (int num; ; off += num)
                         {
-                            break;
+                            num = file.Read(chunk);
+                            if (num == 0)
+                            {
+                                break;
+                            }
+
+                            var req = chunk.Take(num).PrepareChunk(SingleForwardedTTL, key);
+                            await put.RequestStream.WriteAsync(req);
+
+                            progress.Report((double) off / len);
                         }
 
-                        Console.WriteLine("Write chunk: {0} / {1} [{2}]", off, file.Length, ChunkSize);
-
-                        var req = chunk.Take(num).PrepareChunk(SingleForwardedTTL, key);
-                        await put.RequestStream.WriteAsync(req);
                     }
                 }
+
+                await Task.Delay(TimeSpan.FromMilliseconds(100));
+                Console.Write("Done!");
 
                 put.ResponseAsync.Wait();
                 await put.RequestStream.CompleteAsync();
