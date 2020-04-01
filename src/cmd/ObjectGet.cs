@@ -58,7 +58,7 @@ namespace cmd
                 var hReq = new NeoFS.API.State.HealthRequest();
 
                 hReq.SetTTL(SingleForwardedTTL);
-                hReq.SignHeader(key);
+                hReq.SignHeader(key, opts.Debug);
 
                 var cli = new NeoFS.API.State.Status.StatusClient(channel);
 
@@ -76,7 +76,7 @@ namespace cmd
             };
 
             req.SetTTL(SingleForwardedTTL);
-            req.SignHeader(key);
+            req.SignHeader(key, opts.Debug);
 
             var client = new NeoFS.API.Object.Service.ServiceClient(channel);
 
@@ -106,12 +106,12 @@ namespace cmd
                             res.Object.Payload.WriteTo(file);
                         }
 
-                        Console.WriteLine("\nWait for chunks");
+                        Console.Write("\nReceived chunks: ");
                         continue;
                     }
                     else if (res.Chunk != null && res.Chunk.Length > 0)
                     {
-                        Console.Write("..");
+                        Console.Write("#");
                         res.Chunk.WriteTo(file);
                     }
                 }
@@ -122,8 +122,8 @@ namespace cmd
             Console.WriteLine("Close file");
             file.Close();
 
-            Console.WriteLine("Shutdown connection.");
-            channel.ShutdownAsync().Wait();
+            //Console.WriteLine("Shutdown connection.");
+            //channel.ShutdownAsync().Wait();
         }
     }
 }

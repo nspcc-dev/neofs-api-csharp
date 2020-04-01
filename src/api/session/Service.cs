@@ -68,22 +68,22 @@ namespace NeoFS.API.Session
             tkn.Signature = ByteString.CopyFrom(tkn.GetBytes().SignMessage(key));
         }
 
-        public static CreateRequest PrepareInit(this Token tkn, uint ttl, ECDsa key)
+        public static CreateRequest PrepareInit(this Token tkn, uint ttl, ECDsa key, bool debug = false)
         {
             var req = new CreateRequest{ Init = tkn };
 
             req.SetTTL(ttl);
-            req.SignHeader(key);
+            req.SignHeader(key, debug);
 
             return req;
         }
 
-        public static CreateRequest PrepareSigned(this Token tkn, uint ttl, ECDsa key)
+        public static CreateRequest PrepareSigned(this Token tkn, uint ttl, ECDsa key, bool debug = false)
         {
             var req = new CreateRequest { Signed = tkn };
 
             req.SetTTL(ttl);
-            req.SignHeader(key);
+            req.SignHeader(key, debug);
 
             return req;
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace cmd
@@ -30,13 +31,11 @@ namespace cmd
                 );
         }
 
-        static async Task HandleParseError(IEnumerable<Error> errors)
+        static async Task HandleParseError(IEnumerable<Error> errs)
         {
             Console.WriteLine("Parse error (do smth with that).");
 
             await Task.Delay(TimeSpan.FromMilliseconds(100));
-
-            return;
         }
     }
 }

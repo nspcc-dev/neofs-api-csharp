@@ -81,7 +81,7 @@ namespace NeoFS.API.Object
 
     public static class RequestExtension
     {
-        public static PutRequest PrepareHeader(this Object obj, uint ttl, Token tkn, ECDsa key)
+        public static PutRequest PrepareHeader(this Object obj, uint ttl, Token tkn, ECDsa key, bool debug = false)
         {
             var req = new PutRequest
             {
@@ -93,7 +93,7 @@ namespace NeoFS.API.Object
             };
 
             req.SetTTL(ttl);
-            req.SignHeader(key);
+            req.SignHeader(key, debug);
 
             return req;
         }

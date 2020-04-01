@@ -56,7 +56,7 @@ namespace cmd
                 var hReq = new NeoFS.API.State.HealthRequest();
 
                 hReq.SetTTL(SingleForwardedTTL);
-                hReq.SignHeader(key);
+                hReq.SignHeader(key, opts.Debug);
 
                 var cli = new NeoFS.API.State.Status.StatusClient(channel);
 
@@ -96,7 +96,7 @@ namespace cmd
                 token.ObjectID.Add(ByteString.CopyFrom(oid));
 
                 // Send token to node
-                await tkn.RequestStream.WriteAsync(token.PrepareInit(SingleForwardedTTL, key));
+                await tkn.RequestStream.WriteAsync(token.PrepareInit(SingleForwardedTTL, key, opts.Debug));
 
                 // Wait to complete request
                 await tkn.ResponseStream.MoveNext();
@@ -115,7 +115,7 @@ namespace cmd
                 token.Sign(key);
 
                 // Send signed token
-                await tkn.RequestStream.WriteAsync(token.PrepareSigned(SingleForwardedTTL, key));
+                await tkn.RequestStream.WriteAsync(token.PrepareSigned(SingleForwardedTTL, key, opts.Debug));
 
                 // Wait to complete request
                 await tkn.ResponseStream.MoveNext();
@@ -166,11 +166,13 @@ namespace cmd
                 Console.WriteLine("OID: {0}", res.Address.ObjectID.ToUUID());
             }
 
+            Console.WriteLine();
+
             Console.WriteLine("Close file.");
             file.Close();
 
-            Console.WriteLine("Close connection.");
-            channel.ShutdownAsync().Wait();
+            //Console.WriteLine("Close connection.");
+            //channel.ShutdownAsync().Wait();
         }
     }
 }

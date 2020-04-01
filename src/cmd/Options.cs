@@ -9,6 +9,12 @@ namespace cmd
     [Verb("put", HelpText = "put file into the container")]
     public class PutOptions
     {
+        [Option('e', "expired",
+            Default = (ulong) 15,
+            Required = false,
+            HelpText = "Object expires in minutes")]
+        public ulong Expired { get; set; }
+
         [Option("host",
             Default = "s01.fs.nspcc.ru:8080",
             Required = false,
@@ -20,16 +26,10 @@ namespace cmd
             HelpText = "Container ID, required for putting file into")]
         public string CID { get; set; }
 
-        [Option("file",
+        [Option('i', "in",
             Required = true,
             HelpText = "File path, that would be putting into container")]
         public string File { get; set; }
-
-        [Option('e', "expired",
-            Default = 15,
-            Required = false,
-            HelpText = "Object expires in minutes")]
-        public ulong Expired { get; set; }
 
         [Option('d', "debug",
             Default = false,
