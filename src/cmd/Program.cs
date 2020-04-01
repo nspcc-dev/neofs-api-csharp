@@ -32,10 +32,12 @@ namespace cmd
                     AccountingBalanceOptions,
                     ContainerGetOptions,
                     ContainerPutOptions,
+                    ObjectHeadOptions,
                     ContainerListOptions >(args)
                 .MapResult(
                     (ObjectPutOptions opts) => ObjectPut(opts),
                     (ObjectGetOptions opts) => ObjectGet(opts),
+                    (ObjectHeadOptions opts) => ObjectHead(opts),
                     (ObjectSearchOptions opts) => ObjectSearch(opts),
 
                     (AccountingBalanceOptions opts) => AccountingBalance(opts),

@@ -11,6 +11,78 @@ namespace cmd
 {
     partial class Program
     {
+        static async Task ObjectHead(ObjectHeadOptions opts)
+        {
+            byte[] cid;
+            Guid oid;
+
+            var key = privateKey.FromHex().LoadKey();
+
+            try
+            {
+                cid = Base58.Decode(opts.CID);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong cid format: {0}", err.Message);
+                return;
+            }
+
+            try
+            {
+                oid = Guid.Parse(opts.OID.ToCharArray());
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong oid format: {0}", err.Message);
+                return;
+            }
+
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+
+            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
+
+            var req = new NeoFS.API.Object.HeadRequest
+            {
+                Address = new NeoFS.API.Refs.Address
+                {
+                    CID = Google.Protobuf.ByteString.CopyFrom(cid),
+                    ObjectID = Google.Protobuf.ByteString.CopyFrom(oid.Bytes()),
+                },
+            };
+
+            req.SetTTL(SingleForwardedTTL);
+            req.SignHeader(key, opts.Debug);
+
+            var res = new NeoFS.API.Object.Service.ServiceClient(channel).Head(req);
+
+            Console.WriteLine();
+
+            Console.WriteLine("Received object headers");
+            Console.WriteLine("\nSystemHeaders\n" +
+                "Version: {0}\n" +
+                "PayloadLength: {1}\n" +
+                "ObjectID: {2}\n" +
+                "OwnerID: {3}\n" +
+                "CID: {4}\n" +
+                "CreatedAt: {5}\n",
+                res.Object.SystemHeader.Version,
+                res.Object.SystemHeader.PayloadLength,
+                res.Object.SystemHeader.ID.ToUUID(),
+                res.Object.SystemHeader.OwnerID.ToAddress(),
+                res.Object.SystemHeader.CID.ToCID(),
+                res.Object.SystemHeader.CreatedAt);
+
+            Console.WriteLine("Headers:");
+            for (var i = 0; i < res.Object.Headers.Count; i++)
+            {
+                Console.WriteLine(res.Object.Headers[i]);
+            }
+
+            Console.WriteLine("Meta:\n{0}", res.Meta);
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
+        }
+
         static async Task ObjectGet(ObjectGetOptions opts)
         {
             byte[] cid;

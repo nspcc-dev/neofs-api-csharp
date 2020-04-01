@@ -107,4 +107,30 @@ namespace cmd
             HelpText = "Debug mode will print out additional information after a compiling")]
         public bool Debug { get; set; }
     }
+
+    [Verb("object:head", HelpText = "receive object headers")]
+    public class ObjectHeadOptions
+    {
+        [Option("host",
+            Default = "s01.fs.nspcc.ru:8080",
+            Required = false,
+            HelpText = "Host that would be used to fetch object from it")]
+        public string Host { get; set; }
+
+        [Option("cid",
+            Required = true,
+            HelpText = "Container ID, that would be getting the file from it")]
+        public string CID { get; set; }
+
+        [Option("oid",
+            Required = true,
+            HelpText = "Object ID, that would be getting from the container")]
+        public string OID { get; set; }
+
+        [Option('d', "debug",
+            Default = false,
+            Required = false,
+            HelpText = "Debug mode will print out additional information after a compiling")]
+        public bool Debug { get; set; }
+    }
 }
