@@ -1,8 +1,6 @@
 ﻿using CommandLine;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace cmd
@@ -22,19 +20,18 @@ namespace cmd
 
         public static async Task Main(string[] args)
         {
-            await Parser.Default
+            await Parser
+                .Default
                 .ParseArguments<PutOptions, GetOptions>(args)
                 .MapResult(
                     (PutOptions opts) => ObjectPut(opts),
                     (GetOptions opts) => ObjectGet(opts),
-                    errs => HandleParseError(errs)
+                    errs => Errors(errs)
                 );
         }
 
-        static async Task HandleParseError(IEnumerable<Error> errs)
+        static async Task Errors(IEnumerable<Error> errs)
         {
-            Console.WriteLine("Parse error (do smth with that).");
-
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }
     }

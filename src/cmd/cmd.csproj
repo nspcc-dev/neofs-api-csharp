@@ -3,6 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    
+    <Company>NSPCC</Company>
+    <AssemblyTitle>NeoFS CLI CSharp Example application</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,8 +25,5 @@
     </PackageReference>
     <PackageReference Include="Google.Protobuf" Version="3.11.4" />
     <PackageReference Include="Grpc.Net.Client" Version="2.27.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Base58.cs" />
   </ItemGroup>
 </Project>
