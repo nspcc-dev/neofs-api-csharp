@@ -30,7 +30,8 @@ namespace cmd
                     ObjectGetOptions,
                     AccountingBalanceOptions,
                     ContainerGetOptions,
-                    ContainerListOptions>(args)
+                    ContainerPutOptions,
+                    ContainerListOptions >(args)
                 .MapResult(
 
                     (ObjectPutOptions opts) => ObjectPut(opts),
@@ -39,6 +40,7 @@ namespace cmd
                     (AccountingBalanceOptions opts) => AccountingBalance(opts),
 
                     (ContainerGetOptions opts) => ContainerGet(opts),
+                    (ContainerPutOptions opts) => ContainerPut(opts),
                     (ContainerListOptions opts) => ContainerList(opts),
 
                     errs => Errors(errs)

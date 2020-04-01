@@ -12,6 +12,44 @@ namespace cmd
     partial class Program
     {
 
+        static async Task ContainerPut(ContainerPutOptions opts)
+        {
+            var key = privateKey.FromHex().LoadKey();
+
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+
+            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
+
+            var res = channel.PutContainer(opts.Size, SingleForwardedTTL, key, opts.Debug);
+
+            Console.WriteLine();
+            Console.WriteLine("Wait for container: {0}", res.CID.ToCID());
+            Console.WriteLine();
+
+
+            for (var i = 0; i < 10; i++)
+            {
+                await Task.Delay(TimeSpan.FromMilliseconds(500));
+
+                try
+                {
+                    var get = channel.GetContainer(res.CID, SingleForwardedTTL, key, opts.Debug);
+
+                    Console.WriteLine("\n\nDone: \n");
+
+                    get.Say();
+
+                    return;
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine("Not ready: {0}", err.Message);
+                }
+            }
+
+            Console.WriteLine("\nCould not wait for container creation...");
+        }
+
         static async Task ContainerList(ContainerListOptions opts)
         {
             var key = privateKey.FromHex().LoadKey();
