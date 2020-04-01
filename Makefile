@@ -119,4 +119,4 @@ image:
 		.
 
 publish:
-	@docker publish nspccdev/neofs-api-csharp:example
+	@docker push nspccdev/neofs-api-csharp:example
