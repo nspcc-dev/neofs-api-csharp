@@ -6,6 +6,7 @@
     <PackageId>Netmap</PackageId>
     <Product>Netmap</Product>
     <Description>Netmap</Description>
+    <RootNamespace>Netmap</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

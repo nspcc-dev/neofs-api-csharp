@@ -6,6 +6,7 @@
     <PackageId>NeoFS.API</PackageId>
     <Product>NeoFS.API</Product>
     <Description>NeoFS.API</Description>
+    <RootNamespace>NeoFS.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
