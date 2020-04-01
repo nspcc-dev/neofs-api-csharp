@@ -28,14 +28,15 @@ namespace cmd
                 .ParseArguments<
                     ObjectPutOptions,
                     ObjectGetOptions,
+                    ObjectSearchOptions,
                     AccountingBalanceOptions,
                     ContainerGetOptions,
                     ContainerPutOptions,
                     ContainerListOptions >(args)
                 .MapResult(
-
                     (ObjectPutOptions opts) => ObjectPut(opts),
                     (ObjectGetOptions opts) => ObjectGet(opts),
+                    (ObjectSearchOptions opts) => ObjectSearch(opts),
 
                     (AccountingBalanceOptions opts) => AccountingBalance(opts),
 

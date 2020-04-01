@@ -111,4 +111,19 @@ Global
 		{A1DCECD0-D4D6-4DA3-BC73-4C204E4DC1BB} = {A51C4521-F513-4A79-A3B4-C62D17AA7183}
 		{A529500B-84F2-4B4A-84C2-EE020AA5248B} = {A51C4521-F513-4A79-A3B4-C62D17AA7183}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 80
+		$1.TabsToSpaces = True
+		$1.EolMarker = Unix
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 80
+		$3.TabsToSpaces = True
+		$3.EolMarker = Unix
+		$3.scope = text/plain
+	EndGlobalSection
 EndGlobal

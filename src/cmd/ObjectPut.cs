@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Google.Protobuf;
 using Grpc.Core;
 using NeoFS.API.Object;
-using NeoFS.API.Service;
 using NeoFS.API.Session;
 using NeoFS.API.State;
 using NeoFS.Crypto;
@@ -18,7 +17,7 @@ namespace cmd
 
         static async Task ObjectPut(ObjectPutOptions opts)
         {
-            const int ChunkSize = 1 << 10 * 2;
+            const int ChunkSize = (int) (3.5 * Units.MB);
 
             byte[] cid;
             byte[] oid = Guid.NewGuid().Bytes();

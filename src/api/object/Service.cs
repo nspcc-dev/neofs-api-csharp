@@ -11,6 +11,9 @@ namespace NeoFS.API.Object
 {
     public sealed partial class Object
     {
+        public const string KeyRootObject = "ROOT_OBJECT";
+        public const string KeyStorageGroup = "STORAGE_GROUP";
+
         public void SetPayload(byte[] payload)
         {
             Payload = ByteString.CopyFrom(payload);
@@ -116,11 +119,7 @@ namespace NeoFS.API.Object
             return req;
         }
     }
-
-    public sealed partial class PutRequest : IMeta, IVerify
-    {
-    }
-    public sealed partial class GetRequest : IMeta, IVerify
-    {
-    }
+    public sealed partial class PutRequest : IMeta, IVerify { }
+    public sealed partial class GetRequest : IMeta, IVerify { }
+    public sealed partial class SearchRequest : IMeta, IVerify { }
 }

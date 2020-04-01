@@ -1,7 +1,48 @@
-﻿using CommandLine;
+﻿using System.Collections.Generic;
+using CommandLine;
 
 namespace cmd
 {
+    // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
+    // So they suggest to use hyphenation on such subcommands.
+    [Verb("object:search", HelpText = "search objects in container")]
+    public class ObjectSearchOptions
+    {
+        [Option("host",
+            Default = "s01.fs.nspcc.ru:8080",
+            Required = false,
+            HelpText = "Host that would be used to fetch object from it")]
+        public string Host { get; set; }
+
+        [Option("cid",
+            Required = true,
+            HelpText = "Container ID, to search object inside container")]
+        public string CID { get; set; }
+
+        [Option("query",
+            Separator = ',',
+            Required = false,
+            HelpText = "Query rule to be used for search (Example: --query a=b,b=a)")]
+        public IEnumerable<string> Query { get; set; } = null;
+
+        [Option("sg",
+            Default = false,
+            Required = false,
+            HelpText = "Search only StorageGroup objects")]
+        public bool SG { get; set; }
+
+        [Option("root",
+            Default = false,
+            Required = false,
+            HelpText = "Search only user's objects")]
+        public bool Root { get; set; }
+
+        [Option('d', "debug",
+            Default = false,
+            Required = false,
+            HelpText = "Debug mode will print out additional information after a compiling")]
+        public bool Debug { get; set; }
+    }
     // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
     // So they suggest to use hyphenation on such subcommands.
     [Verb("object:put", HelpText = "put file into the container")]
