@@ -46,7 +46,7 @@ namespace cmd
                     (ObjectDeleteOptions opts) => ObjectDelete(opts),
 
                     //(SGOptions.Get opts) => SGGet(opts),
-                    //(SGOptions.Put opts) => SGPut(opts),
+                    (SGOptions.Put opts) => SGPut(opts),
                     (SGOptions.List opts) => SGList(opts),
 
                     (AccountingBalanceOptions opts) => AccountingBalance(opts),

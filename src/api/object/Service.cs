@@ -65,6 +65,11 @@ namespace NeoFS.API.Object
                 });
         }
 
+        public static Object Prepare(byte[] cid, Guid oid, ulong size, ECDsa key)
+        {
+            return Prepare(cid, oid.Bytes(), size, key);
+        }
+
         public static Object Prepare(byte[] cid, byte[] oid, ulong size, ECDsa key)
         {
             byte[] owner = key.Address();
