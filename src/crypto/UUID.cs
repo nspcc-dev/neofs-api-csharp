@@ -16,6 +16,11 @@ namespace NeoFS.Crypto
             return Guid.Parse(id.ToByteArray().ToHex());
         }
 
+        public static ByteString ToByteString(this Guid id)
+        {
+            return ByteString.CopyFrom(id.Bytes());
+        }
+
         public static byte[] Bytes(this Guid id)
         {
             if (id == null)

@@ -17,6 +17,7 @@ namespace cmd
     #region StorageGroup:Options
     public static class SGOptions
     {
+        #region StorageGroup:Options:Get
         // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
         // So they suggest to use hyphenation on such subcommands.
         [Verb("sg:get", HelpText = "get storage group from container")]
@@ -44,7 +45,9 @@ namespace cmd
                 HelpText = "Debug mode will print out additional information after a compiling")]
             public bool Debug { get; set; }
         }
+        #endregion StorageGroup:Options:Get
 
+        #region StorageGroup:Options:Delete
         // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
         // So they suggest to use hyphenation on such subcommands.
         [Verb("sg:delete", HelpText = "get storage group from container")]
@@ -72,7 +75,9 @@ namespace cmd
                 HelpText = "Debug mode will print out additional information after a compiling")]
             public bool Debug { get; set; }
         }
+        #endregion StorageGroup:Options:Delete
 
+        #region StorageGroup:Options:Put
         // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
         // So they suggest to use hyphenation on such subcommands.
         [Verb("sg:put", HelpText = "put storage group into container")]
@@ -101,7 +106,9 @@ namespace cmd
                 HelpText = "Debug mode will print out additional information after a compiling")]
             public bool Debug { get; set; }
         }
+        #endregion StorageGroup:Options:Put
 
+        #region StorageGroup:Options:List
         // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
         // So they suggest to use hyphenation on such subcommands.
         [Verb("sg:list", HelpText = "list storage groups in container")]
@@ -124,6 +131,7 @@ namespace cmd
                 HelpText = "Debug mode will print out additional information after a compiling")]
             public bool Debug { get; set; }
         }
+        #endregion StorageGroup:Options:List
     }
     #endregion StorageGroup:Options
 
@@ -202,7 +210,7 @@ namespace cmd
                 {
                     Link = new Link
                     {
-                        ID = ByteString.CopyFrom(id.Bytes()),
+                        ID = id.ToByteString(),
                         Type = Link.Types.Type.StorageGroup,
                     }
                 });
@@ -272,7 +280,7 @@ namespace cmd
                 Address = new NeoFS.API.Refs.Address
                 {
                     CID = ByteString.CopyFrom(cid),
-                    ObjectID = ByteString.CopyFrom(opts.SGID.Bytes()),
+                    ObjectID = opts.SGID.ToByteString(),
                 },
             };
 
