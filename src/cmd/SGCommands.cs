@@ -47,6 +47,34 @@ namespace cmd
 
         // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
         // So they suggest to use hyphenation on such subcommands.
+        [Verb("sg:delete", HelpText = "get storage group from container")]
+        public class Delete
+        {
+            [Option("host",
+                Default = "s01.fs.nspcc.ru:8080",
+                Required = false,
+                HelpText = "Host that would be used to fetch object from it")]
+            public string Host { get; set; }
+
+            [Option("cid",
+                Required = true,
+                HelpText = "Container ID, used to fetch storage group from it")]
+            public string CID { get; set; }
+
+            [Option("sgid",
+                Required = true,
+                HelpText = "StorageGroup ID")]
+            public Guid SGID { get; set; }
+
+            [Option('d', "debug",
+                Default = false,
+                Required = false,
+                HelpText = "Debug mode will print out additional information after a compiling")]
+            public bool Debug { get; set; }
+        }
+
+        // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
+        // So they suggest to use hyphenation on such subcommands.
         [Verb("sg:put", HelpText = "put storage group into container")]
         public class Put
         {
@@ -278,7 +306,36 @@ namespace cmd
             Console.WriteLine();
 
             Console.WriteLine("Meta:\n{0}", res.Meta);
+
             await Task.Delay(TimeSpan.FromMilliseconds(100));
+        }
+        #endregion StorageGroup:Get
+
+        #region StorageGroup:Delete
+        static async Task SGDelete(SGOptions.Delete opts)
+        {
+            byte[] cid;
+
+            try
+            {
+                cid = Base58.Decode(opts.CID);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong cid format: {0}", err.Message);
+                return;
+            }
+
+            var key = privateKey.FromHex().LoadKey();
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+
+            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
+
+            var res = await channel.ObjectDelete(cid, opts.SGID, SingleForwardedTTL, key, opts.Debug);
+
+            Console.WriteLine();
+
+            Console.WriteLine("Result: {0}", res);
 
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }

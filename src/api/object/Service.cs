@@ -93,6 +93,27 @@ namespace NeoFS.API.Object
 
     public static class RequestExtension
     {
+        public static async Task<DeleteResponse> ObjectDelete(this Channel chan, byte[] cid, Guid oid, uint ttl, ECDsa key, bool debug = false)
+        {
+            var token = await chan.EstablishSession(oid, ttl, key, debug);
+
+            var req = new DeleteRequest
+            {
+                Token = token,
+                OwnerID = ByteString.CopyFrom(key.Address()),
+                Address = new Refs.Address
+                {
+                    CID = ByteString.CopyFrom(cid),
+                    ObjectID = ByteString.CopyFrom(oid.Bytes()),
+                },
+            };
+
+            req.SetTTL(ttl);
+            req.SignHeader(key, debug);
+
+            return new Service.ServiceClient(chan).Delete(req);
+        }
+
         public static AsyncServerStreamingCall<SearchResponse> ObjectSearch(this Channel chan, uint ttl, ECDsa key, IEnumerable<string> query, byte[] cid, bool sg = false, bool root = false, bool debug = true)
         {
             MemoryStream buf = new MemoryStream();

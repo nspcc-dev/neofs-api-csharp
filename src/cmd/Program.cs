@@ -34,6 +34,7 @@ namespace cmd
                     SGOptions.Get,
                     SGOptions.Put,
                     SGOptions.List,
+                    SGOptions.Delete,
                     AccountingBalanceOptions,
                     ContainerGetOptions,
                     ContainerPutOptions,
@@ -48,6 +49,7 @@ namespace cmd
                     (SGOptions.Get opts) => SGGet(opts),
                     (SGOptions.Put opts) => SGPut(opts),
                     (SGOptions.List opts) => SGList(opts),
+                    (SGOptions.Delete opts) => SGDelete(opts),
 
                     (AccountingBalanceOptions opts) => AccountingBalance(opts),
 
