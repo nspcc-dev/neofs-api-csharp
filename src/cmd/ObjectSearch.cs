@@ -37,19 +37,12 @@ namespace cmd
 
             channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
-            MemoryStream buf = new MemoryStream();
-            Query.Parse(opts.Query, opts.SG, opts.Root, opts.Debug).WriteTo(buf);
-
-            var req = new SearchRequest
-            {
-                ContainerID = ByteString.CopyFrom(cid),
-                Query = ByteString.CopyFrom(buf.ToArray()),
-            };
-
-            req.SetTTL(SingleForwardedTTL);
-            req.SignHeader(key, opts.Debug);
-
-            var res = new Service.ServiceClient(channel).Search(req);
+            var res = channel.ObjectSearch(SingleForwardedTTL, key,
+                query: opts.Query,
+                cid: cid,
+                sg: opts.SG,
+                root: opts.Root,
+                debug: opts.Debug);
 
             Console.WriteLine("\nSearch results:");
             while (await res.ResponseStream.MoveNext())
