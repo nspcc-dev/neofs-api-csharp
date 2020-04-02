@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Google.Protobuf;
 using Grpc.Core;
 using NeoFS.API.Object;
 using NeoFS.API.Session;
@@ -46,7 +45,10 @@ namespace cmd
             var key = privateKey.FromHex().LoadKey();
             var obj = NeoFS.API.Object.Object.Prepare(cid, oid, (ulong) file.Length, key);
 
-            obj.SetPluginHeaders(opts.Expired, opts.File);
+            if (opts.Plugin)
+            {
+                obj.SetPluginHeaders(opts.Expired, opts.File);
+            }
 
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 

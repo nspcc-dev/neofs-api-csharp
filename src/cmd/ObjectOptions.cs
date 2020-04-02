@@ -44,17 +44,12 @@ namespace cmd
             HelpText = "Debug mode will print out additional information after a compiling")]
         public bool Debug { get; set; }
     }
+
     // CommandLine currently does not support sub-commands out-of-the-box, see https://github.com/commandlineparser/commandline/issues/353
     // So they suggest to use hyphenation on such subcommands.
     [Verb("object:put", HelpText = "put file into the container")]
     public class ObjectPutOptions
     {
-        [Option('e', "expired",
-            Default = (ulong)15,
-            Required = false,
-            HelpText = "Object expires in minutes")]
-        public ulong Expired { get; set; }
-
         [Option("host",
             Default = "s01.fs.nspcc.ru:8080",
             Required = false,
@@ -70,6 +65,18 @@ namespace cmd
             Required = true,
             HelpText = "File path, that would be putting into container")]
         public string File { get; set; }
+
+        [Option("plugin",
+            Default = false,
+            Required = false,
+            HelpText = "Use NeoFS Plugin to prevent creation of StorageGroup")]
+        public bool Plugin { get; set; }
+
+        [Option('e', "expired",
+            Default = (ulong)15,
+            Required = false,
+            HelpText = "Object expires in minutes, used with --plugin option")]
+        public ulong Expired { get; set; }
 
         [Option('d', "debug",
             Default = false,
