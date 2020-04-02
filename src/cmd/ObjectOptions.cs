@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CommandLine;
 
 namespace cmd
@@ -125,7 +126,7 @@ namespace cmd
         [Option("oid",
             Required = true,
             HelpText = "Object ID, that would be getting from the container")]
-        public string OID { get; set; }
+        public Guid OID { get; set; }
 
         [Option('d', "debug",
             Default = false,
@@ -151,7 +152,7 @@ namespace cmd
         [Option("oid",
             Required = true,
             HelpText = "Object ID, that would be getting from the container")]
-        public string OID { get; set; }
+        public Guid OID { get; set; }
 
         [Option("full",
             Default = false,

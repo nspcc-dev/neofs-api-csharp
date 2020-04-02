@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using NeoFS.API.State;
 using Google.Protobuf;
 using NeoFS.API.Session;
+using NeoFS.API.Object;
 
 namespace cmd
 {
@@ -16,7 +17,6 @@ namespace cmd
         static async Task ObjectDelete(ObjectDeleteOptions opts)
         {
             byte[] cid;
-            Guid oid;
 
             var key = privateKey.FromHex().LoadKey();
 
@@ -30,49 +30,22 @@ namespace cmd
                 return;
             }
 
-            try
-            {
-                oid = Guid.Parse(opts.OID.ToCharArray());
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine("wrong oid format: {0}", err.Message);
-                return;
-            }
-
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 
             channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
-            var token = await channel.EstablishSession(oid, SingleForwardedTTL, key, opts.Debug);
-
-            var req = new NeoFS.API.Object.DeleteRequest
-            {
-                Token = token,
-                OwnerID = ByteString.CopyFrom(key.Address()),
-                Address = new NeoFS.API.Refs.Address
-                {
-                    CID = Google.Protobuf.ByteString.CopyFrom(cid),
-                    ObjectID = Google.Protobuf.ByteString.CopyFrom(oid.Bytes()),
-                },
-            };
-
-            req.SetTTL(SingleForwardedTTL);
-            req.SignHeader(key, opts.Debug);
-
-            var res = new NeoFS.API.Object.Service.ServiceClient(channel).Delete(req);
+            var res = await channel.ObjectDelete(cid, opts.OID, SingleForwardedTTL, key, opts.Debug);
 
             Console.WriteLine();
 
             Console.WriteLine("Result: {0}", res);
-            
+
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }
 
         static async Task ObjectHead(ObjectHeadOptions opts)
         {
             byte[] cid;
-            Guid oid;
 
             var key = privateKey.FromHex().LoadKey();
 
@@ -86,34 +59,24 @@ namespace cmd
                 return;
             }
 
-            try
-            {
-                oid = Guid.Parse(opts.OID.ToCharArray());
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine("wrong oid format: {0}", err.Message);
-                return;
-            }
-
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 
             channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
-            var req = new NeoFS.API.Object.HeadRequest
+            var req = new HeadRequest
             {
                 FullHeaders = opts.Full,
                 Address = new NeoFS.API.Refs.Address
                 {
-                    CID = Google.Protobuf.ByteString.CopyFrom(cid),
-                    ObjectID = Google.Protobuf.ByteString.CopyFrom(oid.Bytes()),
+                    CID = ByteString.CopyFrom(cid),
+                    ObjectID = ByteString.CopyFrom(opts.OID.Bytes()),
                 },
             };
 
             req.SetTTL(SingleForwardedTTL);
             req.SignHeader(key, opts.Debug);
 
-            var res = new NeoFS.API.Object.Service.ServiceClient(channel).Head(req);
+            var res = new Service.ServiceClient(channel).Head(req);
 
             Console.WriteLine();
 
