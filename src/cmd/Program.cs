@@ -45,7 +45,7 @@ namespace cmd
                     (ObjectSearchOptions opts) => ObjectSearch(opts),
                     (ObjectDeleteOptions opts) => ObjectDelete(opts),
 
-                    //(SGOptions.Get opts) => SGGet(opts),
+                    (SGOptions.Get opts) => SGGet(opts),
                     (SGOptions.Put opts) => SGPut(opts),
                     (SGOptions.List opts) => SGList(opts),
 

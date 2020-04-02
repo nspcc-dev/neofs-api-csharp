@@ -5,6 +5,7 @@ using CommandLine;
 using Google.Protobuf;
 using Grpc.Core;
 using NeoFS.API.Object;
+using NeoFS.API.Service;
 using NeoFS.API.Session;
 using NeoFS.API.State;
 using NeoFS.Crypto;
@@ -35,7 +36,7 @@ namespace cmd
             [Option("sgid",
                 Required = true,
                 HelpText = "StorageGroup ID")]
-            public string SGID { get; set; }
+            public Guid SGID { get; set; }
 
             [Option('d', "debug",
                 Default = false,
@@ -216,5 +217,71 @@ namespace cmd
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }
         #endregion StorageGroup:Put
+
+        #region StorageGroup:Get
+        static async Task SGGet(SGOptions.Get opts)
+        {
+            byte[] cid;
+
+            try
+            {
+                cid = Base58.Decode(opts.CID);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong cid format: {0}", err.Message);
+                return;
+            }
+
+            var key = privateKey.FromHex().LoadKey();
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+
+            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
+
+            var req = new HeadRequest
+            {
+                FullHeaders = true,
+                Address = new NeoFS.API.Refs.Address
+                {
+                    CID = ByteString.CopyFrom(cid),
+                    ObjectID = ByteString.CopyFrom(opts.SGID.Bytes()),
+                },
+            };
+
+            req.SetTTL(SingleForwardedTTL);
+            req.SignHeader(key, opts.Debug);
+
+            var res = new Service.ServiceClient(channel).Head(req);
+
+            Console.WriteLine();
+
+            Console.WriteLine("Received StorageGroup");
+            Console.WriteLine("\nSystemHeaders\n" +
+                "Version: {0}\n" +
+                "PayloadLength: {1}\n" +
+                "ObjectID: {2}\n" +
+                "OwnerID: {3}\n" +
+                "CID: {4}\n" +
+                "CreatedAt: {5}\n",
+                res.Object.SystemHeader.Version,
+                res.Object.SystemHeader.PayloadLength,
+                res.Object.SystemHeader.ID.ToUUID(),
+                res.Object.SystemHeader.OwnerID.ToAddress(),
+                res.Object.SystemHeader.CID.ToCID(),
+                res.Object.SystemHeader.CreatedAt);
+
+            Console.WriteLine("Headers:");
+            for (var i = 0; i < res.Object.Headers.Count; i++)
+            {
+                Console.WriteLine(res.Object.Headers[i]);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Meta:\n{0}", res.Meta);
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
+
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
+        }
+        #endregion StorageGroup:Get
     }
 }
