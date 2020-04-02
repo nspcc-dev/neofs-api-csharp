@@ -47,8 +47,18 @@ namespace cmd
 
             if (opts.Plugin)
             {
-                obj.SetPluginHeaders(opts.Expired, opts.File);
+                obj.SetPluginHeaders(opts.Expired);
             }
+
+            obj.Headers.Add(
+                new Header
+                {
+                    UserHeader = new UserHeader
+                    {
+                        Key = "filename",
+                        Value = file.Name,
+                    },
+                });
 
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 

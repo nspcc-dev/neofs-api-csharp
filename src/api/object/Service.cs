@@ -24,15 +24,9 @@ namespace NeoFS.API.Object
             SystemHeader.PayloadLength = (ulong)payload.Length;
         }
 
-        public void SetPluginHeaders(ulong expired, string filename)
+        public void SetPluginHeaders(ulong expired)
         {
             expired = expired * 60 + (ulong) DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-
-            if (Headers == null)
-            {
-                //headers_ = new Google.Protobuf.Collections.RepeatedField<Header>();
-                //Headers = new Google.Protobuf.Collections.RepeatedField<Header>();
-            }
 
             Headers.Add(
                 new Header
@@ -51,16 +45,6 @@ namespace NeoFS.API.Object
                     {
                         Key = "expired",
                         Value = Convert.ToString(expired),
-                    },
-                });
-
-            Headers.Add(
-                new Header
-                {
-                    UserHeader = new UserHeader
-                    {
-                        Key = "filename",
-                        Value = filename,
                     },
                 });
         }
