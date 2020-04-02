@@ -31,6 +31,9 @@ namespace cmd
                     ObjectHeadOptions,
                     ObjectSearchOptions,
                     ObjectDeleteOptions,
+                    SGOptions.Get,
+                    SGOptions.Put,
+                    SGOptions.List,
                     AccountingBalanceOptions,
                     ContainerGetOptions,
                     ContainerPutOptions,
@@ -41,6 +44,10 @@ namespace cmd
                     (ObjectHeadOptions opts) => ObjectHead(opts),
                     (ObjectSearchOptions opts) => ObjectSearch(opts),
                     (ObjectDeleteOptions opts) => ObjectDelete(opts),
+
+                    //(SGOptions.Get opts) => SGGet(opts),
+                    //(SGOptions.Put opts) => SGPut(opts),
+                    (SGOptions.List opts) => SGList(opts),
 
                     (AccountingBalanceOptions opts) => AccountingBalance(opts),
 

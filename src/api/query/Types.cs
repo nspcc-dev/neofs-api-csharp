@@ -39,7 +39,7 @@ namespace NeoFS.API.Query
                 });
             }
 
-            if (query.Count() > 0)
+            if (query != null && query.Count() > 0)
             {
                 if (debug)
                 {

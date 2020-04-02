@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using Google.Protobuf;
+using Grpc.Core;
 using NeoFS.API.Service;
 using NeoFS.API.Session;
+using NeoFS.API.Query;
 using NeoFS.Crypto;
+using System.Threading.Tasks;
 
 namespace NeoFS.API.Object
 {
@@ -84,6 +88,23 @@ namespace NeoFS.API.Object
 
     public static class RequestExtension
     {
+        public static AsyncServerStreamingCall<SearchResponse> ObjectSearch(this Channel chan, uint ttl, ECDsa key, IEnumerable<string> query, byte[] cid, bool sg = false, bool root = false, bool debug = true)
+        {
+            MemoryStream buf = new MemoryStream();
+            Query.Query.Parse(query, sg, root, debug).WriteTo(buf);
+
+            var req = new SearchRequest
+            {
+                ContainerID = ByteString.CopyFrom(cid),
+                Query = ByteString.CopyFrom(buf.ToArray()),
+            };
+
+            req.SetTTL(ttl);
+            req.SignHeader(key, debug);
+
+            return new Service.ServiceClient(chan).Search(req);
+        }
+
         public static PutRequest PrepareHeader(this Object obj, uint ttl, Token tkn, ECDsa key, bool debug = false)
         {
             var req = new PutRequest
