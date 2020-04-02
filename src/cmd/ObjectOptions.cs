@@ -95,7 +95,7 @@ namespace cmd
         [Option("oid",
             Required = true,
             HelpText = "Object ID, that would be getting from the container")]
-        public string OID { get; set; }
+        public Guid OID { get; set; }
 
         [Option('o', "out",
             Required = true,

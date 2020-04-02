@@ -112,7 +112,6 @@ namespace cmd
         static async Task ObjectGet(ObjectGetOptions opts)
         {
             byte[] cid;
-            Guid oid;
             FileStream file;
 
             var key = privateKey.FromHex().LoadKey();
@@ -137,33 +136,23 @@ namespace cmd
                 return;
             }
 
-            try
-            {
-                oid = Guid.Parse(opts.OID.ToCharArray());
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine("wrong oid format: {0}", err.Message);
-                return;
-            }
-
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
 
             channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
-            var req = new NeoFS.API.Object.GetRequest
+            var req = new GetRequest
             {
                 Address = new NeoFS.API.Refs.Address
                 {
-                    CID = Google.Protobuf.ByteString.CopyFrom(cid),
-                    ObjectID = Google.Protobuf.ByteString.CopyFrom(oid.Bytes()),
+                    CID = ByteString.CopyFrom(cid),
+                    ObjectID = ByteString.CopyFrom(opts.OID.Bytes()),
                 },
             };
 
             req.SetTTL(SingleForwardedTTL);
             req.SignHeader(key, opts.Debug);
 
-            var client = new NeoFS.API.Object.Service.ServiceClient(channel);
+            var client = new Service.ServiceClient(channel);
 
             Console.WriteLine();
 
