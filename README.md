@@ -67,3 +67,8 @@ OID: 72b94cce-a3fc-4c25-90e4-1817999fb2ad
 
 Close file.
 ```
+
+## License
+
+This project is licensed under the Apache 2.0 License - 
+see the [LICENSE](LICENSE) file for details
