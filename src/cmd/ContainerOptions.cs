@@ -19,6 +19,11 @@ namespace cmd
             HelpText = "Container capacity in GB")]
         public int Size { get; set; }
 
+        [Option("basic-acl",
+            Default = "private",
+            HelpText = "Container basic ACL (one of predefined {public, private, readonly} or hex string)")]
+        public string BasicACL { get; set; }
+
         [Option('d', "debug",
             Default = false,
             Required = false,

@@ -12,6 +12,13 @@ namespace NeoFS.API.Container
     public sealed partial class PutRequest : IMeta, IVerify { }
     public sealed partial class ListRequest : IMeta, IVerify { }
 
+    public sealed partial class Container
+    {
+        public const uint PublicBasicACL = 0x1FFFFFFF;
+        public const uint PrivateBasicACL = 0x18888888;
+        public const uint ReadOnlyBasicACL = 0x1FFF88FF;
+    }
+
     public static class ContainerExtension
     {
         public static GetResponse GetContainer(this Channel chan, ByteString cid, uint ttl, ECDsa key, bool debug = false)
@@ -34,7 +41,7 @@ namespace NeoFS.API.Container
                 ttl, key, debug);
         }
 
-        public static PutResponse PutContainer(this Channel chan, int size, uint ttl, ECDsa key, bool debug = false)
+        public static PutResponse PutContainer(this Channel chan, int size, uint basicACL, uint ttl, ECDsa key, bool debug = false)
         {
             Netmap.PlacementRule rules;
 
@@ -58,7 +65,7 @@ namespace NeoFS.API.Container
             var req = new PutRequest
             {
                 Rules = rules,
-                Group = new AccessGroup(),
+                BasicACL = basicACL,
                 Capacity = Units.GB * (ulong) size,
                 OwnerID = ByteString.CopyFrom(key.Address()),
                 MessageID = ByteString.CopyFrom(new Guid().Bytes()),
