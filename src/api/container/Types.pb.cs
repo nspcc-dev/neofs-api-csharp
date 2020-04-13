@@ -26,22 +26,17 @@ namespace NeoFS.API.Container {
           string.Concat(
             "ChVjb250YWluZXIvdHlwZXMucHJvdG8SCWNvbnRhaW5lchoqZ2l0aHViLmNv",
             "bS9uc3BjYy1kZXYvbmV0bWFwL3NlbGVjdG9yLnByb3RvGi1naXRodWIuY29t",
-            "L2dvZ28vcHJvdG9idWYvZ29nb3Byb3RvL2dvZ28ucHJvdG8iuQEKCUNvbnRh",
+            "L2dvZ28vcHJvdG9idWYvZ29nb3Byb3RvL2dvZ28ucHJvdG8imQEKCUNvbnRh",
             "aW5lchIgCgdPd25lcklEGAEgASgMQg/a3h8HT3duZXJJRMjeHwASGgoEU2Fs",
             "dBgCIAEoDEIM2t4fBFVVSUTI3h8AEhAKCENhcGFjaXR5GAMgASgEEioKBVJ1",
-            "bGVzGAQgASgLMhUubmV0bWFwLlBsYWNlbWVudFJ1bGVCBMjeHwASMAoETGlz",
-            "dBgFIAEoCzIcLmNvbnRhaW5lci5BY2Nlc3NDb250cm9sTGlzdEIEyN4fACJF",
-            "CgtBY2Nlc3NHcm91cBISCgpBY2Nlc3NNb2RlGAEgASgNEiIKCVVzZXJHcm91",
-            "cBgCIAMoDEIP2t4fB093bmVySUTI3h8AIj8KEUFjY2Vzc0NvbnRyb2xMaXN0",
-            "EioKBExpc3QYASADKAsyFi5jb250YWluZXIuQWNjZXNzR3JvdXBCBMjeHwBC",
-            "R1orZ2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL2NvbnRhaW5l",
-            "cqoCE05lb0ZTLkFQSS5Db250YWluZXLY4h4BYgZwcm90bzM="));
+            "bGVzGAQgASgLMhUubmV0bWFwLlBsYWNlbWVudFJ1bGVCBMjeHwASEAoIQmFz",
+            "aWNBQ0wYBSABKA1CR1orZ2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBp",
+            "LWdvL2NvbnRhaW5lcqoCE05lb0ZTLkFQSS5Db250YWluZXLY4h4BYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Netmap.SelectorReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.Container), global::NeoFS.API.Container.Container.Parser, new[]{ "OwnerID", "Salt", "Capacity", "Rules", "List" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.AccessGroup), global::NeoFS.API.Container.AccessGroup.Parser, new[]{ "AccessMode", "UserGroup" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.AccessControlList), global::NeoFS.API.Container.AccessControlList.Parser, new[]{ "List" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.Container), global::NeoFS.API.Container.Container.Parser, new[]{ "OwnerID", "Salt", "Capacity", "Rules", "BasicACL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -80,7 +75,7 @@ namespace NeoFS.API.Container {
       salt_ = other.salt_;
       capacity_ = other.capacity_;
       rules_ = other.rules_ != null ? other.rules_.Clone() : null;
-      list_ = other.list_ != null ? other.list_.Clone() : null;
+      basicACL_ = other.basicACL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -145,17 +140,18 @@ namespace NeoFS.API.Container {
       }
     }
 
-    /// <summary>Field number for the "List" field.</summary>
-    public const int ListFieldNumber = 5;
-    private global::NeoFS.API.Container.AccessControlList list_;
+    /// <summary>Field number for the "BasicACL" field.</summary>
+    public const int BasicACLFieldNumber = 5;
+    private uint basicACL_;
     /// <summary>
-    /// Container ACL.
+    /// BasicACL with access control rules for owner, system, others and
+    /// permission bits for bearer token and extended ACL.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Container.AccessControlList List {
-      get { return list_; }
+    public uint BasicACL {
+      get { return basicACL_; }
       set {
-        list_ = value;
+        basicACL_ = value;
       }
     }
 
@@ -176,7 +172,7 @@ namespace NeoFS.API.Container {
       if (Salt != other.Salt) return false;
       if (Capacity != other.Capacity) return false;
       if (!object.Equals(Rules, other.Rules)) return false;
-      if (!object.Equals(List, other.List)) return false;
+      if (BasicACL != other.BasicACL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -187,7 +183,7 @@ namespace NeoFS.API.Container {
       if (Salt.Length != 0) hash ^= Salt.GetHashCode();
       if (Capacity != 0UL) hash ^= Capacity.GetHashCode();
       if (rules_ != null) hash ^= Rules.GetHashCode();
-      if (list_ != null) hash ^= List.GetHashCode();
+      if (BasicACL != 0) hash ^= BasicACL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -217,9 +213,9 @@ namespace NeoFS.API.Container {
         output.WriteRawTag(34);
         output.WriteMessage(Rules);
       }
-      if (list_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(List);
+      if (BasicACL != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(BasicACL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -241,8 +237,8 @@ namespace NeoFS.API.Container {
       if (rules_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Rules);
       }
-      if (list_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(List);
+      if (BasicACL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BasicACL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -270,11 +266,8 @@ namespace NeoFS.API.Container {
         }
         Rules.MergeFrom(other.Rules);
       }
-      if (other.list_ != null) {
-        if (list_ == null) {
-          List = new global::NeoFS.API.Container.AccessControlList();
-        }
-        List.MergeFrom(other.List);
+      if (other.BasicACL != 0) {
+        BasicACL = other.BasicACL;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -306,290 +299,8 @@ namespace NeoFS.API.Container {
             input.ReadMessage(Rules);
             break;
           }
-          case 42: {
-            if (list_ == null) {
-              List = new global::NeoFS.API.Container.AccessControlList();
-            }
-            input.ReadMessage(List);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class AccessGroup : pb::IMessage<AccessGroup> {
-    private static readonly pb::MessageParser<AccessGroup> _parser = new pb::MessageParser<AccessGroup>(() => new AccessGroup());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<AccessGroup> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Container.TypesReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessGroup() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessGroup(AccessGroup other) : this() {
-      accessMode_ = other.accessMode_;
-      userGroup_ = other.userGroup_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessGroup Clone() {
-      return new AccessGroup(this);
-    }
-
-    /// <summary>Field number for the "AccessMode" field.</summary>
-    public const int AccessModeFieldNumber = 1;
-    private uint accessMode_;
-    /// <summary>
-    /// Group access mode.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint AccessMode {
-      get { return accessMode_; }
-      set {
-        accessMode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "UserGroup" field.</summary>
-    public const int UserGroupFieldNumber = 2;
-    private static readonly pb::FieldCodec<pb::ByteString> _repeated_userGroup_codec
-        = pb::FieldCodec.ForBytes(18);
-    private readonly pbc::RepeatedField<pb::ByteString> userGroup_ = new pbc::RepeatedField<pb::ByteString>();
-    /// <summary>
-    /// Group members.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<pb::ByteString> UserGroup {
-      get { return userGroup_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as AccessGroup);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(AccessGroup other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (AccessMode != other.AccessMode) return false;
-      if(!userGroup_.Equals(other.userGroup_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (AccessMode != 0) hash ^= AccessMode.GetHashCode();
-      hash ^= userGroup_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (AccessMode != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(AccessMode);
-      }
-      userGroup_.WriteTo(output, _repeated_userGroup_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (AccessMode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccessMode);
-      }
-      size += userGroup_.CalculateSize(_repeated_userGroup_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(AccessGroup other) {
-      if (other == null) {
-        return;
-      }
-      if (other.AccessMode != 0) {
-        AccessMode = other.AccessMode;
-      }
-      userGroup_.Add(other.userGroup_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            AccessMode = input.ReadUInt32();
-            break;
-          }
-          case 18: {
-            userGroup_.AddEntriesFrom(input, _repeated_userGroup_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class AccessControlList : pb::IMessage<AccessControlList> {
-    private static readonly pb::MessageParser<AccessControlList> _parser = new pb::MessageParser<AccessControlList>(() => new AccessControlList());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<AccessControlList> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Container.TypesReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessControlList() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessControlList(AccessControlList other) : this() {
-      list_ = other.list_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessControlList Clone() {
-      return new AccessControlList(this);
-    }
-
-    /// <summary>Field number for the "List" field.</summary>
-    public const int ListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::NeoFS.API.Container.AccessGroup> _repeated_list_codec
-        = pb::FieldCodec.ForMessage(10, global::NeoFS.API.Container.AccessGroup.Parser);
-    private readonly pbc::RepeatedField<global::NeoFS.API.Container.AccessGroup> list_ = new pbc::RepeatedField<global::NeoFS.API.Container.AccessGroup>();
-    /// <summary>
-    /// List of access groups.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::NeoFS.API.Container.AccessGroup> List {
-      get { return list_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as AccessControlList);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(AccessControlList other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!list_.Equals(other.list_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= list_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      list_.WriteTo(output, _repeated_list_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += list_.CalculateSize(_repeated_list_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(AccessControlList other) {
-      if (other == null) {
-        return;
-      }
-      list_.Add(other.list_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            list_.AddEntriesFrom(input, _repeated_list_codec);
+          case 40: {
+            BasicACL = input.ReadUInt32();
             break;
           }
         }

@@ -28,39 +28,38 @@ namespace NeoFS.API.Container {
             "L21ldGEucHJvdG8aFHNlcnZpY2UvdmVyaWZ5LnByb3RvGhVjb250YWluZXIv",
             "dHlwZXMucHJvdG8aKmdpdGh1Yi5jb20vbnNwY2MtZGV2L25ldG1hcC9zZWxl",
             "Y3Rvci5wcm90bxotZ2l0aHViLmNvbS9nb2dvL3Byb3RvYnVmL2dvZ29wcm90",
-            "by9nb2dvLnByb3RvIrECCgpQdXRSZXF1ZXN0EiQKCU1lc3NhZ2VJRBgBIAEo",
+            "by9nb2dvLnByb3RvIpYCCgpQdXRSZXF1ZXN0EiQKCU1lc3NhZ2VJRBgBIAEo",
             "DEIR2t4fCU1lc3NhZ2VJRMjeHwASEAoIQ2FwYWNpdHkYAiABKAQSIAoHT3du",
             "ZXJJRBgDIAEoDEIP2t4fB093bmVySUTI3h8AEioKBXJ1bGVzGAQgASgLMhUu",
-            "bmV0bWFwLlBsYWNlbWVudFJ1bGVCBMjeHwASKwoFR3JvdXAYBSABKAsyFi5j",
-            "b250YWluZXIuQWNjZXNzR3JvdXBCBMjeHwASMgoETWV0YRhiIAEoCzIaLnNl",
-            "cnZpY2UuUmVxdWVzdE1ldGFIZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhj",
-            "IAEoCzIiLnNlcnZpY2UuUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4f",
-            "AcjeHwAiJwoLUHV0UmVzcG9uc2USGAoDQ0lEGAEgASgMQgva3h8DQ0lEyN4f",
-            "ACKbAQoNRGVsZXRlUmVxdWVzdBIYCgNDSUQYASABKAxCC9reHwNDSUTI3h8A",
-            "EjIKBE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVhZGVyQgjQ",
-            "3h8ByN4fABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVlc3RWZXJp",
-            "ZmljYXRpb25IZWFkZXJCCNDeHwHI3h8AIhAKDkRlbGV0ZVJlc3BvbnNlIpgB",
-            "CgpHZXRSZXF1ZXN0EhgKA0NJRBgBIAEoDEIL2t4fA0NJRMjeHwASMgoETWV0",
-            "YRhiIAEoCzIaLnNlcnZpY2UuUmVxdWVzdE1ldGFIZWFkZXJCCNDeHwHI3h8A",
-            "EjwKBlZlcmlmeRhjIAEoCzIiLnNlcnZpY2UuUmVxdWVzdFZlcmlmaWNhdGlv",
-            "bkhlYWRlckII0N4fAcjeHwAiNgoLR2V0UmVzcG9uc2USJwoJQ29udGFpbmVy",
-            "GAEgASgLMhQuY29udGFpbmVyLkNvbnRhaW5lciKhAQoLTGlzdFJlcXVlc3QS",
-            "IAoHT3duZXJJRBgBIAEoDEIP2t4fB093bmVySUTI3h8AEjIKBE1ldGEYYiAB",
-            "KAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVhZGVyQgjQ3h8ByN4fABI8CgZW",
-            "ZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVlc3RWZXJpZmljYXRpb25IZWFk",
-            "ZXJCCNDeHwHI3h8AIigKDExpc3RSZXNwb25zZRIYCgNDSUQYASADKAxCC9re",
-            "HwNDSUTI3h8AMu0BCgdTZXJ2aWNlEjQKA1B1dBIVLmNvbnRhaW5lci5QdXRS",
-            "ZXF1ZXN0GhYuY29udGFpbmVyLlB1dFJlc3BvbnNlEj0KBkRlbGV0ZRIYLmNv",
-            "bnRhaW5lci5EZWxldGVSZXF1ZXN0GhkuY29udGFpbmVyLkRlbGV0ZVJlc3Bv",
-            "bnNlEjQKA0dldBIVLmNvbnRhaW5lci5HZXRSZXF1ZXN0GhYuY29udGFpbmVy",
-            "LkdldFJlc3BvbnNlEjcKBExpc3QSFi5jb250YWluZXIuTGlzdFJlcXVlc3Qa",
-            "Fy5jb250YWluZXIuTGlzdFJlc3BvbnNlQkdaK2dpdGh1Yi5jb20vbnNwY2Mt",
-            "ZGV2L25lb2ZzLWFwaS1nby9jb250YWluZXKqAhNOZW9GUy5BUEkuQ29udGFp",
-            "bmVy2OIeAWIGcHJvdG8z"));
+            "bmV0bWFwLlBsYWNlbWVudFJ1bGVCBMjeHwASEAoIQmFzaWNBQ0wYBSABKA0S",
+            "MgoETWV0YRhiIAEoCzIaLnNlcnZpY2UuUmVxdWVzdE1ldGFIZWFkZXJCCNDe",
+            "HwHI3h8AEjwKBlZlcmlmeRhjIAEoCzIiLnNlcnZpY2UuUmVxdWVzdFZlcmlm",
+            "aWNhdGlvbkhlYWRlckII0N4fAcjeHwAiJwoLUHV0UmVzcG9uc2USGAoDQ0lE",
+            "GAEgASgMQgva3h8DQ0lEyN4fACKbAQoNRGVsZXRlUmVxdWVzdBIYCgNDSUQY",
+            "ASABKAxCC9reHwNDSUTI3h8AEjIKBE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJl",
+            "cXVlc3RNZXRhSGVhZGVyQgjQ3h8ByN4fABI8CgZWZXJpZnkYYyABKAsyIi5z",
+            "ZXJ2aWNlLlJlcXVlc3RWZXJpZmljYXRpb25IZWFkZXJCCNDeHwHI3h8AIhAK",
+            "DkRlbGV0ZVJlc3BvbnNlIpgBCgpHZXRSZXF1ZXN0EhgKA0NJRBgBIAEoDEIL",
+            "2t4fA0NJRMjeHwASMgoETWV0YRhiIAEoCzIaLnNlcnZpY2UuUmVxdWVzdE1l",
+            "dGFIZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhjIAEoCzIiLnNlcnZpY2Uu",
+            "UmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4fAcjeHwAiNgoLR2V0UmVz",
+            "cG9uc2USJwoJQ29udGFpbmVyGAEgASgLMhQuY29udGFpbmVyLkNvbnRhaW5l",
+            "ciKhAQoLTGlzdFJlcXVlc3QSIAoHT3duZXJJRBgBIAEoDEIP2t4fB093bmVy",
+            "SUTI3h8AEjIKBE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVh",
+            "ZGVyQgjQ3h8ByN4fABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVl",
+            "c3RWZXJpZmljYXRpb25IZWFkZXJCCNDeHwHI3h8AIigKDExpc3RSZXNwb25z",
+            "ZRIYCgNDSUQYASADKAxCC9reHwNDSUTI3h8AMu0BCgdTZXJ2aWNlEjQKA1B1",
+            "dBIVLmNvbnRhaW5lci5QdXRSZXF1ZXN0GhYuY29udGFpbmVyLlB1dFJlc3Bv",
+            "bnNlEj0KBkRlbGV0ZRIYLmNvbnRhaW5lci5EZWxldGVSZXF1ZXN0GhkuY29u",
+            "dGFpbmVyLkRlbGV0ZVJlc3BvbnNlEjQKA0dldBIVLmNvbnRhaW5lci5HZXRS",
+            "ZXF1ZXN0GhYuY29udGFpbmVyLkdldFJlc3BvbnNlEjcKBExpc3QSFi5jb250",
+            "YWluZXIuTGlzdFJlcXVlc3QaFy5jb250YWluZXIuTGlzdFJlc3BvbnNlQkda",
+            "K2dpdGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1nby9jb250YWluZXKq",
+            "AhNOZW9GUy5BUEkuQ29udGFpbmVy2OIeAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.Service.MetaReflection.Descriptor, global::NeoFS.API.Service.VerifyReflection.Descriptor, global::NeoFS.API.Container.TypesReflection.Descriptor, global::Netmap.SelectorReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.PutRequest), global::NeoFS.API.Container.PutRequest.Parser, new[]{ "MessageID", "Capacity", "OwnerID", "Rules", "Group", "Meta", "Verify" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.PutRequest), global::NeoFS.API.Container.PutRequest.Parser, new[]{ "MessageID", "Capacity", "OwnerID", "Rules", "BasicACL", "Meta", "Verify" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.PutResponse), global::NeoFS.API.Container.PutResponse.Parser, new[]{ "CID" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.DeleteRequest), global::NeoFS.API.Container.DeleteRequest.Parser, new[]{ "CID", "Meta", "Verify" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.DeleteResponse), global::NeoFS.API.Container.DeleteResponse.Parser, null, null, null, null, null),
@@ -103,7 +102,7 @@ namespace NeoFS.API.Container {
       capacity_ = other.capacity_;
       ownerID_ = other.ownerID_;
       rules_ = other.rules_ != null ? other.rules_.Clone() : null;
-      group_ = other.group_ != null ? other.group_.Clone() : null;
+      basicACL_ = other.basicACL_;
       meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       verify_ = other.verify_ != null ? other.verify_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -170,17 +169,17 @@ namespace NeoFS.API.Container {
       }
     }
 
-    /// <summary>Field number for the "Group" field.</summary>
-    public const int GroupFieldNumber = 5;
-    private global::NeoFS.API.Container.AccessGroup group_;
+    /// <summary>Field number for the "BasicACL" field.</summary>
+    public const int BasicACLFieldNumber = 5;
+    private uint basicACL_;
     /// <summary>
-    /// Container ACL.
+    /// BasicACL of the container.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Container.AccessGroup Group {
-      get { return group_; }
+    public uint BasicACL {
+      get { return basicACL_; }
       set {
-        group_ = value;
+        basicACL_ = value;
       }
     }
 
@@ -229,7 +228,7 @@ namespace NeoFS.API.Container {
       if (Capacity != other.Capacity) return false;
       if (OwnerID != other.OwnerID) return false;
       if (!object.Equals(Rules, other.Rules)) return false;
-      if (!object.Equals(Group, other.Group)) return false;
+      if (BasicACL != other.BasicACL) return false;
       if (!object.Equals(Meta, other.Meta)) return false;
       if (!object.Equals(Verify, other.Verify)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -242,7 +241,7 @@ namespace NeoFS.API.Container {
       if (Capacity != 0UL) hash ^= Capacity.GetHashCode();
       if (OwnerID.Length != 0) hash ^= OwnerID.GetHashCode();
       if (rules_ != null) hash ^= Rules.GetHashCode();
-      if (group_ != null) hash ^= Group.GetHashCode();
+      if (BasicACL != 0) hash ^= BasicACL.GetHashCode();
       if (meta_ != null) hash ^= Meta.GetHashCode();
       if (verify_ != null) hash ^= Verify.GetHashCode();
       if (_unknownFields != null) {
@@ -274,9 +273,9 @@ namespace NeoFS.API.Container {
         output.WriteRawTag(34);
         output.WriteMessage(Rules);
       }
-      if (group_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Group);
+      if (BasicACL != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(BasicACL);
       }
       if (meta_ != null) {
         output.WriteRawTag(146, 6);
@@ -306,8 +305,8 @@ namespace NeoFS.API.Container {
       if (rules_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Rules);
       }
-      if (group_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Group);
+      if (BasicACL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BasicACL);
       }
       if (meta_ != null) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
@@ -341,11 +340,8 @@ namespace NeoFS.API.Container {
         }
         Rules.MergeFrom(other.Rules);
       }
-      if (other.group_ != null) {
-        if (group_ == null) {
-          Group = new global::NeoFS.API.Container.AccessGroup();
-        }
-        Group.MergeFrom(other.Group);
+      if (other.BasicACL != 0) {
+        BasicACL = other.BasicACL;
       }
       if (other.meta_ != null) {
         if (meta_ == null) {
@@ -389,11 +385,8 @@ namespace NeoFS.API.Container {
             input.ReadMessage(Rules);
             break;
           }
-          case 42: {
-            if (group_ == null) {
-              Group = new global::NeoFS.API.Container.AccessGroup();
-            }
-            input.ReadMessage(Group);
+          case 40: {
+            BasicACL = input.ReadUInt32();
             break;
           }
           case 786: {
