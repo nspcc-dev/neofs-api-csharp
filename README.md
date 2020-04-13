@@ -1,8 +1,8 @@
 # NeoFS API CSharp
 
 ### Requirements
-- DotNet SDK
-- protobuf / protoc
+- DotNet SDK (3.1.1+)
+- protobuf / protoc (3.11.4+)
 
 ### Regenerate NeoFS Proto files and documentation
 ```
