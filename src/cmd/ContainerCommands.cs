@@ -20,7 +20,25 @@ namespace cmd
 
             channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
 
-            var res = channel.PutContainer(opts.Size, SingleForwardedTTL, key, opts.Debug);
+            uint basicACL = 0;
+
+            switch (opts.BasicACL)
+            {
+                case "public":
+                    basicACL = Container.PublicBasicACL;
+                    break;
+                case "private":
+                    basicACL = Container.PrivateBasicACL;
+                    break;
+                case "readonly":
+                    basicACL = Container.ReadOnlyBasicACL;
+                    break;
+                default:
+                    basicACL = Convert.ToUInt32(opts.BasicACL, 16);
+                    break;
+            }
+
+            var res = channel.PutContainer(opts.Size, basicACL, SingleForwardedTTL, key, opts.Debug);
 
             Console.WriteLine();
             Console.WriteLine("Wait for container: {0}", res.CID.ToCID());
@@ -99,7 +117,7 @@ namespace cmd
             Console.WriteLine("Capacity = {0}", res.Container.Capacity);
             Console.WriteLine("OwnerID = {0}", res.Container.OwnerID.ToAddress());
             Console.WriteLine("Rules = {0}", res.Container.Rules.Stringify());
-            Console.WriteLine("ACL = {0}", res.Container.List);
+            Console.WriteLine("ACL = {0}", res.Container.BasicACL.ToString("X"));
 
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }
