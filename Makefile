@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PROTO_VERSION=master
+PROTO_VERSION=v0.7.0
 PROTO_URL=https://github.com/nspcc-dev/neofs-api/archive/$(PROTO_VERSION).tar.gz
 
 NETMAP_VERSION=v1.7.0

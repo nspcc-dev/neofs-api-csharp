@@ -27,19 +27,21 @@ namespace NeoFS.API.Bootstrap {
             "Chdib290c3RyYXAvc2VydmljZS5wcm90bxIJYm9vdHN0cmFwGhJzZXJ2aWNl",
             "L21ldGEucHJvdG8aFHNlcnZpY2UvdmVyaWZ5LnByb3RvGhVib290c3RyYXAv",
             "dHlwZXMucHJvdG8aLWdpdGh1Yi5jb20vZ29nby9wcm90b2J1Zi9nb2dvcHJv",
-            "dG8vZ29nby5wcm90byLMAQoHUmVxdWVzdBImCgR0eXBlGAEgASgFQhji3h8E",
+            "dG8vZ29nby5wcm90byKkAgoHUmVxdWVzdBImCgR0eXBlGAEgASgFQhji3h8E",
             "VHlwZcjeHwDa3h8ITm9kZVR5cGUSJwoEaW5mbxgCIAEoCzITLmJvb3RzdHJh",
-            "cC5Ob2RlSW5mb0IEyN4fABIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1",
-            "ZXN0TWV0YUhlYWRlckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIuc2Vy",
-            "dmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fADJACglC",
-            "b290c3RyYXASMwoHUHJvY2VzcxISLmJvb3RzdHJhcC5SZXF1ZXN0GhQuYm9v",
-            "dHN0cmFwLlNwcmVhZE1hcEJHWitnaXRodWIuY29tL25zcGNjLWRldi9uZW9m",
-            "cy1hcGktZ28vYm9vdHN0cmFwqgITTmVvRlMuQVBJLkJvb3RzdHJhcNjiHgFi",
-            "BnByb3RvMw=="));
+            "cC5Ob2RlSW5mb0IEyN4fABInCgVzdGF0ZRgDIAEoDjIYLmJvb3RzdHJhcC5S",
+            "ZXF1ZXN0LlN0YXRlEjIKBE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RN",
+            "ZXRhSGVhZGVyQgjQ3h8ByN4fABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNl",
+            "LlJlcXVlc3RWZXJpZmljYXRpb25IZWFkZXJCCNDeHwHI3h8AIi0KBVN0YXRl",
+            "EgsKB1Vua25vd24QABIKCgZPbmxpbmUQARILCgdPZmZsaW5lEAIyQAoJQm9v",
+            "dHN0cmFwEjMKB1Byb2Nlc3MSEi5ib290c3RyYXAuUmVxdWVzdBoULmJvb3Rz",
+            "dHJhcC5TcHJlYWRNYXBCR1orZ2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMt",
+            "YXBpLWdvL2Jvb3RzdHJhcKoCE05lb0ZTLkFQSS5Cb290c3RyYXDY4h4BYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.Service.MetaReflection.Descriptor, global::NeoFS.API.Service.VerifyReflection.Descriptor, global::NeoFS.API.Bootstrap.TypesReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Bootstrap.Request), global::NeoFS.API.Bootstrap.Request.Parser, new[]{ "Type", "Info", "Meta", "Verify" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Bootstrap.Request), global::NeoFS.API.Bootstrap.Request.Parser, new[]{ "Type", "Info", "State", "Meta", "Verify" }, null, new[]{ typeof(global::NeoFS.API.Bootstrap.Request.Types.State) }, null, null)
           }));
     }
     #endregion
@@ -73,6 +75,7 @@ namespace NeoFS.API.Bootstrap {
     public Request(Request other) : this() {
       type_ = other.type_;
       info_ = other.info_ != null ? other.info_.Clone() : null;
+      state_ = other.state_;
       meta_ = other.meta_ != null ? other.meta_.Clone() : null;
       verify_ = other.verify_ != null ? other.verify_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -108,6 +111,20 @@ namespace NeoFS.API.Bootstrap {
       get { return info_; }
       set {
         info_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "state" field.</summary>
+    public const int StateFieldNumber = 3;
+    private global::NeoFS.API.Bootstrap.Request.Types.State state_ = global::NeoFS.API.Bootstrap.Request.Types.State.Unknown;
+    /// <summary>
+    /// State contains node status
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.Bootstrap.Request.Types.State State {
+      get { return state_; }
+      set {
+        state_ = value;
       }
     }
 
@@ -154,6 +171,7 @@ namespace NeoFS.API.Bootstrap {
       }
       if (Type != other.Type) return false;
       if (!object.Equals(Info, other.Info)) return false;
+      if (State != other.State) return false;
       if (!object.Equals(Meta, other.Meta)) return false;
       if (!object.Equals(Verify, other.Verify)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -164,6 +182,7 @@ namespace NeoFS.API.Bootstrap {
       int hash = 1;
       if (Type != 0) hash ^= Type.GetHashCode();
       if (info_ != null) hash ^= Info.GetHashCode();
+      if (State != global::NeoFS.API.Bootstrap.Request.Types.State.Unknown) hash ^= State.GetHashCode();
       if (meta_ != null) hash ^= Meta.GetHashCode();
       if (verify_ != null) hash ^= Verify.GetHashCode();
       if (_unknownFields != null) {
@@ -187,6 +206,10 @@ namespace NeoFS.API.Bootstrap {
         output.WriteRawTag(18);
         output.WriteMessage(Info);
       }
+      if (State != global::NeoFS.API.Bootstrap.Request.Types.State.Unknown) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) State);
+      }
       if (meta_ != null) {
         output.WriteRawTag(146, 6);
         output.WriteMessage(Meta);
@@ -208,6 +231,9 @@ namespace NeoFS.API.Bootstrap {
       }
       if (info_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Info);
+      }
+      if (State != global::NeoFS.API.Bootstrap.Request.Types.State.Unknown) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (meta_ != null) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
@@ -234,6 +260,9 @@ namespace NeoFS.API.Bootstrap {
           Info = new global::NeoFS.API.Bootstrap.NodeInfo();
         }
         Info.MergeFrom(other.Info);
+      }
+      if (other.State != global::NeoFS.API.Bootstrap.Request.Types.State.Unknown) {
+        State = other.State;
       }
       if (other.meta_ != null) {
         if (meta_ == null) {
@@ -269,6 +298,10 @@ namespace NeoFS.API.Bootstrap {
             input.ReadMessage(Info);
             break;
           }
+          case 24: {
+            State = (global::NeoFS.API.Bootstrap.Request.Types.State) input.ReadEnum();
+            break;
+          }
           case 786: {
             if (meta_ == null) {
               Meta = new global::NeoFS.API.Service.RequestMetaHeader();
@@ -286,6 +319,31 @@ namespace NeoFS.API.Bootstrap {
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Request message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// Node state
+      /// </summary>
+      public enum State {
+        /// <summary>
+        /// used by default
+        /// </summary>
+        [pbr::OriginalName("Unknown")] Unknown = 0,
+        /// <summary>
+        /// used to inform that node online
+        /// </summary>
+        [pbr::OriginalName("Online")] Online = 1,
+        /// <summary>
+        /// used to inform that node offline
+        /// </summary>
+        [pbr::OriginalName("Offline")] Offline = 2,
+      }
+
+    }
+    #endregion
 
   }
 

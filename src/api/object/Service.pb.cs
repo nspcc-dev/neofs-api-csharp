@@ -34,67 +34,68 @@ namespace NeoFS.API.Object {
             "c2VydmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJ6",
             "CgtHZXRSZXNwb25zZRIgCgZvYmplY3QYASABKAsyDi5vYmplY3QuT2JqZWN0",
             "SAASDwoFQ2h1bmsYAiABKAxIABIzCgRNZXRhGGMgASgLMhsuc2VydmljZS5S",
-            "ZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8AQgMKAVIikAIKClB1dFJlcXVl",
+            "ZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8AQgMKAVIipgIKClB1dFJlcXVl",
             "c3QSLgoGSGVhZGVyGAEgASgLMhwub2JqZWN0LlB1dFJlcXVlc3QuUHV0SGVh",
             "ZGVySAASDwoFQ2h1bmsYAiABKAxIABIyCgRNZXRhGGIgASgLMhouc2Vydmlj",
             "ZS5SZXF1ZXN0TWV0YUhlYWRlckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgL",
             "MiIuc2VydmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4f",
-            "ABpKCglQdXRIZWFkZXISHgoGT2JqZWN0GAEgASgLMg4ub2JqZWN0Lk9iamVj",
-            "dBIdCgVUb2tlbhgCIAEoCzIOLnNlc3Npb24uVG9rZW5CAwoBUiJoCgtQdXRS",
-            "ZXNwb25zZRIkCgdBZGRyZXNzGAEgASgLMg0ucmVmcy5BZGRyZXNzQgTI3h8A",
-            "EjMKBE1ldGEYYyABKAsyGy5zZXJ2aWNlLlJlc3BvbnNlTWV0YUhlYWRlckII",
-            "0N4fAcjeHwAi6AEKDURlbGV0ZVJlcXVlc3QSJAoHQWRkcmVzcxgBIAEoCzIN",
-            "LnJlZnMuQWRkcmVzc0IEyN4fABIgCgdPd25lcklEGAIgASgMQg/I3h8A2t4f",
-            "B093bmVySUQSHQoFVG9rZW4YAyABKAsyDi5zZXNzaW9uLlRva2VuEjIKBE1l",
-            "dGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVhZGVyQgjQ3h8ByN4f",
-            "ABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVlc3RWZXJpZmljYXRp",
-            "b25IZWFkZXJCCNDeHwHI3h8AIkUKDkRlbGV0ZVJlc3BvbnNlEjMKBE1ldGEY",
-            "YyABKAsyGy5zZXJ2aWNlLlJlc3BvbnNlTWV0YUhlYWRlckII0N4fAcjeHwAi",
-            "0gEKC0hlYWRSZXF1ZXN0Ei8KB0FkZHJlc3MYASABKAsyDS5yZWZzLkFkZHJl",
-            "c3NCD8jeHwDa3h8HQWRkcmVzcxITCgtGdWxsSGVhZGVycxgCIAEoCBILCgNS",
-            "YXcYAyABKAgSMgoETWV0YRhiIAEoCzIaLnNlcnZpY2UuUmVxdWVzdE1ldGFI",
-            "ZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhjIAEoCzIiLnNlcnZpY2UuUmVx",
-            "dWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4fAcjeHwAiYwoMSGVhZFJlc3Bv",
-            "bnNlEh4KBk9iamVjdBgBIAEoCzIOLm9iamVjdC5PYmplY3QSMwoETWV0YRhj",
-            "IAEoCzIbLnNlcnZpY2UuUmVzcG9uc2VNZXRhSGVhZGVyQgjQ3h8ByN4fACLI",
-            "AQoNU2VhcmNoUmVxdWVzdBIgCgtDb250YWluZXJJRBgBIAEoDEILyN4fANre",
-            "HwNDSUQSDQoFUXVlcnkYAiABKAwSFAoMUXVlcnlWZXJzaW9uGAMgASgNEjIK",
-            "BE1ldGEYYiABKAsyGi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVhZGVyQgjQ3h8B",
-            "yN4fABI8CgZWZXJpZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVlc3RWZXJpZmlj",
-            "YXRpb25IZWFkZXJCCNDeHwHI3h8AIm0KDlNlYXJjaFJlc3BvbnNlEiYKCUFk",
-            "ZHJlc3NlcxgBIAMoCzINLnJlZnMuQWRkcmVzc0IEyN4fABIzCgRNZXRhGGMg",
-            "ASgLMhsuc2VydmljZS5SZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8AIs0B",
-            "Cg9HZXRSYW5nZVJlcXVlc3QSJAoHQWRkcmVzcxgBIAEoCzINLnJlZnMuQWRk",
-            "cmVzc0IEyN4fABIiCgVSYW5nZRgCIAEoCzINLm9iamVjdC5SYW5nZUIEyN4f",
-            "ABIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1ZXN0TWV0YUhlYWRlckII",
-            "0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIuc2VydmljZS5SZXF1ZXN0VmVy",
-            "aWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJZChBHZXRSYW5nZVJlc3BvbnNl",
-            "EhAKCEZyYWdtZW50GAEgASgMEjMKBE1ldGEYYyABKAsyGy5zZXJ2aWNlLlJl",
-            "c3BvbnNlTWV0YUhlYWRlckII0N4fAcjeHwAi4AEKE0dldFJhbmdlSGFzaFJl",
-            "cXVlc3QSJAoHQWRkcmVzcxgBIAEoCzINLnJlZnMuQWRkcmVzc0IEyN4fABIj",
-            "CgZSYW5nZXMYAiADKAsyDS5vYmplY3QuUmFuZ2VCBMjeHwASDAoEU2FsdBgD",
-            "IAEoDBIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1ZXN0TWV0YUhlYWRl",
-            "ckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIuc2VydmljZS5SZXF1ZXN0",
-            "VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJpChRHZXRSYW5nZUhhc2hS",
-            "ZXNwb25zZRIcCgZIYXNoZXMYASADKAxCDNreHwRIYXNoyN4fABIzCgRNZXRh",
-            "GGMgASgLMhsuc2VydmljZS5SZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8A",
-            "MqADCgdTZXJ2aWNlEjAKA0dldBISLm9iamVjdC5HZXRSZXF1ZXN0GhMub2Jq",
-            "ZWN0LkdldFJlc3BvbnNlMAESMAoDUHV0EhIub2JqZWN0LlB1dFJlcXVlc3Qa",
-            "Ey5vYmplY3QuUHV0UmVzcG9uc2UoARI3CgZEZWxldGUSFS5vYmplY3QuRGVs",
-            "ZXRlUmVxdWVzdBoWLm9iamVjdC5EZWxldGVSZXNwb25zZRIxCgRIZWFkEhMu",
-            "b2JqZWN0LkhlYWRSZXF1ZXN0GhQub2JqZWN0LkhlYWRSZXNwb25zZRI5CgZT",
-            "ZWFyY2gSFS5vYmplY3QuU2VhcmNoUmVxdWVzdBoWLm9iamVjdC5TZWFyY2hS",
-            "ZXNwb25zZTABEj8KCEdldFJhbmdlEhcub2JqZWN0LkdldFJhbmdlUmVxdWVz",
-            "dBoYLm9iamVjdC5HZXRSYW5nZVJlc3BvbnNlMAESSQoMR2V0UmFuZ2VIYXNo",
-            "Ehsub2JqZWN0LkdldFJhbmdlSGFzaFJlcXVlc3QaHC5vYmplY3QuR2V0UmFu",
-            "Z2VIYXNoUmVzcG9uc2VCQVooZ2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMt",
-            "YXBpLWdvL29iamVjdKoCEE5lb0ZTLkFQSS5PYmplY3TY4h4BYgZwcm90bzM="));
+            "ABpgCglQdXRIZWFkZXISHgoGT2JqZWN0GAEgASgLMg4ub2JqZWN0Lk9iamVj",
+            "dBIdCgVUb2tlbhgCIAEoCzIOLnNlc3Npb24uVG9rZW4SFAoMQ29waWVzTnVt",
+            "YmVyGAMgASgNQgMKAVIiaAoLUHV0UmVzcG9uc2USJAoHQWRkcmVzcxgBIAEo",
+            "CzINLnJlZnMuQWRkcmVzc0IEyN4fABIzCgRNZXRhGGMgASgLMhsuc2Vydmlj",
+            "ZS5SZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI3h8AIugBCg1EZWxldGVSZXF1",
+            "ZXN0EiQKB0FkZHJlc3MYASABKAsyDS5yZWZzLkFkZHJlc3NCBMjeHwASIAoH",
+            "T3duZXJJRBgCIAEoDEIPyN4fANreHwdPd25lcklEEh0KBVRva2VuGAMgASgL",
+            "Mg4uc2Vzc2lvbi5Ub2tlbhIyCgRNZXRhGGIgASgLMhouc2VydmljZS5SZXF1",
+            "ZXN0TWV0YUhlYWRlckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIuc2Vy",
+            "dmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJFCg5E",
+            "ZWxldGVSZXNwb25zZRIzCgRNZXRhGGMgASgLMhsuc2VydmljZS5SZXNwb25z",
+            "ZU1ldGFIZWFkZXJCCNDeHwHI3h8AItIBCgtIZWFkUmVxdWVzdBIvCgdBZGRy",
+            "ZXNzGAEgASgLMg0ucmVmcy5BZGRyZXNzQg/I3h8A2t4fB0FkZHJlc3MSEwoL",
+            "RnVsbEhlYWRlcnMYAiABKAgSCwoDUmF3GAMgASgIEjIKBE1ldGEYYiABKAsy",
+            "Gi5zZXJ2aWNlLlJlcXVlc3RNZXRhSGVhZGVyQgjQ3h8ByN4fABI8CgZWZXJp",
+            "ZnkYYyABKAsyIi5zZXJ2aWNlLlJlcXVlc3RWZXJpZmljYXRpb25IZWFkZXJC",
+            "CNDeHwHI3h8AImMKDEhlYWRSZXNwb25zZRIeCgZPYmplY3QYASABKAsyDi5v",
+            "YmplY3QuT2JqZWN0EjMKBE1ldGEYYyABKAsyGy5zZXJ2aWNlLlJlc3BvbnNl",
+            "TWV0YUhlYWRlckII0N4fAcjeHwAiyAEKDVNlYXJjaFJlcXVlc3QSIAoLQ29u",
+            "dGFpbmVySUQYASABKAxCC8jeHwDa3h8DQ0lEEg0KBVF1ZXJ5GAIgASgMEhQK",
+            "DFF1ZXJ5VmVyc2lvbhgDIAEoDRIyCgRNZXRhGGIgASgLMhouc2VydmljZS5S",
+            "ZXF1ZXN0TWV0YUhlYWRlckII0N4fAcjeHwASPAoGVmVyaWZ5GGMgASgLMiIu",
+            "c2VydmljZS5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyQgjQ3h8ByN4fACJt",
+            "Cg5TZWFyY2hSZXNwb25zZRImCglBZGRyZXNzZXMYASADKAsyDS5yZWZzLkFk",
+            "ZHJlc3NCBMjeHwASMwoETWV0YRhjIAEoCzIbLnNlcnZpY2UuUmVzcG9uc2VN",
+            "ZXRhSGVhZGVyQgjQ3h8ByN4fACLNAQoPR2V0UmFuZ2VSZXF1ZXN0EiQKB0Fk",
+            "ZHJlc3MYASABKAsyDS5yZWZzLkFkZHJlc3NCBMjeHwASIgoFUmFuZ2UYAiAB",
+            "KAsyDS5vYmplY3QuUmFuZ2VCBMjeHwASMgoETWV0YRhiIAEoCzIaLnNlcnZp",
+            "Y2UuUmVxdWVzdE1ldGFIZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhjIAEo",
+            "CzIiLnNlcnZpY2UuUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4fAcje",
+            "HwAiWQoQR2V0UmFuZ2VSZXNwb25zZRIQCghGcmFnbWVudBgBIAEoDBIzCgRN",
+            "ZXRhGGMgASgLMhsuc2VydmljZS5SZXNwb25zZU1ldGFIZWFkZXJCCNDeHwHI",
+            "3h8AIuABChNHZXRSYW5nZUhhc2hSZXF1ZXN0EiQKB0FkZHJlc3MYASABKAsy",
+            "DS5yZWZzLkFkZHJlc3NCBMjeHwASIwoGUmFuZ2VzGAIgAygLMg0ub2JqZWN0",
+            "LlJhbmdlQgTI3h8AEgwKBFNhbHQYAyABKAwSMgoETWV0YRhiIAEoCzIaLnNl",
+            "cnZpY2UuUmVxdWVzdE1ldGFIZWFkZXJCCNDeHwHI3h8AEjwKBlZlcmlmeRhj",
+            "IAEoCzIiLnNlcnZpY2UuUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlckII0N4f",
+            "AcjeHwAiaQoUR2V0UmFuZ2VIYXNoUmVzcG9uc2USHAoGSGFzaGVzGAEgAygM",
+            "Qgza3h8ESGFzaMjeHwASMwoETWV0YRhjIAEoCzIbLnNlcnZpY2UuUmVzcG9u",
+            "c2VNZXRhSGVhZGVyQgjQ3h8ByN4fADKgAwoHU2VydmljZRIwCgNHZXQSEi5v",
+            "YmplY3QuR2V0UmVxdWVzdBoTLm9iamVjdC5HZXRSZXNwb25zZTABEjAKA1B1",
+            "dBISLm9iamVjdC5QdXRSZXF1ZXN0GhMub2JqZWN0LlB1dFJlc3BvbnNlKAES",
+            "NwoGRGVsZXRlEhUub2JqZWN0LkRlbGV0ZVJlcXVlc3QaFi5vYmplY3QuRGVs",
+            "ZXRlUmVzcG9uc2USMQoESGVhZBITLm9iamVjdC5IZWFkUmVxdWVzdBoULm9i",
+            "amVjdC5IZWFkUmVzcG9uc2USOQoGU2VhcmNoEhUub2JqZWN0LlNlYXJjaFJl",
+            "cXVlc3QaFi5vYmplY3QuU2VhcmNoUmVzcG9uc2UwARI/CghHZXRSYW5nZRIX",
+            "Lm9iamVjdC5HZXRSYW5nZVJlcXVlc3QaGC5vYmplY3QuR2V0UmFuZ2VSZXNw",
+            "b25zZTABEkkKDEdldFJhbmdlSGFzaBIbLm9iamVjdC5HZXRSYW5nZUhhc2hS",
+            "ZXF1ZXN0Ghwub2JqZWN0LkdldFJhbmdlSGFzaFJlc3BvbnNlQkFaKGdpdGh1",
+            "Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1nby9vYmplY3SqAhBOZW9GUy5B",
+            "UEkuT2JqZWN02OIeAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.Refs.TypesReflection.Descriptor, global::NeoFS.API.Object.TypesReflection.Descriptor, global::NeoFS.API.Session.TypesReflection.Descriptor, global::NeoFS.API.Service.MetaReflection.Descriptor, global::NeoFS.API.Service.VerifyReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetRequest), global::NeoFS.API.Object.GetRequest.Parser, new[]{ "Address", "Raw", "Meta", "Verify" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.GetResponse), global::NeoFS.API.Object.GetResponse.Parser, new[]{ "Object", "Chunk", "Meta" }, new[]{ "R" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutRequest), global::NeoFS.API.Object.PutRequest.Parser, new[]{ "Header", "Chunk", "Meta", "Verify" }, new[]{ "R" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutRequest.Types.PutHeader), global::NeoFS.API.Object.PutRequest.Types.PutHeader.Parser, new[]{ "Object", "Token" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutRequest), global::NeoFS.API.Object.PutRequest.Parser, new[]{ "Header", "Chunk", "Meta", "Verify" }, new[]{ "R" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutRequest.Types.PutHeader), global::NeoFS.API.Object.PutRequest.Types.PutHeader.Parser, new[]{ "Object", "Token", "CopiesNumber" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PutResponse), global::NeoFS.API.Object.PutResponse.Parser, new[]{ "Address", "Meta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.DeleteRequest), global::NeoFS.API.Object.DeleteRequest.Parser, new[]{ "Address", "OwnerID", "Token", "Meta", "Verify" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.DeleteResponse), global::NeoFS.API.Object.DeleteResponse.Parser, new[]{ "Meta" }, null, null, null, null),
@@ -899,6 +900,7 @@ namespace NeoFS.API.Object {
         public PutHeader(PutHeader other) : this() {
           object_ = other.object_ != null ? other.object_.Clone() : null;
           token_ = other.token_ != null ? other.token_.Clone() : null;
+          copiesNumber_ = other.copiesNumber_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -935,6 +937,20 @@ namespace NeoFS.API.Object {
           }
         }
 
+        /// <summary>Field number for the "CopiesNumber" field.</summary>
+        public const int CopiesNumberFieldNumber = 3;
+        private uint copiesNumber_;
+        /// <summary>
+        /// Number of the object copies to store within the RPC call (zero is processed according to the placement rules)
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint CopiesNumber {
+          get { return copiesNumber_; }
+          set {
+            copiesNumber_ = value;
+          }
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
           return Equals(other as PutHeader);
@@ -950,6 +966,7 @@ namespace NeoFS.API.Object {
           }
           if (!object.Equals(Object, other.Object)) return false;
           if (!object.Equals(Token, other.Token)) return false;
+          if (CopiesNumber != other.CopiesNumber) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -958,6 +975,7 @@ namespace NeoFS.API.Object {
           int hash = 1;
           if (object_ != null) hash ^= Object.GetHashCode();
           if (token_ != null) hash ^= Token.GetHashCode();
+          if (CopiesNumber != 0) hash ^= CopiesNumber.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -979,6 +997,10 @@ namespace NeoFS.API.Object {
             output.WriteRawTag(18);
             output.WriteMessage(Token);
           }
+          if (CopiesNumber != 0) {
+            output.WriteRawTag(24);
+            output.WriteUInt32(CopiesNumber);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -992,6 +1014,9 @@ namespace NeoFS.API.Object {
           }
           if (token_ != null) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(Token);
+          }
+          if (CopiesNumber != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CopiesNumber);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -1016,6 +1041,9 @@ namespace NeoFS.API.Object {
             }
             Token.MergeFrom(other.Token);
           }
+          if (other.CopiesNumber != 0) {
+            CopiesNumber = other.CopiesNumber;
+          }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -1039,6 +1067,10 @@ namespace NeoFS.API.Object {
                   Token = new global::NeoFS.API.Session.Token();
                 }
                 input.ReadMessage(Token);
+                break;
+              }
+              case 24: {
+                CopiesNumber = input.ReadUInt32();
                 break;
               }
             }

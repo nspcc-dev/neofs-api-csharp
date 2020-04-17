@@ -123,6 +123,7 @@ namespace NeoFS.API.Object
                 {
                     Object = obj,
                     Token = tkn,
+                    CopiesNumber = 0,
                 }
             };
 
