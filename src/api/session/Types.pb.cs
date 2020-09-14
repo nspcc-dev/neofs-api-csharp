@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace NeoFS.API.Session {
+namespace NeoFS.API.v2.Session {
 
   /// <summary>Holder for reflection information generated from session/types.proto</summary>
   public static partial class TypesReflection {
@@ -24,37 +24,75 @@ namespace NeoFS.API.Session {
     static TypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNzZXNzaW9uL3R5cGVzLnByb3RvEgdzZXNzaW9uGi1naXRodWIuY29tL2dv",
-            "Z28vcHJvdG9idWYvZ29nb3Byb3RvL2dvZ28ucHJvdG8iPQoSVmVyaWZpY2F0",
-            "aW9uSGVhZGVyEhEKCVB1YmxpY0tleRgBIAEoDBIUCgxLZXlTaWduYXR1cmUY",
-            "AiABKAwi6wEKBVRva2VuEjEKBkhlYWRlchgBIAEoCzIbLnNlc3Npb24uVmVy",
-            "aWZpY2F0aW9uSGVhZGVyQgTI3h8AEiAKB093bmVySUQYAiABKAxCD9reHwdP",
-            "d25lcklEyN4fABISCgpGaXJzdEVwb2NoGAMgASgEEhEKCUxhc3RFcG9jaBgE",
-            "IAEoBBIiCghPYmplY3RJRBgFIAMoDEIQ2t4fCE9iamVjdElEyN4fABIRCglT",
-            "aWduYXR1cmUYBiABKAwSGwoCSUQYByABKAxCD9reHwdUb2tlbklEyN4fABIS",
-            "CgpQdWJsaWNLZXlzGAggAygMQkNaKWdpdGh1Yi5jb20vbnNwY2MtZGV2L25l",
-            "b2ZzLWFwaS1nby9zZXNzaW9uqgIRTmVvRlMuQVBJLlNlc3Npb27Y4h4BYgZw",
-            "cm90bzM="));
+            "ChNzZXNzaW9uL3R5cGVzLnByb3RvEhFuZW8uZnMudjIuc2Vzc2lvbhoQcmVm",
+            "cy90eXBlcy5wcm90bxoPYWNsL3R5cGVzLnByb3RvIugBChRPYmplY3RTZXNz",
+            "aW9uQ29udGV4dBI6CgR2ZXJiGAEgASgOMiwubmVvLmZzLnYyLnNlc3Npb24u",
+            "T2JqZWN0U2Vzc2lvbkNvbnRleHQuVmVyYhIoCgdhZGRyZXNzGAIgASgLMhcu",
+            "bmVvLmZzLnYyLnJlZnMuQWRkcmVzcyJqCgRWZXJiEhQKEFZFUkJfVU5TUEVD",
+            "SUZJRUQQABIHCgNQVVQQARIHCgNHRVQQAhIICgRIRUFEEAMSCgoGU0VBUkNI",
+            "EAQSCgoGREVMRVRFEAUSCQoFUkFOR0UQBhINCglSQU5HRUhBU0gQByKJAwoM",
+            "U2Vzc2lvblRva2VuEjIKBGJvZHkYASABKAsyJC5uZW8uZnMudjIuc2Vzc2lv",
+            "bi5TZXNzaW9uVG9rZW4uQm9keRIsCglzaWduYXR1cmUYAiABKAsyGS5uZW8u",
+            "ZnMudjIucmVmcy5TaWduYXR1cmUalgIKBEJvZHkSCgoCaWQYASABKAwSKQoI",
+            "b3duZXJfaWQYAiABKAsyFy5uZW8uZnMudjIucmVmcy5Pd25lcklEEkQKCGxp",
+            "ZmV0aW1lGAMgASgLMjIubmVvLmZzLnYyLnNlc3Npb24uU2Vzc2lvblRva2Vu",
+            "LkJvZHkuVG9rZW5MaWZldGltZRITCgtzZXNzaW9uX2tleRgEIAEoDBI5CgZv",
+            "YmplY3QYBSABKAsyJy5uZW8uZnMudjIuc2Vzc2lvbi5PYmplY3RTZXNzaW9u",
+            "Q29udGV4dEgAGjYKDVRva2VuTGlmZXRpbWUSCwoDZXhwGAEgASgEEgsKA25i",
+            "ZhgCIAEoBBILCgNpYXQYAyABKARCCQoHY29udGV4dCIlCgdYSGVhZGVyEgsK",
+            "A2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCSKoAgoRUmVxdWVzdE1ldGFIZWFk",
+            "ZXISKAoHdmVyc2lvbhgBIAEoCzIXLm5lby5mcy52Mi5yZWZzLlZlcnNpb24S",
+            "DQoFZXBvY2gYAiABKAQSCwoDdHRsGAMgASgNEi0KCXhfaGVhZGVycxgEIAMo",
+            "CzIaLm5lby5mcy52Mi5zZXNzaW9uLlhIZWFkZXISNgoNc2Vzc2lvbl90b2tl",
+            "bhgFIAEoCzIfLm5lby5mcy52Mi5zZXNzaW9uLlNlc3Npb25Ub2tlbhIwCgxi",
+            "ZWFyZXJfdG9rZW4YBiABKAsyGi5uZW8uZnMudjIuYWNsLkJlYXJlclRva2Vu",
+            "EjQKBm9yaWdpbhgHIAEoCzIkLm5lby5mcy52Mi5zZXNzaW9uLlJlcXVlc3RN",
+            "ZXRhSGVhZGVyIsABChJSZXNwb25zZU1ldGFIZWFkZXISKAoHdmVyc2lvbhgB",
+            "IAEoCzIXLm5lby5mcy52Mi5yZWZzLlZlcnNpb24SDQoFZXBvY2gYAiABKAQS",
+            "CwoDdHRsGAMgASgNEi0KCXhfaGVhZGVycxgEIAMoCzIaLm5lby5mcy52Mi5z",
+            "ZXNzaW9uLlhIZWFkZXISNQoGb3JpZ2luGAUgASgLMiUubmVvLmZzLnYyLnNl",
+            "c3Npb24uUmVzcG9uc2VNZXRhSGVhZGVyIvQBChlSZXF1ZXN0VmVyaWZpY2F0",
+            "aW9uSGVhZGVyEjEKDmJvZHlfc2lnbmF0dXJlGAEgASgLMhkubmVvLmZzLnYy",
+            "LnJlZnMuU2lnbmF0dXJlEjEKDm1ldGFfc2lnbmF0dXJlGAIgASgLMhkubmVv",
+            "LmZzLnYyLnJlZnMuU2lnbmF0dXJlEjMKEG9yaWdpbl9zaWduYXR1cmUYAyAB",
+            "KAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmUSPAoGb3JpZ2luGAQgASgL",
+            "MiwubmVvLmZzLnYyLnNlc3Npb24uUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRl",
+            "ciL2AQoaUmVzcG9uc2VWZXJpZmljYXRpb25IZWFkZXISMQoOYm9keV9zaWdu",
+            "YXR1cmUYASABKAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmUSMQoObWV0",
+            "YV9zaWduYXR1cmUYAiABKAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmUS",
+            "MwoQb3JpZ2luX3NpZ25hdHVyZRgDIAEoCzIZLm5lby5mcy52Mi5yZWZzLlNp",
+            "Z25hdHVyZRI9CgZvcmlnaW4YBCABKAsyLS5uZW8uZnMudjIuc2Vzc2lvbi5S",
+            "ZXNwb25zZVZlcmlmaWNhdGlvbkhlYWRlckJSWjlnaXRodWIuY29tL25zcGNj",
+            "LWRldi9uZW9mcy1hcGktZ28vdjIvc2Vzc2lvbi9ncnBjO3Nlc3Npb26qAhRO",
+            "ZW9GUy5BUEkudjIuU2Vzc2lvbmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Acl.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Session.VerificationHeader), global::NeoFS.API.Session.VerificationHeader.Parser, new[]{ "PublicKey", "KeySignature" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Session.Token), global::NeoFS.API.Session.Token.Parser, new[]{ "Header", "OwnerID", "FirstEpoch", "LastEpoch", "ObjectID", "Signature", "ID", "PublicKeys" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.ObjectSessionContext), global::NeoFS.API.v2.Session.ObjectSessionContext.Parser, new[]{ "Verb", "Address" }, null, new[]{ typeof(global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.SessionToken), global::NeoFS.API.v2.Session.SessionToken.Parser, new[]{ "Body", "Signature" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.SessionToken.Types.Body), global::NeoFS.API.v2.Session.SessionToken.Types.Body.Parser, new[]{ "Id", "OwnerId", "Lifetime", "SessionKey", "Object" }, new[]{ "Context" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime), global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime.Parser, new[]{ "Exp", "Nbf", "Iat" }, null, null, null, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.XHeader), global::NeoFS.API.v2.Session.XHeader.Parser, new[]{ "Key", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.RequestMetaHeader), global::NeoFS.API.v2.Session.RequestMetaHeader.Parser, new[]{ "Version", "Epoch", "Ttl", "XHeaders", "SessionToken", "BearerToken", "Origin" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.ResponseMetaHeader), global::NeoFS.API.v2.Session.ResponseMetaHeader.Parser, new[]{ "Version", "Epoch", "Ttl", "XHeaders", "Origin" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.RequestVerificationHeader), global::NeoFS.API.v2.Session.RequestVerificationHeader.Parser, new[]{ "BodySignature", "MetaSignature", "OriginSignature", "Origin" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Session.ResponseVerificationHeader), global::NeoFS.API.v2.Session.ResponseVerificationHeader.Parser, new[]{ "BodySignature", "MetaSignature", "OriginSignature", "Origin" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class VerificationHeader : pb::IMessage<VerificationHeader> {
-    private static readonly pb::MessageParser<VerificationHeader> _parser = new pb::MessageParser<VerificationHeader>(() => new VerificationHeader());
+  /// <summary>
+  /// Context information for Session Tokens related to ObjectService requests
+  /// </summary>
+  public sealed partial class ObjectSessionContext : pb::IMessage<ObjectSessionContext> {
+    private static readonly pb::MessageParser<ObjectSessionContext> _parser = new pb::MessageParser<ObjectSessionContext>(() => new ObjectSessionContext());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<VerificationHeader> Parser { get { return _parser; } }
+    public static pb::MessageParser<ObjectSessionContext> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Session.TypesReflection.Descriptor.MessageTypes[0]; }
+      get { return global::NeoFS.API.v2.Session.TypesReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -63,75 +101,75 @@ namespace NeoFS.API.Session {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public VerificationHeader() {
+    public ObjectSessionContext() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public VerificationHeader(VerificationHeader other) : this() {
-      publicKey_ = other.publicKey_;
-      keySignature_ = other.keySignature_;
+    public ObjectSessionContext(ObjectSessionContext other) : this() {
+      verb_ = other.verb_;
+      address_ = other.address_ != null ? other.address_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public VerificationHeader Clone() {
-      return new VerificationHeader(this);
+    public ObjectSessionContext Clone() {
+      return new ObjectSessionContext(this);
     }
 
-    /// <summary>Field number for the "PublicKey" field.</summary>
-    public const int PublicKeyFieldNumber = 1;
-    private pb::ByteString publicKey_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "verb" field.</summary>
+    public const int VerbFieldNumber = 1;
+    private global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb verb_ = global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb.Unspecified;
     /// <summary>
-    /// PublicKey is a session public key
+    /// Verb is a type of request for which the token is issued
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString PublicKey {
-      get { return publicKey_; }
+    public global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb Verb {
+      get { return verb_; }
       set {
-        publicKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        verb_ = value;
       }
     }
 
-    /// <summary>Field number for the "KeySignature" field.</summary>
-    public const int KeySignatureFieldNumber = 2;
-    private pb::ByteString keySignature_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "address" field.</summary>
+    public const int AddressFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.Address address_;
     /// <summary>
-    /// KeySignature is a session public key signature. Signed by trusted side
+    /// Related Object address
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString KeySignature {
-      get { return keySignature_; }
+    public global::NeoFS.API.v2.Refs.Address Address {
+      get { return address_; }
       set {
-        keySignature_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        address_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as VerificationHeader);
+      return Equals(other as ObjectSessionContext);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(VerificationHeader other) {
+    public bool Equals(ObjectSessionContext other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PublicKey != other.PublicKey) return false;
-      if (KeySignature != other.KeySignature) return false;
+      if (Verb != other.Verb) return false;
+      if (!object.Equals(Address, other.Address)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (PublicKey.Length != 0) hash ^= PublicKey.GetHashCode();
-      if (KeySignature.Length != 0) hash ^= KeySignature.GetHashCode();
+      if (Verb != global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb.Unspecified) hash ^= Verb.GetHashCode();
+      if (address_ != null) hash ^= Address.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -145,13 +183,13 @@ namespace NeoFS.API.Session {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (PublicKey.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteBytes(PublicKey);
+      if (Verb != global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Verb);
       }
-      if (KeySignature.Length != 0) {
+      if (address_ != null) {
         output.WriteRawTag(18);
-        output.WriteBytes(KeySignature);
+        output.WriteMessage(Address);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -161,11 +199,11 @@ namespace NeoFS.API.Session {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (PublicKey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(PublicKey);
+      if (Verb != global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Verb);
       }
-      if (KeySignature.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(KeySignature);
+      if (address_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Address);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -174,15 +212,238 @@ namespace NeoFS.API.Session {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(VerificationHeader other) {
+    public void MergeFrom(ObjectSessionContext other) {
       if (other == null) {
         return;
       }
-      if (other.PublicKey.Length != 0) {
-        PublicKey = other.PublicKey;
+      if (other.Verb != global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb.Unspecified) {
+        Verb = other.Verb;
       }
-      if (other.KeySignature.Length != 0) {
-        KeySignature = other.KeySignature;
+      if (other.address_ != null) {
+        if (address_ == null) {
+          Address = new global::NeoFS.API.v2.Refs.Address();
+        }
+        Address.MergeFrom(other.Address);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Verb = (global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            if (address_ == null) {
+              Address = new global::NeoFS.API.v2.Refs.Address();
+            }
+            input.ReadMessage(Address);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ObjectSessionContext message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// Object request verbs
+      /// </summary>
+      public enum Verb {
+        /// <summary>
+        /// Unknown verb
+        /// </summary>
+        [pbr::OriginalName("VERB_UNSPECIFIED")] Unspecified = 0,
+        /// <summary>
+        /// Refers to object.Put RPC call
+        /// </summary>
+        [pbr::OriginalName("PUT")] Put = 1,
+        /// <summary>
+        /// Refers to object.Get RPC call
+        /// </summary>
+        [pbr::OriginalName("GET")] Get = 2,
+        /// <summary>
+        /// Refers to object.Head RPC call
+        /// </summary>
+        [pbr::OriginalName("HEAD")] Head = 3,
+        /// <summary>
+        /// Refers to object.Search RPC call
+        /// </summary>
+        [pbr::OriginalName("SEARCH")] Search = 4,
+        /// <summary>
+        /// Refers to object.Delete RPC call
+        /// </summary>
+        [pbr::OriginalName("DELETE")] Delete = 5,
+        /// <summary>
+        /// Refers to object.GetRange RPC call
+        /// </summary>
+        [pbr::OriginalName("RANGE")] Range = 6,
+        /// <summary>
+        /// Refers to object.GetRangeHash RPC call
+        /// </summary>
+        [pbr::OriginalName("RANGEHASH")] Rangehash = 7,
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// NeoFS session token.
+  /// </summary>
+  public sealed partial class SessionToken : pb::IMessage<SessionToken> {
+    private static readonly pb::MessageParser<SessionToken> _parser = new pb::MessageParser<SessionToken>(() => new SessionToken());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SessionToken> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Session.TypesReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SessionToken() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SessionToken(SessionToken other) : this() {
+      body_ = other.body_ != null ? other.body_.Clone() : null;
+      signature_ = other.signature_ != null ? other.signature_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SessionToken Clone() {
+      return new SessionToken(this);
+    }
+
+    /// <summary>Field number for the "body" field.</summary>
+    public const int BodyFieldNumber = 1;
+    private global::NeoFS.API.v2.Session.SessionToken.Types.Body body_;
+    /// <summary>
+    /// Session Token body
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.SessionToken.Types.Body Body {
+      get { return body_; }
+      set {
+        body_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "signature" field.</summary>
+    public const int SignatureFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.Signature signature_;
+    /// <summary>
+    /// Signature is a signature of session token information
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature Signature {
+      get { return signature_; }
+      set {
+        signature_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SessionToken);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SessionToken other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Body, other.Body)) return false;
+      if (!object.Equals(Signature, other.Signature)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (body_ != null) hash ^= Body.GetHashCode();
+      if (signature_ != null) hash ^= Signature.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (body_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Body);
+      }
+      if (signature_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Signature);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (body_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Body);
+      }
+      if (signature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Signature);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SessionToken other) {
+      if (other == null) {
+        return;
+      }
+      if (other.body_ != null) {
+        if (body_ == null) {
+          Body = new global::NeoFS.API.v2.Session.SessionToken.Types.Body();
+        }
+        Body.MergeFrom(other.Body);
+      }
+      if (other.signature_ != null) {
+        if (signature_ == null) {
+          Signature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        Signature.MergeFrom(other.Signature);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -196,11 +457,701 @@ namespace NeoFS.API.Session {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            PublicKey = input.ReadBytes();
+            if (body_ == null) {
+              Body = new global::NeoFS.API.v2.Session.SessionToken.Types.Body();
+            }
+            input.ReadMessage(Body);
             break;
           }
           case 18: {
-            KeySignature = input.ReadBytes();
+            if (signature_ == null) {
+              Signature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(Signature);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the SessionToken message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// Session token body
+      /// </summary>
+      public sealed partial class Body : pb::IMessage<Body> {
+        private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Body> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Session.SessionToken.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body(Body other) : this() {
+          id_ = other.id_;
+          ownerId_ = other.ownerId_ != null ? other.ownerId_.Clone() : null;
+          lifetime_ = other.lifetime_ != null ? other.lifetime_.Clone() : null;
+          sessionKey_ = other.sessionKey_;
+          switch (other.ContextCase) {
+            case ContextOneofCase.Object:
+              Object = other.Object.Clone();
+              break;
+          }
+
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body Clone() {
+          return new Body(this);
+        }
+
+        /// <summary>Field number for the "id" field.</summary>
+        public const int IdFieldNumber = 1;
+        private pb::ByteString id_ = pb::ByteString.Empty;
+        /// <summary>
+        /// ID is a token identifier. valid UUIDv4 represented in bytes
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pb::ByteString Id {
+          get { return id_; }
+          set {
+            id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "owner_id" field.</summary>
+        public const int OwnerIdFieldNumber = 2;
+        private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
+        /// <summary>
+        /// OwnerID carries identifier of the session initiator.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
+          get { return ownerId_; }
+          set {
+            ownerId_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "lifetime" field.</summary>
+        public const int LifetimeFieldNumber = 3;
+        private global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime lifetime_;
+        /// <summary>
+        /// Lifetime is a lifetime of the session
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime Lifetime {
+          get { return lifetime_; }
+          set {
+            lifetime_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "session_key" field.</summary>
+        public const int SessionKeyFieldNumber = 4;
+        private pb::ByteString sessionKey_ = pb::ByteString.Empty;
+        /// <summary>
+        /// SessionKey is a public key of session key
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pb::ByteString SessionKey {
+          get { return sessionKey_; }
+          set {
+            sessionKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "object" field.</summary>
+        public const int ObjectFieldNumber = 5;
+        /// <summary>
+        /// ObjectService session context.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Session.ObjectSessionContext Object {
+          get { return contextCase_ == ContextOneofCase.Object ? (global::NeoFS.API.v2.Session.ObjectSessionContext) context_ : null; }
+          set {
+            context_ = value;
+            contextCase_ = value == null ? ContextOneofCase.None : ContextOneofCase.Object;
+          }
+        }
+
+        private object context_;
+        /// <summary>Enum of possible cases for the "context" oneof.</summary>
+        public enum ContextOneofCase {
+          None = 0,
+          Object = 5,
+        }
+        private ContextOneofCase contextCase_ = ContextOneofCase.None;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public ContextOneofCase ContextCase {
+          get { return contextCase_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void ClearContext() {
+          contextCase_ = ContextOneofCase.None;
+          context_ = null;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Body);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Body other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Id != other.Id) return false;
+          if (!object.Equals(OwnerId, other.OwnerId)) return false;
+          if (!object.Equals(Lifetime, other.Lifetime)) return false;
+          if (SessionKey != other.SessionKey) return false;
+          if (!object.Equals(Object, other.Object)) return false;
+          if (ContextCase != other.ContextCase) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Id.Length != 0) hash ^= Id.GetHashCode();
+          if (ownerId_ != null) hash ^= OwnerId.GetHashCode();
+          if (lifetime_ != null) hash ^= Lifetime.GetHashCode();
+          if (SessionKey.Length != 0) hash ^= SessionKey.GetHashCode();
+          if (contextCase_ == ContextOneofCase.Object) hash ^= Object.GetHashCode();
+          hash ^= (int) contextCase_;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (Id.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteBytes(Id);
+          }
+          if (ownerId_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(OwnerId);
+          }
+          if (lifetime_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(Lifetime);
+          }
+          if (SessionKey.Length != 0) {
+            output.WriteRawTag(34);
+            output.WriteBytes(SessionKey);
+          }
+          if (contextCase_ == ContextOneofCase.Object) {
+            output.WriteRawTag(42);
+            output.WriteMessage(Object);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Id.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeBytesSize(Id);
+          }
+          if (ownerId_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(OwnerId);
+          }
+          if (lifetime_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lifetime);
+          }
+          if (SessionKey.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeBytesSize(SessionKey);
+          }
+          if (contextCase_ == ContextOneofCase.Object) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Object);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Body other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Id.Length != 0) {
+            Id = other.Id;
+          }
+          if (other.ownerId_ != null) {
+            if (ownerId_ == null) {
+              OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+            }
+            OwnerId.MergeFrom(other.OwnerId);
+          }
+          if (other.lifetime_ != null) {
+            if (lifetime_ == null) {
+              Lifetime = new global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime();
+            }
+            Lifetime.MergeFrom(other.Lifetime);
+          }
+          if (other.SessionKey.Length != 0) {
+            SessionKey = other.SessionKey;
+          }
+          switch (other.ContextCase) {
+            case ContextOneofCase.Object:
+              if (Object == null) {
+                Object = new global::NeoFS.API.v2.Session.ObjectSessionContext();
+              }
+              Object.MergeFrom(other.Object);
+              break;
+          }
+
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                Id = input.ReadBytes();
+                break;
+              }
+              case 18: {
+                if (ownerId_ == null) {
+                  OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+                }
+                input.ReadMessage(OwnerId);
+                break;
+              }
+              case 26: {
+                if (lifetime_ == null) {
+                  Lifetime = new global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime();
+                }
+                input.ReadMessage(Lifetime);
+                break;
+              }
+              case 34: {
+                SessionKey = input.ReadBytes();
+                break;
+              }
+              case 42: {
+                global::NeoFS.API.v2.Session.ObjectSessionContext subBuilder = new global::NeoFS.API.v2.Session.ObjectSessionContext();
+                if (contextCase_ == ContextOneofCase.Object) {
+                  subBuilder.MergeFrom(Object);
+                }
+                input.ReadMessage(subBuilder);
+                Object = subBuilder;
+                break;
+              }
+            }
+          }
+        }
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the Body message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static partial class Types {
+          /// <summary>
+          /// Lifetime parameters of the token. Filed names taken from rfc7519.
+          /// </summary>
+          public sealed partial class TokenLifetime : pb::IMessage<TokenLifetime> {
+            private static readonly pb::MessageParser<TokenLifetime> _parser = new pb::MessageParser<TokenLifetime>(() => new TokenLifetime());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<TokenLifetime> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::NeoFS.API.v2.Session.SessionToken.Types.Body.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TokenLifetime() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TokenLifetime(TokenLifetime other) : this() {
+              exp_ = other.exp_;
+              nbf_ = other.nbf_;
+              iat_ = other.iat_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TokenLifetime Clone() {
+              return new TokenLifetime(this);
+            }
+
+            /// <summary>Field number for the "exp" field.</summary>
+            public const int ExpFieldNumber = 1;
+            private ulong exp_;
+            /// <summary>
+            /// Expiration Epoch
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong Exp {
+              get { return exp_; }
+              set {
+                exp_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "nbf" field.</summary>
+            public const int NbfFieldNumber = 2;
+            private ulong nbf_;
+            /// <summary>
+            /// Not valid before Epoch
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong Nbf {
+              get { return nbf_; }
+              set {
+                nbf_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "iat" field.</summary>
+            public const int IatFieldNumber = 3;
+            private ulong iat_;
+            /// <summary>
+            /// Issued at Epoch
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong Iat {
+              get { return iat_; }
+              set {
+                iat_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as TokenLifetime);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(TokenLifetime other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Exp != other.Exp) return false;
+              if (Nbf != other.Nbf) return false;
+              if (Iat != other.Iat) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Exp != 0UL) hash ^= Exp.GetHashCode();
+              if (Nbf != 0UL) hash ^= Nbf.GetHashCode();
+              if (Iat != 0UL) hash ^= Iat.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (Exp != 0UL) {
+                output.WriteRawTag(8);
+                output.WriteUInt64(Exp);
+              }
+              if (Nbf != 0UL) {
+                output.WriteRawTag(16);
+                output.WriteUInt64(Nbf);
+              }
+              if (Iat != 0UL) {
+                output.WriteRawTag(24);
+                output.WriteUInt64(Iat);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (Exp != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Exp);
+              }
+              if (Nbf != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Nbf);
+              }
+              if (Iat != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Iat);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(TokenLifetime other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Exp != 0UL) {
+                Exp = other.Exp;
+              }
+              if (other.Nbf != 0UL) {
+                Nbf = other.Nbf;
+              }
+              if (other.Iat != 0UL) {
+                Iat = other.Iat;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 8: {
+                    Exp = input.ReadUInt64();
+                    break;
+                  }
+                  case 16: {
+                    Nbf = input.ReadUInt64();
+                    break;
+                  }
+                  case 24: {
+                    Iat = input.ReadUInt64();
+                    break;
+                  }
+                }
+              }
+            }
+
+          }
+
+        }
+        #endregion
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// Extended headers for Request/Response
+  /// </summary>
+  public sealed partial class XHeader : pb::IMessage<XHeader> {
+    private static readonly pb::MessageParser<XHeader> _parser = new pb::MessageParser<XHeader>(() => new XHeader());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<XHeader> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Session.TypesReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public XHeader() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public XHeader(XHeader other) : this() {
+      key_ = other.key_;
+      value_ = other.value_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public XHeader Clone() {
+      return new XHeader(this);
+    }
+
+    /// <summary>Field number for the "key" field.</summary>
+    public const int KeyFieldNumber = 1;
+    private string key_ = "";
+    /// <summary>
+    /// Key of the X-Header.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Key {
+      get { return key_; }
+      set {
+        key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "value" field.</summary>
+    public const int ValueFieldNumber = 2;
+    private string value_ = "";
+    /// <summary>
+    /// Value of the X-Header.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Value {
+      get { return value_; }
+      set {
+        value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as XHeader);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(XHeader other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Key != other.Key) return false;
+      if (Value != other.Value) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Key.Length != 0) hash ^= Key.GetHashCode();
+      if (Value.Length != 0) hash ^= Value.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Key.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Key);
+      }
+      if (Value.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Value);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Key.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
+      }
+      if (Value.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(XHeader other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Key.Length != 0) {
+        Key = other.Key;
+      }
+      if (other.Value.Length != 0) {
+        Value = other.Value;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Key = input.ReadString();
+            break;
+          }
+          case 18: {
+            Value = input.ReadString();
             break;
           }
         }
@@ -210,17 +1161,17 @@ namespace NeoFS.API.Session {
   }
 
   /// <summary>
-  /// User token granting rights for object manipulation
+  /// Information about the request
   /// </summary>
-  public sealed partial class Token : pb::IMessage<Token> {
-    private static readonly pb::MessageParser<Token> _parser = new pb::MessageParser<Token>(() => new Token());
+  public sealed partial class RequestMetaHeader : pb::IMessage<RequestMetaHeader> {
+    private static readonly pb::MessageParser<RequestMetaHeader> _parser = new pb::MessageParser<RequestMetaHeader>(() => new RequestMetaHeader());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Token> Parser { get { return _parser; } }
+    public static pb::MessageParser<RequestMetaHeader> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Session.TypesReflection.Descriptor.MessageTypes[1]; }
+      get { return global::NeoFS.API.v2.Session.TypesReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -229,175 +1180,159 @@ namespace NeoFS.API.Session {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Token() {
+    public RequestMetaHeader() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Token(Token other) : this() {
-      header_ = other.header_ != null ? other.header_.Clone() : null;
-      ownerID_ = other.ownerID_;
-      firstEpoch_ = other.firstEpoch_;
-      lastEpoch_ = other.lastEpoch_;
-      objectID_ = other.objectID_.Clone();
-      signature_ = other.signature_;
-      iD_ = other.iD_;
-      publicKeys_ = other.publicKeys_.Clone();
+    public RequestMetaHeader(RequestMetaHeader other) : this() {
+      version_ = other.version_ != null ? other.version_.Clone() : null;
+      epoch_ = other.epoch_;
+      ttl_ = other.ttl_;
+      xHeaders_ = other.xHeaders_.Clone();
+      sessionToken_ = other.sessionToken_ != null ? other.sessionToken_.Clone() : null;
+      bearerToken_ = other.bearerToken_ != null ? other.bearerToken_.Clone() : null;
+      origin_ = other.origin_ != null ? other.origin_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Token Clone() {
-      return new Token(this);
+    public RequestMetaHeader Clone() {
+      return new RequestMetaHeader(this);
     }
 
-    /// <summary>Field number for the "Header" field.</summary>
-    public const int HeaderFieldNumber = 1;
-    private global::NeoFS.API.Session.VerificationHeader header_;
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Header carries verification data of session key
+    /// Client API version.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Session.VerificationHeader Header {
-      get { return header_; }
+    public global::NeoFS.API.v2.Refs.Version Version {
+      get { return version_; }
       set {
-        header_ = value;
+        version_ = value;
       }
     }
 
-    /// <summary>Field number for the "OwnerID" field.</summary>
-    public const int OwnerIDFieldNumber = 2;
-    private pb::ByteString ownerID_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "epoch" field.</summary>
+    public const int EpochFieldNumber = 2;
+    private ulong epoch_;
     /// <summary>
-    /// OwnerID is an owner of manipulation object
+    /// Client local epoch number. Set to 0 if unknown.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString OwnerID {
-      get { return ownerID_; }
+    public ulong Epoch {
+      get { return epoch_; }
       set {
-        ownerID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        epoch_ = value;
       }
     }
 
-    /// <summary>Field number for the "FirstEpoch" field.</summary>
-    public const int FirstEpochFieldNumber = 3;
-    private ulong firstEpoch_;
+    /// <summary>Field number for the "ttl" field.</summary>
+    public const int TtlFieldNumber = 3;
+    private uint ttl_;
     /// <summary>
-    /// FirstEpoch is an initial epoch of token lifetime
+    /// Maximum number of nodes in the request route.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong FirstEpoch {
-      get { return firstEpoch_; }
+    public uint Ttl {
+      get { return ttl_; }
       set {
-        firstEpoch_ = value;
+        ttl_ = value;
       }
     }
 
-    /// <summary>Field number for the "LastEpoch" field.</summary>
-    public const int LastEpochFieldNumber = 4;
-    private ulong lastEpoch_;
+    /// <summary>Field number for the "x_headers" field.</summary>
+    public const int XHeadersFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Session.XHeader> _repeated_xHeaders_codec
+        = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Session.XHeader.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> xHeaders_ = new pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader>();
     /// <summary>
-    /// LastEpoch is a last epoch of token lifetime
+    /// Request X-Headers.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong LastEpoch {
-      get { return lastEpoch_; }
+    public pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> XHeaders {
+      get { return xHeaders_; }
+    }
+
+    /// <summary>Field number for the "session_token" field.</summary>
+    public const int SessionTokenFieldNumber = 5;
+    private global::NeoFS.API.v2.Session.SessionToken sessionToken_;
+    /// <summary>
+    /// Token is a token of the session within which the request is sent
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.SessionToken SessionToken {
+      get { return sessionToken_; }
       set {
-        lastEpoch_ = value;
+        sessionToken_ = value;
       }
     }
 
-    /// <summary>Field number for the "ObjectID" field.</summary>
-    public const int ObjectIDFieldNumber = 5;
-    private static readonly pb::FieldCodec<pb::ByteString> _repeated_objectID_codec
-        = pb::FieldCodec.ForBytes(42);
-    private readonly pbc::RepeatedField<pb::ByteString> objectID_ = new pbc::RepeatedField<pb::ByteString>();
+    /// <summary>Field number for the "bearer_token" field.</summary>
+    public const int BearerTokenFieldNumber = 6;
+    private global::NeoFS.API.v2.Acl.BearerToken bearerToken_;
     /// <summary>
-    /// ObjectID is an object identifier of manipulation object
+    /// Bearer is a Bearer token of the request
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<pb::ByteString> ObjectID {
-      get { return objectID_; }
-    }
-
-    /// <summary>Field number for the "Signature" field.</summary>
-    public const int SignatureFieldNumber = 6;
-    private pb::ByteString signature_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Signature is a token signature, signed by owner of manipulation object
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Signature {
-      get { return signature_; }
+    public global::NeoFS.API.v2.Acl.BearerToken BearerToken {
+      get { return bearerToken_; }
       set {
-        signature_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        bearerToken_ = value;
       }
     }
 
-    /// <summary>Field number for the "ID" field.</summary>
-    public const int IDFieldNumber = 7;
-    private pb::ByteString iD_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "origin" field.</summary>
+    public const int OriginFieldNumber = 7;
+    private global::NeoFS.API.v2.Session.RequestMetaHeader origin_;
     /// <summary>
-    /// ID is a token identifier. valid UUIDv4 represented in bytes
+    /// RequestMetaHeader of the origin request.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString ID {
-      get { return iD_; }
+    public global::NeoFS.API.v2.Session.RequestMetaHeader Origin {
+      get { return origin_; }
       set {
-        iD_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        origin_ = value;
       }
-    }
-
-    /// <summary>Field number for the "PublicKeys" field.</summary>
-    public const int PublicKeysFieldNumber = 8;
-    private static readonly pb::FieldCodec<pb::ByteString> _repeated_publicKeys_codec
-        = pb::FieldCodec.ForBytes(66);
-    private readonly pbc::RepeatedField<pb::ByteString> publicKeys_ = new pbc::RepeatedField<pb::ByteString>();
-    /// <summary>
-    /// PublicKeys associated with owner
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<pb::ByteString> PublicKeys {
-      get { return publicKeys_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Token);
+      return Equals(other as RequestMetaHeader);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Token other) {
+    public bool Equals(RequestMetaHeader other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Header, other.Header)) return false;
-      if (OwnerID != other.OwnerID) return false;
-      if (FirstEpoch != other.FirstEpoch) return false;
-      if (LastEpoch != other.LastEpoch) return false;
-      if(!objectID_.Equals(other.objectID_)) return false;
-      if (Signature != other.Signature) return false;
-      if (ID != other.ID) return false;
-      if(!publicKeys_.Equals(other.publicKeys_)) return false;
+      if (!object.Equals(Version, other.Version)) return false;
+      if (Epoch != other.Epoch) return false;
+      if (Ttl != other.Ttl) return false;
+      if(!xHeaders_.Equals(other.xHeaders_)) return false;
+      if (!object.Equals(SessionToken, other.SessionToken)) return false;
+      if (!object.Equals(BearerToken, other.BearerToken)) return false;
+      if (!object.Equals(Origin, other.Origin)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (header_ != null) hash ^= Header.GetHashCode();
-      if (OwnerID.Length != 0) hash ^= OwnerID.GetHashCode();
-      if (FirstEpoch != 0UL) hash ^= FirstEpoch.GetHashCode();
-      if (LastEpoch != 0UL) hash ^= LastEpoch.GetHashCode();
-      hash ^= objectID_.GetHashCode();
-      if (Signature.Length != 0) hash ^= Signature.GetHashCode();
-      if (ID.Length != 0) hash ^= ID.GetHashCode();
-      hash ^= publicKeys_.GetHashCode();
+      if (version_ != null) hash ^= Version.GetHashCode();
+      if (Epoch != 0UL) hash ^= Epoch.GetHashCode();
+      if (Ttl != 0) hash ^= Ttl.GetHashCode();
+      hash ^= xHeaders_.GetHashCode();
+      if (sessionToken_ != null) hash ^= SessionToken.GetHashCode();
+      if (bearerToken_ != null) hash ^= BearerToken.GetHashCode();
+      if (origin_ != null) hash ^= Origin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -411,32 +1346,31 @@ namespace NeoFS.API.Session {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (header_ != null) {
+      if (version_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(Header);
+        output.WriteMessage(Version);
       }
-      if (OwnerID.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteBytes(OwnerID);
+      if (Epoch != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(Epoch);
       }
-      if (FirstEpoch != 0UL) {
+      if (Ttl != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt64(FirstEpoch);
+        output.WriteUInt32(Ttl);
       }
-      if (LastEpoch != 0UL) {
-        output.WriteRawTag(32);
-        output.WriteUInt64(LastEpoch);
+      xHeaders_.WriteTo(output, _repeated_xHeaders_codec);
+      if (sessionToken_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(SessionToken);
       }
-      objectID_.WriteTo(output, _repeated_objectID_codec);
-      if (Signature.Length != 0) {
+      if (bearerToken_ != null) {
         output.WriteRawTag(50);
-        output.WriteBytes(Signature);
+        output.WriteMessage(BearerToken);
       }
-      if (ID.Length != 0) {
+      if (origin_ != null) {
         output.WriteRawTag(58);
-        output.WriteBytes(ID);
+        output.WriteMessage(Origin);
       }
-      publicKeys_.WriteTo(output, _repeated_publicKeys_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -445,26 +1379,25 @@ namespace NeoFS.API.Session {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (header_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Header);
+      if (version_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
       }
-      if (OwnerID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(OwnerID);
+      if (Epoch != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Epoch);
       }
-      if (FirstEpoch != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(FirstEpoch);
+      if (Ttl != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Ttl);
       }
-      if (LastEpoch != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(LastEpoch);
+      size += xHeaders_.CalculateSize(_repeated_xHeaders_codec);
+      if (sessionToken_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SessionToken);
       }
-      size += objectID_.CalculateSize(_repeated_objectID_codec);
-      if (Signature.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Signature);
+      if (bearerToken_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BearerToken);
       }
-      if (ID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ID);
+      if (origin_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Origin);
       }
-      size += publicKeys_.CalculateSize(_repeated_publicKeys_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -472,33 +1405,41 @@ namespace NeoFS.API.Session {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Token other) {
+    public void MergeFrom(RequestMetaHeader other) {
       if (other == null) {
         return;
       }
-      if (other.header_ != null) {
-        if (header_ == null) {
-          Header = new global::NeoFS.API.Session.VerificationHeader();
+      if (other.version_ != null) {
+        if (version_ == null) {
+          Version = new global::NeoFS.API.v2.Refs.Version();
         }
-        Header.MergeFrom(other.Header);
+        Version.MergeFrom(other.Version);
       }
-      if (other.OwnerID.Length != 0) {
-        OwnerID = other.OwnerID;
+      if (other.Epoch != 0UL) {
+        Epoch = other.Epoch;
       }
-      if (other.FirstEpoch != 0UL) {
-        FirstEpoch = other.FirstEpoch;
+      if (other.Ttl != 0) {
+        Ttl = other.Ttl;
       }
-      if (other.LastEpoch != 0UL) {
-        LastEpoch = other.LastEpoch;
+      xHeaders_.Add(other.xHeaders_);
+      if (other.sessionToken_ != null) {
+        if (sessionToken_ == null) {
+          SessionToken = new global::NeoFS.API.v2.Session.SessionToken();
+        }
+        SessionToken.MergeFrom(other.SessionToken);
       }
-      objectID_.Add(other.objectID_);
-      if (other.Signature.Length != 0) {
-        Signature = other.Signature;
+      if (other.bearerToken_ != null) {
+        if (bearerToken_ == null) {
+          BearerToken = new global::NeoFS.API.v2.Acl.BearerToken();
+        }
+        BearerToken.MergeFrom(other.BearerToken);
       }
-      if (other.ID.Length != 0) {
-        ID = other.ID;
+      if (other.origin_ != null) {
+        if (origin_ == null) {
+          Origin = new global::NeoFS.API.v2.Session.RequestMetaHeader();
+        }
+        Origin.MergeFrom(other.Origin);
       }
-      publicKeys_.Add(other.publicKeys_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -511,38 +1452,810 @@ namespace NeoFS.API.Session {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (header_ == null) {
-              Header = new global::NeoFS.API.Session.VerificationHeader();
+            if (version_ == null) {
+              Version = new global::NeoFS.API.v2.Refs.Version();
             }
-            input.ReadMessage(Header);
+            input.ReadMessage(Version);
             break;
           }
-          case 18: {
-            OwnerID = input.ReadBytes();
+          case 16: {
+            Epoch = input.ReadUInt64();
             break;
           }
           case 24: {
-            FirstEpoch = input.ReadUInt64();
+            Ttl = input.ReadUInt32();
             break;
           }
-          case 32: {
-            LastEpoch = input.ReadUInt64();
+          case 34: {
+            xHeaders_.AddEntriesFrom(input, _repeated_xHeaders_codec);
             break;
           }
           case 42: {
-            objectID_.AddEntriesFrom(input, _repeated_objectID_codec);
+            if (sessionToken_ == null) {
+              SessionToken = new global::NeoFS.API.v2.Session.SessionToken();
+            }
+            input.ReadMessage(SessionToken);
             break;
           }
           case 50: {
-            Signature = input.ReadBytes();
+            if (bearerToken_ == null) {
+              BearerToken = new global::NeoFS.API.v2.Acl.BearerToken();
+            }
+            input.ReadMessage(BearerToken);
             break;
           }
           case 58: {
-            ID = input.ReadBytes();
+            if (origin_ == null) {
+              Origin = new global::NeoFS.API.v2.Session.RequestMetaHeader();
+            }
+            input.ReadMessage(Origin);
             break;
           }
-          case 66: {
-            publicKeys_.AddEntriesFrom(input, _repeated_publicKeys_codec);
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Information about the response
+  /// </summary>
+  public sealed partial class ResponseMetaHeader : pb::IMessage<ResponseMetaHeader> {
+    private static readonly pb::MessageParser<ResponseMetaHeader> _parser = new pb::MessageParser<ResponseMetaHeader>(() => new ResponseMetaHeader());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ResponseMetaHeader> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Session.TypesReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseMetaHeader() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseMetaHeader(ResponseMetaHeader other) : this() {
+      version_ = other.version_ != null ? other.version_.Clone() : null;
+      epoch_ = other.epoch_;
+      ttl_ = other.ttl_;
+      xHeaders_ = other.xHeaders_.Clone();
+      origin_ = other.origin_ != null ? other.origin_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseMetaHeader Clone() {
+      return new ResponseMetaHeader(this);
+    }
+
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Version version_;
+    /// <summary>
+    /// Server API version.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Version Version {
+      get { return version_; }
+      set {
+        version_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "epoch" field.</summary>
+    public const int EpochFieldNumber = 2;
+    private ulong epoch_;
+    /// <summary>
+    /// Server local epoch number.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong Epoch {
+      get { return epoch_; }
+      set {
+        epoch_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ttl" field.</summary>
+    public const int TtlFieldNumber = 3;
+    private uint ttl_;
+    /// <summary>
+    /// Maximum number of nodes in the response route.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Ttl {
+      get { return ttl_; }
+      set {
+        ttl_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "x_headers" field.</summary>
+    public const int XHeadersFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Session.XHeader> _repeated_xHeaders_codec
+        = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Session.XHeader.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> xHeaders_ = new pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader>();
+    /// <summary>
+    /// Response X-Headers.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> XHeaders {
+      get { return xHeaders_; }
+    }
+
+    /// <summary>Field number for the "origin" field.</summary>
+    public const int OriginFieldNumber = 5;
+    private global::NeoFS.API.v2.Session.ResponseMetaHeader origin_;
+    /// <summary>
+    /// Carries response meta header of the origin response.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.ResponseMetaHeader Origin {
+      get { return origin_; }
+      set {
+        origin_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ResponseMetaHeader);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ResponseMetaHeader other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Version, other.Version)) return false;
+      if (Epoch != other.Epoch) return false;
+      if (Ttl != other.Ttl) return false;
+      if(!xHeaders_.Equals(other.xHeaders_)) return false;
+      if (!object.Equals(Origin, other.Origin)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (version_ != null) hash ^= Version.GetHashCode();
+      if (Epoch != 0UL) hash ^= Epoch.GetHashCode();
+      if (Ttl != 0) hash ^= Ttl.GetHashCode();
+      hash ^= xHeaders_.GetHashCode();
+      if (origin_ != null) hash ^= Origin.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (version_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Version);
+      }
+      if (Epoch != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(Epoch);
+      }
+      if (Ttl != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Ttl);
+      }
+      xHeaders_.WriteTo(output, _repeated_xHeaders_codec);
+      if (origin_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Origin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (version_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
+      }
+      if (Epoch != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Epoch);
+      }
+      if (Ttl != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Ttl);
+      }
+      size += xHeaders_.CalculateSize(_repeated_xHeaders_codec);
+      if (origin_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Origin);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ResponseMetaHeader other) {
+      if (other == null) {
+        return;
+      }
+      if (other.version_ != null) {
+        if (version_ == null) {
+          Version = new global::NeoFS.API.v2.Refs.Version();
+        }
+        Version.MergeFrom(other.Version);
+      }
+      if (other.Epoch != 0UL) {
+        Epoch = other.Epoch;
+      }
+      if (other.Ttl != 0) {
+        Ttl = other.Ttl;
+      }
+      xHeaders_.Add(other.xHeaders_);
+      if (other.origin_ != null) {
+        if (origin_ == null) {
+          Origin = new global::NeoFS.API.v2.Session.ResponseMetaHeader();
+        }
+        Origin.MergeFrom(other.Origin);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (version_ == null) {
+              Version = new global::NeoFS.API.v2.Refs.Version();
+            }
+            input.ReadMessage(Version);
+            break;
+          }
+          case 16: {
+            Epoch = input.ReadUInt64();
+            break;
+          }
+          case 24: {
+            Ttl = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            xHeaders_.AddEntriesFrom(input, _repeated_xHeaders_codec);
+            break;
+          }
+          case 42: {
+            if (origin_ == null) {
+              Origin = new global::NeoFS.API.v2.Session.ResponseMetaHeader();
+            }
+            input.ReadMessage(Origin);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Verification info for request signed by all intermediate nodes
+  /// </summary>
+  public sealed partial class RequestVerificationHeader : pb::IMessage<RequestVerificationHeader> {
+    private static readonly pb::MessageParser<RequestVerificationHeader> _parser = new pb::MessageParser<RequestVerificationHeader>(() => new RequestVerificationHeader());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RequestVerificationHeader> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Session.TypesReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestVerificationHeader() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestVerificationHeader(RequestVerificationHeader other) : this() {
+      bodySignature_ = other.bodySignature_ != null ? other.bodySignature_.Clone() : null;
+      metaSignature_ = other.metaSignature_ != null ? other.metaSignature_.Clone() : null;
+      originSignature_ = other.originSignature_ != null ? other.originSignature_.Clone() : null;
+      origin_ = other.origin_ != null ? other.origin_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestVerificationHeader Clone() {
+      return new RequestVerificationHeader(this);
+    }
+
+    /// <summary>Field number for the "body_signature" field.</summary>
+    public const int BodySignatureFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Signature bodySignature_;
+    /// <summary>
+    /// Request Body signature. Should be generated once by request initiator.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature BodySignature {
+      get { return bodySignature_; }
+      set {
+        bodySignature_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "meta_signature" field.</summary>
+    public const int MetaSignatureFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.Signature metaSignature_;
+    /// <summary>
+    /// Request Meta signature is added and signed by any intermediate node
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature MetaSignature {
+      get { return metaSignature_; }
+      set {
+        metaSignature_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "origin_signature" field.</summary>
+    public const int OriginSignatureFieldNumber = 3;
+    private global::NeoFS.API.v2.Refs.Signature originSignature_;
+    /// <summary>
+    /// Sign previous hops
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature OriginSignature {
+      get { return originSignature_; }
+      set {
+        originSignature_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "origin" field.</summary>
+    public const int OriginFieldNumber = 4;
+    private global::NeoFS.API.v2.Session.RequestVerificationHeader origin_;
+    /// <summary>
+    /// Chain of previous hops signatures
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.RequestVerificationHeader Origin {
+      get { return origin_; }
+      set {
+        origin_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RequestVerificationHeader);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RequestVerificationHeader other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(BodySignature, other.BodySignature)) return false;
+      if (!object.Equals(MetaSignature, other.MetaSignature)) return false;
+      if (!object.Equals(OriginSignature, other.OriginSignature)) return false;
+      if (!object.Equals(Origin, other.Origin)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (bodySignature_ != null) hash ^= BodySignature.GetHashCode();
+      if (metaSignature_ != null) hash ^= MetaSignature.GetHashCode();
+      if (originSignature_ != null) hash ^= OriginSignature.GetHashCode();
+      if (origin_ != null) hash ^= Origin.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (bodySignature_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(BodySignature);
+      }
+      if (metaSignature_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MetaSignature);
+      }
+      if (originSignature_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(OriginSignature);
+      }
+      if (origin_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Origin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (bodySignature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BodySignature);
+      }
+      if (metaSignature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MetaSignature);
+      }
+      if (originSignature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OriginSignature);
+      }
+      if (origin_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Origin);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RequestVerificationHeader other) {
+      if (other == null) {
+        return;
+      }
+      if (other.bodySignature_ != null) {
+        if (bodySignature_ == null) {
+          BodySignature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        BodySignature.MergeFrom(other.BodySignature);
+      }
+      if (other.metaSignature_ != null) {
+        if (metaSignature_ == null) {
+          MetaSignature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        MetaSignature.MergeFrom(other.MetaSignature);
+      }
+      if (other.originSignature_ != null) {
+        if (originSignature_ == null) {
+          OriginSignature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        OriginSignature.MergeFrom(other.OriginSignature);
+      }
+      if (other.origin_ != null) {
+        if (origin_ == null) {
+          Origin = new global::NeoFS.API.v2.Session.RequestVerificationHeader();
+        }
+        Origin.MergeFrom(other.Origin);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (bodySignature_ == null) {
+              BodySignature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(BodySignature);
+            break;
+          }
+          case 18: {
+            if (metaSignature_ == null) {
+              MetaSignature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(MetaSignature);
+            break;
+          }
+          case 26: {
+            if (originSignature_ == null) {
+              OriginSignature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(OriginSignature);
+            break;
+          }
+          case 34: {
+            if (origin_ == null) {
+              Origin = new global::NeoFS.API.v2.Session.RequestVerificationHeader();
+            }
+            input.ReadMessage(Origin);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Verification info for response signed by all intermediate nodes
+  /// </summary>
+  public sealed partial class ResponseVerificationHeader : pb::IMessage<ResponseVerificationHeader> {
+    private static readonly pb::MessageParser<ResponseVerificationHeader> _parser = new pb::MessageParser<ResponseVerificationHeader>(() => new ResponseVerificationHeader());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ResponseVerificationHeader> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Session.TypesReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseVerificationHeader() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseVerificationHeader(ResponseVerificationHeader other) : this() {
+      bodySignature_ = other.bodySignature_ != null ? other.bodySignature_.Clone() : null;
+      metaSignature_ = other.metaSignature_ != null ? other.metaSignature_.Clone() : null;
+      originSignature_ = other.originSignature_ != null ? other.originSignature_.Clone() : null;
+      origin_ = other.origin_ != null ? other.origin_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ResponseVerificationHeader Clone() {
+      return new ResponseVerificationHeader(this);
+    }
+
+    /// <summary>Field number for the "body_signature" field.</summary>
+    public const int BodySignatureFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Signature bodySignature_;
+    /// <summary>
+    /// Response Body signature. Should be generated once by answering node.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature BodySignature {
+      get { return bodySignature_; }
+      set {
+        bodySignature_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "meta_signature" field.</summary>
+    public const int MetaSignatureFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.Signature metaSignature_;
+    /// <summary>
+    /// Response Meta signature is added and signed by any intermediate node
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature MetaSignature {
+      get { return metaSignature_; }
+      set {
+        metaSignature_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "origin_signature" field.</summary>
+    public const int OriginSignatureFieldNumber = 3;
+    private global::NeoFS.API.v2.Refs.Signature originSignature_;
+    /// <summary>
+    /// Sign previous hops
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature OriginSignature {
+      get { return originSignature_; }
+      set {
+        originSignature_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "origin" field.</summary>
+    public const int OriginFieldNumber = 4;
+    private global::NeoFS.API.v2.Session.ResponseVerificationHeader origin_;
+    /// <summary>
+    /// Chain of previous hops signatures
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.ResponseVerificationHeader Origin {
+      get { return origin_; }
+      set {
+        origin_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ResponseVerificationHeader);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ResponseVerificationHeader other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(BodySignature, other.BodySignature)) return false;
+      if (!object.Equals(MetaSignature, other.MetaSignature)) return false;
+      if (!object.Equals(OriginSignature, other.OriginSignature)) return false;
+      if (!object.Equals(Origin, other.Origin)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (bodySignature_ != null) hash ^= BodySignature.GetHashCode();
+      if (metaSignature_ != null) hash ^= MetaSignature.GetHashCode();
+      if (originSignature_ != null) hash ^= OriginSignature.GetHashCode();
+      if (origin_ != null) hash ^= Origin.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (bodySignature_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(BodySignature);
+      }
+      if (metaSignature_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MetaSignature);
+      }
+      if (originSignature_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(OriginSignature);
+      }
+      if (origin_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Origin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (bodySignature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BodySignature);
+      }
+      if (metaSignature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MetaSignature);
+      }
+      if (originSignature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OriginSignature);
+      }
+      if (origin_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Origin);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ResponseVerificationHeader other) {
+      if (other == null) {
+        return;
+      }
+      if (other.bodySignature_ != null) {
+        if (bodySignature_ == null) {
+          BodySignature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        BodySignature.MergeFrom(other.BodySignature);
+      }
+      if (other.metaSignature_ != null) {
+        if (metaSignature_ == null) {
+          MetaSignature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        MetaSignature.MergeFrom(other.MetaSignature);
+      }
+      if (other.originSignature_ != null) {
+        if (originSignature_ == null) {
+          OriginSignature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        OriginSignature.MergeFrom(other.OriginSignature);
+      }
+      if (other.origin_ != null) {
+        if (origin_ == null) {
+          Origin = new global::NeoFS.API.v2.Session.ResponseVerificationHeader();
+        }
+        Origin.MergeFrom(other.Origin);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (bodySignature_ == null) {
+              BodySignature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(BodySignature);
+            break;
+          }
+          case 18: {
+            if (metaSignature_ == null) {
+              MetaSignature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(MetaSignature);
+            break;
+          }
+          case 26: {
+            if (originSignature_ == null) {
+              OriginSignature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(OriginSignature);
+            break;
+          }
+          case 34: {
+            if (origin_ == null) {
+              Origin = new global::NeoFS.API.v2.Session.ResponseVerificationHeader();
+            }
+            input.ReadMessage(Origin);
             break;
           }
         }

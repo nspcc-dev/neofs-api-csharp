@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace NeoFS.API.Acl {
+namespace NeoFS.API.v2.Acl {
 
   /// <summary>Holder for reflection information generated from acl/types.proto</summary>
   public static partial class TypesReflection {
@@ -24,45 +24,1581 @@ namespace NeoFS.API.Acl {
     static TypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9hY2wvdHlwZXMucHJvdG8SA2FjbBotZ2l0aHViLmNvbS9nb2dvL3Byb3Rv",
-            "YnVmL2dvZ29wcm90by9nb2dvLnByb3RvKkMKBlRhcmdldBILCgdVbmtub3du",
-            "EAASCAoEVXNlchABEgoKBlN5c3RlbRACEgoKBk90aGVycxADEgoKBlB1Yktl",
-            "eRAEQjtaJWdpdGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1nby9hY2yq",
-            "Ag1OZW9GUy5BUEkuQWNs2OIeAWIGcHJvdG8z"));
+            "Cg9hY2wvdHlwZXMucHJvdG8SDW5lby5mcy52Mi5hY2waEHJlZnMvdHlwZXMu",
+            "cHJvdG8i7AMKCkVBQ0xSZWNvcmQSNgoJb3BlcmF0aW9uGAEgASgOMhgubmVv",
+            "LmZzLnYyLmFjbC5PcGVyYXRpb25SCU9wZXJhdGlvbhItCgZhY3Rpb24YAiAB",
+            "KA4yFS5uZW8uZnMudjIuYWNsLkFjdGlvblIGQWN0aW9uEjoKB2ZpbHRlcnMY",
+            "AyADKAsyIC5uZW8uZnMudjIuYWNsLkVBQ0xSZWNvcmQuRmlsdGVyUgdGaWx0",
+            "ZXJzEjoKB3RhcmdldHMYBCADKAsyIC5uZW8uZnMudjIuYWNsLkVBQ0xSZWNv",
+            "cmQuVGFyZ2V0UgdUYXJnZXRzGrMBCgZGaWx0ZXISOgoLaGVhZGVyX3R5cGUY",
+            "ASABKA4yGS5uZW8uZnMudjIuYWNsLkhlYWRlclR5cGVSCkhlYWRlclR5cGUS",
+            "NwoKbWF0Y2hfdHlwZRgCIAEoDjIYLm5lby5mcy52Mi5hY2wuTWF0Y2hUeXBl",
+            "UglNYXRjaFR5cGUSGQoLaGVhZGVyX25hbWUYAyABKAlSBE5hbWUSGQoKaGVh",
+            "ZGVyX3ZhbBgEIAEoCVIFVmFsdWUaSQoGVGFyZ2V0EicKBHJvbGUYASABKA4y",
+            "Ey5uZW8uZnMudjIuYWNsLlJvbGVSBFJvbGUSFgoIa2V5X2xpc3QYAiADKAxS",
+            "BEtleXMiqgEKCUVBQ0xUYWJsZRIoCgd2ZXJzaW9uGAEgASgLMhcubmVvLmZz",
+            "LnYyLnJlZnMuVmVyc2lvbhI+Cgxjb250YWluZXJfaWQYAiABKAsyGy5uZW8u",
+            "ZnMudjIucmVmcy5Db250YWluZXJJRFILQ29udGFpbmVySUQSMwoHcmVjb3Jk",
+            "cxgDIAMoCzIZLm5lby5mcy52Mi5hY2wuRUFDTFJlY29yZFIHUmVjb3JkcyLF",
+            "AgoLQmVhcmVyVG9rZW4SLQoEYm9keRgBIAEoCzIfLm5lby5mcy52Mi5hY2wu",
+            "QmVhcmVyVG9rZW4uQm9keRIsCglzaWduYXR1cmUYAiABKAsyGS5uZW8uZnMu",
+            "djIucmVmcy5TaWduYXR1cmUa2AEKBEJvZHkSLAoKZWFjbF90YWJsZRgBIAEo",
+            "CzIYLm5lby5mcy52Mi5hY2wuRUFDTFRhYmxlEikKCG93bmVyX2lkGAIgASgL",
+            "MhcubmVvLmZzLnYyLnJlZnMuT3duZXJJRBI/CghsaWZldGltZRgDIAEoCzIt",
+            "Lm5lby5mcy52Mi5hY2wuQmVhcmVyVG9rZW4uQm9keS5Ub2tlbkxpZmV0aW1l",
+            "GjYKDVRva2VuTGlmZXRpbWUSCwoDZXhwGAEgASgEEgsKA25iZhgCIAEoBBIL",
+            "CgNpYXQYAyABKAQqPgoEUm9sZRIUChBST0xFX1VOU1BFQ0lGSUVEEAASCAoE",
+            "VVNFUhABEgoKBlNZU1RFTRACEgoKBk9USEVSUxADKk8KCU1hdGNoVHlwZRIa",
+            "ChZNQVRDSF9UWVBFX1VOU1BFQ0lGSUVEEAASEAoMU1RSSU5HX0VRVUFMEAES",
+            "FAoQU1RSSU5HX05PVF9FUVVBTBACKnoKCU9wZXJhdGlvbhIZChVPUEVSQVRJ",
+            "T05fVU5TUEVDSUZJRUQQABIHCgNHRVQQARIICgRIRUFEEAISBwoDUFVUEAMS",
+            "CgoGREVMRVRFEAQSCgoGU0VBUkNIEAUSDAoIR0VUUkFOR0UQBhIQCgxHRVRS",
+            "QU5HRUhBU0gQByo1CgZBY3Rpb24SFgoSQUNUSU9OX1VOU1BFQ0lGSUVEEAAS",
+            "CQoFQUxMT1cQARIICgRERU5ZEAIqPQoKSGVhZGVyVHlwZRIWChJIRUFERVJf",
+            "VU5TUEVDSUZJRUQQABILCgdSRVFVRVNUEAESCgoGT0JKRUNUEAJCRloxZ2l0",
+            "aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3YyL2FjbC9ncnBjO2Fj",
+            "bKoCEE5lb0ZTLkFQSS52Mi5BY2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.Acl.Target), }, null, null));
+          new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Acl.Role), typeof(global::NeoFS.API.v2.Acl.MatchType), typeof(global::NeoFS.API.v2.Acl.Operation), typeof(global::NeoFS.API.v2.Acl.Action), typeof(global::NeoFS.API.v2.Acl.HeaderType), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord), global::NeoFS.API.v2.Acl.EACLRecord.Parser, new[]{ "Operation", "Action", "Filters", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter), global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter.Parser, new[]{ "HeaderType", "MatchType", "HeaderName", "HeaderVal" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord.Types.Target), global::NeoFS.API.v2.Acl.EACLRecord.Types.Target.Parser, new[]{ "Role", "KeyList" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLTable), global::NeoFS.API.v2.Acl.EACLTable.Parser, new[]{ "Version", "ContainerId", "Records" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.BearerToken), global::NeoFS.API.v2.Acl.BearerToken.Parser, new[]{ "Body", "Signature" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.BearerToken.Types.Body), global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Parser, new[]{ "EaclTable", "OwnerId", "Lifetime" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime), global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime.Parser, new[]{ "Exp", "Nbf", "Iat" }, null, null, null)})})
+          }));
     }
     #endregion
 
   }
   #region Enums
   /// <summary>
-  /// Target of the access control rule in access control list.
+  /// Target role of the access control rule in access control list.
   /// </summary>
-  public enum Target {
+  public enum Role {
     /// <summary>
-    /// Unknown target, default value.
+    /// Unspecified  role, default value.
     /// </summary>
-    [pbr::OriginalName("Unknown")] Unknown = 0,
+    [pbr::OriginalName("ROLE_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
     /// User target rule is applied if sender is the owner of the container.
     /// </summary>
-    [pbr::OriginalName("User")] User = 1,
+    [pbr::OriginalName("USER")] User = 1,
     /// <summary>
     /// System target rule is applied if sender is the storage node within the
     /// container or inner ring node.
     /// </summary>
-    [pbr::OriginalName("System")] System = 2,
+    [pbr::OriginalName("SYSTEM")] System = 2,
     /// <summary>
     /// Others target rule is applied if sender is not user or system target.
     /// </summary>
-    [pbr::OriginalName("Others")] Others = 3,
+    [pbr::OriginalName("OTHERS")] Others = 3,
+  }
+
+  /// <summary>
+  /// MatchType is an enumeration of match types.
+  /// </summary>
+  public enum MatchType {
     /// <summary>
-    /// PubKey target rule is applied if sender has public key provided in
-    /// extended ACL.
+    /// Unspecified match type, default value.
     /// </summary>
-    [pbr::OriginalName("PubKey")] PubKey = 4,
+    [pbr::OriginalName("MATCH_TYPE_UNSPECIFIED")] Unspecified = 0,
+    /// <summary>
+    /// Return true if strings are equal
+    /// </summary>
+    [pbr::OriginalName("STRING_EQUAL")] StringEqual = 1,
+    /// <summary>
+    /// Return true if strings are different
+    /// </summary>
+    [pbr::OriginalName("STRING_NOT_EQUAL")] StringNotEqual = 2,
+  }
+
+  /// <summary>
+  /// Operation is an enumeration of operation types.
+  /// </summary>
+  public enum Operation {
+    /// <summary>
+    /// Unspecified operation, default value.
+    /// </summary>
+    [pbr::OriginalName("OPERATION_UNSPECIFIED")] Unspecified = 0,
+    /// <summary>
+    /// Get
+    /// </summary>
+    [pbr::OriginalName("GET")] Get = 1,
+    /// <summary>
+    /// Head
+    /// </summary>
+    [pbr::OriginalName("HEAD")] Head = 2,
+    /// <summary>
+    /// Put
+    /// </summary>
+    [pbr::OriginalName("PUT")] Put = 3,
+    /// <summary>
+    /// Delete
+    /// </summary>
+    [pbr::OriginalName("DELETE")] Delete = 4,
+    /// <summary>
+    /// Search
+    /// </summary>
+    [pbr::OriginalName("SEARCH")] Search = 5,
+    /// <summary>
+    /// GetRange
+    /// </summary>
+    [pbr::OriginalName("GETRANGE")] Getrange = 6,
+    /// <summary>
+    /// GetRangeHash
+    /// </summary>
+    [pbr::OriginalName("GETRANGEHASH")] Getrangehash = 7,
+  }
+
+  /// <summary>
+  /// Action is an enumeration of EACL actions.
+  /// </summary>
+  public enum Action {
+    /// <summary>
+    /// Unspecified action, default value.
+    /// </summary>
+    [pbr::OriginalName("ACTION_UNSPECIFIED")] Unspecified = 0,
+    /// <summary>
+    /// Allow action
+    /// </summary>
+    [pbr::OriginalName("ALLOW")] Allow = 1,
+    /// <summary>
+    /// Deny action
+    /// </summary>
+    [pbr::OriginalName("DENY")] Deny = 2,
+  }
+
+  /// <summary>
+  /// Header is an enumeration of filtering header types.
+  /// </summary>
+  public enum HeaderType {
+    /// <summary>
+    /// Unspecified header, default value.
+    /// </summary>
+    [pbr::OriginalName("HEADER_UNSPECIFIED")] HeaderUnspecified = 0,
+    /// <summary>
+    /// Filter request headers
+    /// </summary>
+    [pbr::OriginalName("REQUEST")] Request = 1,
+    /// <summary>
+    /// Filter object headers
+    /// </summary>
+    [pbr::OriginalName("OBJECT")] Object = 2,
+  }
+
+  #endregion
+
+  #region Messages
+  /// <summary>
+  /// EACLRecord groups information about extended ACL rule.
+  /// </summary>
+  public sealed partial class EACLRecord : pb::IMessage<EACLRecord> {
+    private static readonly pb::MessageParser<EACLRecord> _parser = new pb::MessageParser<EACLRecord>(() => new EACLRecord());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<EACLRecord> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Acl.TypesReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EACLRecord() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EACLRecord(EACLRecord other) : this() {
+      operation_ = other.operation_;
+      action_ = other.action_;
+      filters_ = other.filters_.Clone();
+      targets_ = other.targets_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EACLRecord Clone() {
+      return new EACLRecord(this);
+    }
+
+    /// <summary>Field number for the "operation" field.</summary>
+    public const int OperationFieldNumber = 1;
+    private global::NeoFS.API.v2.Acl.Operation operation_ = 0;
+    /// <summary>
+    /// Operation carries type of operation.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Acl.Operation Operation {
+      get { return operation_; }
+      set {
+        operation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "action" field.</summary>
+    public const int ActionFieldNumber = 2;
+    private global::NeoFS.API.v2.Acl.Action action_ = 0;
+    /// <summary>
+    /// Action carries ACL target action.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Acl.Action Action {
+      get { return action_; }
+      set {
+        action_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "filters" field.</summary>
+    public const int FiltersFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter> _repeated_filters_codec
+        = pb::FieldCodec.ForMessage(26, global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter> filters_ = new pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter>();
+    /// <summary>
+    /// filters carries set of filters.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter> Filters {
+      get { return filters_; }
+    }
+
+    /// <summary>Field number for the "targets" field.</summary>
+    public const int TargetsFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Acl.EACLRecord.Types.Target> _repeated_targets_codec
+        = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Acl.EACLRecord.Types.Target.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Target> targets_ = new pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Target>();
+    /// <summary>
+    /// targets carries information about extended ACL target list.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Target> Targets {
+      get { return targets_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as EACLRecord);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(EACLRecord other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Operation != other.Operation) return false;
+      if (Action != other.Action) return false;
+      if(!filters_.Equals(other.filters_)) return false;
+      if(!targets_.Equals(other.targets_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Operation != 0) hash ^= Operation.GetHashCode();
+      if (Action != 0) hash ^= Action.GetHashCode();
+      hash ^= filters_.GetHashCode();
+      hash ^= targets_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Operation != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Operation);
+      }
+      if (Action != 0) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Action);
+      }
+      filters_.WriteTo(output, _repeated_filters_codec);
+      targets_.WriteTo(output, _repeated_targets_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Operation != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Operation);
+      }
+      if (Action != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Action);
+      }
+      size += filters_.CalculateSize(_repeated_filters_codec);
+      size += targets_.CalculateSize(_repeated_targets_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(EACLRecord other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Operation != 0) {
+        Operation = other.Operation;
+      }
+      if (other.Action != 0) {
+        Action = other.Action;
+      }
+      filters_.Add(other.filters_);
+      targets_.Add(other.targets_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Operation = (global::NeoFS.API.v2.Acl.Operation) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            Action = (global::NeoFS.API.v2.Acl.Action) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            filters_.AddEntriesFrom(input, _repeated_filters_codec);
+            break;
+          }
+          case 34: {
+            targets_.AddEntriesFrom(input, _repeated_targets_codec);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the EACLRecord message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// Filter definition
+      /// </summary>
+      public sealed partial class Filter : pb::IMessage<Filter> {
+        private static readonly pb::MessageParser<Filter> _parser = new pb::MessageParser<Filter>(() => new Filter());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Filter> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Acl.EACLRecord.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Filter() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Filter(Filter other) : this() {
+          headerType_ = other.headerType_;
+          matchType_ = other.matchType_;
+          headerName_ = other.headerName_;
+          headerVal_ = other.headerVal_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Filter Clone() {
+          return new Filter(this);
+        }
+
+        /// <summary>Field number for the "header_type" field.</summary>
+        public const int HeaderTypeFieldNumber = 1;
+        private global::NeoFS.API.v2.Acl.HeaderType headerType_ = 0;
+        /// <summary>
+        /// Header carries type of header.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Acl.HeaderType HeaderType {
+          get { return headerType_; }
+          set {
+            headerType_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "match_type" field.</summary>
+        public const int MatchTypeFieldNumber = 2;
+        private global::NeoFS.API.v2.Acl.MatchType matchType_ = 0;
+        /// <summary>
+        /// MatchType carries type of match.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Acl.MatchType MatchType {
+          get { return matchType_; }
+          set {
+            matchType_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "header_name" field.</summary>
+        public const int HeaderNameFieldNumber = 3;
+        private string headerName_ = "";
+        /// <summary>
+        /// header_name carries name of filtering header.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string HeaderName {
+          get { return headerName_; }
+          set {
+            headerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "header_val" field.</summary>
+        public const int HeaderValFieldNumber = 4;
+        private string headerVal_ = "";
+        /// <summary>
+        /// header_val carries value of filtering header.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string HeaderVal {
+          get { return headerVal_; }
+          set {
+            headerVal_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Filter);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Filter other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (HeaderType != other.HeaderType) return false;
+          if (MatchType != other.MatchType) return false;
+          if (HeaderName != other.HeaderName) return false;
+          if (HeaderVal != other.HeaderVal) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (HeaderType != 0) hash ^= HeaderType.GetHashCode();
+          if (MatchType != 0) hash ^= MatchType.GetHashCode();
+          if (HeaderName.Length != 0) hash ^= HeaderName.GetHashCode();
+          if (HeaderVal.Length != 0) hash ^= HeaderVal.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (HeaderType != 0) {
+            output.WriteRawTag(8);
+            output.WriteEnum((int) HeaderType);
+          }
+          if (MatchType != 0) {
+            output.WriteRawTag(16);
+            output.WriteEnum((int) MatchType);
+          }
+          if (HeaderName.Length != 0) {
+            output.WriteRawTag(26);
+            output.WriteString(HeaderName);
+          }
+          if (HeaderVal.Length != 0) {
+            output.WriteRawTag(34);
+            output.WriteString(HeaderVal);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (HeaderType != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HeaderType);
+          }
+          if (MatchType != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MatchType);
+          }
+          if (HeaderName.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(HeaderName);
+          }
+          if (HeaderVal.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(HeaderVal);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Filter other) {
+          if (other == null) {
+            return;
+          }
+          if (other.HeaderType != 0) {
+            HeaderType = other.HeaderType;
+          }
+          if (other.MatchType != 0) {
+            MatchType = other.MatchType;
+          }
+          if (other.HeaderName.Length != 0) {
+            HeaderName = other.HeaderName;
+          }
+          if (other.HeaderVal.Length != 0) {
+            HeaderVal = other.HeaderVal;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                HeaderType = (global::NeoFS.API.v2.Acl.HeaderType) input.ReadEnum();
+                break;
+              }
+              case 16: {
+                MatchType = (global::NeoFS.API.v2.Acl.MatchType) input.ReadEnum();
+                break;
+              }
+              case 26: {
+                HeaderName = input.ReadString();
+                break;
+              }
+              case 34: {
+                HeaderVal = input.ReadString();
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+      /// <summary>
+      /// Information about extended ACL target.
+      /// </summary>
+      public sealed partial class Target : pb::IMessage<Target> {
+        private static readonly pb::MessageParser<Target> _parser = new pb::MessageParser<Target>(() => new Target());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Target> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Acl.EACLRecord.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Target() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Target(Target other) : this() {
+          role_ = other.role_;
+          keyList_ = other.keyList_.Clone();
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Target Clone() {
+          return new Target(this);
+        }
+
+        /// <summary>Field number for the "role" field.</summary>
+        public const int RoleFieldNumber = 1;
+        private global::NeoFS.API.v2.Acl.Role role_ = 0;
+        /// <summary>
+        /// target carries target of ACL rule.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Acl.Role Role {
+          get { return role_; }
+          set {
+            role_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "key_list" field.</summary>
+        public const int KeyListFieldNumber = 2;
+        private static readonly pb::FieldCodec<pb::ByteString> _repeated_keyList_codec
+            = pb::FieldCodec.ForBytes(18);
+        private readonly pbc::RepeatedField<pb::ByteString> keyList_ = new pbc::RepeatedField<pb::ByteString>();
+        /// <summary>
+        /// key_list carries public keys of ACL target.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<pb::ByteString> KeyList {
+          get { return keyList_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Target);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Target other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Role != other.Role) return false;
+          if(!keyList_.Equals(other.keyList_)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Role != 0) hash ^= Role.GetHashCode();
+          hash ^= keyList_.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (Role != 0) {
+            output.WriteRawTag(8);
+            output.WriteEnum((int) Role);
+          }
+          keyList_.WriteTo(output, _repeated_keyList_codec);
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Role != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Role);
+          }
+          size += keyList_.CalculateSize(_repeated_keyList_codec);
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Target other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Role != 0) {
+            Role = other.Role;
+          }
+          keyList_.Add(other.keyList_);
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                Role = (global::NeoFS.API.v2.Acl.Role) input.ReadEnum();
+                break;
+              }
+              case 18: {
+                keyList_.AddEntriesFrom(input, _repeated_keyList_codec);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// EACLRecord carries the information about extended ACL rules.
+  /// </summary>
+  public sealed partial class EACLTable : pb::IMessage<EACLTable> {
+    private static readonly pb::MessageParser<EACLTable> _parser = new pb::MessageParser<EACLTable>(() => new EACLTable());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<EACLTable> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Acl.TypesReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EACLTable() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EACLTable(EACLTable other) : this() {
+      version_ = other.version_ != null ? other.version_.Clone() : null;
+      containerId_ = other.containerId_ != null ? other.containerId_.Clone() : null;
+      records_ = other.records_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EACLTable Clone() {
+      return new EACLTable(this);
+    }
+
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Version version_;
+    /// <summary>
+    /// eACL format version.
+    /// Effectively the version of API library used to create eACL Table
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Version Version {
+      get { return version_; }
+      set {
+        version_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "container_id" field.</summary>
+    public const int ContainerIdFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.ContainerID containerId_;
+    /// <summary>
+    /// Carries identifier of the container that should use given
+    /// access control rules.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
+      get { return containerId_; }
+      set {
+        containerId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "records" field.</summary>
+    public const int RecordsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Acl.EACLRecord> _repeated_records_codec
+        = pb::FieldCodec.ForMessage(26, global::NeoFS.API.v2.Acl.EACLRecord.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord> records_ = new pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord>();
+    /// <summary>
+    /// Records carries list of extended ACL rule records.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord> Records {
+      get { return records_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as EACLTable);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(EACLTable other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Version, other.Version)) return false;
+      if (!object.Equals(ContainerId, other.ContainerId)) return false;
+      if(!records_.Equals(other.records_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (version_ != null) hash ^= Version.GetHashCode();
+      if (containerId_ != null) hash ^= ContainerId.GetHashCode();
+      hash ^= records_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (version_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Version);
+      }
+      if (containerId_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ContainerId);
+      }
+      records_.WriteTo(output, _repeated_records_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (version_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
+      }
+      if (containerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ContainerId);
+      }
+      size += records_.CalculateSize(_repeated_records_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(EACLTable other) {
+      if (other == null) {
+        return;
+      }
+      if (other.version_ != null) {
+        if (version_ == null) {
+          Version = new global::NeoFS.API.v2.Refs.Version();
+        }
+        Version.MergeFrom(other.Version);
+      }
+      if (other.containerId_ != null) {
+        if (containerId_ == null) {
+          ContainerId = new global::NeoFS.API.v2.Refs.ContainerID();
+        }
+        ContainerId.MergeFrom(other.ContainerId);
+      }
+      records_.Add(other.records_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (version_ == null) {
+              Version = new global::NeoFS.API.v2.Refs.Version();
+            }
+            input.ReadMessage(Version);
+            break;
+          }
+          case 18: {
+            if (containerId_ == null) {
+              ContainerId = new global::NeoFS.API.v2.Refs.ContainerID();
+            }
+            input.ReadMessage(ContainerId);
+            break;
+          }
+          case 26: {
+            records_.AddEntriesFrom(input, _repeated_records_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// BearerToken has information about request ACL rules with limited lifetime
+  /// </summary>
+  public sealed partial class BearerToken : pb::IMessage<BearerToken> {
+    private static readonly pb::MessageParser<BearerToken> _parser = new pb::MessageParser<BearerToken>(() => new BearerToken());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<BearerToken> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Acl.TypesReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BearerToken() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BearerToken(BearerToken other) : this() {
+      body_ = other.body_ != null ? other.body_.Clone() : null;
+      signature_ = other.signature_ != null ? other.signature_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BearerToken Clone() {
+      return new BearerToken(this);
+    }
+
+    /// <summary>Field number for the "body" field.</summary>
+    public const int BodyFieldNumber = 1;
+    private global::NeoFS.API.v2.Acl.BearerToken.Types.Body body_;
+    /// <summary>
+    /// Bearer Token body
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Acl.BearerToken.Types.Body Body {
+      get { return body_; }
+      set {
+        body_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "signature" field.</summary>
+    public const int SignatureFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.Signature signature_;
+    /// <summary>
+    /// Signature of BearerToken body
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Signature Signature {
+      get { return signature_; }
+      set {
+        signature_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as BearerToken);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(BearerToken other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Body, other.Body)) return false;
+      if (!object.Equals(Signature, other.Signature)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (body_ != null) hash ^= Body.GetHashCode();
+      if (signature_ != null) hash ^= Signature.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (body_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Body);
+      }
+      if (signature_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Signature);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (body_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Body);
+      }
+      if (signature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Signature);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(BearerToken other) {
+      if (other == null) {
+        return;
+      }
+      if (other.body_ != null) {
+        if (body_ == null) {
+          Body = new global::NeoFS.API.v2.Acl.BearerToken.Types.Body();
+        }
+        Body.MergeFrom(other.Body);
+      }
+      if (other.signature_ != null) {
+        if (signature_ == null) {
+          Signature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        Signature.MergeFrom(other.Signature);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (body_ == null) {
+              Body = new global::NeoFS.API.v2.Acl.BearerToken.Types.Body();
+            }
+            input.ReadMessage(Body);
+            break;
+          }
+          case 18: {
+            if (signature_ == null) {
+              Signature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(Signature);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the BearerToken message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// Bearer Token body
+      /// </summary>
+      public sealed partial class Body : pb::IMessage<Body> {
+        private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Body> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Acl.BearerToken.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body(Body other) : this() {
+          eaclTable_ = other.eaclTable_ != null ? other.eaclTable_.Clone() : null;
+          ownerId_ = other.ownerId_ != null ? other.ownerId_.Clone() : null;
+          lifetime_ = other.lifetime_ != null ? other.lifetime_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body Clone() {
+          return new Body(this);
+        }
+
+        /// <summary>Field number for the "eacl_table" field.</summary>
+        public const int EaclTableFieldNumber = 1;
+        private global::NeoFS.API.v2.Acl.EACLTable eaclTable_;
+        /// <summary>
+        /// EACLTable carries table of extended ACL rules
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Acl.EACLTable EaclTable {
+          get { return eaclTable_; }
+          set {
+            eaclTable_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "owner_id" field.</summary>
+        public const int OwnerIdFieldNumber = 2;
+        private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
+        /// <summary>
+        /// OwnerID carries identifier of the token owner
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
+          get { return ownerId_; }
+          set {
+            ownerId_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "lifetime" field.</summary>
+        public const int LifetimeFieldNumber = 3;
+        private global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime lifetime_;
+        /// <summary>
+        /// Token expiration and valid time period parameters
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime Lifetime {
+          get { return lifetime_; }
+          set {
+            lifetime_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Body);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Body other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(EaclTable, other.EaclTable)) return false;
+          if (!object.Equals(OwnerId, other.OwnerId)) return false;
+          if (!object.Equals(Lifetime, other.Lifetime)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (eaclTable_ != null) hash ^= EaclTable.GetHashCode();
+          if (ownerId_ != null) hash ^= OwnerId.GetHashCode();
+          if (lifetime_ != null) hash ^= Lifetime.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (eaclTable_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(EaclTable);
+          }
+          if (ownerId_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(OwnerId);
+          }
+          if (lifetime_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(Lifetime);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (eaclTable_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(EaclTable);
+          }
+          if (ownerId_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(OwnerId);
+          }
+          if (lifetime_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lifetime);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Body other) {
+          if (other == null) {
+            return;
+          }
+          if (other.eaclTable_ != null) {
+            if (eaclTable_ == null) {
+              EaclTable = new global::NeoFS.API.v2.Acl.EACLTable();
+            }
+            EaclTable.MergeFrom(other.EaclTable);
+          }
+          if (other.ownerId_ != null) {
+            if (ownerId_ == null) {
+              OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+            }
+            OwnerId.MergeFrom(other.OwnerId);
+          }
+          if (other.lifetime_ != null) {
+            if (lifetime_ == null) {
+              Lifetime = new global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime();
+            }
+            Lifetime.MergeFrom(other.Lifetime);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (eaclTable_ == null) {
+                  EaclTable = new global::NeoFS.API.v2.Acl.EACLTable();
+                }
+                input.ReadMessage(EaclTable);
+                break;
+              }
+              case 18: {
+                if (ownerId_ == null) {
+                  OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+                }
+                input.ReadMessage(OwnerId);
+                break;
+              }
+              case 26: {
+                if (lifetime_ == null) {
+                  Lifetime = new global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime();
+                }
+                input.ReadMessage(Lifetime);
+                break;
+              }
+            }
+          }
+        }
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the Body message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static partial class Types {
+          /// <summary>
+          /// Lifetime parameters of the token. Filed names taken from rfc7519.
+          /// </summary>
+          public sealed partial class TokenLifetime : pb::IMessage<TokenLifetime> {
+            private static readonly pb::MessageParser<TokenLifetime> _parser = new pb::MessageParser<TokenLifetime>(() => new TokenLifetime());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<TokenLifetime> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TokenLifetime() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TokenLifetime(TokenLifetime other) : this() {
+              exp_ = other.exp_;
+              nbf_ = other.nbf_;
+              iat_ = other.iat_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TokenLifetime Clone() {
+              return new TokenLifetime(this);
+            }
+
+            /// <summary>Field number for the "exp" field.</summary>
+            public const int ExpFieldNumber = 1;
+            private ulong exp_;
+            /// <summary>
+            /// Expiration Epoch
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong Exp {
+              get { return exp_; }
+              set {
+                exp_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "nbf" field.</summary>
+            public const int NbfFieldNumber = 2;
+            private ulong nbf_;
+            /// <summary>
+            /// Not valid before Epoch
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong Nbf {
+              get { return nbf_; }
+              set {
+                nbf_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "iat" field.</summary>
+            public const int IatFieldNumber = 3;
+            private ulong iat_;
+            /// <summary>
+            /// Issued at Epoch
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong Iat {
+              get { return iat_; }
+              set {
+                iat_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as TokenLifetime);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(TokenLifetime other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Exp != other.Exp) return false;
+              if (Nbf != other.Nbf) return false;
+              if (Iat != other.Iat) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Exp != 0UL) hash ^= Exp.GetHashCode();
+              if (Nbf != 0UL) hash ^= Nbf.GetHashCode();
+              if (Iat != 0UL) hash ^= Iat.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (Exp != 0UL) {
+                output.WriteRawTag(8);
+                output.WriteUInt64(Exp);
+              }
+              if (Nbf != 0UL) {
+                output.WriteRawTag(16);
+                output.WriteUInt64(Nbf);
+              }
+              if (Iat != 0UL) {
+                output.WriteRawTag(24);
+                output.WriteUInt64(Iat);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (Exp != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Exp);
+              }
+              if (Nbf != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Nbf);
+              }
+              if (Iat != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Iat);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(TokenLifetime other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Exp != 0UL) {
+                Exp = other.Exp;
+              }
+              if (other.Nbf != 0UL) {
+                Nbf = other.Nbf;
+              }
+              if (other.Iat != 0UL) {
+                Iat = other.Iat;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 8: {
+                    Exp = input.ReadUInt64();
+                    break;
+                  }
+                  case 16: {
+                    Nbf = input.ReadUInt64();
+                    break;
+                  }
+                  case 24: {
+                    Iat = input.ReadUInt64();
+                    break;
+                  }
+                }
+              }
+            }
+
+          }
+
+        }
+        #endregion
+
+      }
+
+    }
+    #endregion
+
   }
 
   #endregion

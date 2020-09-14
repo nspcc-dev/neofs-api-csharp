@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace NeoFS.API.Container {
+namespace NeoFS.API.v2.Container {
 
   /// <summary>Holder for reflection information generated from container/types.proto</summary>
   public static partial class TypesReflection {
@@ -24,19 +24,21 @@ namespace NeoFS.API.Container {
     static TypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVjb250YWluZXIvdHlwZXMucHJvdG8SCWNvbnRhaW5lchoqZ2l0aHViLmNv",
-            "bS9uc3BjYy1kZXYvbmV0bWFwL3NlbGVjdG9yLnByb3RvGi1naXRodWIuY29t",
-            "L2dvZ28vcHJvdG9idWYvZ29nb3Byb3RvL2dvZ28ucHJvdG8imQEKCUNvbnRh",
-            "aW5lchIgCgdPd25lcklEGAEgASgMQg/a3h8HT3duZXJJRMjeHwASGgoEU2Fs",
-            "dBgCIAEoDEIM2t4fBFVVSUTI3h8AEhAKCENhcGFjaXR5GAMgASgEEioKBVJ1",
-            "bGVzGAQgASgLMhUubmV0bWFwLlBsYWNlbWVudFJ1bGVCBMjeHwASEAoIQmFz",
-            "aWNBQ0wYBSABKA1CR1orZ2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBp",
-            "LWdvL2NvbnRhaW5lcqoCE05lb0ZTLkFQSS5Db250YWluZXLY4h4BYgZwcm90",
-            "bzM="));
+            "ChVjb250YWluZXIvdHlwZXMucHJvdG8SE25lby5mcy52Mi5jb250YWluZXIa",
+            "Em5ldG1hcC90eXBlcy5wcm90bxoQcmVmcy90eXBlcy5wcm90byKmAgoJQ29u",
+            "dGFpbmVyEigKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJz",
+            "aW9uEikKCG93bmVyX2lkGAIgASgLMhcubmVvLmZzLnYyLnJlZnMuT3duZXJJ",
+            "RBINCgVub25jZRgDIAEoDBIRCgliYXNpY19hY2wYBCABKA0SPAoKYXR0cmli",
+            "dXRlcxgFIAMoCzIoLm5lby5mcy52Mi5jb250YWluZXIuQ29udGFpbmVyLkF0",
+            "dHJpYnV0ZRI7ChBwbGFjZW1lbnRfcG9saWN5GAYgASgLMiEubmVvLmZzLnYy",
+            "Lm5ldG1hcC5QbGFjZW1lbnRQb2xpY3kaJwoJQXR0cmlidXRlEgsKA2tleRgB",
+            "IAEoCRINCgV2YWx1ZRgCIAEoCUJYWj1naXRodWIuY29tL25zcGNjLWRldi9u",
+            "ZW9mcy1hcGktZ28vdjIvY29udGFpbmVyL2dycGM7Y29udGFpbmVyqgIWTmVv",
+            "RlMuQVBJLnYyLkNvbnRhaW5lcmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Netmap.SelectorReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::NeoFS.API.v2.Netmap.TypesReflection.Descriptor, global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Container.Container), global::NeoFS.API.Container.Container.Parser, new[]{ "OwnerID", "Salt", "Capacity", "Rules", "BasicACL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.Container), global::NeoFS.API.v2.Container.Container.Parser, new[]{ "Version", "OwnerId", "Nonce", "BasicAcl", "Attributes", "PlacementPolicy" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.Container.Types.Attribute), global::NeoFS.API.v2.Container.Container.Types.Attribute.Parser, new[]{ "Key", "Value" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -44,7 +46,10 @@ namespace NeoFS.API.Container {
   }
   #region Messages
   /// <summary>
-  /// The Container service definition.
+  /// Container is a structure that defines object placement behaviour. Objects
+  /// can be stored only within containers. They define placement rule, attributes
+  /// and access control information. ID of the container is a 32 byte long
+  /// SHA256 hash of stable-marshalled container message.
   /// </summary>
   public sealed partial class Container : pb::IMessage<Container> {
     private static readonly pb::MessageParser<Container> _parser = new pb::MessageParser<Container>(() => new Container());
@@ -54,7 +59,7 @@ namespace NeoFS.API.Container {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Container.TypesReflection.Descriptor.MessageTypes[0]; }
+      get { return global::NeoFS.API.v2.Container.TypesReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -71,11 +76,12 @@ namespace NeoFS.API.Container {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Container(Container other) : this() {
-      ownerID_ = other.ownerID_;
-      salt_ = other.salt_;
-      capacity_ = other.capacity_;
-      rules_ = other.rules_ != null ? other.rules_.Clone() : null;
-      basicACL_ = other.basicACL_;
+      version_ = other.version_ != null ? other.version_.Clone() : null;
+      ownerId_ = other.ownerId_ != null ? other.ownerId_.Clone() : null;
+      nonce_ = other.nonce_;
+      basicAcl_ = other.basicAcl_;
+      attributes_ = other.attributes_.Clone();
+      placementPolicy_ = other.placementPolicy_ != null ? other.placementPolicy_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,74 +90,88 @@ namespace NeoFS.API.Container {
       return new Container(this);
     }
 
-    /// <summary>Field number for the "OwnerID" field.</summary>
-    public const int OwnerIDFieldNumber = 1;
-    private pb::ByteString ownerID_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// OwnerID is a wallet address.
+    /// Container format version.
+    /// Effectively the version of API library used to create container
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString OwnerID {
-      get { return ownerID_; }
+    public global::NeoFS.API.v2.Refs.Version Version {
+      get { return version_; }
       set {
-        ownerID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        version_ = value;
       }
     }
 
-    /// <summary>Field number for the "Salt" field.</summary>
-    public const int SaltFieldNumber = 2;
-    private pb::ByteString salt_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "owner_id" field.</summary>
+    public const int OwnerIdFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
     /// <summary>
-    /// Salt is a nonce for unique container id calculation.
+    /// OwnerID carries identifier of the container owner.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Salt {
-      get { return salt_; }
+    public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
+      get { return ownerId_; }
       set {
-        salt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        ownerId_ = value;
       }
     }
 
-    /// <summary>Field number for the "Capacity" field.</summary>
-    public const int CapacityFieldNumber = 3;
-    private ulong capacity_;
+    /// <summary>Field number for the "nonce" field.</summary>
+    public const int NonceFieldNumber = 3;
+    private pb::ByteString nonce_ = pb::ByteString.Empty;
     /// <summary>
-    /// Capacity defines amount of data that can be stored in the container (doesn't used for now).
+    /// Nonce is a 16 byte UUID, used to avoid collisions of container id.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Capacity {
-      get { return capacity_; }
+    public pb::ByteString Nonce {
+      get { return nonce_; }
       set {
-        capacity_ = value;
+        nonce_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "Rules" field.</summary>
-    public const int RulesFieldNumber = 4;
-    private global::Netmap.PlacementRule rules_;
+    /// <summary>Field number for the "basic_acl" field.</summary>
+    public const int BasicAclFieldNumber = 4;
+    private uint basicAcl_;
     /// <summary>
-    /// Rules define storage policy for the object inside the container.
+    /// BasicACL contains access control rules for owner, system, others groups and
+    /// permission bits for bearer token and Extended ACL.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Netmap.PlacementRule Rules {
-      get { return rules_; }
+    public uint BasicAcl {
+      get { return basicAcl_; }
       set {
-        rules_ = value;
+        basicAcl_ = value;
       }
     }
 
-    /// <summary>Field number for the "BasicACL" field.</summary>
-    public const int BasicACLFieldNumber = 5;
-    private uint basicACL_;
+    /// <summary>Field number for the "attributes" field.</summary>
+    public const int AttributesFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Container.Container.Types.Attribute> _repeated_attributes_codec
+        = pb::FieldCodec.ForMessage(42, global::NeoFS.API.v2.Container.Container.Types.Attribute.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Container.Container.Types.Attribute> attributes_ = new pbc::RepeatedField<global::NeoFS.API.v2.Container.Container.Types.Attribute>();
     /// <summary>
-    /// BasicACL with access control rules for owner, system, others and
-    /// permission bits for bearer token and extended ACL.
+    /// Attributes define any immutable characteristics of container.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint BasicACL {
-      get { return basicACL_; }
+    public pbc::RepeatedField<global::NeoFS.API.v2.Container.Container.Types.Attribute> Attributes {
+      get { return attributes_; }
+    }
+
+    /// <summary>Field number for the "placement_policy" field.</summary>
+    public const int PlacementPolicyFieldNumber = 6;
+    private global::NeoFS.API.v2.Netmap.PlacementPolicy placementPolicy_;
+    /// <summary>
+    /// Placement policy for the object inside the container.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Netmap.PlacementPolicy PlacementPolicy {
+      get { return placementPolicy_; }
       set {
-        basicACL_ = value;
+        placementPolicy_ = value;
       }
     }
 
@@ -168,22 +188,24 @@ namespace NeoFS.API.Container {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (OwnerID != other.OwnerID) return false;
-      if (Salt != other.Salt) return false;
-      if (Capacity != other.Capacity) return false;
-      if (!object.Equals(Rules, other.Rules)) return false;
-      if (BasicACL != other.BasicACL) return false;
+      if (!object.Equals(Version, other.Version)) return false;
+      if (!object.Equals(OwnerId, other.OwnerId)) return false;
+      if (Nonce != other.Nonce) return false;
+      if (BasicAcl != other.BasicAcl) return false;
+      if(!attributes_.Equals(other.attributes_)) return false;
+      if (!object.Equals(PlacementPolicy, other.PlacementPolicy)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (OwnerID.Length != 0) hash ^= OwnerID.GetHashCode();
-      if (Salt.Length != 0) hash ^= Salt.GetHashCode();
-      if (Capacity != 0UL) hash ^= Capacity.GetHashCode();
-      if (rules_ != null) hash ^= Rules.GetHashCode();
-      if (BasicACL != 0) hash ^= BasicACL.GetHashCode();
+      if (version_ != null) hash ^= Version.GetHashCode();
+      if (ownerId_ != null) hash ^= OwnerId.GetHashCode();
+      if (Nonce.Length != 0) hash ^= Nonce.GetHashCode();
+      if (BasicAcl != 0) hash ^= BasicAcl.GetHashCode();
+      hash ^= attributes_.GetHashCode();
+      if (placementPolicy_ != null) hash ^= PlacementPolicy.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,25 +219,26 @@ namespace NeoFS.API.Container {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (OwnerID.Length != 0) {
+      if (version_ != null) {
         output.WriteRawTag(10);
-        output.WriteBytes(OwnerID);
+        output.WriteMessage(Version);
       }
-      if (Salt.Length != 0) {
+      if (ownerId_ != null) {
         output.WriteRawTag(18);
-        output.WriteBytes(Salt);
+        output.WriteMessage(OwnerId);
       }
-      if (Capacity != 0UL) {
-        output.WriteRawTag(24);
-        output.WriteUInt64(Capacity);
+      if (Nonce.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(Nonce);
       }
-      if (rules_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Rules);
+      if (BasicAcl != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(BasicAcl);
       }
-      if (BasicACL != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(BasicACL);
+      attributes_.WriteTo(output, _repeated_attributes_codec);
+      if (placementPolicy_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(PlacementPolicy);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -225,20 +248,21 @@ namespace NeoFS.API.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (OwnerID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(OwnerID);
+      if (version_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
       }
-      if (Salt.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Salt);
+      if (ownerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OwnerId);
       }
-      if (Capacity != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Capacity);
+      if (Nonce.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Nonce);
       }
-      if (rules_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Rules);
+      if (BasicAcl != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BasicAcl);
       }
-      if (BasicACL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BasicACL);
+      size += attributes_.CalculateSize(_repeated_attributes_codec);
+      if (placementPolicy_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlacementPolicy);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -251,23 +275,30 @@ namespace NeoFS.API.Container {
       if (other == null) {
         return;
       }
-      if (other.OwnerID.Length != 0) {
-        OwnerID = other.OwnerID;
-      }
-      if (other.Salt.Length != 0) {
-        Salt = other.Salt;
-      }
-      if (other.Capacity != 0UL) {
-        Capacity = other.Capacity;
-      }
-      if (other.rules_ != null) {
-        if (rules_ == null) {
-          Rules = new global::Netmap.PlacementRule();
+      if (other.version_ != null) {
+        if (version_ == null) {
+          Version = new global::NeoFS.API.v2.Refs.Version();
         }
-        Rules.MergeFrom(other.Rules);
+        Version.MergeFrom(other.Version);
       }
-      if (other.BasicACL != 0) {
-        BasicACL = other.BasicACL;
+      if (other.ownerId_ != null) {
+        if (ownerId_ == null) {
+          OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+        }
+        OwnerId.MergeFrom(other.OwnerId);
+      }
+      if (other.Nonce.Length != 0) {
+        Nonce = other.Nonce;
+      }
+      if (other.BasicAcl != 0) {
+        BasicAcl = other.BasicAcl;
+      }
+      attributes_.Add(other.attributes_);
+      if (other.placementPolicy_ != null) {
+        if (placementPolicy_ == null) {
+          PlacementPolicy = new global::NeoFS.API.v2.Netmap.PlacementPolicy();
+        }
+        PlacementPolicy.MergeFrom(other.PlacementPolicy);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -281,31 +312,214 @@ namespace NeoFS.API.Container {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            OwnerID = input.ReadBytes();
+            if (version_ == null) {
+              Version = new global::NeoFS.API.v2.Refs.Version();
+            }
+            input.ReadMessage(Version);
             break;
           }
           case 18: {
-            Salt = input.ReadBytes();
-            break;
-          }
-          case 24: {
-            Capacity = input.ReadUInt64();
-            break;
-          }
-          case 34: {
-            if (rules_ == null) {
-              Rules = new global::Netmap.PlacementRule();
+            if (ownerId_ == null) {
+              OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
             }
-            input.ReadMessage(Rules);
+            input.ReadMessage(OwnerId);
             break;
           }
-          case 40: {
-            BasicACL = input.ReadUInt32();
+          case 26: {
+            Nonce = input.ReadBytes();
+            break;
+          }
+          case 32: {
+            BasicAcl = input.ReadUInt32();
+            break;
+          }
+          case 42: {
+            attributes_.AddEntriesFrom(input, _repeated_attributes_codec);
+            break;
+          }
+          case 50: {
+            if (placementPolicy_ == null) {
+              PlacementPolicy = new global::NeoFS.API.v2.Netmap.PlacementPolicy();
+            }
+            input.ReadMessage(PlacementPolicy);
             break;
           }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Container message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// Attribute is a key-value pair of strings.
+      /// </summary>
+      public sealed partial class Attribute : pb::IMessage<Attribute> {
+        private static readonly pb::MessageParser<Attribute> _parser = new pb::MessageParser<Attribute>(() => new Attribute());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Attribute> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Container.Container.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Attribute() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Attribute(Attribute other) : this() {
+          key_ = other.key_;
+          value_ = other.value_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Attribute Clone() {
+          return new Attribute(this);
+        }
+
+        /// <summary>Field number for the "key" field.</summary>
+        public const int KeyFieldNumber = 1;
+        private string key_ = "";
+        /// <summary>
+        /// Key of immutable container attribute.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Key {
+          get { return key_; }
+          set {
+            key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "value" field.</summary>
+        public const int ValueFieldNumber = 2;
+        private string value_ = "";
+        /// <summary>
+        /// Value of immutable container attribute.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Value {
+          get { return value_; }
+          set {
+            value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Attribute);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Attribute other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Key != other.Key) return false;
+          if (Value != other.Value) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Key.Length != 0) hash ^= Key.GetHashCode();
+          if (Value.Length != 0) hash ^= Value.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (Key.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(Key);
+          }
+          if (Value.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(Value);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Key.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
+          }
+          if (Value.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Attribute other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Key.Length != 0) {
+            Key = other.Key;
+          }
+          if (other.Value.Length != 0) {
+            Value = other.Value;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                Key = input.ReadString();
+                break;
+              }
+              case 18: {
+                Value = input.ReadString();
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
 
   }
 

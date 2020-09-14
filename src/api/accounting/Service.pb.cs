@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace NeoFS.API.Accounting {
+namespace NeoFS.API.v2.Accounting {
 
   /// <summary>Holder for reflection information generated from accounting/service.proto</summary>
   public static partial class ServiceReflection {
@@ -24,31 +24,45 @@ namespace NeoFS.API.Accounting {
     static ServiceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhhY2NvdW50aW5nL3NlcnZpY2UucHJvdG8SCmFjY291bnRpbmcaEnNlcnZp",
-            "Y2UvbWV0YS5wcm90bxoUc2VydmljZS92ZXJpZnkucHJvdG8aFWRlY2ltYWwv",
-            "ZGVjaW1hbC5wcm90bxoWYWNjb3VudGluZy90eXBlcy5wcm90bxotZ2l0aHVi",
-            "LmNvbS9nb2dvL3Byb3RvYnVmL2dvZ29wcm90by9nb2dvLnByb3RvIqQBCg5C",
-            "YWxhbmNlUmVxdWVzdBIgCgdPd25lcklEGAEgASgMQg/a3h8HT3duZXJJRMje",
-            "HwASMgoETWV0YRhiIAEoCzIaLnNlcnZpY2UuUmVxdWVzdE1ldGFIZWFkZXJC",
-            "CNDeHwHI3h8AEjwKBlZlcmlmeRhjIAEoCzIiLnNlcnZpY2UuUmVxdWVzdFZl",
-            "cmlmaWNhdGlvbkhlYWRlckII0N4fAcjeHwAiXwoPQmFsYW5jZVJlc3BvbnNl",
-            "EiEKB0JhbGFuY2UYASABKAsyEC5kZWNpbWFsLkRlY2ltYWwSKQoMTG9ja0Fj",
-            "Y291bnRzGAIgAygLMhMuYWNjb3VudGluZy5BY2NvdW50MlAKCkFjY291bnRp",
-            "bmcSQgoHQmFsYW5jZRIaLmFjY291bnRpbmcuQmFsYW5jZVJlcXVlc3QaGy5h",
-            "Y2NvdW50aW5nLkJhbGFuY2VSZXNwb25zZUJJWixnaXRodWIuY29tL25zcGNj",
-            "LWRldi9uZW9mcy1hcGktZ28vYWNjb3VudGluZ6oCFE5lb0ZTLkFQSS5BY2Nv",
-            "dW50aW5n2OIeAWIGcHJvdG8z"));
+            "ChhhY2NvdW50aW5nL3NlcnZpY2UucHJvdG8SFG5lby5mcy52Mi5hY2NvdW50",
+            "aW5nGhZhY2NvdW50aW5nL3R5cGVzLnByb3RvGhByZWZzL3R5cGVzLnByb3Rv",
+            "GhNzZXNzaW9uL3R5cGVzLnByb3RvIvwBCg5CYWxhbmNlUmVxdWVzdBI3CgRi",
+            "b2R5GAEgASgLMikubmVvLmZzLnYyLmFjY291bnRpbmcuQmFsYW5jZVJlcXVl",
+            "c3QuQm9keRI5CgttZXRhX2hlYWRlchgCIAEoCzIkLm5lby5mcy52Mi5zZXNz",
+            "aW9uLlJlcXVlc3RNZXRhSGVhZGVyEkMKDXZlcmlmeV9oZWFkZXIYAyABKAsy",
+            "LC5uZW8uZnMudjIuc2Vzc2lvbi5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVy",
+            "GjEKBEJvZHkSKQoIb3duZXJfaWQYASABKAsyFy5uZW8uZnMudjIucmVmcy5P",
+            "d25lcklEIoUCCg9CYWxhbmNlUmVzcG9uc2USOAoEYm9keRgBIAEoCzIqLm5l",
+            "by5mcy52Mi5hY2NvdW50aW5nLkJhbGFuY2VSZXNwb25zZS5Cb2R5EjoKC21l",
+            "dGFfaGVhZGVyGAIgASgLMiUubmVvLmZzLnYyLnNlc3Npb24uUmVzcG9uc2VN",
+            "ZXRhSGVhZGVyEkQKDXZlcmlmeV9oZWFkZXIYAyABKAsyLS5uZW8uZnMudjIu",
+            "c2Vzc2lvbi5SZXNwb25zZVZlcmlmaWNhdGlvbkhlYWRlcho2CgRCb2R5Ei4K",
+            "B2JhbGFuY2UYASABKAsyHS5uZW8uZnMudjIuYWNjb3VudGluZy5EZWNpbWFs",
+            "MmsKEUFjY291bnRpbmdTZXJ2aWNlElYKB0JhbGFuY2USJC5uZW8uZnMudjIu",
+            "YWNjb3VudGluZy5CYWxhbmNlUmVxdWVzdBolLm5lby5mcy52Mi5hY2NvdW50",
+            "aW5nLkJhbGFuY2VSZXNwb25zZUJbWj9naXRodWIuY29tL25zcGNjLWRldi9u",
+            "ZW9mcy1hcGktZ28vdjIvYWNjb3VudGluZy9ncnBjO2FjY291bnRpbmeqAhdO",
+            "ZW9GUy5BUEkudjIuQWNjb3VudGluZ2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::NeoFS.API.Service.MetaReflection.Descriptor, global::NeoFS.API.Service.VerifyReflection.Descriptor, global::NeoFS.API.Decimal.DecimalReflection.Descriptor, global::NeoFS.API.Accounting.TypesReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::NeoFS.API.v2.Accounting.TypesReflection.Descriptor, global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Session.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Accounting.BalanceRequest), global::NeoFS.API.Accounting.BalanceRequest.Parser, new[]{ "OwnerID", "Meta", "Verify" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Accounting.BalanceResponse), global::NeoFS.API.Accounting.BalanceResponse.Parser, new[]{ "Balance", "LockAccounts" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Accounting.BalanceRequest), global::NeoFS.API.v2.Accounting.BalanceRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Accounting.BalanceRequest.Types.Body), global::NeoFS.API.v2.Accounting.BalanceRequest.Types.Body.Parser, new[]{ "OwnerId" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Accounting.BalanceResponse), global::NeoFS.API.v2.Accounting.BalanceResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Accounting.BalanceResponse.Types.Body), global::NeoFS.API.v2.Accounting.BalanceResponse.Types.Body.Parser, new[]{ "Balance" }, null, null, null, null)})
           }));
     }
     #endregion
 
   }
   #region Messages
+  /// <summary>
+  /// Message defines the request body of Balance method.
+  ///
+  /// To indicate the account for which the balance is requested, it's identifier
+  /// is used.
+  ///
+  /// To gain access to the requested information, the request body must be formed
+  /// according to the requirements from the system specification.
+  /// </summary>
   public sealed partial class BalanceRequest : pb::IMessage<BalanceRequest> {
     private static readonly pb::MessageParser<BalanceRequest> _parser = new pb::MessageParser<BalanceRequest>(() => new BalanceRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -57,7 +71,7 @@ namespace NeoFS.API.Accounting {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Accounting.ServiceReflection.Descriptor.MessageTypes[0]; }
+      get { return global::NeoFS.API.v2.Accounting.ServiceReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -74,9 +88,9 @@ namespace NeoFS.API.Accounting {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public BalanceRequest(BalanceRequest other) : this() {
-      ownerID_ = other.ownerID_;
-      meta_ = other.meta_ != null ? other.meta_.Clone() : null;
-      verify_ = other.verify_ != null ? other.verify_.Clone() : null;
+      body_ = other.body_ != null ? other.body_.Clone() : null;
+      metaHeader_ = other.metaHeader_ != null ? other.metaHeader_.Clone() : null;
+      verifyHeader_ = other.verifyHeader_ != null ? other.verifyHeader_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,45 +99,48 @@ namespace NeoFS.API.Accounting {
       return new BalanceRequest(this);
     }
 
-    /// <summary>Field number for the "OwnerID" field.</summary>
-    public const int OwnerIDFieldNumber = 1;
-    private pb::ByteString ownerID_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "body" field.</summary>
+    public const int BodyFieldNumber = 1;
+    private global::NeoFS.API.v2.Accounting.BalanceRequest.Types.Body body_;
     /// <summary>
-    /// OwnerID is a wallet address
+    /// Body of the balance request message.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString OwnerID {
-      get { return ownerID_; }
+    public global::NeoFS.API.v2.Accounting.BalanceRequest.Types.Body Body {
+      get { return body_; }
       set {
-        ownerID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        body_ = value;
       }
     }
 
-    /// <summary>Field number for the "Meta" field.</summary>
-    public const int MetaFieldNumber = 98;
-    private global::NeoFS.API.Service.RequestMetaHeader meta_;
+    /// <summary>Field number for the "meta_header" field.</summary>
+    public const int MetaHeaderFieldNumber = 2;
+    private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// RequestMetaHeader contains information about request meta headers (should be embedded into message)
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Service.RequestMetaHeader Meta {
-      get { return meta_; }
+    public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
+      get { return metaHeader_; }
       set {
-        meta_ = value;
+        metaHeader_ = value;
       }
     }
 
-    /// <summary>Field number for the "Verify" field.</summary>
-    public const int VerifyFieldNumber = 99;
-    private global::NeoFS.API.Service.RequestVerificationHeader verify_;
+    /// <summary>Field number for the "verify_header" field.</summary>
+    public const int VerifyHeaderFieldNumber = 3;
+    private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// RequestVerificationHeader is a set of signatures of every NeoFS Node that processed request (should be embedded into message)
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness
+    /// of transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Service.RequestVerificationHeader Verify {
-      get { return verify_; }
+    public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
+      get { return verifyHeader_; }
       set {
-        verify_ = value;
+        verifyHeader_ = value;
       }
     }
 
@@ -140,18 +157,18 @@ namespace NeoFS.API.Accounting {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (OwnerID != other.OwnerID) return false;
-      if (!object.Equals(Meta, other.Meta)) return false;
-      if (!object.Equals(Verify, other.Verify)) return false;
+      if (!object.Equals(Body, other.Body)) return false;
+      if (!object.Equals(MetaHeader, other.MetaHeader)) return false;
+      if (!object.Equals(VerifyHeader, other.VerifyHeader)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (OwnerID.Length != 0) hash ^= OwnerID.GetHashCode();
-      if (meta_ != null) hash ^= Meta.GetHashCode();
-      if (verify_ != null) hash ^= Verify.GetHashCode();
+      if (body_ != null) hash ^= Body.GetHashCode();
+      if (metaHeader_ != null) hash ^= MetaHeader.GetHashCode();
+      if (verifyHeader_ != null) hash ^= VerifyHeader.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -165,17 +182,17 @@ namespace NeoFS.API.Accounting {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (OwnerID.Length != 0) {
+      if (body_ != null) {
         output.WriteRawTag(10);
-        output.WriteBytes(OwnerID);
+        output.WriteMessage(Body);
       }
-      if (meta_ != null) {
-        output.WriteRawTag(146, 6);
-        output.WriteMessage(Meta);
+      if (metaHeader_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MetaHeader);
       }
-      if (verify_ != null) {
-        output.WriteRawTag(154, 6);
-        output.WriteMessage(Verify);
+      if (verifyHeader_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(VerifyHeader);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -185,14 +202,14 @@ namespace NeoFS.API.Accounting {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (OwnerID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(OwnerID);
+      if (body_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Body);
       }
-      if (meta_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Meta);
+      if (metaHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MetaHeader);
       }
-      if (verify_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Verify);
+      if (verifyHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(VerifyHeader);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,20 +222,23 @@ namespace NeoFS.API.Accounting {
       if (other == null) {
         return;
       }
-      if (other.OwnerID.Length != 0) {
-        OwnerID = other.OwnerID;
-      }
-      if (other.meta_ != null) {
-        if (meta_ == null) {
-          Meta = new global::NeoFS.API.Service.RequestMetaHeader();
+      if (other.body_ != null) {
+        if (body_ == null) {
+          Body = new global::NeoFS.API.v2.Accounting.BalanceRequest.Types.Body();
         }
-        Meta.MergeFrom(other.Meta);
+        Body.MergeFrom(other.Body);
       }
-      if (other.verify_ != null) {
-        if (verify_ == null) {
-          Verify = new global::NeoFS.API.Service.RequestVerificationHeader();
+      if (other.metaHeader_ != null) {
+        if (metaHeader_ == null) {
+          MetaHeader = new global::NeoFS.API.v2.Session.RequestMetaHeader();
         }
-        Verify.MergeFrom(other.Verify);
+        MetaHeader.MergeFrom(other.MetaHeader);
+      }
+      if (other.verifyHeader_ != null) {
+        if (verifyHeader_ == null) {
+          VerifyHeader = new global::NeoFS.API.v2.Session.RequestVerificationHeader();
+        }
+        VerifyHeader.MergeFrom(other.VerifyHeader);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -232,29 +252,186 @@ namespace NeoFS.API.Accounting {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            OwnerID = input.ReadBytes();
+            if (body_ == null) {
+              Body = new global::NeoFS.API.v2.Accounting.BalanceRequest.Types.Body();
+            }
+            input.ReadMessage(Body);
             break;
           }
-          case 786: {
-            if (meta_ == null) {
-              Meta = new global::NeoFS.API.Service.RequestMetaHeader();
+          case 18: {
+            if (metaHeader_ == null) {
+              MetaHeader = new global::NeoFS.API.v2.Session.RequestMetaHeader();
             }
-            input.ReadMessage(Meta);
+            input.ReadMessage(MetaHeader);
             break;
           }
-          case 794: {
-            if (verify_ == null) {
-              Verify = new global::NeoFS.API.Service.RequestVerificationHeader();
+          case 26: {
+            if (verifyHeader_ == null) {
+              VerifyHeader = new global::NeoFS.API.v2.Session.RequestVerificationHeader();
             }
-            input.ReadMessage(Verify);
+            input.ReadMessage(VerifyHeader);
             break;
           }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the BalanceRequest message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      ///Request body
+      /// </summary>
+      public sealed partial class Body : pb::IMessage<Body> {
+        private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Body> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Accounting.BalanceRequest.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body(Body other) : this() {
+          ownerId_ = other.ownerId_ != null ? other.ownerId_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body Clone() {
+          return new Body(this);
+        }
+
+        /// <summary>Field number for the "owner_id" field.</summary>
+        public const int OwnerIdFieldNumber = 1;
+        private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
+        /// <summary>
+        /// Carries user identifier in NeoFS system for which the balance
+        /// is requested.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
+          get { return ownerId_; }
+          set {
+            ownerId_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Body);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Body other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(OwnerId, other.OwnerId)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (ownerId_ != null) hash ^= OwnerId.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (ownerId_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(OwnerId);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (ownerId_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(OwnerId);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Body other) {
+          if (other == null) {
+            return;
+          }
+          if (other.ownerId_ != null) {
+            if (ownerId_ == null) {
+              OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+            }
+            OwnerId.MergeFrom(other.OwnerId);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (ownerId_ == null) {
+                  OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+                }
+                input.ReadMessage(OwnerId);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
+  /// <summary>
+  /// Message defines the response body of Balance method.
+  ///
+  /// The amount of funds is calculated in decimal numbers.
+  /// </summary>
   public sealed partial class BalanceResponse : pb::IMessage<BalanceResponse> {
     private static readonly pb::MessageParser<BalanceResponse> _parser = new pb::MessageParser<BalanceResponse>(() => new BalanceResponse());
     private pb::UnknownFieldSet _unknownFields;
@@ -263,7 +440,7 @@ namespace NeoFS.API.Accounting {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Accounting.ServiceReflection.Descriptor.MessageTypes[1]; }
+      get { return global::NeoFS.API.v2.Accounting.ServiceReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -280,8 +457,9 @@ namespace NeoFS.API.Accounting {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public BalanceResponse(BalanceResponse other) : this() {
-      balance_ = other.balance_ != null ? other.balance_.Clone() : null;
-      lockAccounts_ = other.lockAccounts_.Clone();
+      body_ = other.body_ != null ? other.body_.Clone() : null;
+      metaHeader_ = other.metaHeader_ != null ? other.metaHeader_.Clone() : null;
+      verifyHeader_ = other.verifyHeader_ != null ? other.verifyHeader_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -290,32 +468,49 @@ namespace NeoFS.API.Accounting {
       return new BalanceResponse(this);
     }
 
-    /// <summary>Field number for the "Balance" field.</summary>
-    public const int BalanceFieldNumber = 1;
-    private global::NeoFS.API.Decimal.Decimal balance_;
+    /// <summary>Field number for the "body" field.</summary>
+    public const int BodyFieldNumber = 1;
+    private global::NeoFS.API.v2.Accounting.BalanceResponse.Types.Body body_;
     /// <summary>
-    /// Balance contains current account balance state
+    /// Body of the balance response message.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Decimal.Decimal Balance {
-      get { return balance_; }
+    public global::NeoFS.API.v2.Accounting.BalanceResponse.Types.Body Body {
+      get { return body_; }
       set {
-        balance_ = value;
+        body_ = value;
       }
     }
 
-    /// <summary>Field number for the "LockAccounts" field.</summary>
-    public const int LockAccountsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::NeoFS.API.Accounting.Account> _repeated_lockAccounts_codec
-        = pb::FieldCodec.ForMessage(18, global::NeoFS.API.Accounting.Account.Parser);
-    private readonly pbc::RepeatedField<global::NeoFS.API.Accounting.Account> lockAccounts_ = new pbc::RepeatedField<global::NeoFS.API.Accounting.Account>();
+    /// <summary>Field number for the "meta_header" field.</summary>
+    public const int MetaHeaderFieldNumber = 2;
+    private global::NeoFS.API.v2.Session.ResponseMetaHeader metaHeader_;
     /// <summary>
-    /// LockAccounts contains information about locked funds. Locked funds appear
-    /// when user pays for storage or withdraw assets.
+    /// Carries response meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::NeoFS.API.Accounting.Account> LockAccounts {
-      get { return lockAccounts_; }
+    public global::NeoFS.API.v2.Session.ResponseMetaHeader MetaHeader {
+      get { return metaHeader_; }
+      set {
+        metaHeader_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "verify_header" field.</summary>
+    public const int VerifyHeaderFieldNumber = 3;
+    private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
+    /// <summary>
+    /// Carries response verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness
+    /// of transmission.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
+      get { return verifyHeader_; }
+      set {
+        verifyHeader_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -331,16 +526,18 @@ namespace NeoFS.API.Accounting {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Balance, other.Balance)) return false;
-      if(!lockAccounts_.Equals(other.lockAccounts_)) return false;
+      if (!object.Equals(Body, other.Body)) return false;
+      if (!object.Equals(MetaHeader, other.MetaHeader)) return false;
+      if (!object.Equals(VerifyHeader, other.VerifyHeader)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (balance_ != null) hash ^= Balance.GetHashCode();
-      hash ^= lockAccounts_.GetHashCode();
+      if (body_ != null) hash ^= Body.GetHashCode();
+      if (metaHeader_ != null) hash ^= MetaHeader.GetHashCode();
+      if (verifyHeader_ != null) hash ^= VerifyHeader.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -354,11 +551,18 @@ namespace NeoFS.API.Accounting {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (balance_ != null) {
+      if (body_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(Balance);
+        output.WriteMessage(Body);
       }
-      lockAccounts_.WriteTo(output, _repeated_lockAccounts_codec);
+      if (metaHeader_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MetaHeader);
+      }
+      if (verifyHeader_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(VerifyHeader);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -367,10 +571,15 @@ namespace NeoFS.API.Accounting {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (balance_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Balance);
+      if (body_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Body);
       }
-      size += lockAccounts_.CalculateSize(_repeated_lockAccounts_codec);
+      if (metaHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MetaHeader);
+      }
+      if (verifyHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(VerifyHeader);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -382,13 +591,24 @@ namespace NeoFS.API.Accounting {
       if (other == null) {
         return;
       }
-      if (other.balance_ != null) {
-        if (balance_ == null) {
-          Balance = new global::NeoFS.API.Decimal.Decimal();
+      if (other.body_ != null) {
+        if (body_ == null) {
+          Body = new global::NeoFS.API.v2.Accounting.BalanceResponse.Types.Body();
         }
-        Balance.MergeFrom(other.Balance);
+        Body.MergeFrom(other.Body);
       }
-      lockAccounts_.Add(other.lockAccounts_);
+      if (other.metaHeader_ != null) {
+        if (metaHeader_ == null) {
+          MetaHeader = new global::NeoFS.API.v2.Session.ResponseMetaHeader();
+        }
+        MetaHeader.MergeFrom(other.MetaHeader);
+      }
+      if (other.verifyHeader_ != null) {
+        if (verifyHeader_ == null) {
+          VerifyHeader = new global::NeoFS.API.v2.Session.ResponseVerificationHeader();
+        }
+        VerifyHeader.MergeFrom(other.VerifyHeader);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -401,19 +621,177 @@ namespace NeoFS.API.Accounting {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (balance_ == null) {
-              Balance = new global::NeoFS.API.Decimal.Decimal();
+            if (body_ == null) {
+              Body = new global::NeoFS.API.v2.Accounting.BalanceResponse.Types.Body();
             }
-            input.ReadMessage(Balance);
+            input.ReadMessage(Body);
             break;
           }
           case 18: {
-            lockAccounts_.AddEntriesFrom(input, _repeated_lockAccounts_codec);
+            if (metaHeader_ == null) {
+              MetaHeader = new global::NeoFS.API.v2.Session.ResponseMetaHeader();
+            }
+            input.ReadMessage(MetaHeader);
+            break;
+          }
+          case 26: {
+            if (verifyHeader_ == null) {
+              VerifyHeader = new global::NeoFS.API.v2.Session.ResponseVerificationHeader();
+            }
+            input.ReadMessage(VerifyHeader);
             break;
           }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the BalanceResponse message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      ///Request body
+      /// </summary>
+      public sealed partial class Body : pb::IMessage<Body> {
+        private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Body> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Accounting.BalanceResponse.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body(Body other) : this() {
+          balance_ = other.balance_ != null ? other.balance_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body Clone() {
+          return new Body(this);
+        }
+
+        /// <summary>Field number for the "balance" field.</summary>
+        public const int BalanceFieldNumber = 1;
+        private global::NeoFS.API.v2.Accounting.Decimal balance_;
+        /// <summary>
+        /// Carries the amount of funds on the account.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Accounting.Decimal Balance {
+          get { return balance_; }
+          set {
+            balance_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Body);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Body other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(Balance, other.Balance)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (balance_ != null) hash ^= Balance.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (balance_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Balance);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (balance_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Balance);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Body other) {
+          if (other == null) {
+            return;
+          }
+          if (other.balance_ != null) {
+            if (balance_ == null) {
+              Balance = new global::NeoFS.API.v2.Accounting.Decimal();
+            }
+            Balance.MergeFrom(other.Balance);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (balance_ == null) {
+                  Balance = new global::NeoFS.API.v2.Accounting.Decimal();
+                }
+                input.ReadMessage(Balance);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
 
   }
 

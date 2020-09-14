@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace NeoFS.API.Object {
+namespace NeoFS.API.v2.Object {
 
   /// <summary>Holder for reflection information generated from object/types.proto</summary>
   public static partial class TypesReflection {
@@ -24,231 +24,98 @@ namespace NeoFS.API.Object {
     static TypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJvYmplY3QvdHlwZXMucHJvdG8SBm9iamVjdBoQcmVmcy90eXBlcy5wcm90",
-            "bxoTc2Vzc2lvbi90eXBlcy5wcm90bxoYc3RvcmFnZWdyb3VwL3R5cGVzLnBy",
-            "b3RvGi1naXRodWIuY29tL2dvZ28vcHJvdG9idWYvZ29nb3Byb3RvL2dvZ28u",
-            "cHJvdG8iJwoFUmFuZ2USDgoGT2Zmc2V0GAEgASgEEg4KBkxlbmd0aBgCIAEo",
-            "BCIoCgpVc2VySGVhZGVyEgsKA0tleRgBIAEoCRINCgVWYWx1ZRgCIAEoCSK+",
-            "AwoGSGVhZGVyEhwKBExpbmsYASABKAsyDC5vYmplY3QuTGlua0gAEiEKCFJl",
-            "ZGlyZWN0GAIgASgLMg0ucmVmcy5BZGRyZXNzSAASKAoKVXNlckhlYWRlchgD",
-            "IAEoCzISLm9iamVjdC5Vc2VySGVhZGVySAASJgoJVHJhbnNmb3JtGAQgASgL",
-            "MhEub2JqZWN0LlRyYW5zZm9ybUgAEiYKCVRvbWJzdG9uZRgFIAEoCzIRLm9i",
-            "amVjdC5Ub21ic3RvbmVIABItCgZWZXJpZnkYBiABKAsyGy5zZXNzaW9uLlZl",
-            "cmlmaWNhdGlvbkhlYWRlckgAEhwKCEhvbW9IYXNoGAcgASgMQgja3h8ESGFz",
-            "aEgAEhkKD1BheWxvYWRDaGVja3N1bRgIIAEoDEgAEiwKCUludGVncml0eRgJ",
-            "IAEoCzIXLm9iamVjdC5JbnRlZ3JpdHlIZWFkZXJIABIyCgxTdG9yYWdlR3Jv",
-            "dXAYCiABKAsyGi5zdG9yYWdlZ3JvdXAuU3RvcmFnZUdyb3VwSAASJgoJUHVi",
-            "bGljS2V5GAsgASgLMhEub2JqZWN0LlB1YmxpY0tleUgAQgcKBVZhbHVlIgsK",
-            "CVRvbWJzdG9uZSK6AQoMU3lzdGVtSGVhZGVyEg8KB1ZlcnNpb24YASABKAQS",
-            "FQoNUGF5bG9hZExlbmd0aBgCIAEoBBIWCgJJRBgDIAEoDEIK2t4fAklEyN4f",
-            "ABIgCgdPd25lcklEGAQgASgMQg/a3h8HT3duZXJJRMjeHwASGAoDQ0lEGAUg",
-            "ASgMQgva3h8DQ0lEyN4fABIuCglDcmVhdGVkQXQYBiABKAsyFS5vYmplY3Qu",
-            "Q3JlYXRpb25Qb2ludEIEyN4fACIwCg1DcmVhdGlvblBvaW50EhAKCFVuaXhU",
-            "aW1lGAEgASgDEg0KBUVwb2NoGAIgASgEIkUKD0ludGVncml0eUhlYWRlchIX",
-            "Cg9IZWFkZXJzQ2hlY2tzdW0YASABKAwSGQoRQ2hlY2tzdW1TaWduYXR1cmUY",
-            "AiABKAwilQEKBExpbmsSHwoEdHlwZRgBIAEoDjIRLm9iamVjdC5MaW5rLlR5",
-            "cGUSFgoCSUQYAiABKAxCCtreHwJJRMjeHwAiVAoEVHlwZRILCgdVbmtub3du",
-            "EAASCgoGUGFyZW50EAESDAoIUHJldmlvdXMQAhIICgROZXh0EAMSCQoFQ2hp",
-            "bGQQBBIQCgxTdG9yYWdlR3JvdXAQBSJmCglUcmFuc2Zvcm0SJAoEdHlwZRgB",
-            "IAEoDjIWLm9iamVjdC5UcmFuc2Zvcm0uVHlwZSIzCgRUeXBlEgsKB1Vua25v",
-            "d24QABIJCgVTcGxpdBABEggKBFNpZ24QAhIJCgVNb3VsZBADInIKBk9iamVj",
-            "dBIwCgxTeXN0ZW1IZWFkZXIYASABKAsyFC5vYmplY3QuU3lzdGVtSGVhZGVy",
-            "QgTI3h8AEiUKB0hlYWRlcnMYAiADKAsyDi5vYmplY3QuSGVhZGVyQgTI3h8A",
-            "Eg8KB1BheWxvYWQYAyABKAwiGgoJUHVibGljS2V5Eg0KBVZhbHVlGAEgASgM",
-            "QkFaKGdpdGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1nby9vYmplY3Sq",
-            "AhBOZW9GUy5BUEkuT2JqZWN02OIeAWIGcHJvdG8z"));
+            "ChJvYmplY3QvdHlwZXMucHJvdG8SEG5lby5mcy52Mi5vYmplY3QaEHJlZnMv",
+            "dHlwZXMucHJvdG8aE3Nlc3Npb24vdHlwZXMucHJvdG8ixQEKC1Nob3J0SGVh",
+            "ZGVyEigKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJzaW9u",
+            "EhYKDmNyZWF0aW9uX2Vwb2NoGAIgASgEEikKCG93bmVyX2lkGAMgASgLMhcu",
+            "bmVvLmZzLnYyLnJlZnMuT3duZXJJRBIxCgtvYmplY3RfdHlwZRgEIAEoDjIc",
+            "Lm5lby5mcy52Mi5vYmplY3QuT2JqZWN0VHlwZRIWCg5wYXlsb2FkX2xlbmd0",
+            "aBgFIAEoBCKRBgoGSGVhZGVyEigKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMu",
+            "djIucmVmcy5WZXJzaW9uEjEKDGNvbnRhaW5lcl9pZBgCIAEoCzIbLm5lby5m",
+            "cy52Mi5yZWZzLkNvbnRhaW5lcklEEikKCG93bmVyX2lkGAMgASgLMhcubmVv",
+            "LmZzLnYyLnJlZnMuT3duZXJJRBIWCg5jcmVhdGlvbl9lcG9jaBgEIAEoBBIW",
+            "Cg5wYXlsb2FkX2xlbmd0aBgFIAEoBBIuCgxwYXlsb2FkX2hhc2gYBiABKAsy",
+            "GC5uZW8uZnMudjIucmVmcy5DaGVja3N1bRIxCgtvYmplY3RfdHlwZRgHIAEo",
+            "DjIcLm5lby5mcy52Mi5vYmplY3QuT2JqZWN0VHlwZRIyChBob21vbW9ycGhp",
+            "Y19oYXNoGAggASgLMhgubmVvLmZzLnYyLnJlZnMuQ2hlY2tzdW0SNgoNc2Vz",
+            "c2lvbl90b2tlbhgJIAEoCzIfLm5lby5mcy52Mi5zZXNzaW9uLlNlc3Npb25U",
+            "b2tlbhI2CgphdHRyaWJ1dGVzGAogAygLMiIubmVvLmZzLnYyLm9iamVjdC5I",
+            "ZWFkZXIuQXR0cmlidXRlEi0KBXNwbGl0GAsgASgLMh4ubmVvLmZzLnYyLm9i",
+            "amVjdC5IZWFkZXIuU3BsaXQaJwoJQXR0cmlidXRlEgsKA2tleRgBIAEoCRIN",
+            "CgV2YWx1ZRgCIAEoCRrvAQoFU3BsaXQSKAoGcGFyZW50GAEgASgLMhgubmVv",
+            "LmZzLnYyLnJlZnMuT2JqZWN0SUQSKgoIcHJldmlvdXMYAiABKAsyGC5uZW8u",
+            "ZnMudjIucmVmcy5PYmplY3RJRBIzChBwYXJlbnRfc2lnbmF0dXJlGAMgASgL",
+            "MhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlEi8KDXBhcmVudF9oZWFkZXIY",
+            "BCABKAsyGC5uZW8uZnMudjIub2JqZWN0LkhlYWRlchIqCghjaGlsZHJlbhgF",
+            "IAMoCzIYLm5lby5mcy52Mi5yZWZzLk9iamVjdElEIp4BCgZPYmplY3QSKwoJ",
+            "b2JqZWN0X2lkGAEgASgLMhgubmVvLmZzLnYyLnJlZnMuT2JqZWN0SUQSLAoJ",
+            "c2lnbmF0dXJlGAIgASgLMhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlEigK",
+            "BmhlYWRlchgDIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyEg8KB3Bh",
+            "eWxvYWQYBCABKAwqOwoKT2JqZWN0VHlwZRILCgdSRUdVTEFSEAASDQoJVE9N",
+            "QlNUT05FEAESEQoNU1RPUkFHRV9HUk9VUBACKjkKCU1hdGNoVHlwZRIaChZN",
+            "QVRDSF9UWVBFX1VOU1BFQ0lGSUVEEAASEAoMU1RSSU5HX0VRVUFMEAFCT1o3",
+            "Z2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3YyL29iamVjdC9n",
+            "cnBjO29iamVjdKoCE05lb0ZTLkFQSS52Mi5PYmplY3RiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::NeoFS.API.Refs.TypesReflection.Descriptor, global::NeoFS.API.Session.TypesReflection.Descriptor, global::NeoFS.API.StorageGroup.TypesReflection.Descriptor, global::Gogoproto.GogoReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.Range), global::NeoFS.API.Object.Range.Parser, new[]{ "Offset", "Length" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.UserHeader), global::NeoFS.API.Object.UserHeader.Parser, new[]{ "Key", "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.Header), global::NeoFS.API.Object.Header.Parser, new[]{ "Link", "Redirect", "UserHeader", "Transform", "Tombstone", "Verify", "HomoHash", "PayloadChecksum", "Integrity", "StorageGroup", "PublicKey" }, new[]{ "Value" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.Tombstone), global::NeoFS.API.Object.Tombstone.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.SystemHeader), global::NeoFS.API.Object.SystemHeader.Parser, new[]{ "Version", "PayloadLength", "ID", "OwnerID", "CID", "CreatedAt" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.CreationPoint), global::NeoFS.API.Object.CreationPoint.Parser, new[]{ "UnixTime", "Epoch" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.IntegrityHeader), global::NeoFS.API.Object.IntegrityHeader.Parser, new[]{ "HeadersChecksum", "ChecksumSignature" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.Link), global::NeoFS.API.Object.Link.Parser, new[]{ "Type", "ID" }, null, new[]{ typeof(global::NeoFS.API.Object.Link.Types.Type) }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.Transform), global::NeoFS.API.Object.Transform.Parser, new[]{ "Type" }, null, new[]{ typeof(global::NeoFS.API.Object.Transform.Types.Type) }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.Object), global::NeoFS.API.Object.Object.Parser, new[]{ "SystemHeader", "Headers", "Payload" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.Object.PublicKey), global::NeoFS.API.Object.PublicKey.Parser, new[]{ "Value" }, null, null, null, null)
+          new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Session.TypesReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Object.ObjectType), typeof(global::NeoFS.API.v2.Object.MatchType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.ShortHeader), global::NeoFS.API.v2.Object.ShortHeader.Parser, new[]{ "Version", "CreationEpoch", "OwnerId", "ObjectType", "PayloadLength" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header), global::NeoFS.API.v2.Object.Header.Parser, new[]{ "Version", "ContainerId", "OwnerId", "CreationEpoch", "PayloadLength", "PayloadHash", "ObjectType", "HomomorphicHash", "SessionToken", "Attributes", "Split" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header.Types.Attribute), global::NeoFS.API.v2.Object.Header.Types.Attribute.Parser, new[]{ "Key", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header.Types.Split), global::NeoFS.API.v2.Object.Header.Types.Split.Parser, new[]{ "Parent", "Previous", "ParentSignature", "ParentHeader", "Children" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Object), global::NeoFS.API.v2.Object.Object.Parser, new[]{ "ObjectId", "Signature", "Header", "Payload" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
-  #region Messages
-  public sealed partial class Range : pb::IMessage<Range> {
-    private static readonly pb::MessageParser<Range> _parser = new pb::MessageParser<Range>(() => new Range());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Range> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[0]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Range() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Range(Range other) : this() {
-      offset_ = other.offset_;
-      length_ = other.length_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Range Clone() {
-      return new Range(this);
-    }
-
-    /// <summary>Field number for the "Offset" field.</summary>
-    public const int OffsetFieldNumber = 1;
-    private ulong offset_;
+  #region Enums
+  /// <summary>
+  /// Type of the object payload content
+  /// </summary>
+  public enum ObjectType {
     /// <summary>
-    /// Offset of the data range
+    /// Just a normal object
     /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Offset {
-      get { return offset_; }
-      set {
-        offset_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Length" field.</summary>
-    public const int LengthFieldNumber = 2;
-    private ulong length_;
+    [pbr::OriginalName("REGULAR")] Regular = 0,
     /// <summary>
-    /// Length of the data range
+    /// Used internally to identify deleted objects
     /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Length {
-      get { return length_; }
-      set {
-        length_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Range);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Range other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Offset != other.Offset) return false;
-      if (Length != other.Length) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Offset != 0UL) hash ^= Offset.GetHashCode();
-      if (Length != 0UL) hash ^= Length.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Offset != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Offset);
-      }
-      if (Length != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(Length);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Offset != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Offset);
-      }
-      if (Length != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Length);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Range other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Offset != 0UL) {
-        Offset = other.Offset;
-      }
-      if (other.Length != 0UL) {
-        Length = other.Length;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Offset = input.ReadUInt64();
-            break;
-          }
-          case 16: {
-            Length = input.ReadUInt64();
-            break;
-          }
-        }
-      }
-    }
-
+    [pbr::OriginalName("TOMBSTONE")] Tombstone = 1,
+    /// <summary>
+    /// Identifies that the object holds StorageGroup information
+    /// </summary>
+    [pbr::OriginalName("STORAGE_GROUP")] StorageGroup = 2,
   }
 
-  public sealed partial class UserHeader : pb::IMessage<UserHeader> {
-    private static readonly pb::MessageParser<UserHeader> _parser = new pb::MessageParser<UserHeader>(() => new UserHeader());
+  /// <summary>
+  /// Type of match expression
+  /// </summary>
+  public enum MatchType {
+    /// <summary>
+    /// Unknown. Not used
+    /// </summary>
+    [pbr::OriginalName("MATCH_TYPE_UNSPECIFIED")] Unspecified = 0,
+    /// <summary>
+    /// Full string match
+    /// </summary>
+    [pbr::OriginalName("STRING_EQUAL")] StringEqual = 1,
+  }
+
+  #endregion
+
+  #region Messages
+  /// <summary>
+  /// Short header fields
+  /// </summary>
+  public sealed partial class ShortHeader : pb::IMessage<ShortHeader> {
+    private static readonly pb::MessageParser<ShortHeader> _parser = new pb::MessageParser<ShortHeader>(() => new ShortHeader());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UserHeader> Parser { get { return _parser; } }
+    public static pb::MessageParser<ShortHeader> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[1]; }
+      get { return global::NeoFS.API.v2.Object.TypesReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -257,75 +124,127 @@ namespace NeoFS.API.Object {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserHeader() {
+    public ShortHeader() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserHeader(UserHeader other) : this() {
-      key_ = other.key_;
-      value_ = other.value_;
+    public ShortHeader(ShortHeader other) : this() {
+      version_ = other.version_ != null ? other.version_.Clone() : null;
+      creationEpoch_ = other.creationEpoch_;
+      ownerId_ = other.ownerId_ != null ? other.ownerId_.Clone() : null;
+      objectType_ = other.objectType_;
+      payloadLength_ = other.payloadLength_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserHeader Clone() {
-      return new UserHeader(this);
+    public ShortHeader Clone() {
+      return new ShortHeader(this);
     }
 
-    /// <summary>Field number for the "Key" field.</summary>
-    public const int KeyFieldNumber = 1;
-    private string key_ = "";
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Key of the user's header
+    /// Object format version.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Key {
-      get { return key_; }
+    public global::NeoFS.API.v2.Refs.Version Version {
+      get { return version_; }
       set {
-        key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        version_ = value;
       }
     }
 
-    /// <summary>Field number for the "Value" field.</summary>
-    public const int ValueFieldNumber = 2;
-    private string value_ = "";
+    /// <summary>Field number for the "creation_epoch" field.</summary>
+    public const int CreationEpochFieldNumber = 2;
+    private ulong creationEpoch_;
     /// <summary>
-    /// Value of the user's header
+    /// Epoch when the object was created
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Value {
-      get { return value_; }
+    public ulong CreationEpoch {
+      get { return creationEpoch_; }
       set {
-        value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        creationEpoch_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "owner_id" field.</summary>
+    public const int OwnerIdFieldNumber = 3;
+    private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
+    /// <summary>
+    /// Object's owner
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
+      get { return ownerId_; }
+      set {
+        ownerId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "object_type" field.</summary>
+    public const int ObjectTypeFieldNumber = 4;
+    private global::NeoFS.API.v2.Object.ObjectType objectType_ = global::NeoFS.API.v2.Object.ObjectType.Regular;
+    /// <summary>
+    /// Type of the object payload content
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Object.ObjectType ObjectType {
+      get { return objectType_; }
+      set {
+        objectType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "payload_length" field.</summary>
+    public const int PayloadLengthFieldNumber = 5;
+    private ulong payloadLength_;
+    /// <summary>
+    /// Size of payload in bytes.
+    /// 0xFFFFFFFFFFFFFFFF means `payload_length` is unknown
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong PayloadLength {
+      get { return payloadLength_; }
+      set {
+        payloadLength_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as UserHeader);
+      return Equals(other as ShortHeader);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UserHeader other) {
+    public bool Equals(ShortHeader other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Key != other.Key) return false;
-      if (Value != other.Value) return false;
+      if (!object.Equals(Version, other.Version)) return false;
+      if (CreationEpoch != other.CreationEpoch) return false;
+      if (!object.Equals(OwnerId, other.OwnerId)) return false;
+      if (ObjectType != other.ObjectType) return false;
+      if (PayloadLength != other.PayloadLength) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Key.Length != 0) hash ^= Key.GetHashCode();
-      if (Value.Length != 0) hash ^= Value.GetHashCode();
+      if (version_ != null) hash ^= Version.GetHashCode();
+      if (CreationEpoch != 0UL) hash ^= CreationEpoch.GetHashCode();
+      if (ownerId_ != null) hash ^= OwnerId.GetHashCode();
+      if (ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) hash ^= ObjectType.GetHashCode();
+      if (PayloadLength != 0UL) hash ^= PayloadLength.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -339,13 +258,25 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Key.Length != 0) {
+      if (version_ != null) {
         output.WriteRawTag(10);
-        output.WriteString(Key);
+        output.WriteMessage(Version);
       }
-      if (Value.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Value);
+      if (CreationEpoch != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(CreationEpoch);
+      }
+      if (ownerId_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(OwnerId);
+      }
+      if (ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) ObjectType);
+      }
+      if (PayloadLength != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(PayloadLength);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -355,11 +286,20 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Key.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
+      if (version_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
       }
-      if (Value.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
+      if (CreationEpoch != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreationEpoch);
+      }
+      if (ownerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OwnerId);
+      }
+      if (ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ObjectType);
+      }
+      if (PayloadLength != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PayloadLength);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -368,15 +308,30 @@ namespace NeoFS.API.Object {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UserHeader other) {
+    public void MergeFrom(ShortHeader other) {
       if (other == null) {
         return;
       }
-      if (other.Key.Length != 0) {
-        Key = other.Key;
+      if (other.version_ != null) {
+        if (version_ == null) {
+          Version = new global::NeoFS.API.v2.Refs.Version();
+        }
+        Version.MergeFrom(other.Version);
       }
-      if (other.Value.Length != 0) {
-        Value = other.Value;
+      if (other.CreationEpoch != 0UL) {
+        CreationEpoch = other.CreationEpoch;
+      }
+      if (other.ownerId_ != null) {
+        if (ownerId_ == null) {
+          OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+        }
+        OwnerId.MergeFrom(other.OwnerId);
+      }
+      if (other.ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) {
+        ObjectType = other.ObjectType;
+      }
+      if (other.PayloadLength != 0UL) {
+        PayloadLength = other.PayloadLength;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -390,11 +345,29 @@ namespace NeoFS.API.Object {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Key = input.ReadString();
+            if (version_ == null) {
+              Version = new global::NeoFS.API.v2.Refs.Version();
+            }
+            input.ReadMessage(Version);
             break;
           }
-          case 18: {
-            Value = input.ReadString();
+          case 16: {
+            CreationEpoch = input.ReadUInt64();
+            break;
+          }
+          case 26: {
+            if (ownerId_ == null) {
+              OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+            }
+            input.ReadMessage(OwnerId);
+            break;
+          }
+          case 32: {
+            ObjectType = (global::NeoFS.API.v2.Object.ObjectType) input.ReadEnum();
+            break;
+          }
+          case 40: {
+            PayloadLength = input.ReadUInt64();
             break;
           }
         }
@@ -403,6 +376,9 @@ namespace NeoFS.API.Object {
 
   }
 
+  /// <summary>
+  /// Object Headers
+  /// </summary>
   public sealed partial class Header : pb::IMessage<Header> {
     private static readonly pb::MessageParser<Header> _parser = new pb::MessageParser<Header>(() => new Header());
     private pb::UnknownFieldSet _unknownFields;
@@ -411,7 +387,7 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[2]; }
+      get { return global::NeoFS.API.v2.Object.TypesReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -428,42 +404,17 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Header(Header other) : this() {
-      switch (other.ValueCase) {
-        case ValueOneofCase.Link:
-          Link = other.Link.Clone();
-          break;
-        case ValueOneofCase.Redirect:
-          Redirect = other.Redirect.Clone();
-          break;
-        case ValueOneofCase.UserHeader:
-          UserHeader = other.UserHeader.Clone();
-          break;
-        case ValueOneofCase.Transform:
-          Transform = other.Transform.Clone();
-          break;
-        case ValueOneofCase.Tombstone:
-          Tombstone = other.Tombstone.Clone();
-          break;
-        case ValueOneofCase.Verify:
-          Verify = other.Verify.Clone();
-          break;
-        case ValueOneofCase.HomoHash:
-          HomoHash = other.HomoHash;
-          break;
-        case ValueOneofCase.PayloadChecksum:
-          PayloadChecksum = other.PayloadChecksum;
-          break;
-        case ValueOneofCase.Integrity:
-          Integrity = other.Integrity.Clone();
-          break;
-        case ValueOneofCase.StorageGroup:
-          StorageGroup = other.StorageGroup.Clone();
-          break;
-        case ValueOneofCase.PublicKey:
-          PublicKey = other.PublicKey.Clone();
-          break;
-      }
-
+      version_ = other.version_ != null ? other.version_.Clone() : null;
+      containerId_ = other.containerId_ != null ? other.containerId_.Clone() : null;
+      ownerId_ = other.ownerId_ != null ? other.ownerId_.Clone() : null;
+      creationEpoch_ = other.creationEpoch_;
+      payloadLength_ = other.payloadLength_;
+      payloadHash_ = other.payloadHash_ != null ? other.payloadHash_.Clone() : null;
+      objectType_ = other.objectType_;
+      homomorphicHash_ = other.homomorphicHash_ != null ? other.homomorphicHash_.Clone() : null;
+      sessionToken_ = other.sessionToken_ != null ? other.sessionToken_.Clone() : null;
+      attributes_ = other.attributes_.Clone();
+      split_ = other.split_ != null ? other.split_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -472,186 +423,160 @@ namespace NeoFS.API.Object {
       return new Header(this);
     }
 
-    /// <summary>Field number for the "Link" field.</summary>
-    public const int LinkFieldNumber = 1;
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Link to other objects
+    /// Object format version.
+    /// Effectively the version of API library used to create particular object
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.Link Link {
-      get { return valueCase_ == ValueOneofCase.Link ? (global::NeoFS.API.Object.Link) value_ : null; }
+    public global::NeoFS.API.v2.Refs.Version Version {
+      get { return version_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.Link;
+        version_ = value;
       }
     }
 
-    /// <summary>Field number for the "Redirect" field.</summary>
-    public const int RedirectFieldNumber = 2;
+    /// <summary>Field number for the "container_id" field.</summary>
+    public const int ContainerIdFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.ContainerID containerId_;
     /// <summary>
-    /// Redirect not used yet
+    /// Object's container
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Refs.Address Redirect {
-      get { return valueCase_ == ValueOneofCase.Redirect ? (global::NeoFS.API.Refs.Address) value_ : null; }
+    public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
+      get { return containerId_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.Redirect;
+        containerId_ = value;
       }
     }
 
-    /// <summary>Field number for the "UserHeader" field.</summary>
-    public const int UserHeaderFieldNumber = 3;
+    /// <summary>Field number for the "owner_id" field.</summary>
+    public const int OwnerIdFieldNumber = 3;
+    private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
     /// <summary>
-    /// UserHeader is a set of KV headers defined by user
+    /// Object's owner
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.UserHeader UserHeader {
-      get { return valueCase_ == ValueOneofCase.UserHeader ? (global::NeoFS.API.Object.UserHeader) value_ : null; }
+    public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
+      get { return ownerId_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.UserHeader;
+        ownerId_ = value;
       }
     }
 
-    /// <summary>Field number for the "Transform" field.</summary>
-    public const int TransformFieldNumber = 4;
+    /// <summary>Field number for the "creation_epoch" field.</summary>
+    public const int CreationEpochFieldNumber = 4;
+    private ulong creationEpoch_;
     /// <summary>
-    /// Transform defines transform operation (e.g. payload split)
+    /// Object creation Epoch
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.Transform Transform {
-      get { return valueCase_ == ValueOneofCase.Transform ? (global::NeoFS.API.Object.Transform) value_ : null; }
+    public ulong CreationEpoch {
+      get { return creationEpoch_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.Transform;
+        creationEpoch_ = value;
       }
     }
 
-    /// <summary>Field number for the "Tombstone" field.</summary>
-    public const int TombstoneFieldNumber = 5;
+    /// <summary>Field number for the "payload_length" field.</summary>
+    public const int PayloadLengthFieldNumber = 5;
+    private ulong payloadLength_;
     /// <summary>
-    /// Tombstone header that set up in deleted objects
+    /// Size of payload in bytes.
+    /// 0xFFFFFFFFFFFFFFFF means `payload_length` is unknown
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.Tombstone Tombstone {
-      get { return valueCase_ == ValueOneofCase.Tombstone ? (global::NeoFS.API.Object.Tombstone) value_ : null; }
+    public ulong PayloadLength {
+      get { return payloadLength_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.Tombstone;
+        payloadLength_ = value;
       }
     }
 
-    /// <summary>Field number for the "Verify" field.</summary>
-    public const int VerifyFieldNumber = 6;
+    /// <summary>Field number for the "payload_hash" field.</summary>
+    public const int PayloadHashFieldNumber = 6;
+    private global::NeoFS.API.v2.Refs.Checksum payloadHash_;
     /// <summary>
-    /// Verify header that contains session public key and user's signature
+    /// Hash of payload bytes
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Session.VerificationHeader Verify {
-      get { return valueCase_ == ValueOneofCase.Verify ? (global::NeoFS.API.Session.VerificationHeader) value_ : null; }
+    public global::NeoFS.API.v2.Refs.Checksum PayloadHash {
+      get { return payloadHash_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.Verify;
+        payloadHash_ = value;
       }
     }
 
-    /// <summary>Field number for the "HomoHash" field.</summary>
-    public const int HomoHashFieldNumber = 7;
+    /// <summary>Field number for the "object_type" field.</summary>
+    public const int ObjectTypeFieldNumber = 7;
+    private global::NeoFS.API.v2.Object.ObjectType objectType_ = global::NeoFS.API.v2.Object.ObjectType.Regular;
     /// <summary>
-    /// HomoHash is a homomorphic hash of original object payload
+    /// Special object type
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString HomoHash {
-      get { return valueCase_ == ValueOneofCase.HomoHash ? (pb::ByteString) value_ : pb::ByteString.Empty; }
+    public global::NeoFS.API.v2.Object.ObjectType ObjectType {
+      get { return objectType_; }
       set {
-        value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        valueCase_ = ValueOneofCase.HomoHash;
+        objectType_ = value;
       }
     }
 
-    /// <summary>Field number for the "PayloadChecksum" field.</summary>
-    public const int PayloadChecksumFieldNumber = 8;
+    /// <summary>Field number for the "homomorphic_hash" field.</summary>
+    public const int HomomorphicHashFieldNumber = 8;
+    private global::NeoFS.API.v2.Refs.Checksum homomorphicHash_;
     /// <summary>
-    /// PayloadChecksum of actual object's payload
+    /// Homomorphic hash of the object payload.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString PayloadChecksum {
-      get { return valueCase_ == ValueOneofCase.PayloadChecksum ? (pb::ByteString) value_ : pb::ByteString.Empty; }
+    public global::NeoFS.API.v2.Refs.Checksum HomomorphicHash {
+      get { return homomorphicHash_; }
       set {
-        value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-        valueCase_ = ValueOneofCase.PayloadChecksum;
+        homomorphicHash_ = value;
       }
     }
 
-    /// <summary>Field number for the "Integrity" field.</summary>
-    public const int IntegrityFieldNumber = 9;
+    /// <summary>Field number for the "session_token" field.</summary>
+    public const int SessionTokenFieldNumber = 9;
+    private global::NeoFS.API.v2.Session.SessionToken sessionToken_;
     /// <summary>
-    /// Integrity header with checksum of all above headers in the object
+    /// Session token, if it was used during Object creation.
+    /// Need it to verify integrity and authenticity out of Request scope.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.IntegrityHeader Integrity {
-      get { return valueCase_ == ValueOneofCase.Integrity ? (global::NeoFS.API.Object.IntegrityHeader) value_ : null; }
+    public global::NeoFS.API.v2.Session.SessionToken SessionToken {
+      get { return sessionToken_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.Integrity;
+        sessionToken_ = value;
       }
     }
 
-    /// <summary>Field number for the "StorageGroup" field.</summary>
-    public const int StorageGroupFieldNumber = 10;
+    /// <summary>Field number for the "attributes" field.</summary>
+    public const int AttributesFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Object.Header.Types.Attribute> _repeated_attributes_codec
+        = pb::FieldCodec.ForMessage(82, global::NeoFS.API.v2.Object.Header.Types.Attribute.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Object.Header.Types.Attribute> attributes_ = new pbc::RepeatedField<global::NeoFS.API.v2.Object.Header.Types.Attribute>();
     /// <summary>
-    /// StorageGroup contains meta information for the data audit
+    /// User-defined object attributes
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.StorageGroup.StorageGroup StorageGroup {
-      get { return valueCase_ == ValueOneofCase.StorageGroup ? (global::NeoFS.API.StorageGroup.StorageGroup) value_ : null; }
-      set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.StorageGroup;
-      }
+    public pbc::RepeatedField<global::NeoFS.API.v2.Object.Header.Types.Attribute> Attributes {
+      get { return attributes_; }
     }
 
-    /// <summary>Field number for the "PublicKey" field.</summary>
-    public const int PublicKeyFieldNumber = 11;
+    /// <summary>Field number for the "split" field.</summary>
+    public const int SplitFieldNumber = 11;
+    private global::NeoFS.API.v2.Object.Header.Types.Split split_;
     /// <summary>
-    /// PublicKey of owner of the object. Key is used for verification and can be based on NeoID or x509 cert.
+    /// Position of the object in the split hierarchy.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.PublicKey PublicKey {
-      get { return valueCase_ == ValueOneofCase.PublicKey ? (global::NeoFS.API.Object.PublicKey) value_ : null; }
+    public global::NeoFS.API.v2.Object.Header.Types.Split Split {
+      get { return split_; }
       set {
-        value_ = value;
-        valueCase_ = value == null ? ValueOneofCase.None : ValueOneofCase.PublicKey;
+        split_ = value;
       }
-    }
-
-    private object value_;
-    /// <summary>Enum of possible cases for the "Value" oneof.</summary>
-    public enum ValueOneofCase {
-      None = 0,
-      Link = 1,
-      Redirect = 2,
-      UserHeader = 3,
-      Transform = 4,
-      Tombstone = 5,
-      Verify = 6,
-      HomoHash = 7,
-      PayloadChecksum = 8,
-      Integrity = 9,
-      StorageGroup = 10,
-      PublicKey = 11,
-    }
-    private ValueOneofCase valueCase_ = ValueOneofCase.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ValueOneofCase ValueCase {
-      get { return valueCase_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void ClearValue() {
-      valueCase_ = ValueOneofCase.None;
-      value_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -667,36 +592,34 @@ namespace NeoFS.API.Object {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Link, other.Link)) return false;
-      if (!object.Equals(Redirect, other.Redirect)) return false;
-      if (!object.Equals(UserHeader, other.UserHeader)) return false;
-      if (!object.Equals(Transform, other.Transform)) return false;
-      if (!object.Equals(Tombstone, other.Tombstone)) return false;
-      if (!object.Equals(Verify, other.Verify)) return false;
-      if (HomoHash != other.HomoHash) return false;
-      if (PayloadChecksum != other.PayloadChecksum) return false;
-      if (!object.Equals(Integrity, other.Integrity)) return false;
-      if (!object.Equals(StorageGroup, other.StorageGroup)) return false;
-      if (!object.Equals(PublicKey, other.PublicKey)) return false;
-      if (ValueCase != other.ValueCase) return false;
+      if (!object.Equals(Version, other.Version)) return false;
+      if (!object.Equals(ContainerId, other.ContainerId)) return false;
+      if (!object.Equals(OwnerId, other.OwnerId)) return false;
+      if (CreationEpoch != other.CreationEpoch) return false;
+      if (PayloadLength != other.PayloadLength) return false;
+      if (!object.Equals(PayloadHash, other.PayloadHash)) return false;
+      if (ObjectType != other.ObjectType) return false;
+      if (!object.Equals(HomomorphicHash, other.HomomorphicHash)) return false;
+      if (!object.Equals(SessionToken, other.SessionToken)) return false;
+      if(!attributes_.Equals(other.attributes_)) return false;
+      if (!object.Equals(Split, other.Split)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (valueCase_ == ValueOneofCase.Link) hash ^= Link.GetHashCode();
-      if (valueCase_ == ValueOneofCase.Redirect) hash ^= Redirect.GetHashCode();
-      if (valueCase_ == ValueOneofCase.UserHeader) hash ^= UserHeader.GetHashCode();
-      if (valueCase_ == ValueOneofCase.Transform) hash ^= Transform.GetHashCode();
-      if (valueCase_ == ValueOneofCase.Tombstone) hash ^= Tombstone.GetHashCode();
-      if (valueCase_ == ValueOneofCase.Verify) hash ^= Verify.GetHashCode();
-      if (valueCase_ == ValueOneofCase.HomoHash) hash ^= HomoHash.GetHashCode();
-      if (valueCase_ == ValueOneofCase.PayloadChecksum) hash ^= PayloadChecksum.GetHashCode();
-      if (valueCase_ == ValueOneofCase.Integrity) hash ^= Integrity.GetHashCode();
-      if (valueCase_ == ValueOneofCase.StorageGroup) hash ^= StorageGroup.GetHashCode();
-      if (valueCase_ == ValueOneofCase.PublicKey) hash ^= PublicKey.GetHashCode();
-      hash ^= (int) valueCase_;
+      if (version_ != null) hash ^= Version.GetHashCode();
+      if (containerId_ != null) hash ^= ContainerId.GetHashCode();
+      if (ownerId_ != null) hash ^= OwnerId.GetHashCode();
+      if (CreationEpoch != 0UL) hash ^= CreationEpoch.GetHashCode();
+      if (PayloadLength != 0UL) hash ^= PayloadLength.GetHashCode();
+      if (payloadHash_ != null) hash ^= PayloadHash.GetHashCode();
+      if (ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) hash ^= ObjectType.GetHashCode();
+      if (homomorphicHash_ != null) hash ^= HomomorphicHash.GetHashCode();
+      if (sessionToken_ != null) hash ^= SessionToken.GetHashCode();
+      hash ^= attributes_.GetHashCode();
+      if (split_ != null) hash ^= Split.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -710,49 +633,46 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (valueCase_ == ValueOneofCase.Link) {
+      if (version_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(Link);
+        output.WriteMessage(Version);
       }
-      if (valueCase_ == ValueOneofCase.Redirect) {
+      if (containerId_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(Redirect);
+        output.WriteMessage(ContainerId);
       }
-      if (valueCase_ == ValueOneofCase.UserHeader) {
+      if (ownerId_ != null) {
         output.WriteRawTag(26);
-        output.WriteMessage(UserHeader);
+        output.WriteMessage(OwnerId);
       }
-      if (valueCase_ == ValueOneofCase.Transform) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Transform);
+      if (CreationEpoch != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(CreationEpoch);
       }
-      if (valueCase_ == ValueOneofCase.Tombstone) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Tombstone);
+      if (PayloadLength != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(PayloadLength);
       }
-      if (valueCase_ == ValueOneofCase.Verify) {
+      if (payloadHash_ != null) {
         output.WriteRawTag(50);
-        output.WriteMessage(Verify);
+        output.WriteMessage(PayloadHash);
       }
-      if (valueCase_ == ValueOneofCase.HomoHash) {
-        output.WriteRawTag(58);
-        output.WriteBytes(HomoHash);
+      if (ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) ObjectType);
       }
-      if (valueCase_ == ValueOneofCase.PayloadChecksum) {
+      if (homomorphicHash_ != null) {
         output.WriteRawTag(66);
-        output.WriteBytes(PayloadChecksum);
+        output.WriteMessage(HomomorphicHash);
       }
-      if (valueCase_ == ValueOneofCase.Integrity) {
+      if (sessionToken_ != null) {
         output.WriteRawTag(74);
-        output.WriteMessage(Integrity);
+        output.WriteMessage(SessionToken);
       }
-      if (valueCase_ == ValueOneofCase.StorageGroup) {
-        output.WriteRawTag(82);
-        output.WriteMessage(StorageGroup);
-      }
-      if (valueCase_ == ValueOneofCase.PublicKey) {
+      attributes_.WriteTo(output, _repeated_attributes_codec);
+      if (split_ != null) {
         output.WriteRawTag(90);
-        output.WriteMessage(PublicKey);
+        output.WriteMessage(Split);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -762,38 +682,36 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (valueCase_ == ValueOneofCase.Link) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Link);
+      if (version_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
       }
-      if (valueCase_ == ValueOneofCase.Redirect) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Redirect);
+      if (containerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ContainerId);
       }
-      if (valueCase_ == ValueOneofCase.UserHeader) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UserHeader);
+      if (ownerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OwnerId);
       }
-      if (valueCase_ == ValueOneofCase.Transform) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Transform);
+      if (CreationEpoch != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreationEpoch);
       }
-      if (valueCase_ == ValueOneofCase.Tombstone) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tombstone);
+      if (PayloadLength != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PayloadLength);
       }
-      if (valueCase_ == ValueOneofCase.Verify) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Verify);
+      if (payloadHash_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PayloadHash);
       }
-      if (valueCase_ == ValueOneofCase.HomoHash) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(HomoHash);
+      if (ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ObjectType);
       }
-      if (valueCase_ == ValueOneofCase.PayloadChecksum) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(PayloadChecksum);
+      if (homomorphicHash_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HomomorphicHash);
       }
-      if (valueCase_ == ValueOneofCase.Integrity) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Integrity);
+      if (sessionToken_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SessionToken);
       }
-      if (valueCase_ == ValueOneofCase.StorageGroup) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(StorageGroup);
-      }
-      if (valueCase_ == ValueOneofCase.PublicKey) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PublicKey);
+      size += attributes_.CalculateSize(_repeated_attributes_codec);
+      if (split_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Split);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -806,869 +724,57 @@ namespace NeoFS.API.Object {
       if (other == null) {
         return;
       }
-      switch (other.ValueCase) {
-        case ValueOneofCase.Link:
-          if (Link == null) {
-            Link = new global::NeoFS.API.Object.Link();
-          }
-          Link.MergeFrom(other.Link);
-          break;
-        case ValueOneofCase.Redirect:
-          if (Redirect == null) {
-            Redirect = new global::NeoFS.API.Refs.Address();
-          }
-          Redirect.MergeFrom(other.Redirect);
-          break;
-        case ValueOneofCase.UserHeader:
-          if (UserHeader == null) {
-            UserHeader = new global::NeoFS.API.Object.UserHeader();
-          }
-          UserHeader.MergeFrom(other.UserHeader);
-          break;
-        case ValueOneofCase.Transform:
-          if (Transform == null) {
-            Transform = new global::NeoFS.API.Object.Transform();
-          }
-          Transform.MergeFrom(other.Transform);
-          break;
-        case ValueOneofCase.Tombstone:
-          if (Tombstone == null) {
-            Tombstone = new global::NeoFS.API.Object.Tombstone();
-          }
-          Tombstone.MergeFrom(other.Tombstone);
-          break;
-        case ValueOneofCase.Verify:
-          if (Verify == null) {
-            Verify = new global::NeoFS.API.Session.VerificationHeader();
-          }
-          Verify.MergeFrom(other.Verify);
-          break;
-        case ValueOneofCase.HomoHash:
-          HomoHash = other.HomoHash;
-          break;
-        case ValueOneofCase.PayloadChecksum:
-          PayloadChecksum = other.PayloadChecksum;
-          break;
-        case ValueOneofCase.Integrity:
-          if (Integrity == null) {
-            Integrity = new global::NeoFS.API.Object.IntegrityHeader();
-          }
-          Integrity.MergeFrom(other.Integrity);
-          break;
-        case ValueOneofCase.StorageGroup:
-          if (StorageGroup == null) {
-            StorageGroup = new global::NeoFS.API.StorageGroup.StorageGroup();
-          }
-          StorageGroup.MergeFrom(other.StorageGroup);
-          break;
-        case ValueOneofCase.PublicKey:
-          if (PublicKey == null) {
-            PublicKey = new global::NeoFS.API.Object.PublicKey();
-          }
-          PublicKey.MergeFrom(other.PublicKey);
-          break;
-      }
-
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            global::NeoFS.API.Object.Link subBuilder = new global::NeoFS.API.Object.Link();
-            if (valueCase_ == ValueOneofCase.Link) {
-              subBuilder.MergeFrom(Link);
-            }
-            input.ReadMessage(subBuilder);
-            Link = subBuilder;
-            break;
-          }
-          case 18: {
-            global::NeoFS.API.Refs.Address subBuilder = new global::NeoFS.API.Refs.Address();
-            if (valueCase_ == ValueOneofCase.Redirect) {
-              subBuilder.MergeFrom(Redirect);
-            }
-            input.ReadMessage(subBuilder);
-            Redirect = subBuilder;
-            break;
-          }
-          case 26: {
-            global::NeoFS.API.Object.UserHeader subBuilder = new global::NeoFS.API.Object.UserHeader();
-            if (valueCase_ == ValueOneofCase.UserHeader) {
-              subBuilder.MergeFrom(UserHeader);
-            }
-            input.ReadMessage(subBuilder);
-            UserHeader = subBuilder;
-            break;
-          }
-          case 34: {
-            global::NeoFS.API.Object.Transform subBuilder = new global::NeoFS.API.Object.Transform();
-            if (valueCase_ == ValueOneofCase.Transform) {
-              subBuilder.MergeFrom(Transform);
-            }
-            input.ReadMessage(subBuilder);
-            Transform = subBuilder;
-            break;
-          }
-          case 42: {
-            global::NeoFS.API.Object.Tombstone subBuilder = new global::NeoFS.API.Object.Tombstone();
-            if (valueCase_ == ValueOneofCase.Tombstone) {
-              subBuilder.MergeFrom(Tombstone);
-            }
-            input.ReadMessage(subBuilder);
-            Tombstone = subBuilder;
-            break;
-          }
-          case 50: {
-            global::NeoFS.API.Session.VerificationHeader subBuilder = new global::NeoFS.API.Session.VerificationHeader();
-            if (valueCase_ == ValueOneofCase.Verify) {
-              subBuilder.MergeFrom(Verify);
-            }
-            input.ReadMessage(subBuilder);
-            Verify = subBuilder;
-            break;
-          }
-          case 58: {
-            HomoHash = input.ReadBytes();
-            break;
-          }
-          case 66: {
-            PayloadChecksum = input.ReadBytes();
-            break;
-          }
-          case 74: {
-            global::NeoFS.API.Object.IntegrityHeader subBuilder = new global::NeoFS.API.Object.IntegrityHeader();
-            if (valueCase_ == ValueOneofCase.Integrity) {
-              subBuilder.MergeFrom(Integrity);
-            }
-            input.ReadMessage(subBuilder);
-            Integrity = subBuilder;
-            break;
-          }
-          case 82: {
-            global::NeoFS.API.StorageGroup.StorageGroup subBuilder = new global::NeoFS.API.StorageGroup.StorageGroup();
-            if (valueCase_ == ValueOneofCase.StorageGroup) {
-              subBuilder.MergeFrom(StorageGroup);
-            }
-            input.ReadMessage(subBuilder);
-            StorageGroup = subBuilder;
-            break;
-          }
-          case 90: {
-            global::NeoFS.API.Object.PublicKey subBuilder = new global::NeoFS.API.Object.PublicKey();
-            if (valueCase_ == ValueOneofCase.PublicKey) {
-              subBuilder.MergeFrom(PublicKey);
-            }
-            input.ReadMessage(subBuilder);
-            PublicKey = subBuilder;
-            break;
-          }
+      if (other.version_ != null) {
+        if (version_ == null) {
+          Version = new global::NeoFS.API.v2.Refs.Version();
         }
+        Version.MergeFrom(other.Version);
       }
-    }
-
-  }
-
-  public sealed partial class Tombstone : pb::IMessage<Tombstone> {
-    private static readonly pb::MessageParser<Tombstone> _parser = new pb::MessageParser<Tombstone>(() => new Tombstone());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Tombstone> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[3]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Tombstone() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Tombstone(Tombstone other) : this() {
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Tombstone Clone() {
-      return new Tombstone(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Tombstone);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Tombstone other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Tombstone other) {
-      if (other == null) {
-        return;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
+      if (other.containerId_ != null) {
+        if (containerId_ == null) {
+          ContainerId = new global::NeoFS.API.v2.Refs.ContainerID();
         }
+        ContainerId.MergeFrom(other.ContainerId);
       }
-    }
-
-  }
-
-  public sealed partial class SystemHeader : pb::IMessage<SystemHeader> {
-    private static readonly pb::MessageParser<SystemHeader> _parser = new pb::MessageParser<SystemHeader>(() => new SystemHeader());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<SystemHeader> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SystemHeader() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SystemHeader(SystemHeader other) : this() {
-      version_ = other.version_;
-      payloadLength_ = other.payloadLength_;
-      iD_ = other.iD_;
-      ownerID_ = other.ownerID_;
-      cID_ = other.cID_;
-      createdAt_ = other.createdAt_ != null ? other.createdAt_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SystemHeader Clone() {
-      return new SystemHeader(this);
-    }
-
-    /// <summary>Field number for the "Version" field.</summary>
-    public const int VersionFieldNumber = 1;
-    private ulong version_;
-    /// <summary>
-    /// Version of the object structure
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Version {
-      get { return version_; }
-      set {
-        version_ = value;
+      if (other.ownerId_ != null) {
+        if (ownerId_ == null) {
+          OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+        }
+        OwnerId.MergeFrom(other.OwnerId);
       }
-    }
-
-    /// <summary>Field number for the "PayloadLength" field.</summary>
-    public const int PayloadLengthFieldNumber = 2;
-    private ulong payloadLength_;
-    /// <summary>
-    /// PayloadLength is an object payload length
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong PayloadLength {
-      get { return payloadLength_; }
-      set {
-        payloadLength_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "ID" field.</summary>
-    public const int IDFieldNumber = 3;
-    private pb::ByteString iD_ = pb::ByteString.Empty;
-    /// <summary>
-    /// ID is an object identifier, is a valid UUIDv4
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString ID {
-      get { return iD_; }
-      set {
-        iD_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "OwnerID" field.</summary>
-    public const int OwnerIDFieldNumber = 4;
-    private pb::ByteString ownerID_ = pb::ByteString.Empty;
-    /// <summary>
-    /// OwnerID is a wallet address
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString OwnerID {
-      get { return ownerID_; }
-      set {
-        ownerID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "CID" field.</summary>
-    public const int CIDFieldNumber = 5;
-    private pb::ByteString cID_ = pb::ByteString.Empty;
-    /// <summary>
-    /// CID is a SHA256 hash of the container structure (container identifier)
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString CID {
-      get { return cID_; }
-      set {
-        cID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "CreatedAt" field.</summary>
-    public const int CreatedAtFieldNumber = 6;
-    private global::NeoFS.API.Object.CreationPoint createdAt_;
-    /// <summary>
-    /// CreatedAt is a timestamp of object creation
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.CreationPoint CreatedAt {
-      get { return createdAt_; }
-      set {
-        createdAt_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as SystemHeader);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(SystemHeader other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Version != other.Version) return false;
-      if (PayloadLength != other.PayloadLength) return false;
-      if (ID != other.ID) return false;
-      if (OwnerID != other.OwnerID) return false;
-      if (CID != other.CID) return false;
-      if (!object.Equals(CreatedAt, other.CreatedAt)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Version != 0UL) hash ^= Version.GetHashCode();
-      if (PayloadLength != 0UL) hash ^= PayloadLength.GetHashCode();
-      if (ID.Length != 0) hash ^= ID.GetHashCode();
-      if (OwnerID.Length != 0) hash ^= OwnerID.GetHashCode();
-      if (CID.Length != 0) hash ^= CID.GetHashCode();
-      if (createdAt_ != null) hash ^= CreatedAt.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Version != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Version);
-      }
-      if (PayloadLength != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(PayloadLength);
-      }
-      if (ID.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteBytes(ID);
-      }
-      if (OwnerID.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteBytes(OwnerID);
-      }
-      if (CID.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteBytes(CID);
-      }
-      if (createdAt_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(CreatedAt);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Version != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Version);
-      }
-      if (PayloadLength != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PayloadLength);
-      }
-      if (ID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ID);
-      }
-      if (OwnerID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(OwnerID);
-      }
-      if (CID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(CID);
-      }
-      if (createdAt_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreatedAt);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(SystemHeader other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Version != 0UL) {
-        Version = other.Version;
+      if (other.CreationEpoch != 0UL) {
+        CreationEpoch = other.CreationEpoch;
       }
       if (other.PayloadLength != 0UL) {
         PayloadLength = other.PayloadLength;
       }
-      if (other.ID.Length != 0) {
-        ID = other.ID;
-      }
-      if (other.OwnerID.Length != 0) {
-        OwnerID = other.OwnerID;
-      }
-      if (other.CID.Length != 0) {
-        CID = other.CID;
-      }
-      if (other.createdAt_ != null) {
-        if (createdAt_ == null) {
-          CreatedAt = new global::NeoFS.API.Object.CreationPoint();
+      if (other.payloadHash_ != null) {
+        if (payloadHash_ == null) {
+          PayloadHash = new global::NeoFS.API.v2.Refs.Checksum();
         }
-        CreatedAt.MergeFrom(other.CreatedAt);
+        PayloadHash.MergeFrom(other.PayloadHash);
       }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Version = input.ReadUInt64();
-            break;
-          }
-          case 16: {
-            PayloadLength = input.ReadUInt64();
-            break;
-          }
-          case 26: {
-            ID = input.ReadBytes();
-            break;
-          }
-          case 34: {
-            OwnerID = input.ReadBytes();
-            break;
-          }
-          case 42: {
-            CID = input.ReadBytes();
-            break;
-          }
-          case 50: {
-            if (createdAt_ == null) {
-              CreatedAt = new global::NeoFS.API.Object.CreationPoint();
-            }
-            input.ReadMessage(CreatedAt);
-            break;
-          }
+      if (other.ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) {
+        ObjectType = other.ObjectType;
+      }
+      if (other.homomorphicHash_ != null) {
+        if (homomorphicHash_ == null) {
+          HomomorphicHash = new global::NeoFS.API.v2.Refs.Checksum();
         }
+        HomomorphicHash.MergeFrom(other.HomomorphicHash);
       }
-    }
-
-  }
-
-  public sealed partial class CreationPoint : pb::IMessage<CreationPoint> {
-    private static readonly pb::MessageParser<CreationPoint> _parser = new pb::MessageParser<CreationPoint>(() => new CreationPoint());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<CreationPoint> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CreationPoint() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CreationPoint(CreationPoint other) : this() {
-      unixTime_ = other.unixTime_;
-      epoch_ = other.epoch_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CreationPoint Clone() {
-      return new CreationPoint(this);
-    }
-
-    /// <summary>Field number for the "UnixTime" field.</summary>
-    public const int UnixTimeFieldNumber = 1;
-    private long unixTime_;
-    /// <summary>
-    /// UnixTime is a date of creation in unixtime format
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long UnixTime {
-      get { return unixTime_; }
-      set {
-        unixTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Epoch" field.</summary>
-    public const int EpochFieldNumber = 2;
-    private ulong epoch_;
-    /// <summary>
-    /// Epoch is a date of creation in NeoFS epochs
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Epoch {
-      get { return epoch_; }
-      set {
-        epoch_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as CreationPoint);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(CreationPoint other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (UnixTime != other.UnixTime) return false;
-      if (Epoch != other.Epoch) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (UnixTime != 0L) hash ^= UnixTime.GetHashCode();
-      if (Epoch != 0UL) hash ^= Epoch.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (UnixTime != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(UnixTime);
-      }
-      if (Epoch != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(Epoch);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (UnixTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnixTime);
-      }
-      if (Epoch != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Epoch);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(CreationPoint other) {
-      if (other == null) {
-        return;
-      }
-      if (other.UnixTime != 0L) {
-        UnixTime = other.UnixTime;
-      }
-      if (other.Epoch != 0UL) {
-        Epoch = other.Epoch;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            UnixTime = input.ReadInt64();
-            break;
-          }
-          case 16: {
-            Epoch = input.ReadUInt64();
-            break;
-          }
+      if (other.sessionToken_ != null) {
+        if (sessionToken_ == null) {
+          SessionToken = new global::NeoFS.API.v2.Session.SessionToken();
         }
+        SessionToken.MergeFrom(other.SessionToken);
       }
-    }
-
-  }
-
-  public sealed partial class IntegrityHeader : pb::IMessage<IntegrityHeader> {
-    private static readonly pb::MessageParser<IntegrityHeader> _parser = new pb::MessageParser<IntegrityHeader>(() => new IntegrityHeader());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<IntegrityHeader> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[6]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IntegrityHeader() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IntegrityHeader(IntegrityHeader other) : this() {
-      headersChecksum_ = other.headersChecksum_;
-      checksumSignature_ = other.checksumSignature_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IntegrityHeader Clone() {
-      return new IntegrityHeader(this);
-    }
-
-    /// <summary>Field number for the "HeadersChecksum" field.</summary>
-    public const int HeadersChecksumFieldNumber = 1;
-    private pb::ByteString headersChecksum_ = pb::ByteString.Empty;
-    /// <summary>
-    /// HeadersChecksum is a checksum of all above headers in the object
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString HeadersChecksum {
-      get { return headersChecksum_; }
-      set {
-        headersChecksum_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "ChecksumSignature" field.</summary>
-    public const int ChecksumSignatureFieldNumber = 2;
-    private pb::ByteString checksumSignature_ = pb::ByteString.Empty;
-    /// <summary>
-    /// ChecksumSignature is an user's signature of checksum to verify if it is correct
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString ChecksumSignature {
-      get { return checksumSignature_; }
-      set {
-        checksumSignature_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as IntegrityHeader);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(IntegrityHeader other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (HeadersChecksum != other.HeadersChecksum) return false;
-      if (ChecksumSignature != other.ChecksumSignature) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (HeadersChecksum.Length != 0) hash ^= HeadersChecksum.GetHashCode();
-      if (ChecksumSignature.Length != 0) hash ^= ChecksumSignature.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (HeadersChecksum.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteBytes(HeadersChecksum);
-      }
-      if (ChecksumSignature.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteBytes(ChecksumSignature);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (HeadersChecksum.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(HeadersChecksum);
-      }
-      if (ChecksumSignature.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ChecksumSignature);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(IntegrityHeader other) {
-      if (other == null) {
-        return;
-      }
-      if (other.HeadersChecksum.Length != 0) {
-        HeadersChecksum = other.HeadersChecksum;
-      }
-      if (other.ChecksumSignature.Length != 0) {
-        ChecksumSignature = other.ChecksumSignature;
+      attributes_.Add(other.attributes_);
+      if (other.split_ != null) {
+        if (split_ == null) {
+          Split = new global::NeoFS.API.v2.Object.Header.Types.Split();
+        }
+        Split.MergeFrom(other.Split);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1682,174 +788,68 @@ namespace NeoFS.API.Object {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            HeadersChecksum = input.ReadBytes();
+            if (version_ == null) {
+              Version = new global::NeoFS.API.v2.Refs.Version();
+            }
+            input.ReadMessage(Version);
             break;
           }
           case 18: {
-            ChecksumSignature = input.ReadBytes();
+            if (containerId_ == null) {
+              ContainerId = new global::NeoFS.API.v2.Refs.ContainerID();
+            }
+            input.ReadMessage(ContainerId);
             break;
           }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class Link : pb::IMessage<Link> {
-    private static readonly pb::MessageParser<Link> _parser = new pb::MessageParser<Link>(() => new Link());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Link> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[7]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Link() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Link(Link other) : this() {
-      type_ = other.type_;
-      iD_ = other.iD_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Link Clone() {
-      return new Link(this);
-    }
-
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 1;
-    private global::NeoFS.API.Object.Link.Types.Type type_ = global::NeoFS.API.Object.Link.Types.Type.Unknown;
-    /// <summary>
-    /// Type of link
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.Link.Types.Type Type {
-      get { return type_; }
-      set {
-        type_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "ID" field.</summary>
-    public const int IDFieldNumber = 2;
-    private pb::ByteString iD_ = pb::ByteString.Empty;
-    /// <summary>
-    /// ID is an object identifier, is a valid UUIDv4
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString ID {
-      get { return iD_; }
-      set {
-        iD_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Link);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Link other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Type != other.Type) return false;
-      if (ID != other.ID) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Type != global::NeoFS.API.Object.Link.Types.Type.Unknown) hash ^= Type.GetHashCode();
-      if (ID.Length != 0) hash ^= ID.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Type != global::NeoFS.API.Object.Link.Types.Type.Unknown) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Type);
-      }
-      if (ID.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteBytes(ID);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Type != global::NeoFS.API.Object.Link.Types.Type.Unknown) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
-      }
-      if (ID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ID);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Link other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Type != global::NeoFS.API.Object.Link.Types.Type.Unknown) {
-        Type = other.Type;
-      }
-      if (other.ID.Length != 0) {
-        ID = other.ID;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Type = (global::NeoFS.API.Object.Link.Types.Type) input.ReadEnum();
+          case 26: {
+            if (ownerId_ == null) {
+              OwnerId = new global::NeoFS.API.v2.Refs.OwnerID();
+            }
+            input.ReadMessage(OwnerId);
             break;
           }
-          case 18: {
-            ID = input.ReadBytes();
+          case 32: {
+            CreationEpoch = input.ReadUInt64();
+            break;
+          }
+          case 40: {
+            PayloadLength = input.ReadUInt64();
+            break;
+          }
+          case 50: {
+            if (payloadHash_ == null) {
+              PayloadHash = new global::NeoFS.API.v2.Refs.Checksum();
+            }
+            input.ReadMessage(PayloadHash);
+            break;
+          }
+          case 56: {
+            ObjectType = (global::NeoFS.API.v2.Object.ObjectType) input.ReadEnum();
+            break;
+          }
+          case 66: {
+            if (homomorphicHash_ == null) {
+              HomomorphicHash = new global::NeoFS.API.v2.Refs.Checksum();
+            }
+            input.ReadMessage(HomomorphicHash);
+            break;
+          }
+          case 74: {
+            if (sessionToken_ == null) {
+              SessionToken = new global::NeoFS.API.v2.Session.SessionToken();
+            }
+            input.ReadMessage(SessionToken);
+            break;
+          }
+          case 82: {
+            attributes_.AddEntriesFrom(input, _repeated_attributes_codec);
+            break;
+          }
+          case 90: {
+            if (split_ == null) {
+              Split = new global::NeoFS.API.v2.Object.Header.Types.Split();
+            }
+            input.ReadMessage(Split);
             break;
           }
         }
@@ -1857,186 +857,450 @@ namespace NeoFS.API.Object {
     }
 
     #region Nested types
-    /// <summary>Container for nested types declared in the Link message type.</summary>
+    /// <summary>Container for nested types declared in the Header message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
-      public enum Type {
-        [pbr::OriginalName("Unknown")] Unknown = 0,
+      /// <summary>
+      /// Attribute groups the user-defined Key-Value pairs attached to the object
+      /// </summary>
+      public sealed partial class Attribute : pb::IMessage<Attribute> {
+        private static readonly pb::MessageParser<Attribute> _parser = new pb::MessageParser<Attribute>(() => new Attribute());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Attribute> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Object.Header.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Attribute() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Attribute(Attribute other) : this() {
+          key_ = other.key_;
+          value_ = other.value_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Attribute Clone() {
+          return new Attribute(this);
+        }
+
+        /// <summary>Field number for the "key" field.</summary>
+        public const int KeyFieldNumber = 1;
+        private string key_ = "";
         /// <summary>
-        /// Parent object created during object transformation
+        /// string key to the object attribute
         /// </summary>
-        [pbr::OriginalName("Parent")] Parent = 1,
-        /// <summary>
-        /// Previous object in the linked list created during object transformation
-        /// </summary>
-        [pbr::OriginalName("Previous")] Previous = 2,
-        /// <summary>
-        /// Next object in the linked list created during object transformation
-        /// </summary>
-        [pbr::OriginalName("Next")] Next = 3,
-        /// <summary>
-        /// Child object created during object transformation
-        /// </summary>
-        [pbr::OriginalName("Child")] Child = 4,
-        /// <summary>
-        /// Object that included into this storage group
-        /// </summary>
-        [pbr::OriginalName("StorageGroup")] StorageGroup = 5,
-      }
-
-    }
-    #endregion
-
-  }
-
-  public sealed partial class Transform : pb::IMessage<Transform> {
-    private static readonly pb::MessageParser<Transform> _parser = new pb::MessageParser<Transform>(() => new Transform());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Transform> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[8]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Transform() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Transform(Transform other) : this() {
-      type_ = other.type_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Transform Clone() {
-      return new Transform(this);
-    }
-
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 1;
-    private global::NeoFS.API.Object.Transform.Types.Type type_ = global::NeoFS.API.Object.Transform.Types.Type.Unknown;
-    /// <summary>
-    /// Type of object transformation
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.Transform.Types.Type Type {
-      get { return type_; }
-      set {
-        type_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Transform);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Transform other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Type != other.Type) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Type != global::NeoFS.API.Object.Transform.Types.Type.Unknown) hash ^= Type.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Type != global::NeoFS.API.Object.Transform.Types.Type.Unknown) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Type);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Type != global::NeoFS.API.Object.Transform.Types.Type.Unknown) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Transform other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Type != global::NeoFS.API.Object.Transform.Types.Type.Unknown) {
-        Type = other.Type;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Type = (global::NeoFS.API.Object.Transform.Types.Type) input.ReadEnum();
-            break;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Key {
+          get { return key_; }
+          set {
+            key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
         }
-      }
-    }
 
-    #region Nested types
-    /// <summary>Container for nested types declared in the Transform message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public enum Type {
-        [pbr::OriginalName("Unknown")] Unknown = 0,
+        /// <summary>Field number for the "value" field.</summary>
+        public const int ValueFieldNumber = 2;
+        private string value_ = "";
         /// <summary>
-        /// Split sets when object created after payload split
+        /// string value of the object attribute
         /// </summary>
-        [pbr::OriginalName("Split")] Split = 1,
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Value {
+          get { return value_; }
+          set {
+            value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Attribute);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Attribute other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Key != other.Key) return false;
+          if (Value != other.Value) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Key.Length != 0) hash ^= Key.GetHashCode();
+          if (Value.Length != 0) hash ^= Value.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (Key.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(Key);
+          }
+          if (Value.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(Value);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Key.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
+          }
+          if (Value.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Attribute other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Key.Length != 0) {
+            Key = other.Key;
+          }
+          if (other.Value.Length != 0) {
+            Value = other.Value;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                Key = input.ReadString();
+                break;
+              }
+              case 18: {
+                Value = input.ReadString();
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+      /// <summary>
+      /// Information about spawning the objects through a payload splitting.
+      /// </summary>
+      public sealed partial class Split : pb::IMessage<Split> {
+        private static readonly pb::MessageParser<Split> _parser = new pb::MessageParser<Split>(() => new Split());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Split> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Object.Header.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Split() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Split(Split other) : this() {
+          parent_ = other.parent_ != null ? other.parent_.Clone() : null;
+          previous_ = other.previous_ != null ? other.previous_.Clone() : null;
+          parentSignature_ = other.parentSignature_ != null ? other.parentSignature_.Clone() : null;
+          parentHeader_ = other.parentHeader_ != null ? other.parentHeader_.Clone() : null;
+          children_ = other.children_.Clone();
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Split Clone() {
+          return new Split(this);
+        }
+
+        /// <summary>Field number for the "parent" field.</summary>
+        public const int ParentFieldNumber = 1;
+        private global::NeoFS.API.v2.Refs.ObjectID parent_;
         /// <summary>
-        /// Sign sets when object created after re-signing (doesn't used)
+        /// Identifier of the origin object.
+        /// Parent and children objects must be within the same container.
+        /// Parent object_id is known only to the minor child.
         /// </summary>
-        [pbr::OriginalName("Sign")] Sign = 2,
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Refs.ObjectID Parent {
+          get { return parent_; }
+          set {
+            parent_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "previous" field.</summary>
+        public const int PreviousFieldNumber = 2;
+        private global::NeoFS.API.v2.Refs.ObjectID previous_;
         /// <summary>
-        /// Mould sets when object created after filling missing headers in the object
+        /// Previous carries identifier of the left split neighbor.
         /// </summary>
-        [pbr::OriginalName("Mould")] Mould = 3,
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Refs.ObjectID Previous {
+          get { return previous_; }
+          set {
+            previous_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "parent_signature" field.</summary>
+        public const int ParentSignatureFieldNumber = 3;
+        private global::NeoFS.API.v2.Refs.Signature parentSignature_;
+        /// <summary>
+        /// `signature` field of the parent object. Used to reconstruct parent.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Refs.Signature ParentSignature {
+          get { return parentSignature_; }
+          set {
+            parentSignature_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "parent_header" field.</summary>
+        public const int ParentHeaderFieldNumber = 4;
+        private global::NeoFS.API.v2.Object.Header parentHeader_;
+        /// <summary>
+        /// `header` field of the parent object. Used to reconstruct parent.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Object.Header ParentHeader {
+          get { return parentHeader_; }
+          set {
+            parentHeader_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "children" field.</summary>
+        public const int ChildrenFieldNumber = 5;
+        private static readonly pb::FieldCodec<global::NeoFS.API.v2.Refs.ObjectID> _repeated_children_codec
+            = pb::FieldCodec.ForMessage(42, global::NeoFS.API.v2.Refs.ObjectID.Parser);
+        private readonly pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> children_ = new pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID>();
+        /// <summary>
+        /// Children carries list of identifiers of the objects generated by splitting the current.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> Children {
+          get { return children_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Split);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Split other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(Parent, other.Parent)) return false;
+          if (!object.Equals(Previous, other.Previous)) return false;
+          if (!object.Equals(ParentSignature, other.ParentSignature)) return false;
+          if (!object.Equals(ParentHeader, other.ParentHeader)) return false;
+          if(!children_.Equals(other.children_)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (parent_ != null) hash ^= Parent.GetHashCode();
+          if (previous_ != null) hash ^= Previous.GetHashCode();
+          if (parentSignature_ != null) hash ^= ParentSignature.GetHashCode();
+          if (parentHeader_ != null) hash ^= ParentHeader.GetHashCode();
+          hash ^= children_.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (parent_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Parent);
+          }
+          if (previous_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Previous);
+          }
+          if (parentSignature_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(ParentSignature);
+          }
+          if (parentHeader_ != null) {
+            output.WriteRawTag(34);
+            output.WriteMessage(ParentHeader);
+          }
+          children_.WriteTo(output, _repeated_children_codec);
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (parent_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Parent);
+          }
+          if (previous_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Previous);
+          }
+          if (parentSignature_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParentSignature);
+          }
+          if (parentHeader_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParentHeader);
+          }
+          size += children_.CalculateSize(_repeated_children_codec);
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Split other) {
+          if (other == null) {
+            return;
+          }
+          if (other.parent_ != null) {
+            if (parent_ == null) {
+              Parent = new global::NeoFS.API.v2.Refs.ObjectID();
+            }
+            Parent.MergeFrom(other.Parent);
+          }
+          if (other.previous_ != null) {
+            if (previous_ == null) {
+              Previous = new global::NeoFS.API.v2.Refs.ObjectID();
+            }
+            Previous.MergeFrom(other.Previous);
+          }
+          if (other.parentSignature_ != null) {
+            if (parentSignature_ == null) {
+              ParentSignature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            ParentSignature.MergeFrom(other.ParentSignature);
+          }
+          if (other.parentHeader_ != null) {
+            if (parentHeader_ == null) {
+              ParentHeader = new global::NeoFS.API.v2.Object.Header();
+            }
+            ParentHeader.MergeFrom(other.ParentHeader);
+          }
+          children_.Add(other.children_);
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (parent_ == null) {
+                  Parent = new global::NeoFS.API.v2.Refs.ObjectID();
+                }
+                input.ReadMessage(Parent);
+                break;
+              }
+              case 18: {
+                if (previous_ == null) {
+                  Previous = new global::NeoFS.API.v2.Refs.ObjectID();
+                }
+                input.ReadMessage(Previous);
+                break;
+              }
+              case 26: {
+                if (parentSignature_ == null) {
+                  ParentSignature = new global::NeoFS.API.v2.Refs.Signature();
+                }
+                input.ReadMessage(ParentSignature);
+                break;
+              }
+              case 34: {
+                if (parentHeader_ == null) {
+                  ParentHeader = new global::NeoFS.API.v2.Object.Header();
+                }
+                input.ReadMessage(ParentHeader);
+                break;
+              }
+              case 42: {
+                children_.AddEntriesFrom(input, _repeated_children_codec);
+                break;
+              }
+            }
+          }
+        }
+
       }
 
     }
@@ -2044,6 +1308,9 @@ namespace NeoFS.API.Object {
 
   }
 
+  /// <summary>
+  /// Object structure.
+  /// </summary>
   public sealed partial class Object : pb::IMessage<Object> {
     private static readonly pb::MessageParser<Object> _parser = new pb::MessageParser<Object>(() => new Object());
     private pb::UnknownFieldSet _unknownFields;
@@ -2052,7 +1319,7 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[9]; }
+      get { return global::NeoFS.API.v2.Object.TypesReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2069,8 +1336,9 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Object(Object other) : this() {
-      systemHeader_ = other.systemHeader_ != null ? other.systemHeader_.Clone() : null;
-      headers_ = other.headers_.Clone();
+      objectId_ = other.objectId_ != null ? other.objectId_.Clone() : null;
+      signature_ = other.signature_ != null ? other.signature_.Clone() : null;
+      header_ = other.header_ != null ? other.header_.Clone() : null;
       payload_ = other.payload_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2080,38 +1348,56 @@ namespace NeoFS.API.Object {
       return new Object(this);
     }
 
-    /// <summary>Field number for the "SystemHeader" field.</summary>
-    public const int SystemHeaderFieldNumber = 1;
-    private global::NeoFS.API.Object.SystemHeader systemHeader_;
+    /// <summary>Field number for the "object_id" field.</summary>
+    public const int ObjectIdFieldNumber = 1;
+    private global::NeoFS.API.v2.Refs.ObjectID objectId_;
     /// <summary>
-    /// SystemHeader describes system header
+    /// Object's unique identifier.
+    /// Object is content-addressed. It means id will change if header or payload
+    /// changes. It's calculated as a hash of header field, which contains hash of
+    /// object's payload
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.Object.SystemHeader SystemHeader {
-      get { return systemHeader_; }
+    public global::NeoFS.API.v2.Refs.ObjectID ObjectId {
+      get { return objectId_; }
       set {
-        systemHeader_ = value;
+        objectId_ = value;
       }
     }
 
-    /// <summary>Field number for the "Headers" field.</summary>
-    public const int HeadersFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::NeoFS.API.Object.Header> _repeated_headers_codec
-        = pb::FieldCodec.ForMessage(18, global::NeoFS.API.Object.Header.Parser);
-    private readonly pbc::RepeatedField<global::NeoFS.API.Object.Header> headers_ = new pbc::RepeatedField<global::NeoFS.API.Object.Header>();
+    /// <summary>Field number for the "signature" field.</summary>
+    public const int SignatureFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.Signature signature_;
     /// <summary>
-    /// Headers describes a set of an extended headers
+    /// Signed object_id
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::NeoFS.API.Object.Header> Headers {
-      get { return headers_; }
+    public global::NeoFS.API.v2.Refs.Signature Signature {
+      get { return signature_; }
+      set {
+        signature_ = value;
+      }
     }
 
-    /// <summary>Field number for the "Payload" field.</summary>
-    public const int PayloadFieldNumber = 3;
+    /// <summary>Field number for the "header" field.</summary>
+    public const int HeaderFieldNumber = 3;
+    private global::NeoFS.API.v2.Object.Header header_;
+    /// <summary>
+    /// Object metadata headers
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Object.Header Header {
+      get { return header_; }
+      set {
+        header_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "payload" field.</summary>
+    public const int PayloadFieldNumber = 4;
     private pb::ByteString payload_ = pb::ByteString.Empty;
     /// <summary>
-    /// Payload is an object's payload
+    /// Payload bytes.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Payload {
@@ -2134,8 +1420,9 @@ namespace NeoFS.API.Object {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(SystemHeader, other.SystemHeader)) return false;
-      if(!headers_.Equals(other.headers_)) return false;
+      if (!object.Equals(ObjectId, other.ObjectId)) return false;
+      if (!object.Equals(Signature, other.Signature)) return false;
+      if (!object.Equals(Header, other.Header)) return false;
       if (Payload != other.Payload) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2143,8 +1430,9 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (systemHeader_ != null) hash ^= SystemHeader.GetHashCode();
-      hash ^= headers_.GetHashCode();
+      if (objectId_ != null) hash ^= ObjectId.GetHashCode();
+      if (signature_ != null) hash ^= Signature.GetHashCode();
+      if (header_ != null) hash ^= Header.GetHashCode();
       if (Payload.Length != 0) hash ^= Payload.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2159,13 +1447,20 @@ namespace NeoFS.API.Object {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (systemHeader_ != null) {
+      if (objectId_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(SystemHeader);
+        output.WriteMessage(ObjectId);
       }
-      headers_.WriteTo(output, _repeated_headers_codec);
-      if (Payload.Length != 0) {
+      if (signature_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Signature);
+      }
+      if (header_ != null) {
         output.WriteRawTag(26);
+        output.WriteMessage(Header);
+      }
+      if (Payload.Length != 0) {
+        output.WriteRawTag(34);
         output.WriteBytes(Payload);
       }
       if (_unknownFields != null) {
@@ -2176,10 +1471,15 @@ namespace NeoFS.API.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (systemHeader_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SystemHeader);
+      if (objectId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ObjectId);
       }
-      size += headers_.CalculateSize(_repeated_headers_codec);
+      if (signature_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Signature);
+      }
+      if (header_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Header);
+      }
       if (Payload.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Payload);
       }
@@ -2194,13 +1494,24 @@ namespace NeoFS.API.Object {
       if (other == null) {
         return;
       }
-      if (other.systemHeader_ != null) {
-        if (systemHeader_ == null) {
-          SystemHeader = new global::NeoFS.API.Object.SystemHeader();
+      if (other.objectId_ != null) {
+        if (objectId_ == null) {
+          ObjectId = new global::NeoFS.API.v2.Refs.ObjectID();
         }
-        SystemHeader.MergeFrom(other.SystemHeader);
+        ObjectId.MergeFrom(other.ObjectId);
       }
-      headers_.Add(other.headers_);
+      if (other.signature_ != null) {
+        if (signature_ == null) {
+          Signature = new global::NeoFS.API.v2.Refs.Signature();
+        }
+        Signature.MergeFrom(other.Signature);
+      }
+      if (other.header_ != null) {
+        if (header_ == null) {
+          Header = new global::NeoFS.API.v2.Object.Header();
+        }
+        Header.MergeFrom(other.Header);
+      }
       if (other.Payload.Length != 0) {
         Payload = other.Payload;
       }
@@ -2216,150 +1527,28 @@ namespace NeoFS.API.Object {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (systemHeader_ == null) {
-              SystemHeader = new global::NeoFS.API.Object.SystemHeader();
+            if (objectId_ == null) {
+              ObjectId = new global::NeoFS.API.v2.Refs.ObjectID();
             }
-            input.ReadMessage(SystemHeader);
+            input.ReadMessage(ObjectId);
             break;
           }
           case 18: {
-            headers_.AddEntriesFrom(input, _repeated_headers_codec);
+            if (signature_ == null) {
+              Signature = new global::NeoFS.API.v2.Refs.Signature();
+            }
+            input.ReadMessage(Signature);
             break;
           }
           case 26: {
-            Payload = input.ReadBytes();
+            if (header_ == null) {
+              Header = new global::NeoFS.API.v2.Object.Header();
+            }
+            input.ReadMessage(Header);
             break;
           }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class PublicKey : pb::IMessage<PublicKey> {
-    private static readonly pb::MessageParser<PublicKey> _parser = new pb::MessageParser<PublicKey>(() => new PublicKey());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<PublicKey> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.Object.TypesReflection.Descriptor.MessageTypes[10]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PublicKey() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PublicKey(PublicKey other) : this() {
-      value_ = other.value_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PublicKey Clone() {
-      return new PublicKey(this);
-    }
-
-    /// <summary>Field number for the "Value" field.</summary>
-    public const int ValueFieldNumber = 1;
-    private pb::ByteString value_ = pb::ByteString.Empty;
-    /// <summary>
-    /// Value contains marshaled ecdsa public key
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Value {
-      get { return value_; }
-      set {
-        value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as PublicKey);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(PublicKey other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Value != other.Value) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Value.Length != 0) hash ^= Value.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Value.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteBytes(Value);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Value.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Value);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(PublicKey other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Value.Length != 0) {
-        Value = other.Value;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Value = input.ReadBytes();
+          case 34: {
+            Payload = input.ReadBytes();
             break;
           }
         }

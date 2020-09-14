@@ -1,15 +1,19 @@
-﻿using System;
 using System.Security.Cryptography;
 using Google.Protobuf;
 using Grpc.Core;
-using NeoFS.API.v2;
-using NeoFS.Crypto;
+using NeoFS.API.v2.Accounting;
 
 namespace NeoFS.API.v2.Accounting
 {
-    public static class AccountingExtension
+    public class Client : AccountingService.AccountingServiceClient
     {
-        public static BalanceResponse GetBalance(this Channel chan, uint ttl, ECDsa key, bool debug = false)
+        private Channel channel;
+        Client(Channel chan) : base(chan)
+        {
+            channel = chan;
+        }
+
+        public BalanceResponse GetBalance(uint ttl, ECDsa key, bool debug = false)
         {
             var req = new BalanceRequest
             {
@@ -25,7 +29,7 @@ namespace NeoFS.API.v2.Accounting
             // req.SetTTL(ttl);
             // req.SignHeader(key, debug);
 
-            return new AccountingService.AccountingServiceClient(chan).Balance(req);
+            return Balance(req);
         }
     }
 }

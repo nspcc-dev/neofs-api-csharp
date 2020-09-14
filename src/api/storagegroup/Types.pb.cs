@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace NeoFS.API.StorageGroup {
+namespace NeoFS.API.v2.StorageGroup {
 
   /// <summary>Holder for reflection information generated from storagegroup/types.proto</summary>
   public static partial class TypesReflection {
@@ -24,27 +24,28 @@ namespace NeoFS.API.StorageGroup {
     static TypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhzdG9yYWdlZ3JvdXAvdHlwZXMucHJvdG8SDHN0b3JhZ2Vncm91cBotZ2l0",
-            "aHViLmNvbS9nb2dvL3Byb3RvYnVmL2dvZ29wcm90by9nb2dvLnByb3RvIq4C",
-            "CgxTdG9yYWdlR3JvdXASGgoSVmFsaWRhdGlvbkRhdGFTaXplGAEgASgEEiQK",
-            "DlZhbGlkYXRpb25IYXNoGAIgASgMQgza3h8ESGFzaMjeHwASQwoIbGlmZXRp",
-            "bWUYAyABKAsyIy5zdG9yYWdlZ3JvdXAuU3RvcmFnZUdyb3VwLkxpZmV0aW1l",
-            "Qgzi3h8ITGlmZXRpbWUakAEKCExpZmV0aW1lEkAKBHVuaXQYASABKA4yKC5z",
-            "dG9yYWdlZ3JvdXAuU3RvcmFnZUdyb3VwLkxpZmV0aW1lLlVuaXRCCOLeHwRV",
-            "bml0Eg0KBVZhbHVlGAIgASgDIjMKBFVuaXQSDQoJVW5saW1pdGVkEAASDgoK",
-            "TmVvRlNFcG9jaBABEgwKCFVuaXhUaW1lEAI6BJigHwBCTVouZ2l0aHViLmNv",
-            "bS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3N0b3JhZ2Vncm91cKoCFk5lb0ZT",
-            "LkFQSS5TdG9yYWdlR3JvdXDY4h4BYgZwcm90bzM="));
+            "ChhzdG9yYWdlZ3JvdXAvdHlwZXMucHJvdG8SFm5lby5mcy52Mi5zdG9yYWdl",
+            "Z3JvdXAaEHJlZnMvdHlwZXMucHJvdG8ipAEKDFN0b3JhZ2VHcm91cBIcChR2",
+            "YWxpZGF0aW9uX2RhdGFfc2l6ZRgBIAEoBBIxCg92YWxpZGF0aW9uX2hhc2gY",
+            "AiABKAsyGC5uZW8uZnMudjIucmVmcy5DaGVja3N1bRIYChBleHBpcmF0aW9u",
+            "X2Vwb2NoGAMgASgEEikKB21lbWJlcnMYBCADKAsyGC5uZW8uZnMudjIucmVm",
+            "cy5PYmplY3RJREJhWkNnaXRodWIuY29tL25zcGNjLWRldi9uZW9mcy1hcGkt",
+            "Z28vdjIvc3RvcmFnZWdyb3VwL2dycGM7c3RvcmFnZWdyb3VwqgIZTmVvRlMu",
+            "QVBJLnYyLlN0b3JhZ2VHcm91cGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Gogoproto.GogoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.StorageGroup.StorageGroup), global::NeoFS.API.StorageGroup.StorageGroup.Parser, new[]{ "ValidationDataSize", "ValidationHash", "Lifetime" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime), global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Parser, new[]{ "Unit", "Value" }, null, new[]{ typeof(global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit) }, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.StorageGroup.StorageGroup), global::NeoFS.API.v2.StorageGroup.StorageGroup.Parser, new[]{ "ValidationDataSize", "ValidationHash", "ExpirationEpoch", "Members" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
+  /// <summary>
+  /// StorageGroup groups the information about the NeoFS storage group.
+  /// The storage group consists of objects from single container.
+  /// </summary>
   public sealed partial class StorageGroup : pb::IMessage<StorageGroup> {
     private static readonly pb::MessageParser<StorageGroup> _parser = new pb::MessageParser<StorageGroup>(() => new StorageGroup());
     private pb::UnknownFieldSet _unknownFields;
@@ -53,7 +54,7 @@ namespace NeoFS.API.StorageGroup {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NeoFS.API.StorageGroup.TypesReflection.Descriptor.MessageTypes[0]; }
+      get { return global::NeoFS.API.v2.StorageGroup.TypesReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -71,8 +72,9 @@ namespace NeoFS.API.StorageGroup {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public StorageGroup(StorageGroup other) : this() {
       validationDataSize_ = other.validationDataSize_;
-      validationHash_ = other.validationHash_;
-      lifetime_ = other.lifetime_ != null ? other.lifetime_.Clone() : null;
+      validationHash_ = other.validationHash_ != null ? other.validationHash_.Clone() : null;
+      expirationEpoch_ = other.expirationEpoch_;
+      members_ = other.members_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,11 +83,12 @@ namespace NeoFS.API.StorageGroup {
       return new StorageGroup(this);
     }
 
-    /// <summary>Field number for the "ValidationDataSize" field.</summary>
+    /// <summary>Field number for the "validation_data_size" field.</summary>
     public const int ValidationDataSizeFieldNumber = 1;
     private ulong validationDataSize_;
     /// <summary>
-    /// ValidationDataSize is size of the all object's payloads included into storage group
+    /// validation_data_size carries the total size of the payloads of the storage
+    /// group members.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong ValidationDataSize {
@@ -95,32 +98,50 @@ namespace NeoFS.API.StorageGroup {
       }
     }
 
-    /// <summary>Field number for the "ValidationHash" field.</summary>
+    /// <summary>Field number for the "validation_hash" field.</summary>
     public const int ValidationHashFieldNumber = 2;
-    private pb::ByteString validationHash_ = pb::ByteString.Empty;
+    private global::NeoFS.API.v2.Refs.Checksum validationHash_;
     /// <summary>
-    /// ValidationHash is homomorphic hash of all object's payloads included into storage group
+    /// validation_hash carries homomorphic hash from the concatenation of the
+    /// payloads of the storage group members
+    /// The order of concatenation is the same as the order of the members in the
+    /// Members field.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString ValidationHash {
+    public global::NeoFS.API.v2.Refs.Checksum ValidationHash {
       get { return validationHash_; }
       set {
-        validationHash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        validationHash_ = value;
       }
     }
 
-    /// <summary>Field number for the "lifetime" field.</summary>
-    public const int LifetimeFieldNumber = 3;
-    private global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime lifetime_;
+    /// <summary>Field number for the "expiration_epoch" field.</summary>
+    public const int ExpirationEpochFieldNumber = 3;
+    private ulong expirationEpoch_;
     /// <summary>
-    /// Lifetime is time until storage group is valid
+    /// expiration_epoch carries last NeoFS epoch number of the storage group
+    /// lifetime.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime Lifetime {
-      get { return lifetime_; }
+    public ulong ExpirationEpoch {
+      get { return expirationEpoch_; }
       set {
-        lifetime_ = value;
+        expirationEpoch_ = value;
       }
+    }
+
+    /// <summary>Field number for the "members" field.</summary>
+    public const int MembersFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::NeoFS.API.v2.Refs.ObjectID> _repeated_members_codec
+        = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Refs.ObjectID.Parser);
+    private readonly pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> members_ = new pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID>();
+    /// <summary>
+    /// Members carries the list of identifiers of the object storage group members.
+    /// The list is strictly ordered.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> Members {
+      get { return members_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -137,8 +158,9 @@ namespace NeoFS.API.StorageGroup {
         return true;
       }
       if (ValidationDataSize != other.ValidationDataSize) return false;
-      if (ValidationHash != other.ValidationHash) return false;
-      if (!object.Equals(Lifetime, other.Lifetime)) return false;
+      if (!object.Equals(ValidationHash, other.ValidationHash)) return false;
+      if (ExpirationEpoch != other.ExpirationEpoch) return false;
+      if(!members_.Equals(other.members_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,8 +168,9 @@ namespace NeoFS.API.StorageGroup {
     public override int GetHashCode() {
       int hash = 1;
       if (ValidationDataSize != 0UL) hash ^= ValidationDataSize.GetHashCode();
-      if (ValidationHash.Length != 0) hash ^= ValidationHash.GetHashCode();
-      if (lifetime_ != null) hash ^= Lifetime.GetHashCode();
+      if (validationHash_ != null) hash ^= ValidationHash.GetHashCode();
+      if (ExpirationEpoch != 0UL) hash ^= ExpirationEpoch.GetHashCode();
+      hash ^= members_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -165,14 +188,15 @@ namespace NeoFS.API.StorageGroup {
         output.WriteRawTag(8);
         output.WriteUInt64(ValidationDataSize);
       }
-      if (ValidationHash.Length != 0) {
+      if (validationHash_ != null) {
         output.WriteRawTag(18);
-        output.WriteBytes(ValidationHash);
+        output.WriteMessage(ValidationHash);
       }
-      if (lifetime_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(Lifetime);
+      if (ExpirationEpoch != 0UL) {
+        output.WriteRawTag(24);
+        output.WriteUInt64(ExpirationEpoch);
       }
+      members_.WriteTo(output, _repeated_members_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -184,12 +208,13 @@ namespace NeoFS.API.StorageGroup {
       if (ValidationDataSize != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ValidationDataSize);
       }
-      if (ValidationHash.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ValidationHash);
+      if (validationHash_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ValidationHash);
       }
-      if (lifetime_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lifetime);
+      if (ExpirationEpoch != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ExpirationEpoch);
       }
+      size += members_.CalculateSize(_repeated_members_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -204,15 +229,16 @@ namespace NeoFS.API.StorageGroup {
       if (other.ValidationDataSize != 0UL) {
         ValidationDataSize = other.ValidationDataSize;
       }
-      if (other.ValidationHash.Length != 0) {
-        ValidationHash = other.ValidationHash;
-      }
-      if (other.lifetime_ != null) {
-        if (lifetime_ == null) {
-          Lifetime = new global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime();
+      if (other.validationHash_ != null) {
+        if (validationHash_ == null) {
+          ValidationHash = new global::NeoFS.API.v2.Refs.Checksum();
         }
-        Lifetime.MergeFrom(other.Lifetime);
+        ValidationHash.MergeFrom(other.ValidationHash);
       }
+      if (other.ExpirationEpoch != 0UL) {
+        ExpirationEpoch = other.ExpirationEpoch;
+      }
+      members_.Add(other.members_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -229,211 +255,23 @@ namespace NeoFS.API.StorageGroup {
             break;
           }
           case 18: {
-            ValidationHash = input.ReadBytes();
+            if (validationHash_ == null) {
+              ValidationHash = new global::NeoFS.API.v2.Refs.Checksum();
+            }
+            input.ReadMessage(ValidationHash);
             break;
           }
-          case 26: {
-            if (lifetime_ == null) {
-              Lifetime = new global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime();
-            }
-            input.ReadMessage(Lifetime);
+          case 24: {
+            ExpirationEpoch = input.ReadUInt64();
+            break;
+          }
+          case 34: {
+            members_.AddEntriesFrom(input, _repeated_members_codec);
             break;
           }
         }
       }
     }
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the StorageGroup message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public sealed partial class Lifetime : pb::IMessage<Lifetime> {
-        private static readonly pb::MessageParser<Lifetime> _parser = new pb::MessageParser<Lifetime>(() => new Lifetime());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<Lifetime> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::NeoFS.API.StorageGroup.StorageGroup.Descriptor.NestedTypes[0]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Lifetime() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Lifetime(Lifetime other) : this() {
-          unit_ = other.unit_;
-          value_ = other.value_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Lifetime Clone() {
-          return new Lifetime(this);
-        }
-
-        /// <summary>Field number for the "unit" field.</summary>
-        public const int UnitFieldNumber = 1;
-        private global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit unit_ = global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit.Unlimited;
-        /// <summary>
-        /// Unit is lifetime type
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit Unit {
-          get { return unit_; }
-          set {
-            unit_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "Value" field.</summary>
-        public const int ValueFieldNumber = 2;
-        private long value_;
-        /// <summary>
-        /// Value for lifetime
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long Value {
-          get { return value_; }
-          set {
-            value_ = value;
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override bool Equals(object other) {
-          return Equals(other as Lifetime);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(Lifetime other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Unit != other.Unit) return false;
-          if (Value != other.Value) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Unit != global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit.Unlimited) hash ^= Unit.GetHashCode();
-          if (Value != 0L) hash ^= Value.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void WriteTo(pb::CodedOutputStream output) {
-          if (Unit != global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit.Unlimited) {
-            output.WriteRawTag(8);
-            output.WriteEnum((int) Unit);
-          }
-          if (Value != 0L) {
-            output.WriteRawTag(16);
-            output.WriteInt64(Value);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CalculateSize() {
-          int size = 0;
-          if (Unit != global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit.Unlimited) {
-            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Unit);
-          }
-          if (Value != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(Value);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(Lifetime other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Unit != global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit.Unlimited) {
-            Unit = other.Unit;
-          }
-          if (other.Value != 0L) {
-            Value = other.Value;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(pb::CodedInputStream input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 8: {
-                Unit = (global::NeoFS.API.StorageGroup.StorageGroup.Types.Lifetime.Types.Unit) input.ReadEnum();
-                break;
-              }
-              case 16: {
-                Value = input.ReadInt64();
-                break;
-              }
-            }
-          }
-        }
-
-        #region Nested types
-        /// <summary>Container for nested types declared in the Lifetime message type.</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static partial class Types {
-          public enum Unit {
-            /// <summary>
-            /// Unlimited set if storage group always valid
-            /// </summary>
-            [pbr::OriginalName("Unlimited")] Unlimited = 0,
-            /// <summary>
-            /// NeoFSEpoch set if storage group is valid until lifetime NeoFS epoch
-            /// </summary>
-            [pbr::OriginalName("NeoFSEpoch")] NeoFsepoch = 1,
-            /// <summary>
-            /// UnixTime set if storage group is valid until lifetime unix timestamp
-            /// </summary>
-            [pbr::OriginalName("UnixTime")] UnixTime = 2,
-          }
-
-        }
-        #endregion
-
-      }
-
-    }
-    #endregion
 
   }
 

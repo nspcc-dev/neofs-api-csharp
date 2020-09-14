@@ -1,7 +1,7 @@
 ﻿using System;
 using NeoFS.Crypto;
 
-namespace NeoFS.API.Refs
+namespace NeoFS.API.v2.Refs
 {
     public sealed partial class Address
     {
@@ -9,7 +9,7 @@ namespace NeoFS.API.Refs
         {
             return string.Format(
                 "https://cdn.fs.neo.org/{0}/{1}",
-                CID.ToCID(),
+                ContainerID.ToCID(),
                 ObjectID.ToUUID());
         }
     }
