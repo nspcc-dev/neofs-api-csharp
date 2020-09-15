@@ -1,7 +1,7 @@
 using Google.Protobuf;
 using System;
 using System.Security.Cryptography;
-using NeoFS.Crypto;
+using NeoFS.API.v2.Crypto;
 
 namespace NeoFS.API.v2.Object
 {

@@ -3,9 +3,26 @@ using Google.Protobuf;
 using System.Linq;
 using System.Collections.Generic;
 using NeoFS.API.v2.Session;
+using NeoFS.API.v2.Crypto;
 
 namespace NeoFS.API.v2.Object
 {
+    public partial class GetRequest : IRequestSignable
+    {
+        public IMessage GetBody()
+        {
+            return Body;
+        }
+    }
+
+    public partial class GetResponse : IResponseVerifiable
+    {
+        public IMessage GetBody()
+        {
+            return Body;
+        }
+    }
+
     public static class Extension
     {
         public static PutRequest PrepareInit(this Object obj, uint ttl, SessionToken tkn, ECDsa key, bool debug = false)

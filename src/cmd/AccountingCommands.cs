@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Grpc.Core;
-using NeoFS.API.Accounting;
-using NeoFS.API.State;
+using NeoFS.API.v2.Accounting;
 using NeoFS.Crypto;
 using NeoFS.Utils;
 

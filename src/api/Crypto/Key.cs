@@ -5,10 +5,11 @@ using System.Numerics;
 using System.Security.Cryptography;
 using Google.Protobuf;
 
-namespace NeoFS.Crypto
+namespace NeoFS.API.v2.Crypto
 {
     public static class KeyExtension
     {
+        private const int PublicKeyCompressedSize = 33;
         public static byte[] CheckSum(this IEnumerable<byte> data)
         {
             return data.ToArray().CheckSum();
@@ -23,7 +24,7 @@ namespace NeoFS.Crypto
                 .ToArray();
         }
 
-        public static byte[] Address(this ECDsa key)
+        public static byte[] Address(this System.Security.Cryptography.ECDsa key)
         {
             byte[] address = new byte[25];
 
@@ -46,12 +47,12 @@ namespace NeoFS.Crypto
             return Base58.Encode(owner.ToByteArray());
         }
 
-        public static string ToAddress(this ECDsa key)
+        public static string ToAddress(this System.Security.Cryptography.ECDsa key)
         {
             return Base58.Encode(key.Address());
         }
 
-        public static byte[] VerificationScript(this ECDsa key)
+        public static byte[] VerificationScript(this System.Security.Cryptography.ECDsa key)
         {
             byte[] owner = new byte[35]; // version? + key + checksig
 
@@ -62,7 +63,7 @@ namespace NeoFS.Crypto
             return owner;
         }
 
-        public static byte[] Peer(this ECDsa key)
+        public static byte[] Peer(this System.Security.Cryptography.ECDsa key)
         {
             var param = key.ExportParameters(false);
             var pubkey = new byte[33];
@@ -83,11 +84,11 @@ namespace NeoFS.Crypto
             return pubkey;
         }
 
-        public static ECDsa LoadKey(this byte[] priv)
+        public static System.Security.Cryptography.ECDsa LoadKey(this byte[] priv)
         {
-            ECCurve curve = ECCurve.NamedCurves.nistP256;
+            System.Security.Cryptography.ECCurve curve = System.Security.Cryptography.ECCurve.NamedCurves.nistP256;
 
-            ECDsa key = ECDsa.Create(curve);
+            System.Security.Cryptography.ECDsa key = System.Security.Cryptography.ECDsa.Create(curve);
 
             key.ImportECPrivateKey(priv, out _);
             //new ECParameters
