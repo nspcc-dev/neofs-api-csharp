@@ -1,5 +1,4 @@
-﻿using System;
-namespace NeoFS.Utils
+﻿namespace cmd
 {
     public static class Units
     {

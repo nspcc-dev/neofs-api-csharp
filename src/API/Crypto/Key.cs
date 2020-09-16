@@ -24,7 +24,19 @@ namespace NeoFS.API.v2.Crypto
                 .ToArray();
         }
 
-        public static byte[] Address(this System.Security.Cryptography.ECDsa key)
+        private static byte[] VerificationScript(this ECDsa key)
+        {
+            byte[] owner = new byte[35]; // version? + key + checksig
+
+            owner[0] = 0x21; // version?
+            owner[34] = 0xac; // checksig
+            key.PublicKey().CopyTo(owner, 1);
+
+            return owner;
+        }
+
+        // to script hash
+        private static byte[] Address(this ECDsa key)
         {
             byte[] address = new byte[25];
 
@@ -42,33 +54,24 @@ namespace NeoFS.API.v2.Crypto
             return address;
         }
 
+        //to address
+        public static string ToAddress(this ECDsa key)
+        {
+            return Base58.Encode(key.Address());
+        }
+
+        //to address
         public static string ToAddress(this ByteString owner)
         {
             return Base58.Encode(owner.ToByteArray());
         }
 
-        public static string ToAddress(this System.Security.Cryptography.ECDsa key)
-        {
-            return Base58.Encode(key.Address());
-        }
-
-        public static byte[] VerificationScript(this System.Security.Cryptography.ECDsa key)
-        {
-            byte[] owner = new byte[35]; // version? + key + checksig
-
-            owner[0] = 0x21; // version?
-            owner[34] = 0xac; // checksig
-            key.Peer().CopyTo(owner, 1);
-
-            return owner;
-        }
-
-        public static byte[] Peer(this System.Security.Cryptography.ECDsa key)
+        // encode point
+        public static byte[] PublicKey(this ECDsa key)
         {
             var param = key.ExportParameters(false);
             var pubkey = new byte[33];
             var pos = 33 - param.Q.X.Length;
-            var x = new BigInteger(param.Q.Y);
 
             param.Q.X.CopyTo(pubkey, pos);
 
@@ -84,11 +87,11 @@ namespace NeoFS.API.v2.Crypto
             return pubkey;
         }
 
-        public static System.Security.Cryptography.ECDsa LoadKey(this byte[] priv)
+        public static ECDsa LoadKey(this byte[] priv)
         {
-            System.Security.Cryptography.ECCurve curve = System.Security.Cryptography.ECCurve.NamedCurves.nistP256;
+            ECCurve curve = ECCurve.NamedCurves.nistP256;
 
-            System.Security.Cryptography.ECDsa key = System.Security.Cryptography.ECDsa.Create(curve);
+            ECDsa key = ECDsa.Create(curve);
 
             key.ImportECPrivateKey(priv, out _);
             //new ECParameters

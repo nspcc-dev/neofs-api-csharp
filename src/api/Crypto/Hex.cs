@@ -1,7 +1,7 @@
 ﻿using System;
 using Google.Protobuf;
 
-namespace NeoFS.Utils
+namespace NeoFS.API.v2.Crypto
 {
     public static class HexExtension
     {

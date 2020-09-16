@@ -72,7 +72,7 @@ namespace NeoFS.API.v2.Crypto
         {
             var sig = new Signature
             {
-                Key = ByteString.CopyFrom(key.Peer()),
+                Key = ByteString.CopyFrom(key.PublicKey()),
                 Sign = ByteString.CopyFrom(data.SignMessage(key)),
             };
             setter(sig);
@@ -106,6 +106,7 @@ namespace NeoFS.API.v2.Crypto
 
         private static bool VerifyMessagePart(byte[] data, Signature sign)
         {
+            //TODO: verify
             return true;
         }
     }

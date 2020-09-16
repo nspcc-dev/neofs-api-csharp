@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using Grpc.Core;
 
-namespace NeoFS.API
+namespace NeoFS.API.v2
 {
     public partial class Client
     {

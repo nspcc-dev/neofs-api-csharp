@@ -23,56 +23,16 @@ namespace NeoFS.API.v2.Object
         }
     }
 
-    public static class Extension
+    public partial class GetRangeHashRequest : IRequestSignable
     {
-        public static PutRequest PrepareInit(this Object obj, uint ttl, SessionToken tkn, ECDsa key, bool debug = false)
+        public IMessage GetBody()
         {
-            var req = new PutRequest
-            {
-                Body = new PutRequest.Types.Body
-                {
-                    Init = new PutRequest.Types.Body.Types.Init
-                    {
-                        ObjectId = obj.ObjectId,
-                        Signature = new Refs.Signature
-                        {
-                            Key = null,
-                            Sign = null,
-                        },
-                        Header = new Header
-                        {
-                            SessionToken = tkn,
-                        },
-                        CopiesNumber = 0,
-                    }
-                }
-            };
-
-            // req.SetTTL(ttl);
-            // req.SignHeader(key, debug);
-
-            return req;
+            return Body;
         }
+    }
 
-        public static PutRequest PrepareChunk(this IEnumerable<byte> chunk, uint ttl, ECDsa key)
-        {
-            return chunk.ToArray().PrepareChunk(ttl, key);
-        }
-
-        public static PutRequest PrepareChunk(this byte[] chunk, uint ttl, ECDsa key)
-        {
-            var req = new PutRequest
-            {
-                Body = new PutRequest.Types.Body
-                {
-                    Chunk = ByteString.CopyFrom(chunk),
-                }
-            };
-
-            // req.SetTTL(ttl);
-            // req.SignHeader(key, false);
-
-            return req;
-        }
+    public partial class Object
+    {
+        public const int ChunkSize = 3 * (1 << 20);
     }
 }
