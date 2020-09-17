@@ -94,10 +94,7 @@ namespace NeoFS.API.v2
 
         public List<ContainerID> ListSelfContainers()
         {
-            var w = new OwnerID
-            {
-                Value = ByteString.CopyFrom(Base58.Decode(key.ToAddress()))
-            };
+            var w = key.ToOwnerID();
             return ListContainers(w);
         }
 

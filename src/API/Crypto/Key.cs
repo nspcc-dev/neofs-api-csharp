@@ -1,69 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
+using NeoFS.API.v2.Refs;
 using System.Security.Cryptography;
 using Google.Protobuf;
+using Neo.SmartContract;
+using Neo.Wallets;
+using Neo.Cryptography;
 
 namespace NeoFS.API.v2.Crypto
 {
     public static class KeyExtension
     {
-        private const int PublicKeyCompressedSize = 33;
-        public static byte[] CheckSum(this IEnumerable<byte> data)
-        {
-            return data.ToArray().CheckSum();
-        }
-
-        public static byte[] CheckSum(this byte[] data)
-        {
-            return SHA256
-                .Create()
-                .ComputeHash(SHA256.Create().ComputeHash(data))
-                .Take(4)
-                .ToArray();
-        }
-
-        private static byte[] VerificationScript(this ECDsa key)
-        {
-            byte[] owner = new byte[35]; // version? + key + checksig
-
-            owner[0] = 0x21; // version?
-            owner[34] = 0xac; // checksig
-            key.PublicKey().CopyTo(owner, 1);
-
-            return owner;
-        }
-
-        // to script hash
-        private static byte[] Address(this ECDsa key)
-        {
-            byte[] address = new byte[25];
-
-            address[0] = 0x17;
-            byte[] hash = SHA256.Create().ComputeHash(key.VerificationScript());
-
-            RIPEMD160
-                .Create()
-                .ComputeHash(hash)
-                .CopyTo(address, 1);
-
-            // copy checksum to 
-            address.Take(21).CheckSum().CopyTo(address, 21);
-
-            return address;
-        }
-
-        //to address
         public static string ToAddress(this ECDsa key)
         {
-            return Base58.Encode(key.Address());
+            return key.PublicKey().PublicKeyToAddress();
         }
 
-        //to address
-        public static string ToAddress(this ByteString owner)
+        public static OwnerID ToOwnerID(this ECDsa key)
         {
-            return Base58.Encode(owner.ToByteArray());
+            return key.PublicKey().PublicKeyToOwnerID();
+        }
+
+        public static string OwnerIDToAddress(this OwnerID owner)
+        {
+            return Neo.Cryptography.Base58.Encode(owner.Value.ToByteArray());
+        }
+
+        public static string PublicKeyToAddress(this byte[] public_key)
+        {
+            Neo.Cryptography.ECC.ECCurve curve = Neo.Cryptography.ECC.ECCurve.Secp256r1;
+            var public_key_point = Neo.Cryptography.ECC.ECPoint.DecodePoint(public_key, curve);
+            var contract = Contract.CreateSignatureContract(public_key_point);
+            return contract.ScriptHash.ToAddress();
+        }
+
+        public static OwnerID PublicKeyToOwnerID(this byte[] public_key)
+        {
+            var bytes = Neo.Cryptography.Base58.Decode(public_key.PublicKeyToAddress());
+            return new OwnerID
+            {
+                Value = ByteString.CopyFrom(bytes),
+            };
         }
 
         // encode point
@@ -87,7 +65,12 @@ namespace NeoFS.API.v2.Crypto
             return pubkey;
         }
 
-        public static ECDsa LoadKey(this byte[] priv)
+        private static byte[] DecodePublicKey(this byte[] public_key)
+        {
+            return Neo.Cryptography.ECC.ECPoint.DecodePoint(public_key, Neo.Cryptography.ECC.ECCurve.Secp256r1).EncodePoint(false).AsSpan(1).ToArray();
+        }
+
+        public static ECDsa LoadPrivateKey(this byte[] priv)
         {
             ECCurve curve = ECCurve.NamedCurves.nistP256;
 
@@ -107,6 +90,21 @@ namespace NeoFS.API.v2.Crypto
 
             //key.ImportECPrivateKey(priv, out _);
 
+            return key;
+        }
+
+        public static ECDsa LoadPublicKey(this byte[] public_key)
+        {
+            var public_key_full = public_key.DecodePublicKey();
+            var key = ECDsa.Create(new ECParameters
+            {
+                Curve = ECCurve.NamedCurves.nistP256,
+                Q = new ECPoint
+                {
+                    X = public_key[..32],
+                    Y = public_key[32..]
+                }
+            });
             return key;
         }
     }

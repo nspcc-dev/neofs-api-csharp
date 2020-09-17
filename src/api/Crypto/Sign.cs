@@ -3,7 +3,6 @@ using System.Security.Cryptography;
 using Google.Protobuf;
 using NeoFS.API.v2.Session;
 using NeoFS.API.v2.Refs;
-using System.Numerics;
 
 namespace NeoFS.API.v2.Crypto
 {
@@ -41,6 +40,11 @@ namespace NeoFS.API.v2.Crypto
                 .CopyTo(hash, 1);
 
             return hash;
+        }
+
+        public static bool VerifyMessage(this byte[] data, byte[] sig, ECDsa key)
+        {
+            return key.VerifyHash(SHA512.Create().ComputeHash(data), sig[1..]);
         }
 
         public static void SignRequest(this IMessage message, ECDsa key)
@@ -104,10 +108,12 @@ namespace NeoFS.API.v2.Crypto
             return VerifyMatryoshkaLevel(body, meta_header.Origin, origin);
         }
 
-        private static bool VerifyMessagePart(byte[] data, Signature sign)
+        private static bool VerifyMessagePart(byte[] data, Signature sig)
         {
-            //TODO: verify
-            return true;
+            using (var key = sig.Key.ToByteArray().LoadPublicKey())
+            {
+                return data.VerifyMessage(sig.Sign.ToByteArray(), key);
+            }
         }
     }
 
