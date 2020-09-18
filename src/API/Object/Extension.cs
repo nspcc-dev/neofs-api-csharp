@@ -7,7 +7,7 @@ using NeoFS.API.v2.Crypto;
 
 namespace NeoFS.API.v2.Object
 {
-    public partial class GetRequest : IRequestSignable
+    public partial class GetRequest : IRequest
     {
         public IMessage GetBody()
         {
@@ -15,7 +15,7 @@ namespace NeoFS.API.v2.Object
         }
     }
 
-    public partial class GetResponse : IResponseVerifiable
+    public partial class GetResponse : IResponse
     {
         public IMessage GetBody()
         {
@@ -23,7 +23,7 @@ namespace NeoFS.API.v2.Object
         }
     }
 
-    public partial class GetRangeHashRequest : IRequestSignable
+    public partial class GetRangeHashRequest : IRequest
     {
         public IMessage GetBody()
         {

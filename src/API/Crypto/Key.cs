@@ -55,11 +55,11 @@ namespace NeoFS.API.v2.Crypto
 
             if ((param.Q.Y[0] & 1) == 0)
             {
-                pubkey[0] = 0x3;
+                pubkey[0] = 0x2;
             }
             else
             {
-                pubkey[0] = 0x2;
+                pubkey[0] = 0x3;
             }
 
             return pubkey;
@@ -70,27 +70,27 @@ namespace NeoFS.API.v2.Crypto
             return Neo.Cryptography.ECC.ECPoint.DecodePoint(public_key, Neo.Cryptography.ECC.ECCurve.Secp256r1).EncodePoint(false).AsSpan(1).ToArray();
         }
 
-        public static ECDsa LoadPrivateKey(this byte[] priv)
+        public static ECDsa LoadPrivateKey(this byte[] private_key)
         {
-            ECCurve curve = ECCurve.NamedCurves.nistP256;
-
-            ECDsa key = ECDsa.Create(curve);
-
-            key.ImportECPrivateKey(priv, out _);
-            //new ECParameters
-            //{
-            //    Curve = curve,
-            //    D = priv,
-            //    Q = new ECPoint
-            //    {
-            //        X = null,
-            //        Y = null,
-            //    },
-            //});
-
-            //key.ImportECPrivateKey(priv, out _);
-
+            var kp = new KeyPair(private_key);
+            var public_key = kp.PublicKey.EncodePoint(false).AsSpan(1).ToArray();
+            var key = ECDsa.Create(new ECParameters
+            {
+                Curve = ECCurve.NamedCurves.nistP256,
+                D = private_key,
+                Q = new ECPoint
+                {
+                    X = public_key[..32],
+                    Y = public_key[32..]
+                }
+            });
             return key;
+        }
+
+        public static ECDsa LoadWif(this string wif)
+        {
+            var private_key = Wallet.GetPrivateKeyFromWIF(wif);
+            return LoadPrivateKey(private_key);
         }
 
         public static ECDsa LoadPublicKey(this byte[] public_key)
@@ -101,8 +101,8 @@ namespace NeoFS.API.v2.Crypto
                 Curve = ECCurve.NamedCurves.nistP256,
                 Q = new ECPoint
                 {
-                    X = public_key[..32],
-                    Y = public_key[32..]
+                    X = public_key_full[..32],
+                    Y = public_key_full[32..]
                 }
             });
             return key;
