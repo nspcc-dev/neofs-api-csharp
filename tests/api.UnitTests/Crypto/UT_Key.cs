@@ -13,11 +13,7 @@ namespace NeoFS.API.v2.UnitTests.Crypto
         [TestMethod]
         public void TestImportKey()
         {
-            var private_key = "Kwk6k2eC3L3QuPvD8aiaNyoSXgQ2YL1bwS5CP1oKoA9waeAze97s";
-            var key = private_key.LoadWif();
-            Console.WriteLine($"{key.ExportECPrivateKey().ToHex()}");
-            var kp = new KeyPair(key.ExportECPrivateKey());
-            Assert.AreEqual(kp.PublicKey.EncodePoint(true).ToHex(), key.PublicKey().ToHex());
+
         }
     }
 }

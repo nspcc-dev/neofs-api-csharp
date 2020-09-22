@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Grpc.Core;
 using NeoFS.API.v2.Accounting;
-using NeoFS.Crypto;
-using NeoFS.Utils;
+using NeoFS.API.v2.Client;
+using NeoFS.API.v2.Crypto;
 
 namespace cmd
 {
@@ -11,15 +11,14 @@ namespace cmd
     {
         static async Task AccountingBalance(AccountingBalanceOptions opts)
         {
-            var key = privateKey.FromHex().LoadKey();
+            var key = privateKey.FromHex().LoadPrivateKey();
 
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-
-            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
+            var client = new Client(channel, key);
 
             Console.WriteLine();
 
-            channel.GetBalance(SingleForwardedTTL, key, opts.Debug).Say();
+            client.GetBalance(key.ToOwnerID());
 
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.IO;
 using Grpc.Core;
-using NeoFS.Crypto;
-using NeoFS.Utils;
-using NeoFS.API.Service;
+using NeoFS.API.v2.Client;
+using NeoFS.API.v2.Crypto;
 using System.Threading.Tasks;
-using NeoFS.API.State;
 using Google.Protobuf;
-using NeoFS.API.Session;
-using NeoFS.API.Object;
+using NeoFS.API.v2.Refs;
+using NeoFS.API.v2.Session;
+using NeoFS.API.v2.Object;
 
 namespace cmd
 {
@@ -16,25 +15,37 @@ namespace cmd
     {
         static async Task ObjectDelete(ObjectDeleteOptions opts)
         {
-            byte[] cid;
+            ContainerID cid;
+            ObjectID oid;
 
-            var key = privateKey.FromHex().LoadKey();
+            var key = privateKey.FromHex().LoadPrivateKey();
 
             try
             {
-                cid = Base58.Decode(opts.CID);
+                cid = ContainerID.FromBase58String(opts.CID);
             }
             catch (Exception err)
             {
                 Console.WriteLine("wrong cid format: {0}", err.Message);
                 return;
             }
-
+            try
+            {
+                oid = ObjectID.FromBase58String(opts.OID);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong oid format: {0}", err.Message);
+                return;
+            }
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-
-            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
-
-            var res = await channel.ObjectDelete(cid, opts.OID, SingleForwardedTTL, key, opts.Debug);
+            var client = new Client(channel, key);
+            var address = new Address
+            {
+                ObjectId = oid,
+                ContainerId = cid,
+            };
+            var res = client.DeleteObject(address);
 
             Console.WriteLine();
 
@@ -45,38 +56,39 @@ namespace cmd
 
         static async Task ObjectHead(ObjectHeadOptions opts)
         {
-            byte[] cid;
+            ContainerID cid;
+            ObjectID oid;
 
-            var key = privateKey.FromHex().LoadKey();
+            var key = privateKey.FromHex().LoadPrivateKey();
 
             try
             {
-                cid = Base58.Decode(opts.CID);
+                cid = ContainerID.FromBase58String(opts.CID);
             }
             catch (Exception err)
             {
                 Console.WriteLine("wrong cid format: {0}", err.Message);
                 return;
             }
-
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-
-            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
-
-            var req = new HeadRequest
+            try
             {
-                FullHeaders = opts.Full,
-                Address = new NeoFS.API.Refs.Address
-                {
-                    CID = ByteString.CopyFrom(cid),
-                    ObjectID = ByteString.CopyFrom(opts.OID.Bytes()),
-                },
+                oid = ObjectID.FromBase58String(opts.OID);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong oid format: {0}", err.Message);
+                return;
+            }
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+            var client = new Client(channel, key);
+
+            var address = new Address
+            {
+                ContainerId = cid,
+                ObjectId = oid,
             };
 
-            req.SetTTL(SingleForwardedTTL);
-            req.SignHeader(key, opts.Debug);
-
-            var res = new Service.ServiceClient(channel).Head(req);
+            var obj = client.GetObjectHeader(address, false);
 
             Console.WriteLine();
 
@@ -88,33 +100,22 @@ namespace cmd
                 "OwnerID: {3}\n" +
                 "CID: {4}\n" +
                 "CreatedAt: {5}\n",
-                res.Object.SystemHeader.Version,
-                res.Object.SystemHeader.PayloadLength,
-                res.Object.SystemHeader.ID.ToUUID(),
-                res.Object.SystemHeader.OwnerID.ToAddress(),
-                res.Object.SystemHeader.CID.ToCID(),
-                res.Object.SystemHeader.CreatedAt);
-
-            if (opts.Full)
-            {
-                Console.WriteLine("Headers:");
-                for (var i = 0; i < res.Object.Headers.Count; i++)
-                {
-                    Console.WriteLine(res.Object.Headers[i]);
-                }
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("Meta:\n{0}", res.Meta);
+                obj.Header.Version,
+                obj.Header.PayloadLength,
+                obj.Header.ContainerId.ToBase58String(),
+                obj.Header.CreationEpoch,
+                obj.Header.PayloadHash,
+                obj.Header.ObjectType);
             await Task.Delay(TimeSpan.FromMilliseconds(100));
         }
 
         static async Task ObjectGet(ObjectGetOptions opts)
         {
-            byte[] cid;
+            ContainerID cid;
+            ObjectID oid;
             FileStream file;
 
-            var key = privateKey.FromHex().LoadKey();
+            var key = privateKey.FromHex().LoadPrivateKey();
 
             try
             {
@@ -128,101 +129,37 @@ namespace cmd
 
             try
             {
-                cid = Base58.Decode(opts.CID);
+                cid = ContainerID.FromBase58String(opts.CID);
             }
             catch (Exception err)
             {
                 Console.WriteLine("wrong cid format: {0}", err.Message);
                 return;
             }
-
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-
-            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
-
-            var req = new GetRequest
+            try
             {
-                Address = new NeoFS.API.Refs.Address
-                {
-                    CID = ByteString.CopyFrom(cid),
-                    ObjectID = ByteString.CopyFrom(opts.OID.Bytes()),
-                },
+                oid = ObjectID.FromBase58String(opts.OID);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("wrong oid format: {0}", err.Message);
+                return;
+            }
+            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+            var client = new Client(channel, key);
+
+            var address = new Address
+            {
+                ContainerId = cid,
+                ObjectId = oid,
             };
 
-            req.SetTTL(SingleForwardedTTL);
-            req.SignHeader(key, opts.Debug);
+            var obj = await client.GetObject(address);
 
-            var client = new Service.ServiceClient(channel);
-
-            Console.WriteLine();
-
-            using (var call = client.Get(req))
-            {
-                ProgressBar progress = null;
-
-                double len = 0;
-                double off = 0;
-
-                while (await call.ResponseStream.MoveNext())
-                {
-                    var res = call.ResponseStream.Current;
-
-
-                    if (res.Object != null)
-                    {
-                        len = (double)res.Object.SystemHeader.PayloadLength;
-
-                        Console.WriteLine("Received object");
-                        Console.WriteLine("PayloadLength = {0}", len);
-
-                        Console.WriteLine("Headers:");
-                        for (var i = 0; i < res.Object.Headers.Count; i++)
-                        {
-                            Console.WriteLine(res.Object.Headers[i]);
-                        }
-
-
-                        if (res.Object.Payload.Length > 0)
-                        {
-                            off += (double)res.Object.Payload.Length;
-                            res.Object.Payload.WriteTo(file);
-                        }
-
-                        Console.Write("Receive chunks: ");
-                        progress = new ProgressBar();
-                    }
-                    else if (res.Chunk != null && res.Chunk.Length > 0)
-                    {
-                        //Console.Write("#");
-                        off += res.Chunk.Length;
-
-                        res.Chunk.WriteTo(file);
-
-                        if (progress != null)
-                        {
-
-                            progress.Report(off / len);
-                        }
-                    }
-                }
-
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
-                if (progress != null)
-                {
-                    progress.Dispose();
-                }
-
-                Console.Write("Done!");
-
-                Console.WriteLine();
-            }
+            await file.WriteAsync(obj.Payload.ToByteArray(), 0, (int)obj.Header.PayloadLength);
 
             Console.WriteLine("Close file");
             file.Close();
-
-            //Console.WriteLine("Shutdown connection.");
-            //channel.ShutdownAsync().Wait();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Google.Protobuf;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Session;
 
 namespace NeoFS.API.v2.Accounting
 {

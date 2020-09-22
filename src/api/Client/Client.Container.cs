@@ -1,13 +1,12 @@
-using Google.Protobuf;
 using NeoFS.API.v2.Acl;
-using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Container;
-using NeoFS.API.v2.Session;
 using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Refs;
+using NeoFS.API.v2.Session;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeoFS.API.v2
+namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
@@ -22,7 +21,7 @@ namespace NeoFS.API.v2
                     ContainerId = cid
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = container_client.Get(req);
@@ -43,7 +42,7 @@ namespace NeoFS.API.v2
                     Signature = sig,
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = container_client.Put(req);
@@ -64,7 +63,7 @@ namespace NeoFS.API.v2
                     Signature = sig
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = container_client.Delete(req);
@@ -83,7 +82,7 @@ namespace NeoFS.API.v2
                     OwnerId = owner
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = container_client.List(req);
@@ -109,7 +108,7 @@ namespace NeoFS.API.v2
                     ContainerId = cid
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = container_client.GetExtendedACL(req);
@@ -133,7 +132,7 @@ namespace NeoFS.API.v2
                     Signature = sig,
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = container_client.SetExtendedACL(req);

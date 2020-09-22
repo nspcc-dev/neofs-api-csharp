@@ -24,7 +24,7 @@ namespace NeoFS.API.v2.Crypto
 
         public static string OwnerIDToAddress(this OwnerID owner)
         {
-            return Neo.Cryptography.Base58.Encode(owner.Value.ToByteArray());
+            return Base58.Encode(owner.Value.ToByteArray());
         }
 
         public static string PublicKeyToAddress(this byte[] public_key)
@@ -37,7 +37,7 @@ namespace NeoFS.API.v2.Crypto
 
         public static OwnerID PublicKeyToOwnerID(this byte[] public_key)
         {
-            var bytes = Neo.Cryptography.Base58.Decode(public_key.PublicKeyToAddress());
+            var bytes = Base58.Decode(public_key.PublicKeyToAddress());
             return new OwnerID
             {
                 Value = ByteString.CopyFrom(bytes),
@@ -67,13 +67,13 @@ namespace NeoFS.API.v2.Crypto
 
         private static byte[] DecodePublicKey(this byte[] public_key)
         {
-            return Neo.Cryptography.ECC.ECPoint.DecodePoint(public_key, Neo.Cryptography.ECC.ECCurve.Secp256r1).EncodePoint(false).AsSpan(1).ToArray();
+            return Neo.Cryptography.ECC.ECPoint.DecodePoint(public_key, Neo.Cryptography.ECC.ECCurve.Secp256r1).EncodePoint(false)[1..];
         }
 
         public static ECDsa LoadPrivateKey(this byte[] private_key)
         {
             var kp = new KeyPair(private_key);
-            var public_key = kp.PublicKey.EncodePoint(false).AsSpan(1).ToArray();
+            var public_key = kp.PublicKey.EncodePoint(false)[1..];
             var key = ECDsa.Create(new ECParameters
             {
                 Curve = ECCurve.NamedCurves.nistP256,

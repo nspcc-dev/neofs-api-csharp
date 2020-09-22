@@ -1,13 +1,13 @@
-using System.Security.Cryptography;
 using Grpc.Core;
+using System.Security.Cryptography;
 
-namespace NeoFS.API.v2
+namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
         private ECDsa key;
         private Channel channel;
-        Client(Channel chan, ECDsa k)
+        public Client(Channel chan, ECDsa k)
         {
             channel = chan;
             key = k;

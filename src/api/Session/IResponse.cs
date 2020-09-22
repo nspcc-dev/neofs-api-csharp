@@ -1,7 +1,7 @@
 using NeoFS.API.v2.Session;
 using Google.Protobuf;
 
-namespace NeoFS.API.v2.Crypto
+namespace NeoFS.API.v2.Session
 {
     public interface IResponseMeta
     {

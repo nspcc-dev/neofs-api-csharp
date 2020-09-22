@@ -1,17 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Grpc.Core;
-using NeoFS.API.Object;
-using NeoFS.API.Service;
-using NeoFS.API.Session;
-using NeoFS.API.State;
-using NeoFS.Crypto;
-using NeoFS.Utils;
-using NeoFS.API.Query;
+using NeoFS.API.v2.Client;
+using NeoFS.API.v2.Object;
+using NeoFS.API.v2.Refs;
+using NeoFS.API.v2.Session;
+using NeoFS.API.v2.Crypto;
 
 namespace cmd
 {
@@ -20,11 +17,11 @@ namespace cmd
 
         static async Task ObjectSearch(ObjectSearchOptions opts)
         {
-            byte[] cid;
+            ContainerID cid;
 
             try
             {
-                cid = Base58.Decode(opts.CID);
+                cid = ContainerID.FromBase58String(opts.CID);
             }
             catch (Exception err)
             {
@@ -32,28 +29,16 @@ namespace cmd
                 return;
             }
 
-            var key = privateKey.FromHex().LoadKey();
+            var key = privateKey.FromHex().LoadPrivateKey();
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+            var client = new Client(channel, key);
 
-            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
-
-            var res = channel.ObjectSearch(SingleForwardedTTL, key,
-                query: opts.Query,
-                cid: cid,
-                sg: opts.SG,
-                root: opts.Root,
-                debug: opts.Debug);
+            var res = await client.SearchObject(cid, null, 2);
 
             Console.WriteLine("\nSearch results:");
-            while (await res.ResponseStream.MoveNext())
+            foreach (var item in res)
             {
-                var items = res.ResponseStream.Current.Addresses;
-                foreach (var item in items)
-                {
-                    Console.WriteLine("CID = {0}, OID = {1}",
-                        item.CID.ToCID(),
-                        item.ObjectID.ToUUID());
-                }
+                Console.WriteLine($"CID={cid.ToBase58String()} OID={item.ToBase58String()}");
             }
 
             await Task.Delay(TimeSpan.FromMilliseconds(100));

@@ -1,14 +1,14 @@
+using Google.Protobuf;
+using Grpc.Core;
+using NeoFS.API.v2.Crypto;
 using NeoFS.API.v2.Object;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;
-using NeoFS.API.v2.Crypto;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Google.Protobuf;
-using Grpc.Core;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace NeoFS.API.v2
+namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
@@ -23,7 +23,7 @@ namespace NeoFS.API.v2
                     Address = object_address,
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var stream = object_client.Get(req).ResponseStream;
@@ -59,7 +59,7 @@ namespace NeoFS.API.v2
             return obj;
         }
 
-        public async Task<ObjectID> PutObject(Object.Object obj, uint copy)
+        public async Task<ObjectID> PutObject(Object.Object obj, uint copy = 3)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var call = object_client.Put();
@@ -78,7 +78,7 @@ namespace NeoFS.API.v2
                     }
                 }
             };
-            init_req.MetaHeader = new RequestMetaHeader();
+            init_req.MetaHeader = RequestMetaHeader.Default;
             init_req.SignRequest(key);
 
             await req_stream.WriteAsync(init_req);
@@ -104,7 +104,7 @@ namespace NeoFS.API.v2
             return resp.Body.ObjectId;
         }
 
-        public void DeleteObject(Address object_address)
+        public bool DeleteObject(Address object_address)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
 
@@ -115,12 +115,13 @@ namespace NeoFS.API.v2
                     Address = object_address,
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = object_client.Delete(req);
             if (!resp.VerifyResponse())
                 throw new System.InvalidOperationException("invalid object delete response");
+            return true;
         }
 
         public Object.Object GetObjectHeader(Address object_address, bool minimal)
@@ -135,7 +136,7 @@ namespace NeoFS.API.v2
                     MainOnly = minimal,
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = object_client.Head(req);
@@ -184,7 +185,7 @@ namespace NeoFS.API.v2
                     Range = range,
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var stream = object_client.GetRange(req).ResponseStream;
@@ -215,7 +216,7 @@ namespace NeoFS.API.v2
                 }
             };
             req.Body.Ranges.AddRange(range);
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = object_client.GetRangeHash(req);
@@ -236,7 +237,7 @@ namespace NeoFS.API.v2
                 }
             };
             req.Body.Filters.AddRange(filters);
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var stream = object_client.Search(req).ResponseStream;

@@ -102,7 +102,7 @@ namespace cmd
         [Option("oid",
             Required = true,
             HelpText = "Object ID, that would be getting from the container")]
-        public Guid OID { get; set; }
+        public string OID { get; set; }
 
         [Option('o', "out",
             Required = true,
@@ -133,7 +133,7 @@ namespace cmd
         [Option("oid",
             Required = true,
             HelpText = "Object ID, that would be getting from the container")]
-        public Guid OID { get; set; }
+        public string OID { get; set; }
 
         [Option('d', "debug",
             Default = false,
@@ -159,7 +159,7 @@ namespace cmd
         [Option("oid",
             Required = true,
             HelpText = "Object ID, that would be getting from the container")]
-        public Guid OID { get; set; }
+        public string OID { get; set; }
 
         [Option("full",
             Default = false,

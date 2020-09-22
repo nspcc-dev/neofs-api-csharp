@@ -1,10 +1,9 @@
 using NeoFS.API.v2.Accounting;
+using NeoFS.API.v2.Crypto;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;
-using NeoFS.API.v2.Crypto;
-using Google.Protobuf;
 
-namespace NeoFS.API.v2
+namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
@@ -18,7 +17,7 @@ namespace NeoFS.API.v2
                     OwnerId = owner,
                 }
             };
-            req.MetaHeader = new RequestMetaHeader();
+            req.MetaHeader = RequestMetaHeader.Default;
             req.SignRequest(key);
 
             var resp = account_client.Balance(req);
