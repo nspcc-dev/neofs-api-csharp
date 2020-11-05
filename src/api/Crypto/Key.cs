@@ -27,6 +27,15 @@ namespace NeoFS.API.v2.Crypto
             return Base58.Encode(owner.Value.ToByteArray());
         }
 
+        public static OwnerID AddressToOwnerID(this string address)
+        {
+            var bytes = Base58.Decode(address);
+            return new OwnerID
+            {
+                Value = ByteString.CopyFrom(bytes),
+            };
+        }
+
         public static string PublicKeyToAddress(this byte[] public_key)
         {
             Neo.Cryptography.ECC.ECCurve curve = Neo.Cryptography.ECC.ECCurve.Secp256r1;
