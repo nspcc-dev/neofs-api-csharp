@@ -1,5 +1,5 @@
 using NeoFS.API.v2.Accounting;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;
 

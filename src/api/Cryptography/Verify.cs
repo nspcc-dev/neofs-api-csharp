@@ -4,7 +4,7 @@ using Google.Protobuf;
 using NeoFS.API.v2.Session;
 using NeoFS.API.v2.Refs;
 
-namespace NeoFS.API.v2.Crypto
+namespace NeoFS.API.v2.Cryptography
 {
     public static class VerifyExtension
     {

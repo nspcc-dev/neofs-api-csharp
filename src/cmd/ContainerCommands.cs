@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using NeoFS.API.v2.Acl;
 using NeoFS.API.v2.Container;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Client;
 using NeoFS.API.v2.Refs;
 using Google.Protobuf;
@@ -12,7 +12,6 @@ namespace cmd
 {
     partial class Program
     {
-
         static async Task ContainerPut(ContainerPutOptions opts)
         {
             var key = privateKey.FromHex().LoadPrivateKey();

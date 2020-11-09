@@ -8,7 +8,7 @@ using NeoFS.API.v2.Client;
 using NeoFS.API.v2.Object;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 
 namespace cmd
 {

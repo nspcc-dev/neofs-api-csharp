@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using NeoFS.API.v2.Accounting;
 using NeoFS.API.v2.Client;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 
 namespace cmd
 {

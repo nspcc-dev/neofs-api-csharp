@@ -1,6 +1,6 @@
 using NeoFS.API.v2.Acl;
 using NeoFS.API.v2.Container;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;
 using System.Collections.Generic;

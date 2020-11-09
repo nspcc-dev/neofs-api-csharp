@@ -1,6 +1,6 @@
 using Google.Protobuf;
 using Grpc.Core;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Object;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;

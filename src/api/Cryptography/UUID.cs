@@ -2,7 +2,7 @@
 using Google.Protobuf;
 using Neo.Cryptography;
 
-namespace NeoFS.API.v2.Crypto
+namespace NeoFS.API.v2.Cryptography
 {
     public static class UUIDExtension
     {

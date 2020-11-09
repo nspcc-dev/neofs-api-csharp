@@ -2,7 +2,7 @@
 using System.IO;
 using Grpc.Core;
 using NeoFS.API.v2.Client;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using NeoFS.API.v2.Refs;

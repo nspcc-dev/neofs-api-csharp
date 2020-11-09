@@ -1,6 +1,6 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 using System.Security.Cryptography;
 using Neo.Wallets;
 using System;

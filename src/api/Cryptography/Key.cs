@@ -8,7 +8,7 @@ using Neo.SmartContract;
 using Neo.Wallets;
 using Neo.Cryptography;
 
-namespace NeoFS.API.v2.Crypto
+namespace NeoFS.API.v2.Cryptography
 {
     public static class KeyExtension
     {

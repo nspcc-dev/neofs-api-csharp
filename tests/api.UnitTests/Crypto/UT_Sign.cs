@@ -1,6 +1,6 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NeoFS.API.v2.Crypto;
+using NeoFS.API.v2.Cryptography;
 using System.Security.Cryptography;
 using NeoFS.API.v2.Accounting;
 using NeoFS.API.v2.Session;
