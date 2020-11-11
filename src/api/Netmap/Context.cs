@@ -11,11 +11,11 @@ namespace NeoFS.API.v2.Netmap
         public Dictionary<string, Filter> Filters = new Dictionary<string, Filter>();
         public Dictionary<string, Selector> Selectors = new Dictionary<string, Selector>();
         public Dictionary<string, List<Node[]>> Selections = new Dictionary<string, List<Node[]>>();
-        private Dictionary<Filter, UInt64> numCache = new Dictionary<Filter, ulong>();
+        public Dictionary<Filter, UInt64> NumCache = new Dictionary<Filter, ulong>();
         private byte[] pivot;
         private UInt64 pivotHash;
-        private IAggregator aggregator;
-        private Func<Node, double> weightFunc;
+        private readonly IAggregator aggregator;
+        private readonly Func<Node, double> weightFunc;
 
         public Context(NetMap map)
         {
@@ -23,6 +23,7 @@ namespace NeoFS.API.v2.Netmap
             aggregator = new MeanIQRAgg(0);
             weightFunc = map.Nodes.GenarateWeightFunc();
         }
+
         public void SetPivot(byte[] pivot)
         {
             if (pivot is null || pivot.Length == 0) return;

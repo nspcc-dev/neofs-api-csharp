@@ -6,7 +6,7 @@ using NeoFS.API.v2.Accounting;
 using NeoFS.API.v2.Session;
 using NeoFS.API.v2.Refs;
 
-namespace NeoFS.API.v2.UnitTests.Crypto
+namespace NeoFS.API.v2.UnitTests.TestCryptography
 {
     [TestClass]
     public class UT_Sign

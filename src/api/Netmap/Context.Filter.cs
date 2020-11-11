@@ -6,9 +6,10 @@ namespace NeoFS.API.v2.Netmap
     {
         private const string MainFilterName = "*";
 
-        private bool ApplyFilter(string name, Node n)
+        public bool ApplyFilter(string name, Node n)
         {
-            return name == MainFilterName || Match(Filters[name], n);
+            var r = Match(Filters[name], n);
+            return name == MainFilterName || r;
         }
 
         public void ProcessFilters(PlacementPolicy policy)
@@ -45,6 +46,7 @@ namespace NeoFS.API.v2.Netmap
                         {
                             case Operation.Eq:
                             case Operation.Ne:
+                                break;
                             case Operation.Gt:
                             case Operation.Ge:
                             case Operation.Lt:
@@ -52,7 +54,7 @@ namespace NeoFS.API.v2.Netmap
                                 {
                                     if (!UInt64.TryParse(filter.Value, out UInt64 n))
                                         throw new ArgumentException(nameof(ProcessFilter) + " invalid number");
-                                    numCache[filter] = n;
+                                    NumCache[filter] = n;
                                     break;
                                 }
                             default:
@@ -94,20 +96,21 @@ namespace NeoFS.API.v2.Netmap
                         switch (filter.Op)
                         {
                             case Operation.Gt:
-                                return numCache[filter] < attribute;
+                                return NumCache[filter] < attribute;
                             case Operation.Ge:
-                                return numCache[filter] <= attribute;
+                                return NumCache[filter] <= attribute;
                             case Operation.Lt:
-                                return attribute < numCache[filter];
+                                return attribute < NumCache[filter];
                             case Operation.Le:
-                                return attribute <= numCache[filter];
+                                return attribute <= NumCache[filter];
                         }
+                        break;
                     }
-                    return true;
             }
+            return true;
         }
 
-        private bool Match(Filter filter, Node n)
+        public bool Match(Filter filter, Node n)
         {
             switch (filter.Op)
             {
@@ -119,8 +122,9 @@ namespace NeoFS.API.v2.Netmap
                             Filter f = fl;
                             if (fl.Name != "")
                                 f = Filters[fl.Name];
-                            if (Match(f, n) == (filter.Op == Operation.Or))
-                                return true;
+                            var r = Match(f, n);
+                            if (r == (filter.Op == Operation.Or))
+                                return r;
                         }
                         return filter.Op == Operation.And;
                     }

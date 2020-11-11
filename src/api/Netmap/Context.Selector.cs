@@ -22,8 +22,8 @@ namespace NeoFS.API.v2.Netmap
 
         public List<Node[]> GetSelection(PlacementPolicy policy, Selector sel)
         {
-            int bucket_count = sel.Clause == Netmap.Clause.Same ? 1 : (int)sel.Count;
-            int node_in_bucket = sel.Clause == Netmap.Clause.Same ? (int)(policy.ContainerBackupFactor * sel.Count) : (int)policy.ContainerBackupFactor;
+            int bucket_count = sel.Clause == Clause.Same ? 1 : (int)sel.Count;
+            int node_in_bucket = sel.Clause == Clause.Same ? (int)(policy.ContainerBackupFactor * sel.Count) : (int)policy.ContainerBackupFactor;
             var buckets = GetSelectionBase(sel).ToList();
             if (buckets.Count() < bucket_count)
                 throw new InvalidOperationException(nameof(GetSelection) + " not enough nodes");

@@ -8,12 +8,12 @@ namespace NeoFS.API.v2.Cryptography
     {
         public static ByteString Sha256(this IMessage data)
         {
-            return ByteString.CopyFrom(Neo.Cryptography.Crypto.Hash256(data.ToByteArray()));
+            return ByteString.CopyFrom(Neo.Cryptography.Helper.Sha256(data.ToByteArray()));
         }
 
         public static ByteString Sha256(this ByteString data)
         {
-            return ByteString.CopyFrom(Neo.Cryptography.Crypto.Hash256(data.ToByteArray()));
+            return ByteString.CopyFrom(Neo.Cryptography.Helper.Sha256(data.ToByteArray()));
         }
 
         public static Checksum Sha256Checksum(this IMessage data)

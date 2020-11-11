@@ -11,6 +11,7 @@ namespace NeoFS.API.v2.Netmap
 
         public NetMap(Node[] ns)
         {
+            if (ns is null) return;
             Nodes.AddRange(ns);
         }
 
@@ -52,14 +53,16 @@ namespace NeoFS.API.v2.Netmap
             var result = new List<Node[]>();
             foreach (var replica in policy.Replicas)
             {
+                var r = new Node[] { };
                 if (replica is null)
                     throw new ArgumentNullException(nameof(GetContainerNodes) + " missing Replicas");
                 if (replica.Selector == "")
                     foreach (var selector in policy.Selectors)
-                        result.Add(FlattenNodes(context.Selections[selector.Name]));
+                        r.Concat(FlattenNodes(context.Selections[selector.Name]));
                 if (!context.Selections.ContainsKey(replica.Selector))
                     throw new InvalidOperationException(nameof(GetContainerNodes) + " selection not found");
-                result.Add(FlattenNodes(context.Selections[replica.Selector]));
+                r.Concat(FlattenNodes(context.Selections[replica.Selector]));
+                result.Add(r);
             }
             return result;
         }
