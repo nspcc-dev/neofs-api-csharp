@@ -22,9 +22,8 @@ namespace NeoFS.API.v2.UnitTests.TestCryptography
             Assert.AreEqual(25, ownerId.Value.Length);
             var key = "Kwk6k2eC3L3QuPvD8aiaNyoSXgQ2YL1bwS5CP1oKoA9waeAze97s".LoadWif();
             ownerId = key.ToOwnerID();
-            Console.WriteLine(ownerId.Value.ToHex());
             Assert.AreEqual(25, ownerId.Value.Length);
-            Assert.AreEqual(25, ownerId.ToByteArray().Length);
+            Assert.AreEqual(27, ownerId.ToByteArray().Length);
         }
     }
 }

@@ -8,8 +8,7 @@ namespace NeoFS.API.v2.Netmap
 
         public bool ApplyFilter(string name, Node n)
         {
-            var r = Match(Filters[name], n);
-            return name == MainFilterName || r;
+            return name == MainFilterName || Match(Filters[name], n);
         }
 
         public void ProcessFilters(PlacementPolicy policy)
@@ -72,9 +71,17 @@ namespace NeoFS.API.v2.Netmap
             switch (filter.Op)
             {
                 case Operation.Eq:
-                    return n.Attributes[filter.Key] == filter.Value;
+                    if (n.Attributes.TryGetValue(filter.Key, out string value))
+                    {
+                        return value == filter.Value;
+                    }
+                    return false;
                 case Operation.Ne:
-                    return n.Attributes[filter.Key] != filter.Value;
+                    if (n.Attributes.TryGetValue(filter.Key, out value))
+                    {
+                        return value != filter.Value;
+                    }
+                    return true;
                 default:
                     {
                         UInt64 attribute;
@@ -88,6 +95,8 @@ namespace NeoFS.API.v2.Netmap
                                 break;
                             default:
                                 {
+                                    if (!n.Attributes.ContainsKey(filter.Key))
+                                        return false;
                                     if (!UInt64.TryParse(n.Attributes[filter.Key], out attribute))
                                         return false;
                                     break;

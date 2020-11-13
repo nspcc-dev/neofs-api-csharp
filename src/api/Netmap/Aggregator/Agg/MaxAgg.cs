@@ -4,7 +4,7 @@ namespace NeoFS.API.v2.Netmap.Aggregator
 {
     public class MaxAgg : IAggregator
     {
-        private double max;
+        private double max = 0;
 
         public void Add(double n)
         {

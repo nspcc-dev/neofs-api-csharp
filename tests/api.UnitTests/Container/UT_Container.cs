@@ -27,8 +27,7 @@ namespace NeoFS.API.v2.UnitTests.TestContainer
                 BasicAcl = 0u,
                 PlacementPolicy = new PlacementPolicy(1, null, null, null),
             };
-            Console.WriteLine(container.ToByteArray().ToHex());
-            Console.WriteLine(container.CalCulateAndGetID.Value.ToByteArray().ToHex());
+            Assert.AreEqual("0a0408011002121b0a19351f694a2a49229f8e41d24542a0e6a7329b7ed065a113d0021a02123432021001", (container.ToByteArray().ToHex()));
         }
     }
 }

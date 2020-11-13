@@ -22,8 +22,8 @@ namespace NeoFS.API.v2.Netmap
 
         public List<Node[]> GetSelection(PlacementPolicy policy, Selector sel)
         {
-            int bucket_count = sel.Clause == Clause.Same ? 1 : (int)sel.Count;
-            int node_in_bucket = sel.Clause == Clause.Same ? (int)(policy.ContainerBackupFactor * sel.Count) : (int)policy.ContainerBackupFactor;
+            int bucket_count = sel.GetBucketCount();
+            int node_in_bucket = sel.GetNodesInBucket(policy);
             var buckets = GetSelectionBase(sel).ToList();
             if (buckets.Count() < bucket_count)
                 throw new InvalidOperationException(nameof(GetSelection) + " not enough nodes");
@@ -37,7 +37,7 @@ namespace NeoFS.API.v2.Netmap
             var nodes = new List<Node[]>();
             foreach (var it in buckets)
             {
-                if (node_in_bucket < it.Item2.Length)
+                if (node_in_bucket <= it.Item2.Length)
                 {
                     nodes.Add(it.Item2[..node_in_bucket]);
                 }
@@ -48,19 +48,21 @@ namespace NeoFS.API.v2.Netmap
             {
                 var list = nodes.Select(p =>
                 {
+                    var agg = newAggregator();
                     foreach (var n in p)
-                        aggregator.Add(weightFunc(n));
-                    return (aggregator.Compute(), p);
+                        agg.Add(weightFunc(n));
+                    return (agg.Compute(), p);
                 }).ToList();
-                list.Sort((i1, i2) => i1.CompareTo(i2));
+                list.Sort((i1, i2) => i1.Item1.CompareTo(i2.Item1));
+                list.Reverse();
                 return list.Take(bucket_count).Select(p => p.p).ToList();
             }
-            return nodes.Take(bucket_count).ToList();
+            return nodes.GetRange(0, bucket_count);
         }
 
         public IEnumerable<(string, Node[])> GetSelectionBase(Selector sel)
         {
-            var filter = Filters[sel.Filter];
+            Filters.TryGetValue(sel.Filter, out Filter filter);
             if (sel.Attribute == "")
             {
                 foreach (var node in Map.Nodes.Where(p => sel.Filter == MainFilterName || Match(filter, p)))
@@ -82,10 +84,11 @@ namespace NeoFS.API.v2.Netmap
                         }).ToList();
                         list.Sort((n1, n2) =>
                         {
-                            var w1 = (double)(~((ulong)0) - n1.Distance) * n1.Weight;
-                            var w2 = (double)(~((ulong)0) - n2.Distance) * n2.Weight;
+                            var w1 = (~0u - n1.Distance) * n1.Weight;
+                            var w2 = (~0u - n2.Distance) * n2.Weight;
                             return w1.CompareTo(w2);
                         });
+                        list.Reverse();
                         yield return (group.Key, list.ToArray());
                     }
 

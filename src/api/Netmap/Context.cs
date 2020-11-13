@@ -14,13 +14,13 @@ namespace NeoFS.API.v2.Netmap
         public Dictionary<Filter, UInt64> NumCache = new Dictionary<Filter, ulong>();
         private byte[] pivot;
         private UInt64 pivotHash;
-        private readonly IAggregator aggregator;
-        private readonly Func<Node, double> weightFunc;
+        private Func<IAggregator> newAggregator;
+        private Func<Node, double> weightFunc;
 
         public Context(NetMap map)
         {
             Map = map;
-            aggregator = new MeanIQRAgg(0);
+            newAggregator = () => new MeanIQRAgg(0);
             weightFunc = map.Nodes.GenarateWeightFunc();
         }
 
@@ -29,6 +29,16 @@ namespace NeoFS.API.v2.Netmap
             if (pivot is null || pivot.Length == 0) return;
             this.pivot = pivot;
             pivotHash = pivot.Murmur64(0);
+        }
+
+        public void SetWeightFunc(Func<Node, double> f)
+        {
+            weightFunc = f;
+        }
+
+        public void SetAggregator(Func<IAggregator> agg)
+        {
+            newAggregator = agg;
         }
     }
 }

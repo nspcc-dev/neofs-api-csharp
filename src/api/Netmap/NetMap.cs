@@ -15,11 +15,6 @@ namespace NeoFS.API.v2.Netmap
             Nodes.AddRange(ns);
         }
 
-        public Node[] FlattenNodes(List<Node[]> ns)
-        {
-            return ns.Aggregate((ns1, ns2) => ns1.Concat(ns2).ToArray());
-        }
-
         public List<Node[]> GetPlacementVectors(List<Node[]> ns, byte[] pivot)
         {
             var h = pivot.Murmur64(0);
@@ -58,10 +53,11 @@ namespace NeoFS.API.v2.Netmap
                     throw new ArgumentNullException(nameof(GetContainerNodes) + " missing Replicas");
                 if (replica.Selector == "")
                     foreach (var selector in policy.Selectors)
-                        r.Concat(FlattenNodes(context.Selections[selector.Name]));
-                if (!context.Selections.ContainsKey(replica.Selector))
+                        r = r.Concat(context.Selections[selector.Name].Flatten()).ToArray();
+                else if (context.Selections.TryGetValue(replica.Selector, out List<Node[]> ns))
+                    r = r.Concat(ns.Flatten()).ToArray();
+                else
                     throw new InvalidOperationException(nameof(GetContainerNodes) + " selection not found");
-                r.Concat(FlattenNodes(context.Selections[replica.Selector]));
                 result.Add(r);
             }
             return result;
