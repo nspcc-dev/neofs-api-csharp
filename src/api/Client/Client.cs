@@ -5,11 +5,11 @@ namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
-        private ECDsa key;
-        private Channel channel;
-        public Client(Channel chan, ECDsa k)
+        private readonly ECDsa key;
+        private readonly Channel channel;
+        public Client(string host, ECDsa k)
         {
-            channel = chan;
+            channel = new Channel(host, ChannelCredentials.Insecure);
             key = k;
         }
     }
