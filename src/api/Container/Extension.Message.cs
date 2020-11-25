@@ -82,4 +82,20 @@ namespace NeoFS.API.v2.Container
             return Body;
         }
     }
+
+    public partial class GetExtendedACLRequest : IRequest
+    {
+        public IMessage GetBody()
+        {
+            return Body;
+        }
+    }
+
+    public partial class GetExtendedACLResponse : IResponse
+    {
+        public IMessage GetBody()
+        {
+            return Body;
+        }
+    }
 }
