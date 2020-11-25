@@ -1,29 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyTitle>NeoFS.API</AssemblyTitle>
     <PackageId>NeoFS.API</PackageId>
     <Product>NeoFS.API</Product>
     <Description>NeoFS.API</Description>
     <RootNamespace>NeoFS.API</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <Version>0.0.2</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="../gogoprotobuf/gogoprotobuf.csproj" />
-    <ProjectReference Include="../netmap/netmap.csproj" />
-    <ProjectReference Include="../crypto/crypto.csproj" />
-    <ProjectReference Include="../utils/utils.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.11.4" />
     <PackageReference Include="Grpc" Version="2.27.0" />
     <PackageReference Include="Grpc.Core" Version="2.27.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.27.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Grpc.Tools" Version="2.27.0" />
+    <PackageReference Include="Neo" Version="3.0.0-preview3-00" />
   </ItemGroup>
 
 </Project>

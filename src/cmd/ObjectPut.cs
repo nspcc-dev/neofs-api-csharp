@@ -2,12 +2,13 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Google.Protobuf;
 using Grpc.Core;
-using NeoFS.API.Object;
-using NeoFS.API.Session;
-using NeoFS.API.State;
-using NeoFS.Crypto;
-using NeoFS.Utils;
+using NeoFS.API.v2.Client;
+using NeoFS.API.v2.Object;
+using NeoFS.API.v2.Refs;
+using NeoFS.API.v2.Session;
+using NeoFS.API.v2.Cryptography;
 
 namespace cmd
 {
@@ -16,15 +17,12 @@ namespace cmd
 
         static async Task ObjectPut(ObjectPutOptions opts)
         {
-            const int ChunkSize = (int) (3.5 * Units.MB);
-
-            byte[] cid;
-            byte[] oid = Guid.NewGuid().Bytes();
+            ContainerID cid;
             FileStream file;
 
             try
             {
-                cid = Base58.Decode(opts.CID);
+                cid = ContainerID.FromBase58String(opts.CID);
             }
             catch (Exception err)
             {
@@ -42,88 +40,44 @@ namespace cmd
                 return;
             }
 
-            var key = privateKey.FromHex().LoadKey();
-            var obj = NeoFS.API.Object.Object.Prepare(cid, oid, (ulong) file.Length, key);
-
-            if (opts.Plugin)
+            byte[] payload = new byte[] { };
+            int count;
+            do
             {
-                obj.SetPluginHeaders(opts.Expired);
-            }
-
-            obj.Headers.Add(
-                new Header
-                {
-                    UserHeader = new UserHeader
-                    {
-                        Key = "filename",
-                        Value = file.Name,
-                    },
-                });
-
+                var buffer = new byte[NeoFS.API.v2.Object.Object.ChunkSize];
+                count = file.Read(buffer, 0, NeoFS.API.v2.Object.Object.ChunkSize);
+                payload = payload.Concat(buffer).ToArray();
+            } while (0 < count);
+            var key = privateKey.FromHex().LoadPrivateKey();
             var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
+            var client = new Client(channel, key);
 
-            channel.UsedHost().GetHealth(SingleForwardedTTL, key, opts.Debug).Say();
+            //session token
 
-            Token token = await channel.EstablishSession(oid, SingleForwardedTTL, key, opts.Debug);
-
-            using (var put = new Service.ServiceClient(channel).Put())
-            { // Send Object to node
-                { // send header:
-                    var req = obj.PrepareHeader(SingleForwardedTTL, token, key);
-
-                    await put.RequestStream.WriteAsync(req);
-                    //Console.WriteLine(put.ResponseAsync.Result);
-                }
-
-                double len = file.Length;
-
-                {// send chunks:
-                    byte[] chunk = new byte[ChunkSize];
-                    int off = 0;
-
-                    Console.WriteLine();
-                    Console.Write("Write chunks: ");
-                    using (var progress = new ProgressBar())
+            var obj = new NeoFS.API.v2.Object.Object
+            {
+                Header = new Header
+                {
+                    Version = new NeoFS.API.v2.Refs.Version
                     {
-                        for (int num; ; off += num)
-                        {
-                            num = file.Read(chunk);
-                            if (num == 0)
-                            {
-                                break;
-                            }
+                        Major = 2,
+                        Minor = 0,
+                    },
+                    ContainerId = cid,
+                    OwnerId = key.ToOwnerID(),
+                    CreationEpoch = 0,
+                    PayloadLength = (ulong)payload.Length,
+                    ObjectType = ObjectType.Regular
 
-                            var req = chunk.Take(num).PrepareChunk(SingleForwardedTTL, key);
-                            await put.RequestStream.WriteAsync(req);
-
-                            progress.Report((double) off / len);
-                        }
-
-                    }
-                }
-
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-                Console.Write("Done!");
-
-                put.ResponseAsync.Wait();
-                await put.RequestStream.CompleteAsync();
-
-                var res = put.ResponseAsync.Result;
-
-                Console.WriteLine();
-                Console.WriteLine("Object stored:");
-                Console.WriteLine("URL: {0}", res.Address.ToURL());
-                Console.WriteLine("CID: {0}", res.Address.CID.ToCID());
-                Console.WriteLine("OID: {0}", res.Address.ObjectID.ToUUID());
-            }
-
+                },
+                Payload = ByteString.CopyFrom(payload),
+            };
+            obj.SetVerificationFields(key);
+            var oid = await client.PutObject(obj);
             Console.WriteLine();
 
             Console.WriteLine("Close file.");
             file.Close();
-
-            //Console.WriteLine("Close connection.");
-            //channel.ShutdownAsync().Wait();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace cmd
                     AccountingBalanceOptions,
                     ContainerGetOptions,
                     ContainerPutOptions,
-                    ContainerListOptions >(args)
+                    ContainerListOptions>(args)
                 .MapResult(
                     (ObjectPutOptions opts) => ObjectPut(opts),
                     (ObjectGetOptions opts) => ObjectGet(opts),
@@ -46,10 +46,10 @@ namespace cmd
                     (ObjectSearchOptions opts) => ObjectSearch(opts),
                     (ObjectDeleteOptions opts) => ObjectDelete(opts),
 
-                    (SGOptions.Get opts) => SGGet(opts),
-                    (SGOptions.Put opts) => SGPut(opts),
-                    (SGOptions.List opts) => SGList(opts),
-                    (SGOptions.Delete opts) => SGDelete(opts),
+                    // (SGOptions.Get opts) => SGGet(opts),
+                    // (SGOptions.Put opts) => SGPut(opts),
+                    // (SGOptions.List opts) => SGList(opts),
+                    // (SGOptions.Delete opts) => SGDelete(opts),
 
                     (AccountingBalanceOptions opts) => AccountingBalance(opts),
 
