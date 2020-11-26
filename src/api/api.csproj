@@ -9,7 +9,7 @@
     <RootNamespace>NeoFS.API</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    <Version>0.0.2</Version>
+    <Version>0.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
     <PackageReference Include="Grpc" Version="2.27.0" />
     <PackageReference Include="Grpc.Core" Version="2.27.0" />
     <PackageReference Include="Grpc.Tools" Version="2.27.0" />
-    <PackageReference Include="Neo" Version="3.0.0-preview3-00" />
+    <PackageReference Include="Neo" Version="3.0.0-CI01066" />
   </ItemGroup>
 
 </Project>

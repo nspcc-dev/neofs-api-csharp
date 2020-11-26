@@ -30,8 +30,7 @@ namespace cmd
             }
 
             var key = privateKey.FromHex().LoadPrivateKey();
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
 
             var res = await client.SearchObject(cid, null, 2);
 

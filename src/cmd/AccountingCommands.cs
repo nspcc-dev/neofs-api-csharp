@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Grpc.Core;
-using NeoFS.API.v2.Accounting;
 using NeoFS.API.v2.Client;
 using NeoFS.API.v2.Cryptography;
 
@@ -13,8 +11,7 @@ namespace cmd
         {
             var key = privateKey.FromHex().LoadPrivateKey();
 
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
 
             Console.WriteLine();
 

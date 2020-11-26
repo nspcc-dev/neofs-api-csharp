@@ -15,9 +15,7 @@ namespace cmd
         static async Task ContainerPut(ContainerPutOptions opts)
         {
             var key = privateKey.FromHex().LoadPrivateKey();
-
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
             uint basicACL = 0;
 
             switch (opts.BasicACL)
@@ -83,8 +81,7 @@ namespace cmd
         {
             var key = privateKey.FromHex().LoadPrivateKey();
 
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
             var cids = client.ListContainers(key.ToOwnerID());
 
             Console.WriteLine("\nUser [{0}] containers: \n", key.ToAddress());
@@ -101,8 +98,7 @@ namespace cmd
         {
             var key = privateKey.FromHex().LoadPrivateKey();
 
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
 
             ContainerID cid;
 

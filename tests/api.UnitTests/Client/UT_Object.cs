@@ -7,7 +7,7 @@ using Neo.Wallets;
 using System;
 using System.IO;
 
-namespace NeoFS.API.v2.UnitTests.Client
+namespace NeoFS.API.v2.UnitTests.FSClient
 {
     [TestClass]
     public class UT_Object
@@ -16,7 +16,7 @@ namespace NeoFS.API.v2.UnitTests.Client
         public async void TestObjectPut1()
         {
             var file = File.Open("object.txt", FileMode.Create);
-            var client = new NeoFS.API.v2.Client.Client(null, null);
+            var client = new Client.Client(null, null);
             var result = await client.PutObject(null, 0);
         }
     }
