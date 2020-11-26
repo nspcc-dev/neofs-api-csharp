@@ -22,7 +22,7 @@ namespace NeoFS.API.v2.Object
 
         public bool VerifyID()
         {
-            return CalculateID(this).Equals(ObjectId);
+            return CalculateID(this) == ObjectId;
         }
 
         public void CalCulateAndSetID()

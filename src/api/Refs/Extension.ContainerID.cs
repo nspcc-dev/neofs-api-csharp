@@ -1,9 +1,10 @@
 using Google.Protobuf;
 using NeoFS.API.v2.Cryptography;
+using System;
 
 namespace NeoFS.API.v2.Refs
 {
-    public partial class ContainerID
+    public partial class ContainerID : IEquatable<ContainerID>
     {
         //Hash256 to ObjectID
         public static ContainerID FromByteArray(byte[] hash)
