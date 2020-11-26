@@ -38,8 +38,7 @@ namespace cmd
                 Console.WriteLine("wrong oid format: {0}", err.Message);
                 return;
             }
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
             var address = new Address
             {
                 ObjectId = oid,
@@ -79,8 +78,7 @@ namespace cmd
                 Console.WriteLine("wrong oid format: {0}", err.Message);
                 return;
             }
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
 
             var address = new Address
             {
@@ -145,8 +143,7 @@ namespace cmd
                 Console.WriteLine("wrong oid format: {0}", err.Message);
                 return;
             }
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
 
             var address = new Address
             {

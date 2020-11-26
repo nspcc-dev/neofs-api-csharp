@@ -49,8 +49,7 @@ namespace cmd
                 payload = payload.Concat(buffer).ToArray();
             } while (0 < count);
             var key = privateKey.FromHex().LoadPrivateKey();
-            var channel = new Channel(opts.Host, ChannelCredentials.Insecure);
-            var client = new Client(channel, key);
+            var client = new Client(opts.Host, key);
 
             //session token
 
