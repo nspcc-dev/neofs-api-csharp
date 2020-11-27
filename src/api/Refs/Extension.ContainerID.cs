@@ -4,7 +4,7 @@ using System;
 
 namespace NeoFS.API.v2.Refs
 {
-    public partial class ContainerID : IEquatable<ContainerID>
+    public partial class ContainerID
     {
         //Hash256 to ObjectID
         public static ContainerID FromByteArray(byte[] hash)
