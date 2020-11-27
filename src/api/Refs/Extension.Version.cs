@@ -15,7 +15,7 @@ namespace NeoFS.API.v2.Refs
             };
         }
 
-        public static bool IsSupportVersion(Version ver)
+        public static bool IsSupportedVersion(Version ver)
         {
             if (ver.Major == SDKMajor && ver.Minor == SDKMinor)
                 return true;
