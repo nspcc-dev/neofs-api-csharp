@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Numerics;
 using System.Collections.Generic;
 using System.Linq;
+using Neo;
 using NeoFS.API.v2.Refs;
 using System.Security.Cryptography;
 using Google.Protobuf;
@@ -61,8 +63,7 @@ namespace NeoFS.API.v2.Cryptography
             var pos = 33 - param.Q.X.Length;
 
             param.Q.X.CopyTo(pubkey, pos);
-
-            if ((param.Q.Y[0] & 1) == 0)
+            if (new BigInteger(param.Q.Y.Reverse().Concat(new byte[] { 0x00 }).ToArray()).IsEven)
             {
                 pubkey[0] = 0x2;
             }
@@ -74,10 +75,7 @@ namespace NeoFS.API.v2.Cryptography
             return pubkey;
         }
 
-        private static byte[] DecodePublicKey(this byte[] public_key)
-        {
-            return Neo.Cryptography.ECC.ECPoint.DecodePoint(public_key, Neo.Cryptography.ECC.ECCurve.Secp256r1).EncodePoint(false)[1..];
-        }
+
 
         public static ECDsa LoadPrivateKey(this byte[] private_key)
         {
@@ -100,6 +98,11 @@ namespace NeoFS.API.v2.Cryptography
         {
             var private_key = Wallet.GetPrivateKeyFromWIF(wif);
             return LoadPrivateKey(private_key);
+        }
+
+        private static byte[] DecodePublicKey(this byte[] public_key)
+        {
+            return Neo.Cryptography.ECC.ECPoint.DecodePoint(public_key, Neo.Cryptography.ECC.ECCurve.Secp256r1).EncodePoint(false)[1..];
         }
 
         public static ECDsa LoadPublicKey(this byte[] public_key)

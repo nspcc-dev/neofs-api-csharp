@@ -1,5 +1,6 @@
 using Google.Protobuf;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Neo;
 using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Container;
 using NeoFS.API.v2.Netmap;
@@ -23,11 +24,11 @@ namespace NeoFS.API.v2.UnitTests.TestContainer
                     Minor = 2,
                 },
                 OwnerId = key.ToOwnerID(),
-                Nonce = ByteString.CopyFrom("1234".FromHex()),
+                Nonce = ByteString.CopyFrom("1234".HexToBytes()),
                 BasicAcl = 0u,
                 PlacementPolicy = new PlacementPolicy(1, null, null, null),
             };
-            Assert.AreEqual("0a0408011002121b0a19351f694a2a49229f8e41d24542a0e6a7329b7ed065a113d0021a02123432021001", (container.ToByteArray().ToHex()));
+            Assert.AreEqual("0a0408011002121b0a19351f694a2a49229f8e41d24542a0e6a7329b7ed065a113d0021a02123432021001", (container.ToByteArray().ToHexString()));
         }
     }
 }

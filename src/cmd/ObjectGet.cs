@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Grpc.Core;
+using Neo;
 using NeoFS.API.v2.Client;
 using NeoFS.API.v2.Cryptography;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace cmd
             ContainerID cid;
             ObjectID oid;
 
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
 
             try
             {
@@ -58,7 +59,7 @@ namespace cmd
             ContainerID cid;
             ObjectID oid;
 
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
 
             try
             {
@@ -113,7 +114,7 @@ namespace cmd
             ObjectID oid;
             FileStream file;
 
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
 
             try
             {

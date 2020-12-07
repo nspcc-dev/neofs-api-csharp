@@ -10,13 +10,9 @@ namespace NeoFS.API.v2.Session
             {
                 var meta = new RequestMetaHeader()
                 {
-                    Version = new Version
-                    {
-                        Major = 2,
-                        Minor = 0,
-                    },
+                    Version = Version.SDKVersion(),
                     Epoch = 0,
-                    Ttl = 1,
+                    Ttl = 2,
                 };
                 return meta;
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Grpc.Core;
+using Neo;
 using NeoFS.API.v2.Client;
 using NeoFS.API.v2.Object;
 using NeoFS.API.v2.Refs;
@@ -29,7 +30,7 @@ namespace cmd
                 return;
             }
 
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
             var client = new Client(opts.Host, key);
 
             var res = await client.SearchObject(cid, null, 2);

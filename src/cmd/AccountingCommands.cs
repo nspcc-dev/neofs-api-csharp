@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Neo;
 using NeoFS.API.v2.Client;
 using NeoFS.API.v2.Cryptography;
 
@@ -9,7 +10,7 @@ namespace cmd
     {
         static async Task AccountingBalance(AccountingBalanceOptions opts)
         {
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
 
             var client = new Client(opts.Host, key);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Google.Protobuf;
+using Neo;
 using Neo.Cryptography;
 
 namespace NeoFS.API.v2.Cryptography
@@ -13,7 +14,7 @@ namespace NeoFS.API.v2.Cryptography
 
         public static Guid ToUUID(this ByteString id)
         {
-            return Guid.Parse(id.ToByteArray().ToHex());
+            return Guid.Parse(id.ToByteArray().ToHexString());
         }
 
         public static ByteString ToByteString(this Guid id)
@@ -26,7 +27,7 @@ namespace NeoFS.API.v2.Cryptography
             if (id == null)
                 return null;
 
-            return id.ToString().Replace("-", String.Empty).FromHex();
+            return id.ToString().Replace("-", String.Empty).HexToBytes();
         }
     }
 }

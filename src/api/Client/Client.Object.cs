@@ -59,7 +59,7 @@ namespace NeoFS.API.v2.Client
             return obj;
         }
 
-        public async Task<ObjectID> PutObject(Object.Object obj, uint copy = 3)
+        public async Task<ObjectID> PutObject(Object.Object obj, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var call = object_client.Put();
@@ -74,11 +74,40 @@ namespace NeoFS.API.v2.Client
                         ObjectId = obj.ObjectId,
                         Signature = obj.Signature,
                         Header = obj.Header,
-                        CopiesNumber = copy,
                     }
                 }
             };
-            init_req.MetaHeader = RequestMetaHeader.Default;
+            init_req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
+            if (init_req.MetaHeader.SessionToken?.Signature is null)
+            {
+                var session = new SessionToken
+                {
+                    Body = new SessionToken.Types.Body
+                    {
+                        Id = options?.Session?.Body?.Id ?? ByteString.Empty,
+                        OwnerId = options?.Session?.Body?.OwnerId ?? key.ToOwnerID(),
+                        Lifetime = new SessionToken.Types.Body.Types.TokenLifetime
+                        {
+                            Exp = 0,
+                            Nbf = 0,
+                            Iat = 0,
+                        },
+                        SessionKey = options?.Session?.Body?.SessionKey ?? ByteString.Empty,
+                        Object = new ObjectSessionContext
+                        {
+                            Address = new Address
+                            {
+                                ObjectId = obj.ObjectId,
+                                ContainerId = obj.Header.ContainerId,
+                            },
+                            Verb = ObjectSessionContext.Types.Verb.Put,
+                        },
+
+                    },
+                };
+                session.Signature = session.Body.SignMessagePart(key);
+                init_req.MetaHeader.SessionToken = session;
+            }
             init_req.SignRequest(key);
 
             await req_stream.WriteAsync(init_req);
@@ -104,7 +133,7 @@ namespace NeoFS.API.v2.Client
             return resp.Body.ObjectId;
         }
 
-        public bool DeleteObject(Address object_address)
+        public bool DeleteObject(Address object_address, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
 
@@ -115,7 +144,7 @@ namespace NeoFS.API.v2.Client
                     Address = object_address,
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = object_client.Delete(req);
@@ -124,7 +153,7 @@ namespace NeoFS.API.v2.Client
             return true;
         }
 
-        public Object.Object GetObjectHeader(Address object_address, bool minimal)
+        public Object.Object GetObjectHeader(Address object_address, bool minimal, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
 
@@ -136,7 +165,7 @@ namespace NeoFS.API.v2.Client
                     MainOnly = minimal,
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = object_client.Head(req);
@@ -174,7 +203,7 @@ namespace NeoFS.API.v2.Client
             return obj;
         }
 
-        public async Task<byte[]> GetObjectPayloadRangeData(Address object_address, Range range)
+        public async Task<byte[]> GetObjectPayloadRangeData(Address object_address, Range range, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var req = new GetRangeRequest
@@ -185,7 +214,7 @@ namespace NeoFS.API.v2.Client
                     Range = range,
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var stream = object_client.GetRange(req).ResponseStream;
@@ -203,7 +232,7 @@ namespace NeoFS.API.v2.Client
             return payload;
         }
 
-        public List<byte[]> GetObjectPayloadRangeSHA256(Address object_address, Range[] range, byte[] salt, ChecksumType check_sum_type)
+        public List<byte[]> GetObjectPayloadRangeHash(Address object_address, Range[] range, byte[] salt, ChecksumType check_sum_type, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var req = new GetRangeHashRequest
@@ -216,7 +245,7 @@ namespace NeoFS.API.v2.Client
                 }
             };
             req.Body.Ranges.AddRange(range);
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = object_client.GetRangeHash(req);
@@ -225,7 +254,7 @@ namespace NeoFS.API.v2.Client
             return resp.Body.HashList.Select(p => p.ToByteArray()).ToList();
         }
 
-        public async Task<List<ObjectID>> SearchObject(ContainerID cid, SearchRequest.Types.Body.Types.Filter[] filters, uint query_version)
+        public async Task<List<ObjectID>> SearchObject(ContainerID cid, SearchRequest.Types.Body.Types.Filter[] filters, uint query_version, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var req = new SearchRequest
@@ -237,7 +266,7 @@ namespace NeoFS.API.v2.Client
                 }
             };
             req.Body.Filters.AddRange(filters);
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var stream = object_client.Search(req).ResponseStream;

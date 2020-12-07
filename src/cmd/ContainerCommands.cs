@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Grpc.Core;
+using Neo;
 using NeoFS.API.v2.Acl;
 using NeoFS.API.v2.Container;
 using NeoFS.API.v2.Cryptography;
@@ -14,7 +15,7 @@ namespace cmd
     {
         static async Task ContainerPut(ContainerPutOptions opts)
         {
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
             var client = new Client(opts.Host, key);
             uint basicACL = 0;
 
@@ -45,9 +46,7 @@ namespace cmd
                 Nonce = ByteString.CopyFrom(Guid.NewGuid().Bytes()),
                 BasicAcl = basicACL,
             };
-            var sig = container.SignMessagePart(key);
-
-            var cid = client.PutContainer(container, sig);
+            var cid = client.PutContainer(container);
 
             Console.WriteLine();
             Console.WriteLine("Wait for container: {0}", cid);
@@ -79,7 +78,7 @@ namespace cmd
 
         static async Task ContainerList(ContainerListOptions opts)
         {
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
 
             var client = new Client(opts.Host, key);
             var cids = client.ListContainers(key.ToOwnerID());
@@ -96,7 +95,7 @@ namespace cmd
 
         static async Task ContainerGet(ContainerGetOptions opts)
         {
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
 
             var client = new Client(opts.Host, key);
 
@@ -117,7 +116,7 @@ namespace cmd
             Console.WriteLine();
             Console.WriteLine("Container options:");
             Console.WriteLine("CID = {0}", opts.CID);
-            Console.WriteLine("Nonce = {0}", container.Nonce.ToHex());
+            Console.WriteLine("Nonce = {0}", container.Nonce.ToByteArray().ToHexString());
             Console.WriteLine("OwnerID = {0}", container.OwnerId.OwnerIDToAddress());
             Console.WriteLine("PlacementPolicy = {0}", container.PlacementPolicy.ToString());
             Console.WriteLine("ACL = {0}", container.BasicAcl.ToString("X"));

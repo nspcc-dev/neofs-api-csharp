@@ -1,8 +1,11 @@
+using Google.Protobuf;
+using Neo;
 using NeoFS.API.v2.Acl;
 using NeoFS.API.v2.Container;
 using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +13,7 @@ namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
-        public Container.Container GetContainer(ContainerID cid)
+        public Container.Container GetContainer(ContainerID cid, CallOptions options = null)
         {
             var container_client = new ContainerService.ContainerServiceClient(channel);
 
@@ -21,7 +24,7 @@ namespace NeoFS.API.v2.Client
                     ContainerId = cid
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = container_client.Get(req);
@@ -30,7 +33,7 @@ namespace NeoFS.API.v2.Client
             return resp.Body.Container;
         }
 
-        public ContainerID PutContainer(Container.Container container, Signature sig)
+        public ContainerID PutContainer(Container.Container container, CallOptions options = null)
         {
             var container_client = new ContainerService.ContainerServiceClient(channel);
 
@@ -39,19 +42,19 @@ namespace NeoFS.API.v2.Client
                 Body = new PutRequest.Types.Body
                 {
                     Container = container,
-                    Signature = sig,
+                    Signature = container.SignMessagePart(key),
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
-
+            Console.WriteLine($"container request, meta={req.MetaHeader.ToByteArray().ToHexString()}, sig={req.VerifyHeader.MetaSignature.ToByteArray().ToHexString()}");
             var resp = container_client.Put(req);
             if (!resp.VerifyResponse())
                 throw new System.InvalidOperationException("invalid container put response");
             return resp.Body.ContainerId;
         }
 
-        public void DeleteContainer(ContainerID cid, Signature sig)
+        public void DeleteContainer(ContainerID cid, CallOptions options = null)
         {
             var container_client = new ContainerService.ContainerServiceClient(channel);
 
@@ -60,10 +63,10 @@ namespace NeoFS.API.v2.Client
                 Body = new DeleteRequest.Types.Body
                 {
                     ContainerId = cid,
-                    Signature = sig
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.Body.Signature = req.Body.SignMessagePart(key);
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = container_client.Delete(req);
@@ -71,7 +74,7 @@ namespace NeoFS.API.v2.Client
                 throw new System.InvalidOperationException("invalid container put response");
         }
 
-        public List<ContainerID> ListContainers(OwnerID owner)
+        public List<ContainerID> ListContainers(OwnerID owner, CallOptions options = null)
         {
             var container_client = new ContainerService.ContainerServiceClient(channel);
 
@@ -82,7 +85,7 @@ namespace NeoFS.API.v2.Client
                     OwnerId = owner
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = container_client.List(req);
@@ -97,7 +100,7 @@ namespace NeoFS.API.v2.Client
             return ListContainers(w);
         }
 
-        public EACLTable GetExtendedACL(ContainerID cid)
+        public EACLTable GetExtendedACL(ContainerID cid, CallOptions options = null)
         {
             var container_client = new ContainerService.ContainerServiceClient(channel);
 
@@ -108,19 +111,19 @@ namespace NeoFS.API.v2.Client
                     ContainerId = cid
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = container_client.GetExtendedACL(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid container put response");
+                throw new InvalidOperationException("invalid container put response");
             var eacl = resp.Body.Eacl;
             var sig = resp.Body.Signature;
-            //TODO: verify signature
+            if (!eacl.VerifyMessagePart(sig)) throw new InvalidOperationException(nameof(GetExtendedACL) + " invalid eacl");
             return eacl;
         }
 
-        public void SetExtendedACL(EACLTable eacl, Signature sig)
+        public void SetExtendedACL(EACLTable eacl, CallOptions options = null)
         {
             var container_client = new ContainerService.ContainerServiceClient(channel);
 
@@ -129,10 +132,10 @@ namespace NeoFS.API.v2.Client
                 Body = new SetExtendedACLRequest.Types.Body
                 {
                     Eacl = eacl,
-                    Signature = sig,
+                    Signature = eacl.SignMessagePart(key),
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
             req.SignRequest(key);
 
             var resp = container_client.SetExtendedACL(req);

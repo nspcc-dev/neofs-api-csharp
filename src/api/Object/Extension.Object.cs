@@ -10,48 +10,49 @@ namespace NeoFS.API.v2.Object
     {
         public const int ChunkSize = 3 * (1 << 20);
 
-        public static ObjectID CalculateID(Object obj)
+        public ObjectID CalculateAndGetID
         {
-            if (obj is null || obj.Header is null)
-                throw new System.InvalidOperationException("cant calculate object id: invalid object");
+            get
+            {
+                if (objectId_ is null)
+                {
+                    objectId_ = new ObjectID
+                    {
+                        Value = Header.Sha256()
+                    };
+                }
+                return objectId_;
+            }
+        }
+
+        private ObjectID CalculateID()
+        {
             return new ObjectID
             {
-                Value = obj.Header.Sha256()
+                Value = Header.Sha256()
             };
         }
 
         public bool VerifyID()
         {
-            return CalculateID(this) == ObjectId;
+            return CalculateID() == ObjectId;
         }
 
-        public void CalCulateAndSetID()
+        public Checksum CalculatePayloadChecksum()
         {
-            ObjectId = CalculateID(this);
-        }
-
-        public static Checksum CalculatePayloadChecksum(ByteString payload)
-        {
-            if (payload is null || payload.Length == 0)
+            if (Payload is null || Payload.Length == 0)
                 throw new System.InvalidOperationException("cant payload checksum: invalid payload");
-            return payload.Sha256Checksum();
+            return Payload.Sha256Checksum();
         }
 
         public bool VerifyPayloadChecksum()
         {
-            return CalculatePayloadChecksum(Payload).Equals(Header?.PayloadHash);
+            return CalculatePayloadChecksum().Equals(Header?.PayloadHash);
         }
 
-        public void CalculateAndSetPayloadCheckSum()
+        public Signature CalculateIDSignature(ECDsa key)
         {
-            if (Header is null)
-                throw new System.InvalidOperationException("can't set payload checksum without header");
-            Header.PayloadHash = CalculatePayloadChecksum(Payload);
-        }
-
-        public static Signature CalculateIDSignature(ECDsa key, ObjectID oid)
-        {
-            return oid.SignMessagePart(key);
+            return ObjectId.SignMessagePart(key);
         }
 
         public bool VerifyIDSignature()
@@ -59,18 +60,11 @@ namespace NeoFS.API.v2.Object
             return ObjectId.VerifyMessagePart(Signature);
         }
 
-        public void CalculateAndSetIDSignature(ECDsa key)
-        {
-            if (ObjectId is null)
-                throw new System.InvalidOperationException("can't calculate id signature without id");
-            Signature = CalculateIDSignature(key, ObjectId);
-        }
-
         public void SetVerificationFields(ECDsa key)
         {
-            CalculateAndSetPayloadCheckSum();
-            CalCulateAndSetID();
-            CalculateAndSetIDSignature(key);
+            Header.PayloadHash = CalculatePayloadChecksum();
+            ObjectId = CalculateID();
+            Signature = CalculateIDSignature(key);
         }
 
         public bool CheckVerificationFields()

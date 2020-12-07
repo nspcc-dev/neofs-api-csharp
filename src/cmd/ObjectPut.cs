@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Grpc.Core;
+using Neo;
 using NeoFS.API.v2.Client;
 using NeoFS.API.v2.Object;
 using NeoFS.API.v2.Refs;
@@ -48,7 +49,7 @@ namespace cmd
                 count = file.Read(buffer, 0, NeoFS.API.v2.Object.Object.ChunkSize);
                 payload = payload.Concat(buffer).ToArray();
             } while (0 < count);
-            var key = privateKey.FromHex().LoadPrivateKey();
+            var key = privateKey.HexToBytes().LoadPrivateKey();
             var client = new Client(opts.Host, key);
 
             //session token
