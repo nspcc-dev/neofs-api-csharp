@@ -17,7 +17,8 @@ namespace NeoFS.API.v2.Cryptography
         {
             using (var key = sig.Key.ToByteArray().LoadPublicKey())
             {
-                return data.ToByteArray().VerifyData(sig.Sign.ToByteArray(), key);
+                var data2verify = data is null ? Array.Empty<byte>() : data.ToByteArray();
+                return data2verify.VerifyData(sig.Sign.ToByteArray(), key);
             }
         }
 
@@ -43,9 +44,9 @@ namespace NeoFS.API.v2.Cryptography
 
         public static bool VerifyResponse(this IMessage message)
         {
-            if (message is IResponse to_sign)
+            if (message is IResponse to_verify)
             {
-                return VerifyMatryoshkaLevel1(to_sign.GetBody(), to_sign.MetaHeader, to_sign.VerifyHeader);
+                return VerifyMatryoshkaLevel1(to_verify.GetBody(), to_verify.MetaHeader, to_verify.VerifyHeader);
             }
             throw new System.InvalidOperationException("can't verify message");
         }

@@ -4,6 +4,7 @@ using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Object;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Session;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,10 +13,10 @@ namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
-        public async Task<Object.Object> GetObject(Address object_address)
+        public async Task<Object.Object> GetObject(Address object_address, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
-
+            var opts = ApplyCustomOptions(options);
             var req = new GetRequest
             {
                 Body = new GetRequest.Types.Body
@@ -23,7 +24,9 @@ namespace NeoFS.API.v2.Client
                     Address = object_address,
                 }
             };
-            req.MetaHeader = RequestMetaHeader.Default;
+            var meta = opts.GetRequestMetaHeader();
+            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Get);
+            req.MetaHeader = meta;
             req.SignRequest(key);
 
             var stream = object_client.Get(req).ResponseStream;
@@ -34,7 +37,7 @@ namespace NeoFS.API.v2.Client
             {
                 var resp = stream.Current;
                 if (!resp.VerifyResponse())
-                    throw new System.InvalidOperationException("invalid object get response");
+                    throw new InvalidOperationException("invalid object get response");
                 switch (resp.Body.ObjectPartCase)
                 {
                     case GetResponse.Types.Body.ObjectPartOneofCase.Init:
@@ -52,7 +55,7 @@ namespace NeoFS.API.v2.Client
                             break;
                         }
                     default:
-                        throw new System.FormatException("malformed object get reponse");
+                        throw new FormatException("malformed object get reponse");
                 }
             }
             obj.Payload = ByteString.CopyFrom(payload);
@@ -63,68 +66,45 @@ namespace NeoFS.API.v2.Client
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var call = object_client.Put();
+            var opts = ApplyCustomOptions(options);
             var req_stream = call.RequestStream;
 
-            var init_req = new PutRequest
+            var req = new PutRequest();
+            var body = new PutRequest.Types.Body();
+            req.Body = body;
+            var address = new Address
             {
-                Body = new PutRequest.Types.Body
-                {
-                    Init = new PutRequest.Types.Body.Types.Init
-                    {
-                        ObjectId = obj.ObjectId,
-                        Signature = obj.Signature,
-                        Header = obj.Header,
-                    }
-                }
+                ContainerId = obj.Header.ContainerId,
+                ObjectId = obj.ObjectId,
             };
-            init_req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
-            if (init_req.MetaHeader.SessionToken?.Signature is null)
+            var meta = opts.GetRequestMetaHeader();
+            AttachObjectSessionToken(options, meta, address, ObjectSessionContext.Types.Verb.Put);
+            req.MetaHeader = meta;
+            var init = new PutRequest.Types.Body.Types.Init
             {
-                var session = new SessionToken
-                {
-                    Body = new SessionToken.Types.Body
-                    {
-                        Id = options?.Session?.Body?.Id ?? ByteString.Empty,
-                        OwnerId = options?.Session?.Body?.OwnerId ?? key.ToOwnerID(),
-                        Lifetime = new SessionToken.Types.Body.Types.TokenLifetime
-                        {
-                            Exp = 0,
-                            Nbf = 0,
-                            Iat = 0,
-                        },
-                        SessionKey = options?.Session?.Body?.SessionKey ?? ByteString.Empty,
-                        Object = new ObjectSessionContext
-                        {
-                            Address = new Address
-                            {
-                                ObjectId = obj.ObjectId,
-                                ContainerId = obj.Header.ContainerId,
-                            },
-                            Verb = ObjectSessionContext.Types.Verb.Put,
-                        },
+                ObjectId = obj.ObjectId,
+                Signature = obj.Signature,
+                Header = obj.Header,
+            };
+            req.Body.Init = init;
+            req.SignRequest(key);
 
-                    },
-                };
-                session.Signature = session.Body.SignMessagePart(key);
-                init_req.MetaHeader.SessionToken = session;
-            }
-            init_req.SignRequest(key);
-
-            await req_stream.WriteAsync(init_req);
+            await req_stream.WriteAsync(req);
 
             int offset = 0;
             while (offset < obj.Payload.Length)
             {
                 var end = offset + Object.Object.ChunkSize > obj.Payload.Length ? obj.Payload.Length : offset + Object.Object.ChunkSize;
                 var chunk = ByteString.CopyFrom(obj.Payload.ToByteArray()[offset..end]);
-                var chunk_req = new PutRequest
+                var chunk_body = new PutRequest.Types.Body
                 {
-                    Body = new PutRequest.Types.Body
-                    {
-                        Chunk = chunk,
-                    }
+                    Chunk = chunk,
                 };
-                await req_stream.WriteAsync(chunk_req);
+                req.Body = chunk_body;
+                req.VerifyHeader = null;
+                req.SignRequest(key);
+                await req_stream.WriteAsync(req);
+                offset = end;
             }
             await req_stream.CompleteAsync();
             var resp = await call.ResponseAsync;
@@ -136,7 +116,7 @@ namespace NeoFS.API.v2.Client
         public bool DeleteObject(Address object_address, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
-
+            var opts = ApplyCustomOptions(options);
             var req = new DeleteRequest
             {
                 Body = new DeleteRequest.Types.Body
@@ -144,19 +124,21 @@ namespace NeoFS.API.v2.Client
                     Address = object_address,
                 }
             };
-            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
+            var meta = opts.GetRequestMetaHeader();
+            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Delete);
+            req.MetaHeader = meta;
             req.SignRequest(key);
 
             var resp = object_client.Delete(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid object delete response");
+                throw new InvalidOperationException("invalid object delete response");
             return true;
         }
 
         public Object.Object GetObjectHeader(Address object_address, bool minimal, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
-
+            var opts = ApplyCustomOptions(options);
             var req = new HeadRequest
             {
                 Body = new HeadRequest.Types.Body
@@ -165,20 +147,24 @@ namespace NeoFS.API.v2.Client
                     MainOnly = minimal,
                 }
             };
-            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
+            var meta = opts.GetRequestMetaHeader();
+            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Head);
+            req.MetaHeader = meta;
             req.SignRequest(key);
 
             var resp = object_client.Head(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid object get header response");
+                throw new InvalidOperationException("invalid object get header response");
             var header = new Header();
+            var sig = new Signature();
             switch (resp.Body.HeadCase)
             {
-                case HeadResponse.Types.Body.HeadOneofCase.Header:
+                case HeadResponse.Types.Body.HeadOneofCase.ShortHeader:
                     {
+                        if (!minimal) throw new FormatException("expect full header received short");
                         var short_header = resp.Body.ShortHeader;
                         if (short_header is null)
-                            throw new System.FormatException("malformed object header");
+                            throw new FormatException("malformed object header");
                         header.PayloadLength = short_header.PayloadLength;
                         header.Version = short_header.Version;
                         header.OwnerId = short_header.OwnerId;
@@ -186,26 +172,36 @@ namespace NeoFS.API.v2.Client
                         header.CreationEpoch = short_header.CreationEpoch;
                         break;
                     }
-                case HeadResponse.Types.Body.HeadOneofCase.ShortHeader:
+                case HeadResponse.Types.Body.HeadOneofCase.Header:
                     {
+                        if (minimal) throw new FormatException("expect short header received full");
                         var full_header = resp.Body.Header;
                         if (full_header is null)
-                            throw new System.FormatException("malformed object header");
+                            throw new FormatException("malformed object header");
                         header = full_header.Header;
-                        //TODO: check signature
+                        sig = full_header.Signature;
+                        if (!object_address.ObjectId.VerifyMessagePart(sig))
+                        {
+                            throw new InvalidOperationException(nameof(GetObjectHeader) + " invalid signature");
+                        }
                         break;
                     }
                 default:
-                    throw new System.FormatException("malformed object header response");
+                    throw new FormatException("malformed object header response");
             }
-            var obj = new Object.Object();
-            obj.Header = header;
+            var obj = new Object.Object
+            {
+                ObjectId = object_address.ObjectId,
+                Header = header,
+                Signature = sig,
+            };
             return obj;
         }
 
-        public async Task<byte[]> GetObjectPayloadRangeData(Address object_address, Range range, CallOptions options = null)
+        public async Task<byte[]> GetObjectPayloadRangeData(Address object_address, Object.Range range, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
+            var opts = ApplyCustomOptions(options);
             var req = new GetRangeRequest
             {
                 Body = new GetRangeRequest.Types.Body
@@ -214,7 +210,8 @@ namespace NeoFS.API.v2.Client
                     Range = range,
                 }
             };
-            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
+            var meta = opts.GetRequestMetaHeader();
+            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Range);
             req.SignRequest(key);
 
             var stream = object_client.GetRange(req).ResponseStream;
@@ -224,7 +221,7 @@ namespace NeoFS.API.v2.Client
             {
                 var resp = stream.Current;
                 if (!resp.VerifyResponse())
-                    throw new System.FormatException("invalid object range response");
+                    throw new FormatException("invalid object range response");
                 var chunk = resp.Body.Chunk;
                 chunk.CopyTo(payload, offset);
                 offset += chunk.Length;
@@ -232,9 +229,10 @@ namespace NeoFS.API.v2.Client
             return payload;
         }
 
-        public List<byte[]> GetObjectPayloadRangeHash(Address object_address, Range[] range, byte[] salt, ChecksumType check_sum_type, CallOptions options = null)
+        public List<byte[]> GetObjectPayloadRangeHash(Address object_address, Object.Range[] range, byte[] salt, ChecksumType check_sum_type, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
+            var opts = ApplyCustomOptions(options);
             var req = new GetRangeHashRequest
             {
                 Body = new GetRangeHashRequest.Types.Body
@@ -245,28 +243,33 @@ namespace NeoFS.API.v2.Client
                 }
             };
             req.Body.Ranges.AddRange(range);
-            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
+            var meta = opts.GetRequestMetaHeader();
+            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Rangehash);
+            req.MetaHeader = meta;
             req.SignRequest(key);
 
             var resp = object_client.GetRangeHash(req);
             if (!resp.VerifyResponse())
-                throw new System.FormatException("invalid object range hash response");
+                throw new FormatException("invalid object range hash response");
             return resp.Body.HashList.Select(p => p.ToByteArray()).ToList();
         }
 
-        public async Task<List<ObjectID>> SearchObject(ContainerID cid, SearchRequest.Types.Body.Types.Filter[] filters, uint query_version, CallOptions options = null)
+        public async Task<List<ObjectID>> SearchObject(ContainerID cid, SearchRequest.Types.Body.Types.Filter[] filters, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
+            var opts = ApplyCustomOptions(options);
             var req = new SearchRequest
             {
                 Body = new SearchRequest.Types.Body
                 {
                     ContainerId = cid,
-                    Version = query_version,
+                    Version = SearchObjectVersion,
                 }
             };
             req.Body.Filters.AddRange(filters);
-            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
+            var meta = opts.GetRequestMetaHeader();
+            AttachObjectSessionToken(options, meta, new Address { ContainerId = cid }, ObjectSessionContext.Types.Verb.Search);
+            req.MetaHeader = meta;
             req.SignRequest(key);
 
             var stream = object_client.Search(req).ResponseStream;
@@ -275,11 +278,45 @@ namespace NeoFS.API.v2.Client
             {
                 var resp = stream.Current;
                 if (!resp.VerifyResponse())
-                    throw new System.FormatException("invalid object search response");
-                result.Concat(resp.Body.IdList);
+                    throw new FormatException("invalid object search response");
+                result = result.Concat(resp.Body.IdList).ToList();
+            }
+            return result;
+        }
+
+        private void AttachObjectSessionToken(CallOptions options, RequestMetaHeader meta, Address address, ObjectSessionContext.Types.Verb verb,
+            ulong exp = 0, ulong nbf = 0, ulong iat = 0)
+        {
+            if (options.Session is null) return;
+            if (options.Session.Signature != null)
+            {
+                meta.SessionToken = options.Session;
+                return;
             }
 
-            return result;
+            var token = new SessionToken
+            {
+                Body = options.Session.Body
+            };
+
+            var ctx = new ObjectSessionContext
+            {
+                Address = address,
+                Verb = verb,
+            };
+
+            var lt = new SessionToken.Types.Body.Types.TokenLifetime
+            {
+                Iat = iat,
+                Exp = exp,
+                Nbf = nbf,
+            };
+
+            token.Body.Object = ctx;
+            token.Body.Lifetime = lt;
+            token.Signature = token.Body.SignMessagePart(key);
+
+            meta.SessionToken = token;
         }
     }
 }

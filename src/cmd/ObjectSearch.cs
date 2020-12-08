@@ -33,7 +33,7 @@ namespace cmd
             var key = privateKey.HexToBytes().LoadPrivateKey();
             var client = new Client(opts.Host, key);
 
-            var res = await client.SearchObject(cid, null, 2);
+            var res = await client.SearchObject(cid, null);
 
             Console.WriteLine("\nSearch results:");
             foreach (var item in res)

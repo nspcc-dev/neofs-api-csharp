@@ -11,7 +11,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         public void TestBalance()
         {
             var host = "localhost:8080";
-            var key = "L4kWTNckyaWn2QdUrACCJR1qJNgFFGhTCy63ERk7ZK3NvBoXap6t".LoadWif();
+            var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
             var client = new Client.Client(host, key);
             var balance = client.GetSelfBalance();
             Assert.AreEqual(0, balance.Value);

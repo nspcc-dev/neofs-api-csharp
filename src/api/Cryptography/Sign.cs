@@ -21,10 +21,11 @@ namespace NeoFS.API.v2.Cryptography
 
         public static Signature SignMessagePart(this IMessage data, ECDsa key)
         {
+            var data2sign = data is null ? Array.Empty<byte>() : data.ToByteArray();
             var sig = new Signature
             {
                 Key = ByteString.CopyFrom(key.PublicKey()),
-                Sign = ByteString.CopyFrom(data.ToByteArray().SignData(key)),
+                Sign = ByteString.CopyFrom(data2sign.SignData(key)),
             };
             return sig;
         }

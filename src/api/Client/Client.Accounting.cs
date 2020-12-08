@@ -13,6 +13,7 @@ namespace NeoFS.API.v2.Client
         public Accounting.Decimal GetBalance(OwnerID owner, CallOptions options = null)
         {
             var account_client = new AccountingService.AccountingServiceClient(channel);
+            var opts = ApplyCustomOptions(options);
             var req = new BalanceRequest
             {
                 Body = new BalanceRequest.Types.Body
@@ -20,9 +21,8 @@ namespace NeoFS.API.v2.Client
                     OwnerId = owner,
                 }
             };
-            req.MetaHeader = options?.GetRequestMetaHeader() ?? DefaultCallOptions.GetRequestMetaHeader();
+            req.MetaHeader = opts.GetRequestMetaHeader();
             req.SignRequest(key);
-            Console.WriteLine($"balance request, meta={req.MetaHeader.ToByteArray().ToHexString()}, sig={req.VerifyHeader.MetaSignature.ToByteArray().ToHexString()}");
             var resp = account_client.Balance(req);
             if (!resp.VerifyResponse())
                 throw new System.FormatException("invalid balance response");
