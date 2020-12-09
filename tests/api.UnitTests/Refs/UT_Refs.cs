@@ -26,6 +26,7 @@ namespace NeoFS.API.v2.UnitTests.TestRefs
                 Minor = 1,
             };
             Console.WriteLine(version.ToByteArray().ToHexString());
+            Console.WriteLine(version.ToString());
         }
 
         [TestMethod]

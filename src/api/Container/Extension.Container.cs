@@ -19,5 +19,17 @@ namespace NeoFS.API.v2.Container
                 return _id;
             }
         }
+
+        public static partial class Types
+        {
+            public sealed partial class Attribute
+            {
+                // SysAttributePrefix is a prefix of key to system attribute.
+                public const string SysAttributePrefix = "__NEOFS__";
+
+                // SysAttributeSubnet is a string ID of container's storage subnet.
+                public const string SysAttributeSubnet = SysAttributePrefix + "SUBNET";
+            }
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace NeoFS.API.v2.Client
             req.SignRequest(key);
             var resp = account_client.Balance(req);
             if (!resp.VerifyResponse())
-                throw new System.FormatException("invalid balance response");
+                throw new FormatException("invalid balance response");
             return resp.Body.Balance;
         }
 

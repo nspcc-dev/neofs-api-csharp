@@ -29,7 +29,7 @@ namespace NeoFS.API.v2.Client
 
             var resp = container_client.Get(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid container get response");
+                throw new InvalidOperationException("invalid container get response");
             return resp.Body.Container;
         }
 
@@ -51,7 +51,7 @@ namespace NeoFS.API.v2.Client
             req.SignRequest(key);
             var resp = container_client.Put(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid container put response");
+                throw new InvalidOperationException("invalid container put response");
             return resp.Body.ContainerId;
         }
 
@@ -72,7 +72,7 @@ namespace NeoFS.API.v2.Client
 
             var resp = container_client.Delete(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid container put response");
+                throw new InvalidOperationException("invalid container put response");
         }
 
         public List<ContainerID> ListContainers(OwnerID owner, CallOptions options = null)
@@ -91,7 +91,7 @@ namespace NeoFS.API.v2.Client
 
             var resp = container_client.List(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid container put response");
+                throw new InvalidOperationException("invalid container put response");
             return resp.Body.ContainerIds.ToList();
         }
 
@@ -141,7 +141,7 @@ namespace NeoFS.API.v2.Client
 
             var resp = container_client.SetExtendedACL(req);
             if (!resp.VerifyResponse())
-                throw new System.InvalidOperationException("invalid container put response");
+                throw new InvalidOperationException("invalid container put response");
         }
     }
 }
