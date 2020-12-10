@@ -15,6 +15,7 @@ namespace NeoFS.API.v2.Cryptography
 
         public static bool VerifyMessagePart(this IMessage data, Signature sig)
         {
+            if (sig is null) return false;
             using var key = sig.Key.ToByteArray().LoadPublicKey();
             var data2verify = data is null ? Array.Empty<byte>() : data.ToByteArray();
             return data2verify.VerifyData(sig.Sign.ToByteArray(), key);
@@ -22,6 +23,7 @@ namespace NeoFS.API.v2.Cryptography
 
         private static bool VerifyMatryoshkaLevel1(IMessage body, ResponseMetaHeader meta_header, ResponseVerificationHeader verify_header)
         {
+            if (verify_header is null) return false;
             if (!meta_header.VerifyMessagePart(verify_header.MetaSignature))
                 return false;
             var origin = verify_header.Origin;
