@@ -25,7 +25,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
             var f = sf.Filters[0];
 
             Assert.AreEqual(MatchType.Unspecified, f.MatchType);
-            Assert.AreEqual(Filter.FilterPropertyRoot, f.Name);
+            Assert.AreEqual(Filter.FilterPropertyRoot, f.Key);
             Assert.AreEqual("", f.Value);
         }
 
@@ -37,7 +37,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
             var f = sf.Filters[0];
 
             Assert.AreEqual(MatchType.Unspecified, f.MatchType);
-            Assert.AreEqual(Filter.FilterPropertyPhy, f.Name);
+            Assert.AreEqual(Filter.FilterPropertyPhy, f.Key);
             Assert.AreEqual("", f.Value);
         }
 
@@ -52,7 +52,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
             var f = sf.Filters[0];
 
             Assert.AreEqual(MatchType.StringEqual, f.MatchType);
-            Assert.AreEqual(Filter.FilterHeaderParent, f.Name);
+            Assert.AreEqual(Filter.FilterHeaderParent, f.Key);
             Assert.AreEqual("vWt34r4ddnq61jcPec4rVaXHg7Y7GiEYFmcTB2Qwhtx", f.Value);
         }
 
@@ -67,7 +67,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
             var f = sf.Filters[0];
 
             Assert.AreEqual(MatchType.StringEqual, f.MatchType);
-            Assert.AreEqual(Filter.FilterHeaderObjectID, f.Name);
+            Assert.AreEqual(Filter.FilterHeaderObjectID, f.Key);
             Assert.AreEqual("vWt34r4ddnq61jcPec4rVaXHg7Y7GiEYFmcTB2Qwhtx", f.Value);
         }
 
@@ -82,7 +82,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
             var f = sf.Filters[0];
 
             Assert.AreEqual(MatchType.StringEqual, f.MatchType);
-            Assert.AreEqual(Filter.FilterHeaderSplitID, f.Name);
+            Assert.AreEqual(Filter.FilterHeaderSplitID, f.Key);
             Assert.AreEqual("5dee2659-583f-492f-9ae1-2f5766ccab5c", f.Value);
         }
     }

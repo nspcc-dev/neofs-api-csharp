@@ -90,8 +90,8 @@ namespace NeoFS.API.v2.UnitTests.FSClient
             {
                 HeaderType = HeaderType.HeaderUnspecified,
                 MatchType = MatchType.StringEqual,
-                HeaderName = "test",
-                HeaderVal = "test"
+                Key = "test",
+                Value = "test"
             };
             var target = new EACLRecord.Types.Target
             {
