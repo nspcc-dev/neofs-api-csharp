@@ -55,13 +55,7 @@ namespace NeoFS.API.v2.Accounting {
   }
   #region Messages
   /// <summary>
-  /// Message defines the request body of Balance method.
-  ///
-  /// To indicate the account for which the balance is requested, it's identifier
-  /// is used.
-  ///
-  /// To gain access to the requested information, the request body must be formed
-  /// according to the requirements from the system specification.
+  /// BalanceRequest message
   /// </summary>
   public sealed partial class BalanceRequest : pb::IMessage<BalanceRequest> {
     private static readonly pb::MessageParser<BalanceRequest> _parser = new pb::MessageParser<BalanceRequest>(() => new BalanceRequest());
@@ -133,8 +127,8 @@ namespace NeoFS.API.v2.Accounting {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -281,7 +275,10 @@ namespace NeoFS.API.v2.Accounting {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      ///Request body
+      /// To indicate the account for which the balance is requested, it's identifier
+      /// is used. It can be any existing account in NeoFS sidechain `Balance` smart
+      /// contract. If omitted, client implementation MUST set it to the request's
+      /// signer `OwnerID`.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -321,8 +318,8 @@ namespace NeoFS.API.v2.Accounting {
         public const int OwnerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
         /// <summary>
-        /// Carries user identifier in NeoFS system for which the balance
-        /// is requested.
+        /// Valid user identifier in `OwnerID` format for which the balance is
+        /// requested. Required field.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
@@ -428,9 +425,7 @@ namespace NeoFS.API.v2.Accounting {
   }
 
   /// <summary>
-  /// Message defines the response body of Balance method.
-  ///
-  /// The amount of funds is calculated in decimal numbers.
+  /// BalanceResponse message
   /// </summary>
   public sealed partial class BalanceResponse : pb::IMessage<BalanceResponse> {
     private static readonly pb::MessageParser<BalanceResponse> _parser = new pb::MessageParser<BalanceResponse>(() => new BalanceResponse());
@@ -502,8 +497,8 @@ namespace NeoFS.API.v2.Accounting {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -650,7 +645,8 @@ namespace NeoFS.API.v2.Accounting {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      ///Request body
+      /// The amount of funds in GAS token for the `OwnerID`'s account requested.
+      /// Balance is `Decimal` format to avoid precision issues with rounding.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -690,7 +686,7 @@ namespace NeoFS.API.v2.Accounting {
         public const int BalanceFieldNumber = 1;
         private global::NeoFS.API.v2.Accounting.Decimal balance_;
         /// <summary>
-        /// Carries the amount of funds on the account.
+        /// Amount of funds in GAS token for the requested account.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Accounting.Decimal Balance {

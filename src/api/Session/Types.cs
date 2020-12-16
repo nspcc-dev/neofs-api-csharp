@@ -25,46 +25,53 @@ namespace NeoFS.API.v2.Session {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNzZXNzaW9uL3R5cGVzLnByb3RvEhFuZW8uZnMudjIuc2Vzc2lvbhoQcmVm",
-            "cy90eXBlcy5wcm90bxoPYWNsL3R5cGVzLnByb3RvIugBChRPYmplY3RTZXNz",
-            "aW9uQ29udGV4dBI6CgR2ZXJiGAEgASgOMiwubmVvLmZzLnYyLnNlc3Npb24u",
-            "T2JqZWN0U2Vzc2lvbkNvbnRleHQuVmVyYhIoCgdhZGRyZXNzGAIgASgLMhcu",
-            "bmVvLmZzLnYyLnJlZnMuQWRkcmVzcyJqCgRWZXJiEhQKEFZFUkJfVU5TUEVD",
-            "SUZJRUQQABIHCgNQVVQQARIHCgNHRVQQAhIICgRIRUFEEAMSCgoGU0VBUkNI",
-            "EAQSCgoGREVMRVRFEAUSCQoFUkFOR0UQBhINCglSQU5HRUhBU0gQByKJAwoM",
-            "U2Vzc2lvblRva2VuEjIKBGJvZHkYASABKAsyJC5uZW8uZnMudjIuc2Vzc2lv",
-            "bi5TZXNzaW9uVG9rZW4uQm9keRIsCglzaWduYXR1cmUYAiABKAsyGS5uZW8u",
-            "ZnMudjIucmVmcy5TaWduYXR1cmUalgIKBEJvZHkSCgoCaWQYASABKAwSKQoI",
-            "b3duZXJfaWQYAiABKAsyFy5uZW8uZnMudjIucmVmcy5Pd25lcklEEkQKCGxp",
+            "cy90eXBlcy5wcm90bxoPYWNsL3R5cGVzLnByb3RvIvcBChRPYmplY3RTZXNz",
+            "aW9uQ29udGV4dBJACgR2ZXJiGAEgASgOMiwubmVvLmZzLnYyLnNlc3Npb24u",
+            "T2JqZWN0U2Vzc2lvbkNvbnRleHQuVmVyYlIEdmVyYhIxCgdhZGRyZXNzGAIg",
+            "ASgLMhcubmVvLmZzLnYyLnJlZnMuQWRkcmVzc1IHYWRkcmVzcyJqCgRWZXJi",
+            "EhQKEFZFUkJfVU5TUEVDSUZJRUQQABIHCgNQVVQQARIHCgNHRVQQAhIICgRI",
+            "RUFEEAMSCgoGU0VBUkNIEAQSCgoGREVMRVRFEAUSCQoFUkFOR0UQBhINCglS",
+            "QU5HRUhBU0gQByLUAwoMU2Vzc2lvblRva2VuEjgKBGJvZHkYASABKAsyJC5u",
+            "ZW8uZnMudjIuc2Vzc2lvbi5TZXNzaW9uVG9rZW4uQm9keVIEYm9keRI3Cglz",
+            "aWduYXR1cmUYAiABKAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmVSCXNp",
+            "Z25hdHVyZRrQAgoEQm9keRIOCgJpZBgBIAEoDFICaWQSMgoIb3duZXJfaWQY",
+            "AiABKAsyFy5uZW8uZnMudjIucmVmcy5Pd25lcklEUgdvd25lcklEEk4KCGxp",
             "ZmV0aW1lGAMgASgLMjIubmVvLmZzLnYyLnNlc3Npb24uU2Vzc2lvblRva2Vu",
-            "LkJvZHkuVG9rZW5MaWZldGltZRITCgtzZXNzaW9uX2tleRgEIAEoDBI5CgZv",
-            "YmplY3QYBSABKAsyJy5uZW8uZnMudjIuc2Vzc2lvbi5PYmplY3RTZXNzaW9u",
-            "Q29udGV4dEgAGjYKDVRva2VuTGlmZXRpbWUSCwoDZXhwGAEgASgEEgsKA25i",
-            "ZhgCIAEoBBILCgNpYXQYAyABKARCCQoHY29udGV4dCIlCgdYSGVhZGVyEgsK",
-            "A2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCSKoAgoRUmVxdWVzdE1ldGFIZWFk",
-            "ZXISKAoHdmVyc2lvbhgBIAEoCzIXLm5lby5mcy52Mi5yZWZzLlZlcnNpb24S",
-            "DQoFZXBvY2gYAiABKAQSCwoDdHRsGAMgASgNEi0KCXhfaGVhZGVycxgEIAMo",
-            "CzIaLm5lby5mcy52Mi5zZXNzaW9uLlhIZWFkZXISNgoNc2Vzc2lvbl90b2tl",
-            "bhgFIAEoCzIfLm5lby5mcy52Mi5zZXNzaW9uLlNlc3Npb25Ub2tlbhIwCgxi",
-            "ZWFyZXJfdG9rZW4YBiABKAsyGi5uZW8uZnMudjIuYWNsLkJlYXJlclRva2Vu",
-            "EjQKBm9yaWdpbhgHIAEoCzIkLm5lby5mcy52Mi5zZXNzaW9uLlJlcXVlc3RN",
-            "ZXRhSGVhZGVyIsABChJSZXNwb25zZU1ldGFIZWFkZXISKAoHdmVyc2lvbhgB",
-            "IAEoCzIXLm5lby5mcy52Mi5yZWZzLlZlcnNpb24SDQoFZXBvY2gYAiABKAQS",
-            "CwoDdHRsGAMgASgNEi0KCXhfaGVhZGVycxgEIAMoCzIaLm5lby5mcy52Mi5z",
-            "ZXNzaW9uLlhIZWFkZXISNQoGb3JpZ2luGAUgASgLMiUubmVvLmZzLnYyLnNl",
-            "c3Npb24uUmVzcG9uc2VNZXRhSGVhZGVyIvQBChlSZXF1ZXN0VmVyaWZpY2F0",
-            "aW9uSGVhZGVyEjEKDmJvZHlfc2lnbmF0dXJlGAEgASgLMhkubmVvLmZzLnYy",
-            "LnJlZnMuU2lnbmF0dXJlEjEKDm1ldGFfc2lnbmF0dXJlGAIgASgLMhkubmVv",
-            "LmZzLnYyLnJlZnMuU2lnbmF0dXJlEjMKEG9yaWdpbl9zaWduYXR1cmUYAyAB",
-            "KAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmUSPAoGb3JpZ2luGAQgASgL",
-            "MiwubmVvLmZzLnYyLnNlc3Npb24uUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRl",
-            "ciL2AQoaUmVzcG9uc2VWZXJpZmljYXRpb25IZWFkZXISMQoOYm9keV9zaWdu",
-            "YXR1cmUYASABKAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmUSMQoObWV0",
-            "YV9zaWduYXR1cmUYAiABKAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmUS",
-            "MwoQb3JpZ2luX3NpZ25hdHVyZRgDIAEoCzIZLm5lby5mcy52Mi5yZWZzLlNp",
-            "Z25hdHVyZRI9CgZvcmlnaW4YBCABKAsyLS5uZW8uZnMudjIuc2Vzc2lvbi5S",
-            "ZXNwb25zZVZlcmlmaWNhdGlvbkhlYWRlckJSWjlnaXRodWIuY29tL25zcGNj",
-            "LWRldi9uZW9mcy1hcGktZ28vdjIvc2Vzc2lvbi9ncnBjO3Nlc3Npb26qAhRO",
-            "ZW9GUy5BUEkudjIuU2Vzc2lvbmIGcHJvdG8z"));
+            "LkJvZHkuVG9rZW5MaWZldGltZVIIbGlmZXRpbWUSHwoLc2Vzc2lvbl9rZXkY",
+            "BCABKAxSCnNlc3Npb25LZXkSQQoGb2JqZWN0GAUgASgLMicubmVvLmZzLnYy",
+            "LnNlc3Npb24uT2JqZWN0U2Vzc2lvbkNvbnRleHRIAFIGb2JqZWN0GkUKDVRv",
+            "a2VuTGlmZXRpbWUSEAoDZXhwGAEgASgEUgNleHASEAoDbmJmGAIgASgEUgNu",
+            "YmYSEAoDaWF0GAMgASgEUgNpYXRCCQoHY29udGV4dCIxCgdYSGVhZGVyEhAK",
+            "A2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZSLqAgoRUmVx",
+            "dWVzdE1ldGFIZWFkZXISMQoHdmVyc2lvbhgBIAEoCzIXLm5lby5mcy52Mi5y",
+            "ZWZzLlZlcnNpb25SB3ZlcnNpb24SFAoFZXBvY2gYAiABKARSBWVwb2NoEhAK",
+            "A3R0bBgDIAEoDVIDdHRsEjcKCXhfaGVhZGVycxgEIAMoCzIaLm5lby5mcy52",
+            "Mi5zZXNzaW9uLlhIZWFkZXJSCHhIZWFkZXJzEkQKDXNlc3Npb25fdG9rZW4Y",
+            "BSABKAsyHy5uZW8uZnMudjIuc2Vzc2lvbi5TZXNzaW9uVG9rZW5SDHNlc3Np",
+            "b25Ub2tlbhI9CgxiZWFyZXJfdG9rZW4YBiABKAsyGi5uZW8uZnMudjIuYWNs",
+            "LkJlYXJlclRva2VuUgtiZWFyZXJUb2tlbhI8CgZvcmlnaW4YByABKAsyJC5u",
+            "ZW8uZnMudjIuc2Vzc2lvbi5SZXF1ZXN0TWV0YUhlYWRlclIGb3JpZ2luIucB",
+            "ChJSZXNwb25zZU1ldGFIZWFkZXISMQoHdmVyc2lvbhgBIAEoCzIXLm5lby5m",
+            "cy52Mi5yZWZzLlZlcnNpb25SB3ZlcnNpb24SFAoFZXBvY2gYAiABKARSBWVw",
+            "b2NoEhAKA3R0bBgDIAEoDVIDdHRsEjcKCXhfaGVhZGVycxgEIAMoCzIaLm5l",
+            "by5mcy52Mi5zZXNzaW9uLlhIZWFkZXJSCHhIZWFkZXJzEj0KBm9yaWdpbhgF",
+            "IAEoCzIlLm5lby5mcy52Mi5zZXNzaW9uLlJlc3BvbnNlTWV0YUhlYWRlclIG",
+            "b3JpZ2luIqsCChlSZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyEkAKDmJvZHlf",
+            "c2lnbmF0dXJlGAEgASgLMhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlUg1i",
+            "b2R5U2lnbmF0dXJlEkAKDm1ldGFfc2lnbmF0dXJlGAIgASgLMhkubmVvLmZz",
+            "LnYyLnJlZnMuU2lnbmF0dXJlUg1tZXRhU2lnbmF0dXJlEkQKEG9yaWdpbl9z",
+            "aWduYXR1cmUYAyABKAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmVSD29y",
+            "aWdpblNpZ25hdHVyZRJECgZvcmlnaW4YBCABKAsyLC5uZW8uZnMudjIuc2Vz",
+            "c2lvbi5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyUgZvcmlnaW4irQIKGlJl",
+            "c3BvbnNlVmVyaWZpY2F0aW9uSGVhZGVyEkAKDmJvZHlfc2lnbmF0dXJlGAEg",
+            "ASgLMhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlUg1ib2R5U2lnbmF0dXJl",
+            "EkAKDm1ldGFfc2lnbmF0dXJlGAIgASgLMhkubmVvLmZzLnYyLnJlZnMuU2ln",
+            "bmF0dXJlUg1tZXRhU2lnbmF0dXJlEkQKEG9yaWdpbl9zaWduYXR1cmUYAyAB",
+            "KAsyGS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmVSD29yaWdpblNpZ25hdHVy",
+            "ZRJFCgZvcmlnaW4YBCABKAsyLS5uZW8uZnMudjIuc2Vzc2lvbi5SZXNwb25z",
+            "ZVZlcmlmaWNhdGlvbkhlYWRlclIGb3JpZ2luQlJaOWdpdGh1Yi5jb20vbnNw",
+            "Y2MtZGV2L25lb2ZzLWFwaS1nby92Mi9zZXNzaW9uL2dycGM7c2Vzc2lvbqoC",
+            "FE5lb0ZTLkFQSS52Mi5TZXNzaW9uYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Acl.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -123,7 +130,7 @@ namespace NeoFS.API.v2.Session {
     public const int VerbFieldNumber = 1;
     private global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb verb_ = global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb.Unspecified;
     /// <summary>
-    /// Verb is a type of request for which the token is issued
+    /// Type of request for which the token is issued
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ObjectSessionContext.Types.Verb Verb {
@@ -299,7 +306,7 @@ namespace NeoFS.API.v2.Session {
   }
 
   /// <summary>
-  /// NeoFS session token.
+  /// NeoFS Session Token.
   /// </summary>
   public sealed partial class SessionToken : pb::IMessage<SessionToken> {
     private static readonly pb::MessageParser<SessionToken> _parser = new pb::MessageParser<SessionToken>(() => new SessionToken());
@@ -340,7 +347,9 @@ namespace NeoFS.API.v2.Session {
     public const int BodyFieldNumber = 1;
     private global::NeoFS.API.v2.Session.SessionToken.Types.Body body_;
     /// <summary>
-    /// Session Token body
+    /// Session Token contains the proof of trust between peers to be attached in
+    /// requests for further verification. Please see corresponding section of
+    /// NeoFS Technical Specification for details.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.SessionToken.Types.Body Body {
@@ -354,7 +363,7 @@ namespace NeoFS.API.v2.Session {
     public const int SignatureFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.Signature signature_;
     /// <summary>
-    /// Signature is a signature of session token information
+    /// Signature of `SessionToken` information
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Signature Signature {
@@ -479,7 +488,7 @@ namespace NeoFS.API.v2.Session {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Session token body
+      /// Session Token body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -528,7 +537,7 @@ namespace NeoFS.API.v2.Session {
         public const int IdFieldNumber = 1;
         private pb::ByteString id_ = pb::ByteString.Empty;
         /// <summary>
-        /// ID is a token identifier. valid UUIDv4 represented in bytes
+        /// Token identifier is a valid UUIDv4 in binary form
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString Id {
@@ -542,7 +551,7 @@ namespace NeoFS.API.v2.Session {
         public const int OwnerIdFieldNumber = 2;
         private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
         /// <summary>
-        /// OwnerID carries identifier of the session initiator.
+        /// Identifier of the session initiator
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
@@ -556,7 +565,7 @@ namespace NeoFS.API.v2.Session {
         public const int LifetimeFieldNumber = 3;
         private global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime lifetime_;
         /// <summary>
-        /// Lifetime is a lifetime of the session
+        /// Lifetime of the session
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Session.SessionToken.Types.Body.Types.TokenLifetime Lifetime {
@@ -570,7 +579,7 @@ namespace NeoFS.API.v2.Session {
         public const int SessionKeyFieldNumber = 4;
         private pb::ByteString sessionKey_ = pb::ByteString.Empty;
         /// <summary>
-        /// SessionKey is a public key of session key
+        /// Public key used in session
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString SessionKey {
@@ -583,7 +592,7 @@ namespace NeoFS.API.v2.Session {
         /// <summary>Field number for the "object" field.</summary>
         public const int ObjectFieldNumber = 5;
         /// <summary>
-        /// ObjectService session context.
+        /// ObjectService session context
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Session.ObjectSessionContext Object {
@@ -788,7 +797,7 @@ namespace NeoFS.API.v2.Session {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
-          /// Lifetime parameters of the token. Filed names taken from rfc7519.
+          /// Lifetime parameters of the token. Field names taken from rfc7519.
           /// </summary>
           public sealed partial class TokenLifetime : pb::IMessage<TokenLifetime> {
             private static readonly pb::MessageParser<TokenLifetime> _parser = new pb::MessageParser<TokenLifetime>(() => new TokenLifetime());
@@ -995,7 +1004,7 @@ namespace NeoFS.API.v2.Session {
   }
 
   /// <summary>
-  /// Extended headers for Request/Response
+  /// Extended headers for Request/Response.
   /// </summary>
   public sealed partial class XHeader : pb::IMessage<XHeader> {
     private static readonly pb::MessageParser<XHeader> _parser = new pb::MessageParser<XHeader>(() => new XHeader());
@@ -1036,7 +1045,7 @@ namespace NeoFS.API.v2.Session {
     public const int KeyFieldNumber = 1;
     private string key_ = "";
     /// <summary>
-    /// Key of the X-Header.
+    /// Key of the X-Header
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Key {
@@ -1050,7 +1059,7 @@ namespace NeoFS.API.v2.Session {
     public const int ValueFieldNumber = 2;
     private string value_ = "";
     /// <summary>
-    /// Value of the X-Header.
+    /// Value of the X-Header
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Value {
@@ -1161,7 +1170,8 @@ namespace NeoFS.API.v2.Session {
   }
 
   /// <summary>
-  /// Information about the request
+  /// Meta information attached to the request. When forwarded between peers,
+  /// request meta headers are folded in matryoshka style.
   /// </summary>
   public sealed partial class RequestMetaHeader : pb::IMessage<RequestMetaHeader> {
     private static readonly pb::MessageParser<RequestMetaHeader> _parser = new pb::MessageParser<RequestMetaHeader>(() => new RequestMetaHeader());
@@ -1207,7 +1217,7 @@ namespace NeoFS.API.v2.Session {
     public const int VersionFieldNumber = 1;
     private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Client API version.
+    /// Peer's API version used
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Version Version {
@@ -1221,7 +1231,7 @@ namespace NeoFS.API.v2.Session {
     public const int EpochFieldNumber = 2;
     private ulong epoch_;
     /// <summary>
-    /// Client local epoch number. Set to 0 if unknown.
+    /// Peer's local epoch number. Set to 0 if unknown.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong Epoch {
@@ -1235,7 +1245,7 @@ namespace NeoFS.API.v2.Session {
     public const int TtlFieldNumber = 3;
     private uint ttl_;
     /// <summary>
-    /// Maximum number of nodes in the request route.
+    /// Maximum number of intermediate nodes in the request route
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Ttl {
@@ -1251,7 +1261,7 @@ namespace NeoFS.API.v2.Session {
         = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Session.XHeader.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> xHeaders_ = new pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader>();
     /// <summary>
-    /// Request X-Headers.
+    /// Request X-Headers
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> XHeaders {
@@ -1262,7 +1272,7 @@ namespace NeoFS.API.v2.Session {
     public const int SessionTokenFieldNumber = 5;
     private global::NeoFS.API.v2.Session.SessionToken sessionToken_;
     /// <summary>
-    /// Token is a token of the session within which the request is sent
+    /// Session token within which the request is sent
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.SessionToken SessionToken {
@@ -1276,7 +1286,7 @@ namespace NeoFS.API.v2.Session {
     public const int BearerTokenFieldNumber = 6;
     private global::NeoFS.API.v2.Acl.BearerToken bearerToken_;
     /// <summary>
-    /// Bearer is a Bearer token of the request
+    /// `BearerToken` with eACL overrides for the request
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Acl.BearerToken BearerToken {
@@ -1290,7 +1300,7 @@ namespace NeoFS.API.v2.Session {
     public const int OriginFieldNumber = 7;
     private global::NeoFS.API.v2.Session.RequestMetaHeader origin_;
     /// <summary>
-    /// RequestMetaHeader of the origin request.
+    /// `RequestMetaHeader` of the origin request
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader Origin {
@@ -1542,7 +1552,7 @@ namespace NeoFS.API.v2.Session {
     public const int VersionFieldNumber = 1;
     private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Server API version.
+    /// Peer's API version used
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Version Version {
@@ -1556,7 +1566,7 @@ namespace NeoFS.API.v2.Session {
     public const int EpochFieldNumber = 2;
     private ulong epoch_;
     /// <summary>
-    /// Server local epoch number.
+    /// Peer's local epoch number
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong Epoch {
@@ -1570,7 +1580,7 @@ namespace NeoFS.API.v2.Session {
     public const int TtlFieldNumber = 3;
     private uint ttl_;
     /// <summary>
-    /// Maximum number of nodes in the response route.
+    /// Maximum number of intermediate nodes in the request route
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Ttl {
@@ -1586,7 +1596,7 @@ namespace NeoFS.API.v2.Session {
         = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Session.XHeader.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> xHeaders_ = new pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader>();
     /// <summary>
-    /// Response X-Headers.
+    /// Response X-Headers
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Session.XHeader> XHeaders {
@@ -1597,7 +1607,7 @@ namespace NeoFS.API.v2.Session {
     public const int OriginFieldNumber = 5;
     private global::NeoFS.API.v2.Session.ResponseMetaHeader origin_;
     /// <summary>
-    /// Carries response meta header of the origin response.
+    /// `ResponseMetaHeader` of the origin request
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseMetaHeader Origin {
@@ -1761,7 +1771,7 @@ namespace NeoFS.API.v2.Session {
   }
 
   /// <summary>
-  /// Verification info for request signed by all intermediate nodes
+  /// Verification info for request signed by all intermediate nodes.
   /// </summary>
   public sealed partial class RequestVerificationHeader : pb::IMessage<RequestVerificationHeader> {
     private static readonly pb::MessageParser<RequestVerificationHeader> _parser = new pb::MessageParser<RequestVerificationHeader>(() => new RequestVerificationHeader());
@@ -1818,7 +1828,7 @@ namespace NeoFS.API.v2.Session {
     public const int MetaSignatureFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.Signature metaSignature_;
     /// <summary>
-    /// Request Meta signature is added and signed by any intermediate node
+    /// Request Meta signature is added and signed by each intermediate node
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Signature MetaSignature {
@@ -1832,7 +1842,7 @@ namespace NeoFS.API.v2.Session {
     public const int OriginSignatureFieldNumber = 3;
     private global::NeoFS.API.v2.Refs.Signature originSignature_;
     /// <summary>
-    /// Sign previous hops
+    /// Signature of previous hops
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Signature OriginSignature {
@@ -2070,7 +2080,7 @@ namespace NeoFS.API.v2.Session {
     public const int MetaSignatureFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.Signature metaSignature_;
     /// <summary>
-    /// Response Meta signature is added and signed by any intermediate node
+    /// Response Meta signature is added and signed by each intermediate node
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Signature MetaSignature {
@@ -2084,7 +2094,7 @@ namespace NeoFS.API.v2.Session {
     public const int OriginSignatureFieldNumber = 3;
     private global::NeoFS.API.v2.Refs.Signature originSignature_;
     /// <summary>
-    /// Sign previous hops
+    /// Signature of previous hops
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Signature OriginSignature {

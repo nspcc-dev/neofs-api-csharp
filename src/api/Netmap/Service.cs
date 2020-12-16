@@ -55,7 +55,7 @@ namespace NeoFS.API.v2.Netmap {
   }
   #region Messages
   /// <summary>
-  /// Get NodeInfo from the particular node directly
+  /// Get NodeInfo structure from the particular node directly
   /// </summary>
   public sealed partial class LocalNodeInfoRequest : pb::IMessage<LocalNodeInfoRequest> {
     private static readonly pb::MessageParser<LocalNodeInfoRequest> _parser = new pb::MessageParser<LocalNodeInfoRequest>(() => new LocalNodeInfoRequest());
@@ -97,7 +97,7 @@ namespace NeoFS.API.v2.Netmap {
     public const int BodyFieldNumber = 1;
     private global::NeoFS.API.v2.Netmap.LocalNodeInfoRequest.Types.Body body_;
     /// <summary>
-    /// Body of the balance request message.
+    /// Body of the LocalNodeInfo request message
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Netmap.LocalNodeInfoRequest.Types.Body Body {
@@ -127,8 +127,8 @@ namespace NeoFS.API.v2.Netmap {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -275,7 +275,7 @@ namespace NeoFS.API.v2.Netmap {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      ///Request body
+      /// LocalNodeInfo request body is empty.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -384,7 +384,7 @@ namespace NeoFS.API.v2.Netmap {
   }
 
   /// <summary>
-  /// Local nod Info, including API Version in use
+  /// Local Node Info, including API Version in use
   /// </summary>
   public sealed partial class LocalNodeInfoResponse : pb::IMessage<LocalNodeInfoResponse> {
     private static readonly pb::MessageParser<LocalNodeInfoResponse> _parser = new pb::MessageParser<LocalNodeInfoResponse>(() => new LocalNodeInfoResponse());
@@ -456,8 +456,8 @@ namespace NeoFS.API.v2.Netmap {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -604,7 +604,7 @@ namespace NeoFS.API.v2.Netmap {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      ///Response body
+      /// Local Node Info, including API Version in use.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -645,7 +645,7 @@ namespace NeoFS.API.v2.Netmap {
         public const int VersionFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.Version version_;
         /// <summary>
-        /// API version in use
+        /// Latest NeoFS API version in use
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Version Version {
@@ -659,7 +659,7 @@ namespace NeoFS.API.v2.Netmap {
         public const int NodeInfoFieldNumber = 2;
         private global::NeoFS.API.v2.Netmap.NodeInfo nodeInfo_;
         /// <summary>
-        /// NodeInfo from node itself
+        /// NodeInfo structure with recent information from node itself
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Netmap.NodeInfo NodeInfo {

@@ -31,132 +31,138 @@ namespace NeoFS.API.v2.Object {
             "IAEoCzIkLm5lby5mcy52Mi5zZXNzaW9uLlJlcXVlc3RNZXRhSGVhZGVyEkMK",
             "DXZlcmlmeV9oZWFkZXIYAyABKAsyLC5uZW8uZnMudjIuc2Vzc2lvbi5SZXF1",
             "ZXN0VmVyaWZpY2F0aW9uSGVhZGVyGj0KBEJvZHkSKAoHYWRkcmVzcxgBIAEo",
-            "CzIXLm5lby5mcy52Mi5yZWZzLkFkZHJlc3MSCwoDcmF3GAIgASgIIrEDCgtH",
+            "CzIXLm5lby5mcy52Mi5yZWZzLkFkZHJlc3MSCwoDcmF3GAIgASgIIuQDCgtH",
             "ZXRSZXNwb25zZRIwCgRib2R5GAEgASgLMiIubmVvLmZzLnYyLm9iamVjdC5H",
             "ZXRSZXNwb25zZS5Cb2R5EjoKC21ldGFfaGVhZGVyGAIgASgLMiUubmVvLmZz",
             "LnYyLnNlc3Npb24uUmVzcG9uc2VNZXRhSGVhZGVyEkQKDXZlcmlmeV9oZWFk",
             "ZXIYAyABKAsyLS5uZW8uZnMudjIuc2Vzc2lvbi5SZXNwb25zZVZlcmlmaWNh",
-            "dGlvbkhlYWRlchrtAQoEQm9keRI3CgRpbml0GAEgASgLMicubmVvLmZzLnYy",
+            "dGlvbkhlYWRlchqgAgoEQm9keRI3CgRpbml0GAEgASgLMicubmVvLmZzLnYy",
             "Lm9iamVjdC5HZXRSZXNwb25zZS5Cb2R5LkluaXRIABIPCgVjaHVuaxgCIAEo",
-            "DEgAGosBCgRJbml0EisKCW9iamVjdF9pZBgBIAEoCzIYLm5lby5mcy52Mi5y",
-            "ZWZzLk9iamVjdElEEiwKCXNpZ25hdHVyZRgCIAEoCzIZLm5lby5mcy52Mi5y",
-            "ZWZzLlNpZ25hdHVyZRIoCgZoZWFkZXIYAyABKAsyGC5uZW8uZnMudjIub2Jq",
-            "ZWN0LkhlYWRlckINCgtvYmplY3RfcGFydCLDAwoKUHV0UmVxdWVzdBIvCgRi",
-            "b2R5GAEgASgLMiEubmVvLmZzLnYyLm9iamVjdC5QdXRSZXF1ZXN0LkJvZHkS",
-            "OQoLbWV0YV9oZWFkZXIYAiABKAsyJC5uZW8uZnMudjIuc2Vzc2lvbi5SZXF1",
-            "ZXN0TWV0YUhlYWRlchJDCg12ZXJpZnlfaGVhZGVyGAMgASgLMiwubmVvLmZz",
-            "LnYyLnNlc3Npb24uUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlchqDAgoEQm9k",
-            "eRI2CgRpbml0GAEgASgLMiYubmVvLmZzLnYyLm9iamVjdC5QdXRSZXF1ZXN0",
-            "LkJvZHkuSW5pdEgAEg8KBWNodW5rGAIgASgMSAAaogEKBEluaXQSKwoJb2Jq",
-            "ZWN0X2lkGAEgASgLMhgubmVvLmZzLnYyLnJlZnMuT2JqZWN0SUQSLAoJc2ln",
-            "bmF0dXJlGAIgASgLMhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlEigKBmhl",
-            "YWRlchgDIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyEhUKDWNvcGll",
-            "c19udW1iZXIYBCABKA1CDQoLb2JqZWN0X3BhcnQi9gEKC1B1dFJlc3BvbnNl",
-            "EjAKBGJvZHkYASABKAsyIi5uZW8uZnMudjIub2JqZWN0LlB1dFJlc3BvbnNl",
-            "LkJvZHkSOgoLbWV0YV9oZWFkZXIYAiABKAsyJS5uZW8uZnMudjIuc2Vzc2lv",
-            "bi5SZXNwb25zZU1ldGFIZWFkZXISRAoNdmVyaWZ5X2hlYWRlchgDIAEoCzIt",
-            "Lm5lby5mcy52Mi5zZXNzaW9uLlJlc3BvbnNlVmVyaWZpY2F0aW9uSGVhZGVy",
-            "GjMKBEJvZHkSKwoJb2JqZWN0X2lkGAEgASgLMhgubmVvLmZzLnYyLnJlZnMu",
-            "T2JqZWN0SUQi9QEKDURlbGV0ZVJlcXVlc3QSMgoEYm9keRgBIAEoCzIkLm5l",
-            "by5mcy52Mi5vYmplY3QuRGVsZXRlUmVxdWVzdC5Cb2R5EjkKC21ldGFfaGVh",
-            "ZGVyGAIgASgLMiQubmVvLmZzLnYyLnNlc3Npb24uUmVxdWVzdE1ldGFIZWFk",
-            "ZXISQwoNdmVyaWZ5X2hlYWRlchgDIAEoCzIsLm5lby5mcy52Mi5zZXNzaW9u",
-            "LlJlcXVlc3RWZXJpZmljYXRpb25IZWFkZXIaMAoEQm9keRIoCgdhZGRyZXNz",
-            "GAEgASgLMhcubmVvLmZzLnYyLnJlZnMuQWRkcmVzcyLPAQoORGVsZXRlUmVz",
-            "cG9uc2USMwoEYm9keRgBIAEoCzIlLm5lby5mcy52Mi5vYmplY3QuRGVsZXRl",
-            "UmVzcG9uc2UuQm9keRI6CgttZXRhX2hlYWRlchgCIAEoCzIlLm5lby5mcy52",
-            "Mi5zZXNzaW9uLlJlc3BvbnNlTWV0YUhlYWRlchJECg12ZXJpZnlfaGVhZGVy",
-            "GAMgASgLMi0ubmVvLmZzLnYyLnNlc3Npb24uUmVzcG9uc2VWZXJpZmljYXRp",
-            "b25IZWFkZXIaBgoEQm9keSKRAgoLSGVhZFJlcXVlc3QSMAoEYm9keRgBIAEo",
-            "CzIiLm5lby5mcy52Mi5vYmplY3QuSGVhZFJlcXVlc3QuQm9keRI5CgttZXRh",
-            "X2hlYWRlchgCIAEoCzIkLm5lby5mcy52Mi5zZXNzaW9uLlJlcXVlc3RNZXRh",
-            "SGVhZGVyEkMKDXZlcmlmeV9oZWFkZXIYAyABKAsyLC5uZW8uZnMudjIuc2Vz",
-            "c2lvbi5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyGlAKBEJvZHkSKAoHYWRk",
-            "cmVzcxgBIAEoCzIXLm5lby5mcy52Mi5yZWZzLkFkZHJlc3MSEQoJbWFpbl9v",
-            "bmx5GAIgASgIEgsKA3JhdxgDIAEoCCJtChNIZWFkZXJXaXRoU2lnbmF0dXJl",
-            "EigKBmhlYWRlchgBIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyEiwK",
-            "CXNpZ25hdHVyZRgCIAEoCzIZLm5lby5mcy52Mi5yZWZzLlNpZ25hdHVyZSLD",
-            "AgoMSGVhZFJlc3BvbnNlEjEKBGJvZHkYASABKAsyIy5uZW8uZnMudjIub2Jq",
-            "ZWN0LkhlYWRSZXNwb25zZS5Cb2R5EjoKC21ldGFfaGVhZGVyGAIgASgLMiUu",
-            "bmVvLmZzLnYyLnNlc3Npb24uUmVzcG9uc2VNZXRhSGVhZGVyEkQKDXZlcmlm",
-            "eV9oZWFkZXIYAyABKAsyLS5uZW8uZnMudjIuc2Vzc2lvbi5SZXNwb25zZVZl",
-            "cmlmaWNhdGlvbkhlYWRlchp+CgRCb2R5EjcKBmhlYWRlchgBIAEoCzIlLm5l",
-            "by5mcy52Mi5vYmplY3QuSGVhZGVyV2l0aFNpZ25hdHVyZUgAEjUKDHNob3J0",
-            "X2hlYWRlchgCIAEoCzIdLm5lby5mcy52Mi5vYmplY3QuU2hvcnRIZWFkZXJI",
-            "AEIGCgRoZWFkIqYDCg1TZWFyY2hSZXF1ZXN0EjIKBGJvZHkYASABKAsyJC5u",
-            "ZW8uZnMudjIub2JqZWN0LlNlYXJjaFJlcXVlc3QuQm9keRI5CgttZXRhX2hl",
-            "YWRlchgCIAEoCzIkLm5lby5mcy52Mi5zZXNzaW9uLlJlcXVlc3RNZXRhSGVh",
-            "ZGVyEkMKDXZlcmlmeV9oZWFkZXIYAyABKAsyLC5uZW8uZnMudjIuc2Vzc2lv",
-            "bi5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyGuABCgRCb2R5EjEKDGNvbnRh",
-            "aW5lcl9pZBgBIAEoCzIbLm5lby5mcy52Mi5yZWZzLkNvbnRhaW5lcklEEg8K",
-            "B3ZlcnNpb24YAiABKA0SPAoHZmlsdGVycxgDIAMoCzIrLm5lby5mcy52Mi5v",
-            "YmplY3QuU2VhcmNoUmVxdWVzdC5Cb2R5LkZpbHRlchpWCgZGaWx0ZXISLwoK",
-            "bWF0Y2hfdHlwZRgBIAEoDjIbLm5lby5mcy52Mi5vYmplY3QuTWF0Y2hUeXBl",
-            "EgwKBG5hbWUYAiABKAkSDQoFdmFsdWUYAyABKAki+gEKDlNlYXJjaFJlc3Bv",
-            "bnNlEjMKBGJvZHkYASABKAsyJS5uZW8uZnMudjIub2JqZWN0LlNlYXJjaFJl",
+            "DEgAEjEKCnNwbGl0X2luZm8YAyABKAsyGy5uZW8uZnMudjIub2JqZWN0LlNw",
+            "bGl0SW5mb0gAGosBCgRJbml0EisKCW9iamVjdF9pZBgBIAEoCzIYLm5lby5m",
+            "cy52Mi5yZWZzLk9iamVjdElEEiwKCXNpZ25hdHVyZRgCIAEoCzIZLm5lby5m",
+            "cy52Mi5yZWZzLlNpZ25hdHVyZRIoCgZoZWFkZXIYAyABKAsyGC5uZW8uZnMu",
+            "djIub2JqZWN0LkhlYWRlckINCgtvYmplY3RfcGFydCLDAwoKUHV0UmVxdWVz",
+            "dBIvCgRib2R5GAEgASgLMiEubmVvLmZzLnYyLm9iamVjdC5QdXRSZXF1ZXN0",
+            "LkJvZHkSOQoLbWV0YV9oZWFkZXIYAiABKAsyJC5uZW8uZnMudjIuc2Vzc2lv",
+            "bi5SZXF1ZXN0TWV0YUhlYWRlchJDCg12ZXJpZnlfaGVhZGVyGAMgASgLMiwu",
+            "bmVvLmZzLnYyLnNlc3Npb24uUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlchqD",
+            "AgoEQm9keRI2CgRpbml0GAEgASgLMiYubmVvLmZzLnYyLm9iamVjdC5QdXRS",
+            "ZXF1ZXN0LkJvZHkuSW5pdEgAEg8KBWNodW5rGAIgASgMSAAaogEKBEluaXQS",
+            "KwoJb2JqZWN0X2lkGAEgASgLMhgubmVvLmZzLnYyLnJlZnMuT2JqZWN0SUQS",
+            "LAoJc2lnbmF0dXJlGAIgASgLMhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJl",
+            "EigKBmhlYWRlchgDIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyEhUK",
+            "DWNvcGllc19udW1iZXIYBCABKA1CDQoLb2JqZWN0X3BhcnQi9gEKC1B1dFJl",
+            "c3BvbnNlEjAKBGJvZHkYASABKAsyIi5uZW8uZnMudjIub2JqZWN0LlB1dFJl",
             "c3BvbnNlLkJvZHkSOgoLbWV0YV9oZWFkZXIYAiABKAsyJS5uZW8uZnMudjIu",
             "c2Vzc2lvbi5SZXNwb25zZU1ldGFIZWFkZXISRAoNdmVyaWZ5X2hlYWRlchgD",
             "IAEoCzItLm5lby5mcy52Mi5zZXNzaW9uLlJlc3BvbnNlVmVyaWZpY2F0aW9u",
-            "SGVhZGVyGjEKBEJvZHkSKQoHaWRfbGlzdBgBIAMoCzIYLm5lby5mcy52Mi5y",
-            "ZWZzLk9iamVjdElEIicKBVJhbmdlEg4KBm9mZnNldBgBIAEoBBIOCgZsZW5n",
-            "dGgYAiABKAQioQIKD0dldFJhbmdlUmVxdWVzdBI0CgRib2R5GAEgASgLMiYu",
-            "bmVvLmZzLnYyLm9iamVjdC5HZXRSYW5nZVJlcXVlc3QuQm9keRI5CgttZXRh",
-            "X2hlYWRlchgCIAEoCzIkLm5lby5mcy52Mi5zZXNzaW9uLlJlcXVlc3RNZXRh",
-            "SGVhZGVyEkMKDXZlcmlmeV9oZWFkZXIYAyABKAsyLC5uZW8uZnMudjIuc2Vz",
-            "c2lvbi5SZXF1ZXN0VmVyaWZpY2F0aW9uSGVhZGVyGlgKBEJvZHkSKAoHYWRk",
-            "cmVzcxgBIAEoCzIXLm5lby5mcy52Mi5yZWZzLkFkZHJlc3MSJgoFcmFuZ2UY",
-            "AiABKAsyFy5uZW8uZnMudjIub2JqZWN0LlJhbmdlIuIBChBHZXRSYW5nZVJl",
-            "c3BvbnNlEjUKBGJvZHkYASABKAsyJy5uZW8uZnMudjIub2JqZWN0LkdldFJh",
-            "bmdlUmVzcG9uc2UuQm9keRI6CgttZXRhX2hlYWRlchgCIAEoCzIlLm5lby5m",
-            "cy52Mi5zZXNzaW9uLlJlc3BvbnNlTWV0YUhlYWRlchJECg12ZXJpZnlfaGVh",
-            "ZGVyGAMgASgLMi0ubmVvLmZzLnYyLnNlc3Npb24uUmVzcG9uc2VWZXJpZmlj",
-            "YXRpb25IZWFkZXIaFQoEQm9keRINCgVjaHVuaxgBIAEoDCLlAgoTR2V0UmFu",
-            "Z2VIYXNoUmVxdWVzdBI4CgRib2R5GAEgASgLMioubmVvLmZzLnYyLm9iamVj",
-            "dC5HZXRSYW5nZUhhc2hSZXF1ZXN0LkJvZHkSOQoLbWV0YV9oZWFkZXIYAiAB",
-            "KAsyJC5uZW8uZnMudjIuc2Vzc2lvbi5SZXF1ZXN0TWV0YUhlYWRlchJDCg12",
-            "ZXJpZnlfaGVhZGVyGAMgASgLMiwubmVvLmZzLnYyLnNlc3Npb24uUmVxdWVz",
-            "dFZlcmlmaWNhdGlvbkhlYWRlchqTAQoEQm9keRIoCgdhZGRyZXNzGAEgASgL",
-            "MhcubmVvLmZzLnYyLnJlZnMuQWRkcmVzcxInCgZyYW5nZXMYAiADKAsyFy5u",
-            "ZW8uZnMudjIub2JqZWN0LlJhbmdlEgwKBHNhbHQYAyABKAwSKgoEdHlwZRgE",
-            "IAEoDjIcLm5lby5mcy52Mi5yZWZzLkNoZWNrc3VtVHlwZSKaAgoUR2V0UmFu",
-            "Z2VIYXNoUmVzcG9uc2USOQoEYm9keRgBIAEoCzIrLm5lby5mcy52Mi5vYmpl",
-            "Y3QuR2V0UmFuZ2VIYXNoUmVzcG9uc2UuQm9keRI6CgttZXRhX2hlYWRlchgC",
-            "IAEoCzIlLm5lby5mcy52Mi5zZXNzaW9uLlJlc3BvbnNlTWV0YUhlYWRlchJE",
-            "Cg12ZXJpZnlfaGVhZGVyGAMgASgLMi0ubmVvLmZzLnYyLnNlc3Npb24uUmVz",
-            "cG9uc2VWZXJpZmljYXRpb25IZWFkZXIaRQoEQm9keRIqCgR0eXBlGAEgASgO",
-            "MhwubmVvLmZzLnYyLnJlZnMuQ2hlY2tzdW1UeXBlEhEKCWhhc2hfbGlzdBgC",
-            "IAMoDDKyBAoNT2JqZWN0U2VydmljZRJECgNHZXQSHC5uZW8uZnMudjIub2Jq",
-            "ZWN0LkdldFJlcXVlc3QaHS5uZW8uZnMudjIub2JqZWN0LkdldFJlc3BvbnNl",
-            "MAESRAoDUHV0EhwubmVvLmZzLnYyLm9iamVjdC5QdXRSZXF1ZXN0Gh0ubmVv",
-            "LmZzLnYyLm9iamVjdC5QdXRSZXNwb25zZSgBEksKBkRlbGV0ZRIfLm5lby5m",
-            "cy52Mi5vYmplY3QuRGVsZXRlUmVxdWVzdBogLm5lby5mcy52Mi5vYmplY3Qu",
-            "RGVsZXRlUmVzcG9uc2USRQoESGVhZBIdLm5lby5mcy52Mi5vYmplY3QuSGVh",
-            "ZFJlcXVlc3QaHi5uZW8uZnMudjIub2JqZWN0LkhlYWRSZXNwb25zZRJNCgZT",
-            "ZWFyY2gSHy5uZW8uZnMudjIub2JqZWN0LlNlYXJjaFJlcXVlc3QaIC5uZW8u",
-            "ZnMudjIub2JqZWN0LlNlYXJjaFJlc3BvbnNlMAESUwoIR2V0UmFuZ2USIS5u",
-            "ZW8uZnMudjIub2JqZWN0LkdldFJhbmdlUmVxdWVzdBoiLm5lby5mcy52Mi5v",
-            "YmplY3QuR2V0UmFuZ2VSZXNwb25zZTABEl0KDEdldFJhbmdlSGFzaBIlLm5l",
-            "by5mcy52Mi5vYmplY3QuR2V0UmFuZ2VIYXNoUmVxdWVzdBomLm5lby5mcy52",
-            "Mi5vYmplY3QuR2V0UmFuZ2VIYXNoUmVzcG9uc2VCT1o3Z2l0aHViLmNvbS9u",
-            "c3BjYy1kZXYvbmVvZnMtYXBpLWdvL3YyL29iamVjdC9ncnBjO29iamVjdKoC",
-            "E05lb0ZTLkFQSS52Mi5PYmplY3RiBnByb3RvMw=="));
+            "SGVhZGVyGjMKBEJvZHkSKwoJb2JqZWN0X2lkGAEgASgLMhgubmVvLmZzLnYy",
+            "LnJlZnMuT2JqZWN0SUQi9QEKDURlbGV0ZVJlcXVlc3QSMgoEYm9keRgBIAEo",
+            "CzIkLm5lby5mcy52Mi5vYmplY3QuRGVsZXRlUmVxdWVzdC5Cb2R5EjkKC21l",
+            "dGFfaGVhZGVyGAIgASgLMiQubmVvLmZzLnYyLnNlc3Npb24uUmVxdWVzdE1l",
+            "dGFIZWFkZXISQwoNdmVyaWZ5X2hlYWRlchgDIAEoCzIsLm5lby5mcy52Mi5z",
+            "ZXNzaW9uLlJlcXVlc3RWZXJpZmljYXRpb25IZWFkZXIaMAoEQm9keRIoCgdh",
+            "ZGRyZXNzGAEgASgLMhcubmVvLmZzLnYyLnJlZnMuQWRkcmVzcyL7AQoORGVs",
+            "ZXRlUmVzcG9uc2USMwoEYm9keRgBIAEoCzIlLm5lby5mcy52Mi5vYmplY3Qu",
+            "RGVsZXRlUmVzcG9uc2UuQm9keRI6CgttZXRhX2hlYWRlchgCIAEoCzIlLm5l",
+            "by5mcy52Mi5zZXNzaW9uLlJlc3BvbnNlTWV0YUhlYWRlchJECg12ZXJpZnlf",
+            "aGVhZGVyGAMgASgLMi0ubmVvLmZzLnYyLnNlc3Npb24uUmVzcG9uc2VWZXJp",
+            "ZmljYXRpb25IZWFkZXIaMgoEQm9keRIqCgl0b21ic3RvbmUYASABKAsyFy5u",
+            "ZW8uZnMudjIucmVmcy5BZGRyZXNzIpECCgtIZWFkUmVxdWVzdBIwCgRib2R5",
+            "GAEgASgLMiIubmVvLmZzLnYyLm9iamVjdC5IZWFkUmVxdWVzdC5Cb2R5EjkK",
+            "C21ldGFfaGVhZGVyGAIgASgLMiQubmVvLmZzLnYyLnNlc3Npb24uUmVxdWVz",
+            "dE1ldGFIZWFkZXISQwoNdmVyaWZ5X2hlYWRlchgDIAEoCzIsLm5lby5mcy52",
+            "Mi5zZXNzaW9uLlJlcXVlc3RWZXJpZmljYXRpb25IZWFkZXIaUAoEQm9keRIo",
+            "CgdhZGRyZXNzGAEgASgLMhcubmVvLmZzLnYyLnJlZnMuQWRkcmVzcxIRCglt",
+            "YWluX29ubHkYAiABKAgSCwoDcmF3GAMgASgIIoABChNIZWFkZXJXaXRoU2ln",
+            "bmF0dXJlEjAKBmhlYWRlchgBIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVh",
+            "ZGVyUgZoZWFkZXISNwoJc2lnbmF0dXJlGAIgASgLMhkubmVvLmZzLnYyLnJl",
+            "ZnMuU2lnbmF0dXJlUglzaWduYXR1cmUi9wIKDEhlYWRSZXNwb25zZRIxCgRi",
+            "b2R5GAEgASgLMiMubmVvLmZzLnYyLm9iamVjdC5IZWFkUmVzcG9uc2UuQm9k",
+            "eRI6CgttZXRhX2hlYWRlchgCIAEoCzIlLm5lby5mcy52Mi5zZXNzaW9uLlJl",
+            "c3BvbnNlTWV0YUhlYWRlchJECg12ZXJpZnlfaGVhZGVyGAMgASgLMi0ubmVv",
+            "LmZzLnYyLnNlc3Npb24uUmVzcG9uc2VWZXJpZmljYXRpb25IZWFkZXIasQEK",
+            "BEJvZHkSNwoGaGVhZGVyGAEgASgLMiUubmVvLmZzLnYyLm9iamVjdC5IZWFk",
+            "ZXJXaXRoU2lnbmF0dXJlSAASNQoMc2hvcnRfaGVhZGVyGAIgASgLMh0ubmVv",
+            "LmZzLnYyLm9iamVjdC5TaG9ydEhlYWRlckgAEjEKCnNwbGl0X2luZm8YAyAB",
+            "KAsyGy5uZW8uZnMudjIub2JqZWN0LlNwbGl0SW5mb0gAQgYKBGhlYWQipQMK",
+            "DVNlYXJjaFJlcXVlc3QSMgoEYm9keRgBIAEoCzIkLm5lby5mcy52Mi5vYmpl",
+            "Y3QuU2VhcmNoUmVxdWVzdC5Cb2R5EjkKC21ldGFfaGVhZGVyGAIgASgLMiQu",
+            "bmVvLmZzLnYyLnNlc3Npb24uUmVxdWVzdE1ldGFIZWFkZXISQwoNdmVyaWZ5",
+            "X2hlYWRlchgDIAEoCzIsLm5lby5mcy52Mi5zZXNzaW9uLlJlcXVlc3RWZXJp",
+            "ZmljYXRpb25IZWFkZXIa3wEKBEJvZHkSMQoMY29udGFpbmVyX2lkGAEgASgL",
+            "MhsubmVvLmZzLnYyLnJlZnMuQ29udGFpbmVySUQSDwoHdmVyc2lvbhgCIAEo",
+            "DRI8CgdmaWx0ZXJzGAMgAygLMisubmVvLmZzLnYyLm9iamVjdC5TZWFyY2hS",
+            "ZXF1ZXN0LkJvZHkuRmlsdGVyGlUKBkZpbHRlchIvCgptYXRjaF90eXBlGAEg",
+            "ASgOMhsubmVvLmZzLnYyLm9iamVjdC5NYXRjaFR5cGUSCwoDa2V5GAIgASgJ",
+            "Eg0KBXZhbHVlGAMgASgJIvoBCg5TZWFyY2hSZXNwb25zZRIzCgRib2R5GAEg",
+            "ASgLMiUubmVvLmZzLnYyLm9iamVjdC5TZWFyY2hSZXNwb25zZS5Cb2R5EjoK",
+            "C21ldGFfaGVhZGVyGAIgASgLMiUubmVvLmZzLnYyLnNlc3Npb24uUmVzcG9u",
+            "c2VNZXRhSGVhZGVyEkQKDXZlcmlmeV9oZWFkZXIYAyABKAsyLS5uZW8uZnMu",
+            "djIuc2Vzc2lvbi5SZXNwb25zZVZlcmlmaWNhdGlvbkhlYWRlchoxCgRCb2R5",
+            "EikKB2lkX2xpc3QYASADKAsyGC5uZW8uZnMudjIucmVmcy5PYmplY3RJRCIn",
+            "CgVSYW5nZRIOCgZvZmZzZXQYASABKAQSDgoGbGVuZ3RoGAIgASgEIq4CCg9H",
+            "ZXRSYW5nZVJlcXVlc3QSNAoEYm9keRgBIAEoCzImLm5lby5mcy52Mi5vYmpl",
+            "Y3QuR2V0UmFuZ2VSZXF1ZXN0LkJvZHkSOQoLbWV0YV9oZWFkZXIYAiABKAsy",
+            "JC5uZW8uZnMudjIuc2Vzc2lvbi5SZXF1ZXN0TWV0YUhlYWRlchJDCg12ZXJp",
+            "ZnlfaGVhZGVyGAMgASgLMiwubmVvLmZzLnYyLnNlc3Npb24uUmVxdWVzdFZl",
+            "cmlmaWNhdGlvbkhlYWRlchplCgRCb2R5EigKB2FkZHJlc3MYASABKAsyFy5u",
+            "ZW8uZnMudjIucmVmcy5BZGRyZXNzEiYKBXJhbmdlGAIgASgLMhcubmVvLmZz",
+            "LnYyLm9iamVjdC5SYW5nZRILCgNyYXcYAyABKAgipQIKEEdldFJhbmdlUmVz",
+            "cG9uc2USNQoEYm9keRgBIAEoCzInLm5lby5mcy52Mi5vYmplY3QuR2V0UmFu",
+            "Z2VSZXNwb25zZS5Cb2R5EjoKC21ldGFfaGVhZGVyGAIgASgLMiUubmVvLmZz",
+            "LnYyLnNlc3Npb24uUmVzcG9uc2VNZXRhSGVhZGVyEkQKDXZlcmlmeV9oZWFk",
+            "ZXIYAyABKAsyLS5uZW8uZnMudjIuc2Vzc2lvbi5SZXNwb25zZVZlcmlmaWNh",
+            "dGlvbkhlYWRlchpYCgRCb2R5Eg8KBWNodW5rGAEgASgMSAASMQoKc3BsaXRf",
+            "aW5mbxgCIAEoCzIbLm5lby5mcy52Mi5vYmplY3QuU3BsaXRJbmZvSABCDAoK",
+            "cmFuZ2VfcGFydCLlAgoTR2V0UmFuZ2VIYXNoUmVxdWVzdBI4CgRib2R5GAEg",
+            "ASgLMioubmVvLmZzLnYyLm9iamVjdC5HZXRSYW5nZUhhc2hSZXF1ZXN0LkJv",
+            "ZHkSOQoLbWV0YV9oZWFkZXIYAiABKAsyJC5uZW8uZnMudjIuc2Vzc2lvbi5S",
+            "ZXF1ZXN0TWV0YUhlYWRlchJDCg12ZXJpZnlfaGVhZGVyGAMgASgLMiwubmVv",
+            "LmZzLnYyLnNlc3Npb24uUmVxdWVzdFZlcmlmaWNhdGlvbkhlYWRlchqTAQoE",
+            "Qm9keRIoCgdhZGRyZXNzGAEgASgLMhcubmVvLmZzLnYyLnJlZnMuQWRkcmVz",
+            "cxInCgZyYW5nZXMYAiADKAsyFy5uZW8uZnMudjIub2JqZWN0LlJhbmdlEgwK",
+            "BHNhbHQYAyABKAwSKgoEdHlwZRgEIAEoDjIcLm5lby5mcy52Mi5yZWZzLkNo",
+            "ZWNrc3VtVHlwZSKaAgoUR2V0UmFuZ2VIYXNoUmVzcG9uc2USOQoEYm9keRgB",
+            "IAEoCzIrLm5lby5mcy52Mi5vYmplY3QuR2V0UmFuZ2VIYXNoUmVzcG9uc2Uu",
+            "Qm9keRI6CgttZXRhX2hlYWRlchgCIAEoCzIlLm5lby5mcy52Mi5zZXNzaW9u",
+            "LlJlc3BvbnNlTWV0YUhlYWRlchJECg12ZXJpZnlfaGVhZGVyGAMgASgLMi0u",
+            "bmVvLmZzLnYyLnNlc3Npb24uUmVzcG9uc2VWZXJpZmljYXRpb25IZWFkZXIa",
+            "RQoEQm9keRIqCgR0eXBlGAEgASgOMhwubmVvLmZzLnYyLnJlZnMuQ2hlY2tz",
+            "dW1UeXBlEhEKCWhhc2hfbGlzdBgCIAMoDDKyBAoNT2JqZWN0U2VydmljZRJE",
+            "CgNHZXQSHC5uZW8uZnMudjIub2JqZWN0LkdldFJlcXVlc3QaHS5uZW8uZnMu",
+            "djIub2JqZWN0LkdldFJlc3BvbnNlMAESRAoDUHV0EhwubmVvLmZzLnYyLm9i",
+            "amVjdC5QdXRSZXF1ZXN0Gh0ubmVvLmZzLnYyLm9iamVjdC5QdXRSZXNwb25z",
+            "ZSgBEksKBkRlbGV0ZRIfLm5lby5mcy52Mi5vYmplY3QuRGVsZXRlUmVxdWVz",
+            "dBogLm5lby5mcy52Mi5vYmplY3QuRGVsZXRlUmVzcG9uc2USRQoESGVhZBId",
+            "Lm5lby5mcy52Mi5vYmplY3QuSGVhZFJlcXVlc3QaHi5uZW8uZnMudjIub2Jq",
+            "ZWN0LkhlYWRSZXNwb25zZRJNCgZTZWFyY2gSHy5uZW8uZnMudjIub2JqZWN0",
+            "LlNlYXJjaFJlcXVlc3QaIC5uZW8uZnMudjIub2JqZWN0LlNlYXJjaFJlc3Bv",
+            "bnNlMAESUwoIR2V0UmFuZ2USIS5uZW8uZnMudjIub2JqZWN0LkdldFJhbmdl",
+            "UmVxdWVzdBoiLm5lby5mcy52Mi5vYmplY3QuR2V0UmFuZ2VSZXNwb25zZTAB",
+            "El0KDEdldFJhbmdlSGFzaBIlLm5lby5mcy52Mi5vYmplY3QuR2V0UmFuZ2VI",
+            "YXNoUmVxdWVzdBomLm5lby5mcy52Mi5vYmplY3QuR2V0UmFuZ2VIYXNoUmVz",
+            "cG9uc2VCT1o3Z2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3Yy",
+            "L29iamVjdC9ncnBjO29iamVjdKoCE05lb0ZTLkFQSS52Mi5PYmplY3RiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Object.TypesReflection.Descriptor, global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Session.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRequest), global::NeoFS.API.v2.Object.GetRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRequest.Types.Body), global::NeoFS.API.v2.Object.GetRequest.Types.Body.Parser, new[]{ "Address", "Raw" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetResponse), global::NeoFS.API.v2.Object.GetResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetResponse.Types.Body), global::NeoFS.API.v2.Object.GetResponse.Types.Body.Parser, new[]{ "Init", "Chunk" }, new[]{ "ObjectPart" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetResponse.Types.Body.Types.Init), global::NeoFS.API.v2.Object.GetResponse.Types.Body.Types.Init.Parser, new[]{ "ObjectId", "Signature", "Header" }, null, null, null, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetResponse), global::NeoFS.API.v2.Object.GetResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetResponse.Types.Body), global::NeoFS.API.v2.Object.GetResponse.Types.Body.Parser, new[]{ "Init", "Chunk", "SplitInfo" }, new[]{ "ObjectPart" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetResponse.Types.Body.Types.Init), global::NeoFS.API.v2.Object.GetResponse.Types.Body.Types.Init.Parser, new[]{ "ObjectId", "Signature", "Header" }, null, null, null, null)})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.PutRequest), global::NeoFS.API.v2.Object.PutRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.PutRequest.Types.Body), global::NeoFS.API.v2.Object.PutRequest.Types.Body.Parser, new[]{ "Init", "Chunk" }, new[]{ "ObjectPart" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.PutRequest.Types.Body.Types.Init), global::NeoFS.API.v2.Object.PutRequest.Types.Body.Types.Init.Parser, new[]{ "ObjectId", "Signature", "Header", "CopiesNumber" }, null, null, null, null)})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.PutResponse), global::NeoFS.API.v2.Object.PutResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.PutResponse.Types.Body), global::NeoFS.API.v2.Object.PutResponse.Types.Body.Parser, new[]{ "ObjectId" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.DeleteRequest), global::NeoFS.API.v2.Object.DeleteRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.DeleteRequest.Types.Body), global::NeoFS.API.v2.Object.DeleteRequest.Types.Body.Parser, new[]{ "Address" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.DeleteResponse), global::NeoFS.API.v2.Object.DeleteResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.DeleteResponse.Types.Body), global::NeoFS.API.v2.Object.DeleteResponse.Types.Body.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.DeleteResponse), global::NeoFS.API.v2.Object.DeleteResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.DeleteResponse.Types.Body), global::NeoFS.API.v2.Object.DeleteResponse.Types.Body.Parser, new[]{ "Tombstone" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.HeadRequest), global::NeoFS.API.v2.Object.HeadRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.HeadRequest.Types.Body), global::NeoFS.API.v2.Object.HeadRequest.Types.Body.Parser, new[]{ "Address", "MainOnly", "Raw" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.HeaderWithSignature), global::NeoFS.API.v2.Object.HeaderWithSignature.Parser, new[]{ "Header", "Signature" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.HeadResponse), global::NeoFS.API.v2.Object.HeadResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.HeadResponse.Types.Body), global::NeoFS.API.v2.Object.HeadResponse.Types.Body.Parser, new[]{ "Header", "ShortHeader" }, new[]{ "Head" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchRequest), global::NeoFS.API.v2.Object.SearchRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchRequest.Types.Body), global::NeoFS.API.v2.Object.SearchRequest.Types.Body.Parser, new[]{ "ContainerId", "Version", "Filters" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchRequest.Types.Body.Types.Filter), global::NeoFS.API.v2.Object.SearchRequest.Types.Body.Types.Filter.Parser, new[]{ "MatchType", "Name", "Value" }, null, null, null, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.HeadResponse), global::NeoFS.API.v2.Object.HeadResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.HeadResponse.Types.Body), global::NeoFS.API.v2.Object.HeadResponse.Types.Body.Parser, new[]{ "Header", "ShortHeader", "SplitInfo" }, new[]{ "Head" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchRequest), global::NeoFS.API.v2.Object.SearchRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchRequest.Types.Body), global::NeoFS.API.v2.Object.SearchRequest.Types.Body.Parser, new[]{ "ContainerId", "Version", "Filters" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchRequest.Types.Body.Types.Filter), global::NeoFS.API.v2.Object.SearchRequest.Types.Body.Types.Filter.Parser, new[]{ "MatchType", "Key", "Value" }, null, null, null, null)})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchResponse), global::NeoFS.API.v2.Object.SearchResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SearchResponse.Types.Body), global::NeoFS.API.v2.Object.SearchResponse.Types.Body.Parser, new[]{ "IdList" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Range), global::NeoFS.API.v2.Object.Range.Parser, new[]{ "Offset", "Length" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeRequest), global::NeoFS.API.v2.Object.GetRangeRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeRequest.Types.Body), global::NeoFS.API.v2.Object.GetRangeRequest.Types.Body.Parser, new[]{ "Address", "Range" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeResponse), global::NeoFS.API.v2.Object.GetRangeResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeResponse.Types.Body), global::NeoFS.API.v2.Object.GetRangeResponse.Types.Body.Parser, new[]{ "Chunk" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeRequest), global::NeoFS.API.v2.Object.GetRangeRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeRequest.Types.Body), global::NeoFS.API.v2.Object.GetRangeRequest.Types.Body.Parser, new[]{ "Address", "Range", "Raw" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeResponse), global::NeoFS.API.v2.Object.GetRangeResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeResponse.Types.Body), global::NeoFS.API.v2.Object.GetRangeResponse.Types.Body.Parser, new[]{ "Chunk", "SplitInfo" }, new[]{ "RangePart" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeHashRequest), global::NeoFS.API.v2.Object.GetRangeHashRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeHashRequest.Types.Body), global::NeoFS.API.v2.Object.GetRangeHashRequest.Types.Body.Parser, new[]{ "Address", "Ranges", "Salt", "Type" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeHashResponse), global::NeoFS.API.v2.Object.GetRangeHashResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.GetRangeHashResponse.Types.Body), global::NeoFS.API.v2.Object.GetRangeHashResponse.Types.Body.Parser, new[]{ "Type", "HashList" }, null, null, null, null)})
           }));
@@ -166,7 +172,7 @@ namespace NeoFS.API.v2.Object {
   }
   #region Messages
   /// <summary>
-  /// Get object request
+  /// GET object request
   /// </summary>
   public sealed partial class GetRequest : pb::IMessage<GetRequest> {
     private static readonly pb::MessageParser<GetRequest> _parser = new pb::MessageParser<GetRequest>(() => new GetRequest());
@@ -222,8 +228,8 @@ namespace NeoFS.API.v2.Object {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -237,8 +243,9 @@ namespace NeoFS.API.v2.Object {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -385,7 +392,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// GET Object request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -426,7 +433,7 @@ namespace NeoFS.API.v2.Object {
         public const int AddressFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.Address address_;
         /// <summary>
-        /// Address of the requested object.
+        /// Address of the requested object
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Address Address {
@@ -440,9 +447,8 @@ namespace NeoFS.API.v2.Object {
         public const int RawFieldNumber = 2;
         private bool raw_;
         /// <summary>
-        /// Carries the raw option flag of the request.
-        /// Raw request is sent to receive only the objects
-        /// that are physically stored on the server.
+        /// If `raw` flag is set, request will work only with objects that are
+        /// physically stored on the peer node
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public bool Raw {
@@ -564,7 +570,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// get object response
+  /// GET object response
   /// </summary>
   public sealed partial class GetResponse : pb::IMessage<GetResponse> {
     private static readonly pb::MessageParser<GetResponse> _parser = new pb::MessageParser<GetResponse>(() => new GetResponse());
@@ -636,8 +642,8 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -784,7 +790,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// GET Object Response body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -818,6 +824,9 @@ namespace NeoFS.API.v2.Object {
             case ObjectPartOneofCase.Chunk:
               Chunk = other.Chunk;
               break;
+            case ObjectPartOneofCase.SplitInfo:
+              SplitInfo = other.SplitInfo.Clone();
+              break;
           }
 
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -831,7 +840,7 @@ namespace NeoFS.API.v2.Object {
         /// <summary>Field number for the "init" field.</summary>
         public const int InitFieldNumber = 1;
         /// <summary>
-        /// Initialization parameters of the object stream.
+        /// Initial part of the object stream
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Object.GetResponse.Types.Body.Types.Init Init {
@@ -845,7 +854,7 @@ namespace NeoFS.API.v2.Object {
         /// <summary>Field number for the "chunk" field.</summary>
         public const int ChunkFieldNumber = 2;
         /// <summary>
-        /// Part of the object payload.
+        /// Chunked object payload
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString Chunk {
@@ -856,12 +865,27 @@ namespace NeoFS.API.v2.Object {
           }
         }
 
+        /// <summary>Field number for the "split_info" field.</summary>
+        public const int SplitInfoFieldNumber = 3;
+        /// <summary>
+        /// Meta information of split hierarchy for object assembly.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Object.SplitInfo SplitInfo {
+          get { return objectPartCase_ == ObjectPartOneofCase.SplitInfo ? (global::NeoFS.API.v2.Object.SplitInfo) objectPart_ : null; }
+          set {
+            objectPart_ = value;
+            objectPartCase_ = value == null ? ObjectPartOneofCase.None : ObjectPartOneofCase.SplitInfo;
+          }
+        }
+
         private object objectPart_;
         /// <summary>Enum of possible cases for the "object_part" oneof.</summary>
         public enum ObjectPartOneofCase {
           None = 0,
           Init = 1,
           Chunk = 2,
+          SplitInfo = 3,
         }
         private ObjectPartOneofCase objectPartCase_ = ObjectPartOneofCase.None;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -890,6 +914,7 @@ namespace NeoFS.API.v2.Object {
           }
           if (!object.Equals(Init, other.Init)) return false;
           if (Chunk != other.Chunk) return false;
+          if (!object.Equals(SplitInfo, other.SplitInfo)) return false;
           if (ObjectPartCase != other.ObjectPartCase) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
@@ -899,6 +924,7 @@ namespace NeoFS.API.v2.Object {
           int hash = 1;
           if (objectPartCase_ == ObjectPartOneofCase.Init) hash ^= Init.GetHashCode();
           if (objectPartCase_ == ObjectPartOneofCase.Chunk) hash ^= Chunk.GetHashCode();
+          if (objectPartCase_ == ObjectPartOneofCase.SplitInfo) hash ^= SplitInfo.GetHashCode();
           hash ^= (int) objectPartCase_;
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -921,6 +947,10 @@ namespace NeoFS.API.v2.Object {
             output.WriteRawTag(18);
             output.WriteBytes(Chunk);
           }
+          if (objectPartCase_ == ObjectPartOneofCase.SplitInfo) {
+            output.WriteRawTag(26);
+            output.WriteMessage(SplitInfo);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -934,6 +964,9 @@ namespace NeoFS.API.v2.Object {
           }
           if (objectPartCase_ == ObjectPartOneofCase.Chunk) {
             size += 1 + pb::CodedOutputStream.ComputeBytesSize(Chunk);
+          }
+          if (objectPartCase_ == ObjectPartOneofCase.SplitInfo) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(SplitInfo);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -955,6 +988,12 @@ namespace NeoFS.API.v2.Object {
               break;
             case ObjectPartOneofCase.Chunk:
               Chunk = other.Chunk;
+              break;
+            case ObjectPartOneofCase.SplitInfo:
+              if (SplitInfo == null) {
+                SplitInfo = new global::NeoFS.API.v2.Object.SplitInfo();
+              }
+              SplitInfo.MergeFrom(other.SplitInfo);
               break;
           }
 
@@ -982,6 +1021,15 @@ namespace NeoFS.API.v2.Object {
                 Chunk = input.ReadBytes();
                 break;
               }
+              case 26: {
+                global::NeoFS.API.v2.Object.SplitInfo subBuilder = new global::NeoFS.API.v2.Object.SplitInfo();
+                if (objectPartCase_ == ObjectPartOneofCase.SplitInfo) {
+                  subBuilder.MergeFrom(SplitInfo);
+                }
+                input.ReadMessage(subBuilder);
+                SplitInfo = subBuilder;
+                break;
+              }
             }
           }
         }
@@ -991,7 +1039,8 @@ namespace NeoFS.API.v2.Object {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
-          /// Initialization parameters of the object got from NeoFS.
+          /// Initial part of the `Object` structure stream. Technically it's a
+          /// set of all `Object` structure's fields except `payload`.
           /// </summary>
           public sealed partial class Init : pb::IMessage<Init> {
             private static readonly pb::MessageParser<Init> _parser = new pb::MessageParser<Init>(() => new Init());
@@ -1033,7 +1082,7 @@ namespace NeoFS.API.v2.Object {
             public const int ObjectIdFieldNumber = 1;
             private global::NeoFS.API.v2.Refs.ObjectID objectId_;
             /// <summary>
-            /// Object ID
+            /// Object's unique identifier.
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public global::NeoFS.API.v2.Refs.ObjectID ObjectId {
@@ -1047,7 +1096,7 @@ namespace NeoFS.API.v2.Object {
             public const int SignatureFieldNumber = 2;
             private global::NeoFS.API.v2.Refs.Signature signature_;
             /// <summary>
-            /// Object signature
+            /// Signed `ObjectID`
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public global::NeoFS.API.v2.Refs.Signature Signature {
@@ -1061,7 +1110,7 @@ namespace NeoFS.API.v2.Object {
             public const int HeaderFieldNumber = 3;
             private global::NeoFS.API.v2.Object.Header header_;
             /// <summary>
-            /// Object header.
+            /// Object metadata headers
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public global::NeoFS.API.v2.Object.Header Header {
@@ -1216,7 +1265,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Put object request
+  /// PUT object request
   /// </summary>
   public sealed partial class PutRequest : pb::IMessage<PutRequest> {
     private static readonly pb::MessageParser<PutRequest> _parser = new pb::MessageParser<PutRequest>(() => new PutRequest());
@@ -1272,8 +1321,8 @@ namespace NeoFS.API.v2.Object {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -1287,8 +1336,9 @@ namespace NeoFS.API.v2.Object {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -1435,7 +1485,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// PUT request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -1482,7 +1532,7 @@ namespace NeoFS.API.v2.Object {
         /// <summary>Field number for the "init" field.</summary>
         public const int InitFieldNumber = 1;
         /// <summary>
-        /// Carries the initialization parameters of the object stream.
+        /// Initial part of the object stream
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Object.PutRequest.Types.Body.Types.Init Init {
@@ -1496,7 +1546,7 @@ namespace NeoFS.API.v2.Object {
         /// <summary>Field number for the "chunk" field.</summary>
         public const int ChunkFieldNumber = 2;
         /// <summary>
-        /// Carries part of the object payload.
+        /// Chunked object payload
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString Chunk {
@@ -1642,7 +1692,8 @@ namespace NeoFS.API.v2.Object {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
-          /// Groups initialization parameters of object placement in NeoFS.
+          /// Newly created object structure parameters. If some optional parameters
+          /// are not set, they will be calculated by a peer node.
           /// </summary>
           public sealed partial class Init : pb::IMessage<Init> {
             private static readonly pb::MessageParser<Init> _parser = new pb::MessageParser<Init>(() => new Init());
@@ -1685,7 +1736,7 @@ namespace NeoFS.API.v2.Object {
             public const int ObjectIdFieldNumber = 1;
             private global::NeoFS.API.v2.Refs.ObjectID objectId_;
             /// <summary>
-            /// Object ID, where available
+            /// ObjectID if available.
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public global::NeoFS.API.v2.Refs.ObjectID ObjectId {
@@ -1699,7 +1750,7 @@ namespace NeoFS.API.v2.Object {
             public const int SignatureFieldNumber = 2;
             private global::NeoFS.API.v2.Refs.Signature signature_;
             /// <summary>
-            /// Object signature, were available
+            /// Object signature if available
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public global::NeoFS.API.v2.Refs.Signature Signature {
@@ -1713,7 +1764,7 @@ namespace NeoFS.API.v2.Object {
             public const int HeaderFieldNumber = 3;
             private global::NeoFS.API.v2.Object.Header header_;
             /// <summary>
-            /// Header of the object to save in the system.
+            /// Object's Header
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public global::NeoFS.API.v2.Object.Header Header {
@@ -1727,9 +1778,8 @@ namespace NeoFS.API.v2.Object {
             public const int CopiesNumberFieldNumber = 4;
             private uint copiesNumber_;
             /// <summary>
-            /// Number of the object copies to store within the RPC call.
-            /// Default zero value is processed according to the
-            /// container placement rules.
+            /// Number of the object copies to store within the RPC call. By default
+            /// object is processed according to the container's placement policy.
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public uint CopiesNumber {
@@ -1900,7 +1950,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Put object response
+  /// PUT Object response
   /// </summary>
   public sealed partial class PutResponse : pb::IMessage<PutResponse> {
     private static readonly pb::MessageParser<PutResponse> _parser = new pb::MessageParser<PutResponse>(() => new PutResponse());
@@ -1972,8 +2022,8 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -2120,7 +2170,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// PUT Object response body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -2160,8 +2210,7 @@ namespace NeoFS.API.v2.Object {
         public const int ObjectIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.ObjectID objectId_;
         /// <summary>
-        /// Carries identifier of the saved object.
-        /// It is used to access an object in the container.
+        /// Identifier of the saved object
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ObjectID ObjectId {
@@ -2267,7 +2316,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Object Delete request
+  /// Object DELETE request
   /// </summary>
   public sealed partial class DeleteRequest : pb::IMessage<DeleteRequest> {
     private static readonly pb::MessageParser<DeleteRequest> _parser = new pb::MessageParser<DeleteRequest>(() => new DeleteRequest());
@@ -2323,8 +2372,8 @@ namespace NeoFS.API.v2.Object {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -2338,8 +2387,9 @@ namespace NeoFS.API.v2.Object {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -2486,7 +2536,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Object DELETE request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -2526,7 +2576,7 @@ namespace NeoFS.API.v2.Object {
         public const int AddressFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.Address address_;
         /// <summary>
-        /// Carries the address of the object to be deleted.
+        /// Address of the object to be deleted
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Address Address {
@@ -2632,8 +2682,8 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// DeleteResponse is empty because we cannot guarantee permanent object removal
-  /// in distributed system.
+  /// DeleteResponse body is empty because we cannot guarantee permanent object
+  /// removal in distributed system.
   /// </summary>
   public sealed partial class DeleteResponse : pb::IMessage<DeleteResponse> {
     private static readonly pb::MessageParser<DeleteResponse> _parser = new pb::MessageParser<DeleteResponse>(() => new DeleteResponse());
@@ -2705,8 +2755,8 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -2853,7 +2903,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Object DELETE Response has an empty body.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -2880,12 +2930,27 @@ namespace NeoFS.API.v2.Object {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Body(Body other) : this() {
+          tombstone_ = other.tombstone_ != null ? other.tombstone_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Body Clone() {
           return new Body(this);
+        }
+
+        /// <summary>Field number for the "tombstone" field.</summary>
+        public const int TombstoneFieldNumber = 1;
+        private global::NeoFS.API.v2.Refs.Address tombstone_;
+        /// <summary>
+        /// Address of the tombstone created for the deleted object
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Refs.Address Tombstone {
+          get { return tombstone_; }
+          set {
+            tombstone_ = value;
+          }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2901,12 +2966,14 @@ namespace NeoFS.API.v2.Object {
           if (ReferenceEquals(other, this)) {
             return true;
           }
+          if (!object.Equals(Tombstone, other.Tombstone)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
+          if (tombstone_ != null) hash ^= Tombstone.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -2920,6 +2987,10 @@ namespace NeoFS.API.v2.Object {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+          if (tombstone_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Tombstone);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -2928,6 +2999,9 @@ namespace NeoFS.API.v2.Object {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
+          if (tombstone_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tombstone);
+          }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -2938,6 +3012,12 @@ namespace NeoFS.API.v2.Object {
         public void MergeFrom(Body other) {
           if (other == null) {
             return;
+          }
+          if (other.tombstone_ != null) {
+            if (tombstone_ == null) {
+              Tombstone = new global::NeoFS.API.v2.Refs.Address();
+            }
+            Tombstone.MergeFrom(other.Tombstone);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -2950,6 +3030,13 @@ namespace NeoFS.API.v2.Object {
               default:
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
+              case 10: {
+                if (tombstone_ == null) {
+                  Tombstone = new global::NeoFS.API.v2.Refs.Address();
+                }
+                input.ReadMessage(Tombstone);
+                break;
+              }
             }
           }
         }
@@ -2962,7 +3049,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Object head request
+  /// Object HEAD request
   /// </summary>
   public sealed partial class HeadRequest : pb::IMessage<HeadRequest> {
     private static readonly pb::MessageParser<HeadRequest> _parser = new pb::MessageParser<HeadRequest>(() => new HeadRequest());
@@ -3018,8 +3105,8 @@ namespace NeoFS.API.v2.Object {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -3033,8 +3120,9 @@ namespace NeoFS.API.v2.Object {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -3181,7 +3269,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Object HEAD request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -3223,7 +3311,7 @@ namespace NeoFS.API.v2.Object {
         public const int AddressFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.Address address_;
         /// <summary>
-        /// Address of the object with the requested header.
+        /// Address of the object with the requested Header
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Address Address {
@@ -3251,9 +3339,8 @@ namespace NeoFS.API.v2.Object {
         public const int RawFieldNumber = 3;
         private bool raw_;
         /// <summary>
-        /// Carries the raw option flag of the request.
-        /// Raw request is sent to receive only the headers of the objects
-        /// that are physically stored on the server.
+        /// If `raw` flag is set, request will work only with objects that are
+        /// physically stored on the peer node
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public bool Raw {
@@ -3391,7 +3478,13 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Tuple of full object header and signature of object ID.
+  /// Tuple of full object header and signature of `ObjectID`. \
+  /// Signed `ObjectID` is present to verify full header's authenticity through the
+  /// following steps:
+  ///
+  /// 1. Calculate `SHA-256` of marshalled `Header` structure
+  /// 2. Check if the resulting hash matched `ObjectID`
+  /// 3. Check if `ObjectID` signature in `signature` field is correct
   /// </summary>
   public sealed partial class HeaderWithSignature : pb::IMessage<HeaderWithSignature> {
     private static readonly pb::MessageParser<HeaderWithSignature> _parser = new pb::MessageParser<HeaderWithSignature>(() => new HeaderWithSignature());
@@ -3446,10 +3539,7 @@ namespace NeoFS.API.v2.Object {
     public const int SignatureFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.Signature signature_;
     /// <summary>
-    /// Signed object_id to verify full header's authenticity through following steps:
-    /// 1. Calculate SHA-256 of marshalled Headers structure.
-    /// 2. Check if the resulting hash matched ObjectID
-    /// 3. Check if ObjectID's signature in signature field is correct.
+    /// Signed `ObjectID` to verify full header's authenticity
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Signature Signature {
@@ -3572,7 +3662,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Head response
+  /// Object HEAD response
   /// </summary>
   public sealed partial class HeadResponse : pb::IMessage<HeadResponse> {
     private static readonly pb::MessageParser<HeadResponse> _parser = new pb::MessageParser<HeadResponse>(() => new HeadResponse());
@@ -3644,8 +3734,8 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -3792,7 +3882,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Object HEAD response body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -3826,6 +3916,9 @@ namespace NeoFS.API.v2.Object {
             case HeadOneofCase.ShortHeader:
               ShortHeader = other.ShortHeader.Clone();
               break;
+            case HeadOneofCase.SplitInfo:
+              SplitInfo = other.SplitInfo.Clone();
+              break;
           }
 
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -3839,7 +3932,7 @@ namespace NeoFS.API.v2.Object {
         /// <summary>Field number for the "header" field.</summary>
         public const int HeaderFieldNumber = 1;
         /// <summary>
-        /// Full object header with object ID signature
+        /// Full object's `Header` with `ObjectID` signature
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Object.HeaderWithSignature Header {
@@ -3864,12 +3957,27 @@ namespace NeoFS.API.v2.Object {
           }
         }
 
+        /// <summary>Field number for the "split_info" field.</summary>
+        public const int SplitInfoFieldNumber = 3;
+        /// <summary>
+        /// Meta information of split hierarchy.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Object.SplitInfo SplitInfo {
+          get { return headCase_ == HeadOneofCase.SplitInfo ? (global::NeoFS.API.v2.Object.SplitInfo) head_ : null; }
+          set {
+            head_ = value;
+            headCase_ = value == null ? HeadOneofCase.None : HeadOneofCase.SplitInfo;
+          }
+        }
+
         private object head_;
         /// <summary>Enum of possible cases for the "head" oneof.</summary>
         public enum HeadOneofCase {
           None = 0,
           Header = 1,
           ShortHeader = 2,
+          SplitInfo = 3,
         }
         private HeadOneofCase headCase_ = HeadOneofCase.None;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3898,6 +4006,7 @@ namespace NeoFS.API.v2.Object {
           }
           if (!object.Equals(Header, other.Header)) return false;
           if (!object.Equals(ShortHeader, other.ShortHeader)) return false;
+          if (!object.Equals(SplitInfo, other.SplitInfo)) return false;
           if (HeadCase != other.HeadCase) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
@@ -3907,6 +4016,7 @@ namespace NeoFS.API.v2.Object {
           int hash = 1;
           if (headCase_ == HeadOneofCase.Header) hash ^= Header.GetHashCode();
           if (headCase_ == HeadOneofCase.ShortHeader) hash ^= ShortHeader.GetHashCode();
+          if (headCase_ == HeadOneofCase.SplitInfo) hash ^= SplitInfo.GetHashCode();
           hash ^= (int) headCase_;
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -3929,6 +4039,10 @@ namespace NeoFS.API.v2.Object {
             output.WriteRawTag(18);
             output.WriteMessage(ShortHeader);
           }
+          if (headCase_ == HeadOneofCase.SplitInfo) {
+            output.WriteRawTag(26);
+            output.WriteMessage(SplitInfo);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -3942,6 +4056,9 @@ namespace NeoFS.API.v2.Object {
           }
           if (headCase_ == HeadOneofCase.ShortHeader) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(ShortHeader);
+          }
+          if (headCase_ == HeadOneofCase.SplitInfo) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(SplitInfo);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -3966,6 +4083,12 @@ namespace NeoFS.API.v2.Object {
                 ShortHeader = new global::NeoFS.API.v2.Object.ShortHeader();
               }
               ShortHeader.MergeFrom(other.ShortHeader);
+              break;
+            case HeadOneofCase.SplitInfo:
+              if (SplitInfo == null) {
+                SplitInfo = new global::NeoFS.API.v2.Object.SplitInfo();
+              }
+              SplitInfo.MergeFrom(other.SplitInfo);
               break;
           }
 
@@ -3998,6 +4121,15 @@ namespace NeoFS.API.v2.Object {
                 ShortHeader = subBuilder;
                 break;
               }
+              case 26: {
+                global::NeoFS.API.v2.Object.SplitInfo subBuilder = new global::NeoFS.API.v2.Object.SplitInfo();
+                if (headCase_ == HeadOneofCase.SplitInfo) {
+                  subBuilder.MergeFrom(SplitInfo);
+                }
+                input.ReadMessage(subBuilder);
+                SplitInfo = subBuilder;
+                break;
+              }
             }
           }
         }
@@ -4010,7 +4142,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Search objects request
+  /// Object Search request
   /// </summary>
   public sealed partial class SearchRequest : pb::IMessage<SearchRequest> {
     private static readonly pb::MessageParser<SearchRequest> _parser = new pb::MessageParser<SearchRequest>(() => new SearchRequest());
@@ -4066,8 +4198,8 @@ namespace NeoFS.API.v2.Object {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -4081,8 +4213,9 @@ namespace NeoFS.API.v2.Object {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -4229,7 +4362,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Object Search request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -4271,7 +4404,7 @@ namespace NeoFS.API.v2.Object {
         public const int ContainerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.ContainerID containerId_;
         /// <summary>
-        /// Carries search container identifier.
+        /// Container identifier were to search
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
@@ -4426,7 +4559,51 @@ namespace NeoFS.API.v2.Object {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
-          /// Filter structure
+          /// Filter structure checks if object header field or attribute content
+          /// matches a value.
+          ///
+          /// By default `key` field refers to the corresponding object's `Attribute`.
+          /// Some Object's header fields can also be accessed by adding `$Object:`
+          /// prefix to the name. Here is the list of fields available via this prefix:
+          ///
+          /// * $Object:version \
+          ///   version
+          /// * $Object:objectID \
+          ///   object_id
+          /// * $Object:containerID \
+          ///   container_id
+          /// * $Object:ownerID \
+          ///   owner_id
+          /// * $Object:creationEpoch \
+          ///   creation_epoch
+          /// * $Object:payloadLength \
+          ///   payload_length
+          /// * $Object:payloadHash \
+          ///   payload_hash
+          /// * $Object:objectType \
+          ///   object_type
+          /// * $Object:homomorphicHash \
+          ///   homomorphic_hash
+          /// * $Object:split.parent \
+          ///   object_id of parent
+          /// * $Object:split.splitID \
+          ///   16 byte UUIDv4 used to identify the split object hierarchy parts
+          ///
+          /// There are some well-known filter aliases to match objects by certain
+          /// properties:
+          ///
+          /// * $Object:ROOT \
+          ///   Returns only `REGULAR` type objects that are not split or are the top
+          ///   level root objects in a split hierarchy. This includes objects not
+          ///   present physically, like large objects split into smaller objects
+          ///   without separate top-level root object. Other type objects like
+          ///   StorageGroups and Tombstones will not be shown. This filter may be
+          ///   useful for listing objects like `ls` command of some virtual file
+          ///   system. This filter is activated if the `key` exists, disregarding the
+          ///   value and matcher type.
+          /// * $Object:PHY \
+          ///   Returns only objects physically stored in the system. This filter is
+          ///   activated if the `key` exists, disregarding the value and matcher type.
           /// </summary>
           public sealed partial class Filter : pb::IMessage<Filter> {
             private static readonly pb::MessageParser<Filter> _parser = new pb::MessageParser<Filter>(() => new Filter());
@@ -4454,7 +4631,7 @@ namespace NeoFS.API.v2.Object {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public Filter(Filter other) : this() {
               matchType_ = other.matchType_;
-              name_ = other.name_;
+              key_ = other.key_;
               value_ = other.value_;
               _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
             }
@@ -4478,17 +4655,17 @@ namespace NeoFS.API.v2.Object {
               }
             }
 
-            /// <summary>Field number for the "name" field.</summary>
-            public const int NameFieldNumber = 2;
-            private string name_ = "";
+            /// <summary>Field number for the "key" field.</summary>
+            public const int KeyFieldNumber = 2;
+            private string key_ = "";
             /// <summary>
-            /// Header name to match
+            /// Attribute or Header fields to match
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public string Name {
-              get { return name_; }
+            public string Key {
+              get { return key_; }
               set {
-                name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
               }
             }
 
@@ -4496,7 +4673,7 @@ namespace NeoFS.API.v2.Object {
             public const int ValueFieldNumber = 3;
             private string value_ = "";
             /// <summary>
-            /// Header value to match
+            /// Value to match
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public string Value {
@@ -4520,7 +4697,7 @@ namespace NeoFS.API.v2.Object {
                 return true;
               }
               if (MatchType != other.MatchType) return false;
-              if (Name != other.Name) return false;
+              if (Key != other.Key) return false;
               if (Value != other.Value) return false;
               return Equals(_unknownFields, other._unknownFields);
             }
@@ -4529,7 +4706,7 @@ namespace NeoFS.API.v2.Object {
             public override int GetHashCode() {
               int hash = 1;
               if (MatchType != global::NeoFS.API.v2.Object.MatchType.Unspecified) hash ^= MatchType.GetHashCode();
-              if (Name.Length != 0) hash ^= Name.GetHashCode();
+              if (Key.Length != 0) hash ^= Key.GetHashCode();
               if (Value.Length != 0) hash ^= Value.GetHashCode();
               if (_unknownFields != null) {
                 hash ^= _unknownFields.GetHashCode();
@@ -4548,9 +4725,9 @@ namespace NeoFS.API.v2.Object {
                 output.WriteRawTag(8);
                 output.WriteEnum((int) MatchType);
               }
-              if (Name.Length != 0) {
+              if (Key.Length != 0) {
                 output.WriteRawTag(18);
-                output.WriteString(Name);
+                output.WriteString(Key);
               }
               if (Value.Length != 0) {
                 output.WriteRawTag(26);
@@ -4567,8 +4744,8 @@ namespace NeoFS.API.v2.Object {
               if (MatchType != global::NeoFS.API.v2.Object.MatchType.Unspecified) {
                 size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MatchType);
               }
-              if (Name.Length != 0) {
-                size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+              if (Key.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
               }
               if (Value.Length != 0) {
                 size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
@@ -4587,8 +4764,8 @@ namespace NeoFS.API.v2.Object {
               if (other.MatchType != global::NeoFS.API.v2.Object.MatchType.Unspecified) {
                 MatchType = other.MatchType;
               }
-              if (other.Name.Length != 0) {
-                Name = other.Name;
+              if (other.Key.Length != 0) {
+                Key = other.Key;
               }
               if (other.Value.Length != 0) {
                 Value = other.Value;
@@ -4609,7 +4786,7 @@ namespace NeoFS.API.v2.Object {
                     break;
                   }
                   case 18: {
-                    Name = input.ReadString();
+                    Key = input.ReadString();
                     break;
                   }
                   case 26: {
@@ -4705,8 +4882,8 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -4853,7 +5030,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Object Search response body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -4895,7 +5072,7 @@ namespace NeoFS.API.v2.Object {
             = pb::FieldCodec.ForMessage(10, global::NeoFS.API.v2.Refs.ObjectID.Parser);
         private readonly pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> idList_ = new pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID>();
         /// <summary>
-        /// Carries list of object identifiers that match the search query
+        /// List of `ObjectID`s that match the search query
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> IdList {
@@ -4985,7 +5162,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Range groups the parameters of object payload range.
+  /// Object payload range.Ranges of zero length SHOULD be considered as invalid.
   /// </summary>
   public sealed partial class Range : pb::IMessage<Range> {
     private static readonly pb::MessageParser<Range> _parser = new pb::MessageParser<Range>(() => new Range());
@@ -5026,7 +5203,7 @@ namespace NeoFS.API.v2.Object {
     public const int OffsetFieldNumber = 1;
     private ulong offset_;
     /// <summary>
-    /// Carries the offset of the range from the object payload start.
+    /// Offset of the range from the object payload start
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong Offset {
@@ -5040,7 +5217,7 @@ namespace NeoFS.API.v2.Object {
     public const int LengthFieldNumber = 2;
     private ulong length_;
     /// <summary>
-    /// Carries the length of the object payload range.
+    /// Length in bytes of the object payload range
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong Length {
@@ -5151,7 +5328,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Request to get part of object's payload
+  /// Request part of object's payload
   /// </summary>
   public sealed partial class GetRangeRequest : pb::IMessage<GetRangeRequest> {
     private static readonly pb::MessageParser<GetRangeRequest> _parser = new pb::MessageParser<GetRangeRequest>(() => new GetRangeRequest());
@@ -5207,8 +5384,8 @@ namespace NeoFS.API.v2.Object {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -5222,8 +5399,9 @@ namespace NeoFS.API.v2.Object {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -5370,7 +5548,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request Body
+      /// Byte range of object's payload request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -5399,6 +5577,7 @@ namespace NeoFS.API.v2.Object {
         public Body(Body other) : this() {
           address_ = other.address_ != null ? other.address_.Clone() : null;
           range_ = other.range_ != null ? other.range_.Clone() : null;
+          raw_ = other.raw_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -5411,7 +5590,7 @@ namespace NeoFS.API.v2.Object {
         public const int AddressFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.Address address_;
         /// <summary>
-        /// Address carries address of the object that contains the requested payload range.
+        /// Address of the object containing the requested payload range
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Address Address {
@@ -5425,13 +5604,28 @@ namespace NeoFS.API.v2.Object {
         public const int RangeFieldNumber = 2;
         private global::NeoFS.API.v2.Object.Range range_;
         /// <summary>
-        /// Range carries the parameters of the requested payload range.
+        /// Requested payload range
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Object.Range Range {
           get { return range_; }
           set {
             range_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "raw" field.</summary>
+        public const int RawFieldNumber = 3;
+        private bool raw_;
+        /// <summary>
+        /// If `raw` flag is set, request will work only with objects that are
+        /// physically stored on the peer node.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Raw {
+          get { return raw_; }
+          set {
+            raw_ = value;
           }
         }
 
@@ -5450,6 +5644,7 @@ namespace NeoFS.API.v2.Object {
           }
           if (!object.Equals(Address, other.Address)) return false;
           if (!object.Equals(Range, other.Range)) return false;
+          if (Raw != other.Raw) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -5458,6 +5653,7 @@ namespace NeoFS.API.v2.Object {
           int hash = 1;
           if (address_ != null) hash ^= Address.GetHashCode();
           if (range_ != null) hash ^= Range.GetHashCode();
+          if (Raw != false) hash ^= Raw.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -5479,6 +5675,10 @@ namespace NeoFS.API.v2.Object {
             output.WriteRawTag(18);
             output.WriteMessage(Range);
           }
+          if (Raw != false) {
+            output.WriteRawTag(24);
+            output.WriteBool(Raw);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -5492,6 +5692,9 @@ namespace NeoFS.API.v2.Object {
           }
           if (range_ != null) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(Range);
+          }
+          if (Raw != false) {
+            size += 1 + 1;
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -5516,6 +5719,9 @@ namespace NeoFS.API.v2.Object {
             }
             Range.MergeFrom(other.Range);
           }
+          if (other.Raw != false) {
+            Raw = other.Raw;
+          }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -5539,6 +5745,10 @@ namespace NeoFS.API.v2.Object {
                   Range = new global::NeoFS.API.v2.Object.Range();
                 }
                 input.ReadMessage(Range);
+                break;
+              }
+              case 24: {
+                Raw = input.ReadBool();
                 break;
               }
             }
@@ -5625,8 +5835,8 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -5773,7 +5983,10 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Get Range response body uses streams to transfer the response. Because
+      /// object payload considered a byte sequence, there is no need to have some
+      /// initial preamble message. The requested byte range is sent as a series
+      /// chunks.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -5800,7 +6013,15 @@ namespace NeoFS.API.v2.Object {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Body(Body other) : this() {
-          chunk_ = other.chunk_;
+          switch (other.RangePartCase) {
+            case RangePartOneofCase.Chunk:
+              Chunk = other.Chunk;
+              break;
+            case RangePartOneofCase.SplitInfo:
+              SplitInfo = other.SplitInfo.Clone();
+              break;
+          }
+
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -5811,16 +6032,49 @@ namespace NeoFS.API.v2.Object {
 
         /// <summary>Field number for the "chunk" field.</summary>
         public const int ChunkFieldNumber = 1;
-        private pb::ByteString chunk_ = pb::ByteString.Empty;
         /// <summary>
-        /// Carries part of the object payload.
+        /// Chunked object payload's range.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString Chunk {
-          get { return chunk_; }
+          get { return rangePartCase_ == RangePartOneofCase.Chunk ? (pb::ByteString) rangePart_ : pb::ByteString.Empty; }
           set {
-            chunk_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            rangePart_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            rangePartCase_ = RangePartOneofCase.Chunk;
           }
+        }
+
+        /// <summary>Field number for the "split_info" field.</summary>
+        public const int SplitInfoFieldNumber = 2;
+        /// <summary>
+        /// Meta information of split hierarchy.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::NeoFS.API.v2.Object.SplitInfo SplitInfo {
+          get { return rangePartCase_ == RangePartOneofCase.SplitInfo ? (global::NeoFS.API.v2.Object.SplitInfo) rangePart_ : null; }
+          set {
+            rangePart_ = value;
+            rangePartCase_ = value == null ? RangePartOneofCase.None : RangePartOneofCase.SplitInfo;
+          }
+        }
+
+        private object rangePart_;
+        /// <summary>Enum of possible cases for the "range_part" oneof.</summary>
+        public enum RangePartOneofCase {
+          None = 0,
+          Chunk = 1,
+          SplitInfo = 2,
+        }
+        private RangePartOneofCase rangePartCase_ = RangePartOneofCase.None;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public RangePartOneofCase RangePartCase {
+          get { return rangePartCase_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void ClearRangePart() {
+          rangePartCase_ = RangePartOneofCase.None;
+          rangePart_ = null;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5837,13 +6091,17 @@ namespace NeoFS.API.v2.Object {
             return true;
           }
           if (Chunk != other.Chunk) return false;
+          if (!object.Equals(SplitInfo, other.SplitInfo)) return false;
+          if (RangePartCase != other.RangePartCase) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (Chunk.Length != 0) hash ^= Chunk.GetHashCode();
+          if (rangePartCase_ == RangePartOneofCase.Chunk) hash ^= Chunk.GetHashCode();
+          if (rangePartCase_ == RangePartOneofCase.SplitInfo) hash ^= SplitInfo.GetHashCode();
+          hash ^= (int) rangePartCase_;
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -5857,9 +6115,13 @@ namespace NeoFS.API.v2.Object {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (Chunk.Length != 0) {
+          if (rangePartCase_ == RangePartOneofCase.Chunk) {
             output.WriteRawTag(10);
             output.WriteBytes(Chunk);
+          }
+          if (rangePartCase_ == RangePartOneofCase.SplitInfo) {
+            output.WriteRawTag(18);
+            output.WriteMessage(SplitInfo);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -5869,8 +6131,11 @@ namespace NeoFS.API.v2.Object {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (Chunk.Length != 0) {
+          if (rangePartCase_ == RangePartOneofCase.Chunk) {
             size += 1 + pb::CodedOutputStream.ComputeBytesSize(Chunk);
+          }
+          if (rangePartCase_ == RangePartOneofCase.SplitInfo) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(SplitInfo);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -5883,9 +6148,18 @@ namespace NeoFS.API.v2.Object {
           if (other == null) {
             return;
           }
-          if (other.Chunk.Length != 0) {
-            Chunk = other.Chunk;
+          switch (other.RangePartCase) {
+            case RangePartOneofCase.Chunk:
+              Chunk = other.Chunk;
+              break;
+            case RangePartOneofCase.SplitInfo:
+              if (SplitInfo == null) {
+                SplitInfo = new global::NeoFS.API.v2.Object.SplitInfo();
+              }
+              SplitInfo.MergeFrom(other.SplitInfo);
+              break;
           }
+
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -5899,6 +6173,15 @@ namespace NeoFS.API.v2.Object {
                 break;
               case 10: {
                 Chunk = input.ReadBytes();
+                break;
+              }
+              case 18: {
+                global::NeoFS.API.v2.Object.SplitInfo subBuilder = new global::NeoFS.API.v2.Object.SplitInfo();
+                if (rangePartCase_ == RangePartOneofCase.SplitInfo) {
+                  subBuilder.MergeFrom(SplitInfo);
+                }
+                input.ReadMessage(subBuilder);
+                SplitInfo = subBuilder;
                 break;
               }
             }
@@ -5969,8 +6252,8 @@ namespace NeoFS.API.v2.Object {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -5984,8 +6267,9 @@ namespace NeoFS.API.v2.Object {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -6132,7 +6416,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Get hash of object's payload part request body.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -6175,7 +6459,7 @@ namespace NeoFS.API.v2.Object {
         public const int AddressFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.Address address_;
         /// <summary>
-        /// Carries address of the object that contains the requested payload range.
+        /// Address of the object that containing the requested payload range
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Address Address {
@@ -6191,7 +6475,7 @@ namespace NeoFS.API.v2.Object {
             = pb::FieldCodec.ForMessage(18, global::NeoFS.API.v2.Object.Range.Parser);
         private readonly pbc::RepeatedField<global::NeoFS.API.v2.Object.Range> ranges_ = new pbc::RepeatedField<global::NeoFS.API.v2.Object.Range>();
         /// <summary>
-        /// Carries the list of object payload range to calculate homomorphic hash.
+        /// List of object's payload ranges to calculate homomorphic hash
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<global::NeoFS.API.v2.Object.Range> Ranges {
@@ -6202,7 +6486,7 @@ namespace NeoFS.API.v2.Object {
         public const int SaltFieldNumber = 3;
         private pb::ByteString salt_ = pb::ByteString.Empty;
         /// <summary>
-        /// Carries binary salt to XOR object payload ranges before hash calculation.
+        /// Binary salt to XOR object's payload ranges before hash calculation
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString Salt {
@@ -6435,8 +6719,8 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -6583,7 +6867,7 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Get hash of object's payload part response body.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -6640,7 +6924,7 @@ namespace NeoFS.API.v2.Object {
             = pb::FieldCodec.ForBytes(18);
         private readonly pbc::RepeatedField<pb::ByteString> hashList_ = new pbc::RepeatedField<pb::ByteString>();
         /// <summary>
-        /// List of range hashes in a binary format.
+        /// List of range hashes in a binary format
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<pb::ByteString> HashList {

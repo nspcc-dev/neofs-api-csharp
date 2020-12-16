@@ -9,8 +9,10 @@ using grpc = global::Grpc.Core;
 
 namespace NeoFS.API.v2.Container {
   /// <summary>
-  /// ContainerService provides API to access container smart-contract in morph chain
-  /// via NeoFS node.
+  /// `ContainerService` provides API to interact with `Container` smart contract
+  /// in NeoFS sidechain via other NeoFS nodes. All of those actions can be done
+  /// equivalently by directly issuing transactions and RPC calls to sidechain
+  /// nodes.
   /// </summary>
   public static partial class ContainerService
   {
@@ -82,10 +84,10 @@ namespace NeoFS.API.v2.Container {
     public abstract partial class ContainerServiceBase
     {
       /// <summary>
-      /// Put invokes 'Put' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// added into smart-contract storage.
+      /// `Put` invokes `Container` smart contract's `Put` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -96,10 +98,10 @@ namespace NeoFS.API.v2.Container {
       }
 
       /// <summary>
-      /// Delete invokes 'Delete' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// removed from smart-contract storage.
+      /// `Delete` invokes `Container` smart contract's `Delete` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -110,7 +112,7 @@ namespace NeoFS.API.v2.Container {
       }
 
       /// <summary>
-      /// Get returns container from container smart-contract storage.
+      /// Returns container structure from `Container` smart contract storage.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -121,8 +123,7 @@ namespace NeoFS.API.v2.Container {
       }
 
       /// <summary>
-      /// List returns all owner's containers from container smart-contract
-      /// storage.
+      /// Returns all owner's containers from 'Container` smart contract' storage.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -133,9 +134,9 @@ namespace NeoFS.API.v2.Container {
       }
 
       /// <summary>
-      /// SetExtendedACL invokes 'SetEACL' method in container smart-contract and
-      /// returns response immediately. After new block in morph chain,
-      /// Extended ACL added into smart-contract storage.
+      /// Invokes 'SetEACL' method of 'Container` smart contract and returns response
+      /// immediately. After one more block in sidechain, Extended ACL changes are
+      /// added into smart contract storage.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -146,8 +147,8 @@ namespace NeoFS.API.v2.Container {
       }
 
       /// <summary>
-      /// GetExtendedACL returns Extended ACL table and signature from container
-      /// smart-contract storage.
+      /// Returns Extended ACL table and signature from `Container` smart contract
+      /// storage.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -183,10 +184,10 @@ namespace NeoFS.API.v2.Container {
       }
 
       /// <summary>
-      /// Put invokes 'Put' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// added into smart-contract storage.
+      /// `Put` invokes `Container` smart contract's `Put` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -198,10 +199,10 @@ namespace NeoFS.API.v2.Container {
         return Put(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Put invokes 'Put' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// added into smart-contract storage.
+      /// `Put` invokes `Container` smart contract's `Put` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -211,10 +212,10 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.BlockingUnaryCall(__Method_Put, null, options, request);
       }
       /// <summary>
-      /// Put invokes 'Put' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// added into smart-contract storage.
+      /// `Put` invokes `Container` smart contract's `Put` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -226,10 +227,10 @@ namespace NeoFS.API.v2.Container {
         return PutAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Put invokes 'Put' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// added into smart-contract storage.
+      /// `Put` invokes `Container` smart contract's `Put` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -239,10 +240,10 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.AsyncUnaryCall(__Method_Put, null, options, request);
       }
       /// <summary>
-      /// Delete invokes 'Delete' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// removed from smart-contract storage.
+      /// `Delete` invokes `Container` smart contract's `Delete` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -254,10 +255,10 @@ namespace NeoFS.API.v2.Container {
         return Delete(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Delete invokes 'Delete' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// removed from smart-contract storage.
+      /// `Delete` invokes `Container` smart contract's `Delete` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -267,10 +268,10 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.BlockingUnaryCall(__Method_Delete, null, options, request);
       }
       /// <summary>
-      /// Delete invokes 'Delete' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// removed from smart-contract storage.
+      /// `Delete` invokes `Container` smart contract's `Delete` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -282,10 +283,10 @@ namespace NeoFS.API.v2.Container {
         return DeleteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Delete invokes 'Delete' method in container smart-contract and returns
-      /// response immediately. After new block in morph chain, request is verified
-      /// by inner ring nodes. After one more block in morph chain, container
-      /// removed from smart-contract storage.
+      /// `Delete` invokes `Container` smart contract's `Delete` method and returns
+      /// response immediately. After a new block is issued in sidechain, request is
+      /// verified by Inner Ring nodes. After one more block in sidechain, container
+      /// is added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -295,7 +296,7 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.AsyncUnaryCall(__Method_Delete, null, options, request);
       }
       /// <summary>
-      /// Get returns container from container smart-contract storage.
+      /// Returns container structure from `Container` smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -307,7 +308,7 @@ namespace NeoFS.API.v2.Container {
         return Get(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Get returns container from container smart-contract storage.
+      /// Returns container structure from `Container` smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -317,7 +318,7 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.BlockingUnaryCall(__Method_Get, null, options, request);
       }
       /// <summary>
-      /// Get returns container from container smart-contract storage.
+      /// Returns container structure from `Container` smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -329,7 +330,7 @@ namespace NeoFS.API.v2.Container {
         return GetAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Get returns container from container smart-contract storage.
+      /// Returns container structure from `Container` smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -339,8 +340,7 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.AsyncUnaryCall(__Method_Get, null, options, request);
       }
       /// <summary>
-      /// List returns all owner's containers from container smart-contract
-      /// storage.
+      /// Returns all owner's containers from 'Container` smart contract' storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -352,8 +352,7 @@ namespace NeoFS.API.v2.Container {
         return List(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// List returns all owner's containers from container smart-contract
-      /// storage.
+      /// Returns all owner's containers from 'Container` smart contract' storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -363,8 +362,7 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.BlockingUnaryCall(__Method_List, null, options, request);
       }
       /// <summary>
-      /// List returns all owner's containers from container smart-contract
-      /// storage.
+      /// Returns all owner's containers from 'Container` smart contract' storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -376,8 +374,7 @@ namespace NeoFS.API.v2.Container {
         return ListAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// List returns all owner's containers from container smart-contract
-      /// storage.
+      /// Returns all owner's containers from 'Container` smart contract' storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -387,9 +384,9 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.AsyncUnaryCall(__Method_List, null, options, request);
       }
       /// <summary>
-      /// SetExtendedACL invokes 'SetEACL' method in container smart-contract and
-      /// returns response immediately. After new block in morph chain,
-      /// Extended ACL added into smart-contract storage.
+      /// Invokes 'SetEACL' method of 'Container` smart contract and returns response
+      /// immediately. After one more block in sidechain, Extended ACL changes are
+      /// added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -401,9 +398,9 @@ namespace NeoFS.API.v2.Container {
         return SetExtendedACL(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// SetExtendedACL invokes 'SetEACL' method in container smart-contract and
-      /// returns response immediately. After new block in morph chain,
-      /// Extended ACL added into smart-contract storage.
+      /// Invokes 'SetEACL' method of 'Container` smart contract and returns response
+      /// immediately. After one more block in sidechain, Extended ACL changes are
+      /// added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -413,9 +410,9 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.BlockingUnaryCall(__Method_SetExtendedACL, null, options, request);
       }
       /// <summary>
-      /// SetExtendedACL invokes 'SetEACL' method in container smart-contract and
-      /// returns response immediately. After new block in morph chain,
-      /// Extended ACL added into smart-contract storage.
+      /// Invokes 'SetEACL' method of 'Container` smart contract and returns response
+      /// immediately. After one more block in sidechain, Extended ACL changes are
+      /// added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -427,9 +424,9 @@ namespace NeoFS.API.v2.Container {
         return SetExtendedACLAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// SetExtendedACL invokes 'SetEACL' method in container smart-contract and
-      /// returns response immediately. After new block in morph chain,
-      /// Extended ACL added into smart-contract storage.
+      /// Invokes 'SetEACL' method of 'Container` smart contract and returns response
+      /// immediately. After one more block in sidechain, Extended ACL changes are
+      /// added into smart contract storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -439,8 +436,8 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.AsyncUnaryCall(__Method_SetExtendedACL, null, options, request);
       }
       /// <summary>
-      /// GetExtendedACL returns Extended ACL table and signature from container
-      /// smart-contract storage.
+      /// Returns Extended ACL table and signature from `Container` smart contract
+      /// storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -452,8 +449,8 @@ namespace NeoFS.API.v2.Container {
         return GetExtendedACL(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// GetExtendedACL returns Extended ACL table and signature from container
-      /// smart-contract storage.
+      /// Returns Extended ACL table and signature from `Container` smart contract
+      /// storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -463,8 +460,8 @@ namespace NeoFS.API.v2.Container {
         return CallInvoker.BlockingUnaryCall(__Method_GetExtendedACL, null, options, request);
       }
       /// <summary>
-      /// GetExtendedACL returns Extended ACL table and signature from container
-      /// smart-contract storage.
+      /// Returns Extended ACL table and signature from `Container` smart contract
+      /// storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -476,8 +473,8 @@ namespace NeoFS.API.v2.Container {
         return GetExtendedACLAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// GetExtendedACL returns Extended ACL table and signature from container
-      /// smart-contract storage.
+      /// Returns Extended ACL table and signature from `Container` smart contract
+      /// storage.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

@@ -74,5 +74,21 @@ namespace NeoFS.API.v2.Object
             if (!VerifyPayloadChecksum()) return false;
             return true;
         }
+
+        public Object Parent()
+        {
+            var splitHeader = Header?.Split;
+            if (splitHeader is null) return null;
+            var parentSig = splitHeader.ParentSignature;
+            var parentHeader = splitHeader.ParentHeader;
+            if (parentSig is null || parentHeader is null)
+                return null;
+            Object obj = new Object
+            {
+                Header = parentHeader,
+                Signature = parentSig,
+            };
+            return obj;
+        }
     }
 }

@@ -25,44 +25,55 @@ namespace NeoFS.API.v2.Object {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJvYmplY3QvdHlwZXMucHJvdG8SEG5lby5mcy52Mi5vYmplY3QaEHJlZnMv",
-            "dHlwZXMucHJvdG8aE3Nlc3Npb24vdHlwZXMucHJvdG8ixQEKC1Nob3J0SGVh",
-            "ZGVyEigKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJzaW9u",
-            "EhYKDmNyZWF0aW9uX2Vwb2NoGAIgASgEEikKCG93bmVyX2lkGAMgASgLMhcu",
-            "bmVvLmZzLnYyLnJlZnMuT3duZXJJRBIxCgtvYmplY3RfdHlwZRgEIAEoDjIc",
-            "Lm5lby5mcy52Mi5vYmplY3QuT2JqZWN0VHlwZRIWCg5wYXlsb2FkX2xlbmd0",
-            "aBgFIAEoBCKRBgoGSGVhZGVyEigKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMu",
-            "djIucmVmcy5WZXJzaW9uEjEKDGNvbnRhaW5lcl9pZBgCIAEoCzIbLm5lby5m",
-            "cy52Mi5yZWZzLkNvbnRhaW5lcklEEikKCG93bmVyX2lkGAMgASgLMhcubmVv",
-            "LmZzLnYyLnJlZnMuT3duZXJJRBIWCg5jcmVhdGlvbl9lcG9jaBgEIAEoBBIW",
-            "Cg5wYXlsb2FkX2xlbmd0aBgFIAEoBBIuCgxwYXlsb2FkX2hhc2gYBiABKAsy",
-            "GC5uZW8uZnMudjIucmVmcy5DaGVja3N1bRIxCgtvYmplY3RfdHlwZRgHIAEo",
-            "DjIcLm5lby5mcy52Mi5vYmplY3QuT2JqZWN0VHlwZRIyChBob21vbW9ycGhp",
-            "Y19oYXNoGAggASgLMhgubmVvLmZzLnYyLnJlZnMuQ2hlY2tzdW0SNgoNc2Vz",
-            "c2lvbl90b2tlbhgJIAEoCzIfLm5lby5mcy52Mi5zZXNzaW9uLlNlc3Npb25U",
-            "b2tlbhI2CgphdHRyaWJ1dGVzGAogAygLMiIubmVvLmZzLnYyLm9iamVjdC5I",
-            "ZWFkZXIuQXR0cmlidXRlEi0KBXNwbGl0GAsgASgLMh4ubmVvLmZzLnYyLm9i",
-            "amVjdC5IZWFkZXIuU3BsaXQaJwoJQXR0cmlidXRlEgsKA2tleRgBIAEoCRIN",
-            "CgV2YWx1ZRgCIAEoCRrvAQoFU3BsaXQSKAoGcGFyZW50GAEgASgLMhgubmVv",
-            "LmZzLnYyLnJlZnMuT2JqZWN0SUQSKgoIcHJldmlvdXMYAiABKAsyGC5uZW8u",
-            "ZnMudjIucmVmcy5PYmplY3RJRBIzChBwYXJlbnRfc2lnbmF0dXJlGAMgASgL",
-            "MhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlEi8KDXBhcmVudF9oZWFkZXIY",
-            "BCABKAsyGC5uZW8uZnMudjIub2JqZWN0LkhlYWRlchIqCghjaGlsZHJlbhgF",
-            "IAMoCzIYLm5lby5mcy52Mi5yZWZzLk9iamVjdElEIp4BCgZPYmplY3QSKwoJ",
-            "b2JqZWN0X2lkGAEgASgLMhgubmVvLmZzLnYyLnJlZnMuT2JqZWN0SUQSLAoJ",
-            "c2lnbmF0dXJlGAIgASgLMhkubmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlEigK",
-            "BmhlYWRlchgDIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyEg8KB3Bh",
-            "eWxvYWQYBCABKAwqOwoKT2JqZWN0VHlwZRILCgdSRUdVTEFSEAASDQoJVE9N",
-            "QlNUT05FEAESEQoNU1RPUkFHRV9HUk9VUBACKjkKCU1hdGNoVHlwZRIaChZN",
-            "QVRDSF9UWVBFX1VOU1BFQ0lGSUVEEAASEAoMU1RSSU5HX0VRVUFMEAFCT1o3",
-            "Z2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3YyL29iamVjdC9n",
-            "cnBjO29iamVjdKoCE05lb0ZTLkFQSS52Mi5PYmplY3RiBnByb3RvMw=="));
+            "dHlwZXMucHJvdG8aE3Nlc3Npb24vdHlwZXMucHJvdG8igQIKC1Nob3J0SGVh",
+            "ZGVyEjEKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJzaW9u",
+            "Ugd2ZXJzaW9uEiUKDmNyZWF0aW9uX2Vwb2NoGAIgASgEUg1jcmVhdGlvbkVw",
+            "b2NoEjIKCG93bmVyX2lkGAMgASgLMhcubmVvLmZzLnYyLnJlZnMuT3duZXJJ",
+            "RFIHb3duZXJJRBI9CgtvYmplY3RfdHlwZRgEIAEoDjIcLm5lby5mcy52Mi5v",
+            "YmplY3QuT2JqZWN0VHlwZVIKb2JqZWN0VHlwZRIlCg5wYXlsb2FkX2xlbmd0",
+            "aBgFIAEoBFINcGF5bG9hZExlbmd0aCL7BwoGSGVhZGVyEjEKB3ZlcnNpb24Y",
+            "ASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJzaW9uUgd2ZXJzaW9uEj4KDGNv",
+            "bnRhaW5lcl9pZBgCIAEoCzIbLm5lby5mcy52Mi5yZWZzLkNvbnRhaW5lcklE",
+            "Ugtjb250YWluZXJJRBIyCghvd25lcl9pZBgDIAEoCzIXLm5lby5mcy52Mi5y",
+            "ZWZzLk93bmVySURSB293bmVySUQSJQoOY3JlYXRpb25fZXBvY2gYBCABKARS",
+            "DWNyZWF0aW9uRXBvY2gSJQoOcGF5bG9hZF9sZW5ndGgYBSABKARSDXBheWxv",
+            "YWRMZW5ndGgSOwoMcGF5bG9hZF9oYXNoGAYgASgLMhgubmVvLmZzLnYyLnJl",
+            "ZnMuQ2hlY2tzdW1SC3BheWxvYWRIYXNoEj0KC29iamVjdF90eXBlGAcgASgO",
+            "MhwubmVvLmZzLnYyLm9iamVjdC5PYmplY3RUeXBlUgpvYmplY3RUeXBlEkMK",
+            "EGhvbW9tb3JwaGljX2hhc2gYCCABKAsyGC5uZW8uZnMudjIucmVmcy5DaGVj",
+            "a3N1bVIPaG9tb21vcnBoaWNIYXNoEkQKDXNlc3Npb25fdG9rZW4YCSABKAsy",
+            "Hy5uZW8uZnMudjIuc2Vzc2lvbi5TZXNzaW9uVG9rZW5SDHNlc3Npb25Ub2tl",
+            "bhJCCgphdHRyaWJ1dGVzGAogAygLMiIubmVvLmZzLnYyLm9iamVjdC5IZWFk",
+            "ZXIuQXR0cmlidXRlUgphdHRyaWJ1dGVzEjQKBXNwbGl0GAsgASgLMh4ubmVv",
+            "LmZzLnYyLm9iamVjdC5IZWFkZXIuU3BsaXRSBXNwbGl0GjMKCUF0dHJpYnV0",
+            "ZRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWUaxQIK",
+            "BVNwbGl0EjAKBnBhcmVudBgBIAEoCzIYLm5lby5mcy52Mi5yZWZzLk9iamVj",
+            "dElEUgZwYXJlbnQSNAoIcHJldmlvdXMYAiABKAsyGC5uZW8uZnMudjIucmVm",
+            "cy5PYmplY3RJRFIIcHJldmlvdXMSRAoQcGFyZW50X3NpZ25hdHVyZRgDIAEo",
+            "CzIZLm5lby5mcy52Mi5yZWZzLlNpZ25hdHVyZVIPcGFyZW50U2lnbmF0dXJl",
+            "Ej0KDXBhcmVudF9oZWFkZXIYBCABKAsyGC5uZW8uZnMudjIub2JqZWN0Lkhl",
+            "YWRlclIMcGFyZW50SGVhZGVyEjQKCGNoaWxkcmVuGAUgAygLMhgubmVvLmZz",
+            "LnYyLnJlZnMuT2JqZWN0SURSCGNoaWxkcmVuEhkKCHNwbGl0X2lkGAYgASgM",
+            "UgdzcGxpdElEIsQBCgZPYmplY3QSNQoJb2JqZWN0X2lkGAEgASgLMhgubmVv",
+            "LmZzLnYyLnJlZnMuT2JqZWN0SURSCG9iamVjdElEEjcKCXNpZ25hdHVyZRgC",
+            "IAEoCzIZLm5lby5mcy52Mi5yZWZzLlNpZ25hdHVyZVIJc2lnbmF0dXJlEjAK",
+            "BmhlYWRlchgDIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyUgZoZWFk",
+            "ZXISGAoHcGF5bG9hZBgEIAEoDFIHcGF5bG9hZCJyCglTcGxpdEluZm8SEAoI",
+            "c3BsaXRfaWQYASABKAwSKwoJbGFzdF9wYXJ0GAIgASgLMhgubmVvLmZzLnYy",
+            "LnJlZnMuT2JqZWN0SUQSJgoEbGluaxgDIAEoCzIYLm5lby5mcy52Mi5yZWZz",
+            "Lk9iamVjdElEKjsKCk9iamVjdFR5cGUSCwoHUkVHVUxBUhAAEg0KCVRPTUJT",
+            "VE9ORRABEhEKDVNUT1JBR0VfR1JPVVAQAio5CglNYXRjaFR5cGUSGgoWTUFU",
+            "Q0hfVFlQRV9VTlNQRUNJRklFRBAAEhAKDFNUUklOR19FUVVBTBABQk9aN2dp",
+            "dGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1nby92Mi9vYmplY3QvZ3Jw",
+            "YztvYmplY3SqAhNOZW9GUy5BUEkudjIuT2JqZWN0YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Session.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Object.ObjectType), typeof(global::NeoFS.API.v2.Object.MatchType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.ShortHeader), global::NeoFS.API.v2.Object.ShortHeader.Parser, new[]{ "Version", "CreationEpoch", "OwnerId", "ObjectType", "PayloadLength" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header), global::NeoFS.API.v2.Object.Header.Parser, new[]{ "Version", "ContainerId", "OwnerId", "CreationEpoch", "PayloadLength", "PayloadHash", "ObjectType", "HomomorphicHash", "SessionToken", "Attributes", "Split" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header.Types.Attribute), global::NeoFS.API.v2.Object.Header.Types.Attribute.Parser, new[]{ "Key", "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header.Types.Split), global::NeoFS.API.v2.Object.Header.Types.Split.Parser, new[]{ "Parent", "Previous", "ParentSignature", "ParentHeader", "Children" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Object), global::NeoFS.API.v2.Object.Object.Parser, new[]{ "ObjectId", "Signature", "Header", "Payload" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header.Types.Split), global::NeoFS.API.v2.Object.Header.Types.Split.Parser, new[]{ "Parent", "Previous", "ParentSignature", "ParentHeader", "Children", "SplitId" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Object), global::NeoFS.API.v2.Object.Object.Parser, new[]{ "ObjectId", "Signature", "Header", "Payload" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.SplitInfo), global::NeoFS.API.v2.Object.SplitInfo.Parser, new[]{ "SplitId", "LastPart", "Link" }, null, null, null, null)
           }));
     }
     #endregion
@@ -70,7 +81,15 @@ namespace NeoFS.API.v2.Object {
   }
   #region Enums
   /// <summary>
-  /// Type of the object payload content
+  /// Type of the object payload content. Only `REGULAR` type objects can be split,
+  /// hence `TOMBSTONE` and `STORAGEGROUP` payload is limited by maximal object
+  /// size.
+  ///
+  /// String presentation of object type is PascalCased `ObjectType` enumeration
+  /// item name:
+  /// * Regular
+  /// * Tombstone
+  /// * StorageGroup
   /// </summary>
   public enum ObjectType {
     /// <summary>
@@ -82,7 +101,7 @@ namespace NeoFS.API.v2.Object {
     /// </summary>
     [pbr::OriginalName("TOMBSTONE")] Tombstone = 1,
     /// <summary>
-    /// Identifies that the object holds StorageGroup information
+    /// StorageGroup information
     /// </summary>
     [pbr::OriginalName("STORAGE_GROUP")] StorageGroup = 2,
   }
@@ -149,7 +168,8 @@ namespace NeoFS.API.v2.Object {
     public const int VersionFieldNumber = 1;
     private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Object format version.
+    /// Object format version. Effectively the version of API library used to
+    /// create particular object.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Version Version {
@@ -206,7 +226,7 @@ namespace NeoFS.API.v2.Object {
     private ulong payloadLength_;
     /// <summary>
     /// Size of payload in bytes.
-    /// 0xFFFFFFFFFFFFFFFF means `payload_length` is unknown
+    /// `0xFFFFFFFFFFFFFFFF` means `payload_length` is unknown
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong PayloadLength {
@@ -377,7 +397,7 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Object Headers
+  /// Object Header
   /// </summary>
   public sealed partial class Header : pb::IMessage<Header> {
     private static readonly pb::MessageParser<Header> _parser = new pb::MessageParser<Header>(() => new Header());
@@ -427,8 +447,8 @@ namespace NeoFS.API.v2.Object {
     public const int VersionFieldNumber = 1;
     private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Object format version.
-    /// Effectively the version of API library used to create particular object
+    /// Object format version. Effectively the version of API library used to
+    /// create particular object
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Version Version {
@@ -485,7 +505,7 @@ namespace NeoFS.API.v2.Object {
     private ulong payloadLength_;
     /// <summary>
     /// Size of payload in bytes.
-    /// 0xFFFFFFFFFFFFFFFF means `payload_length` is unknown
+    /// `0xFFFFFFFFFFFFFFFF` means `payload_length` is unknown.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong PayloadLength {
@@ -513,7 +533,7 @@ namespace NeoFS.API.v2.Object {
     public const int ObjectTypeFieldNumber = 7;
     private global::NeoFS.API.v2.Object.ObjectType objectType_ = global::NeoFS.API.v2.Object.ObjectType.Regular;
     /// <summary>
-    /// Special object type
+    /// Type of the object payload content
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Object.ObjectType ObjectType {
@@ -527,7 +547,7 @@ namespace NeoFS.API.v2.Object {
     public const int HomomorphicHashFieldNumber = 8;
     private global::NeoFS.API.v2.Refs.Checksum homomorphicHash_;
     /// <summary>
-    /// Homomorphic hash of the object payload.
+    /// Homomorphic hash of the object payload
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Checksum HomomorphicHash {
@@ -541,8 +561,8 @@ namespace NeoFS.API.v2.Object {
     public const int SessionTokenFieldNumber = 9;
     private global::NeoFS.API.v2.Session.SessionToken sessionToken_;
     /// <summary>
-    /// Session token, if it was used during Object creation.
-    /// Need it to verify integrity and authenticity out of Request scope.
+    /// Session token, if it was used during Object creation. Need it to verify
+    /// integrity and authenticity out of Request scope.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.SessionToken SessionToken {
@@ -569,7 +589,7 @@ namespace NeoFS.API.v2.Object {
     public const int SplitFieldNumber = 11;
     private global::NeoFS.API.v2.Object.Header.Types.Split split_;
     /// <summary>
-    /// Position of the object in the split hierarchy.
+    /// Position of the object in the split hierarchy
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Object.Header.Types.Split Split {
@@ -861,7 +881,32 @@ namespace NeoFS.API.v2.Object {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Attribute groups the user-defined Key-Value pairs attached to the object
+      /// `Attribute` is a user-defined Key-Value metadata pair attached to the
+      /// object.
+      ///
+      /// Key name must be a object-unique valid UTF-8 string. Value can't be empty.
+      /// Objects with duplicated attribute names or attributes with empty values
+      /// will be considered invalid.
+      ///
+      /// There are some "well-known" attributes starting with `__NEOFS__` prefix
+      /// that affect system behaviour:
+      ///
+      /// * __NEOFS__UPLOAD_ID \
+      ///   Marks smaller parts of a split bigger object
+      /// * __NEOFS__EXPIRATION_EPOCH \
+      ///   Tells GC to delete object after that epoch
+      ///
+      /// And some well-known attributes used by applications only:
+      ///
+      /// * Name \
+      ///   Human-friendly name
+      /// * FileName \
+      ///   File name to be associated with the object on saving
+      /// * Timestamp \
+      ///   User-defined local time of object creation in Unix Timestamp format
+      ///
+      /// For detailed description of each well-known attribute please see the
+      /// corresponding section in NeoFS Technical specification.
       /// </summary>
       public sealed partial class Attribute : pb::IMessage<Attribute> {
         private static readonly pb::MessageParser<Attribute> _parser = new pb::MessageParser<Attribute>(() => new Attribute());
@@ -1027,7 +1072,10 @@ namespace NeoFS.API.v2.Object {
       }
 
       /// <summary>
-      /// Information about spawning the objects through a payload splitting.
+      /// Bigger objects can be split into a chain of smaller objects. Information
+      /// about inter-dependencies between spawned objects and how to re-construct
+      /// the original one is in the `Split` headers. Parent and children objects
+      /// must be within the same container.
       /// </summary>
       public sealed partial class Split : pb::IMessage<Split> {
         private static readonly pb::MessageParser<Split> _parser = new pb::MessageParser<Split>(() => new Split());
@@ -1059,6 +1107,7 @@ namespace NeoFS.API.v2.Object {
           parentSignature_ = other.parentSignature_ != null ? other.parentSignature_.Clone() : null;
           parentHeader_ = other.parentHeader_ != null ? other.parentHeader_.Clone() : null;
           children_ = other.children_.Clone();
+          splitId_ = other.splitId_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -1071,9 +1120,7 @@ namespace NeoFS.API.v2.Object {
         public const int ParentFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.ObjectID parent_;
         /// <summary>
-        /// Identifier of the origin object.
-        /// Parent and children objects must be within the same container.
-        /// Parent object_id is known only to the minor child.
+        /// Identifier of the origin object. Known only to the minor child.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ObjectID Parent {
@@ -1087,7 +1134,7 @@ namespace NeoFS.API.v2.Object {
         public const int PreviousFieldNumber = 2;
         private global::NeoFS.API.v2.Refs.ObjectID previous_;
         /// <summary>
-        /// Previous carries identifier of the left split neighbor.
+        /// Identifier of the left split neighbor
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ObjectID Previous {
@@ -1131,11 +1178,27 @@ namespace NeoFS.API.v2.Object {
             = pb::FieldCodec.ForMessage(42, global::NeoFS.API.v2.Refs.ObjectID.Parser);
         private readonly pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> children_ = new pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID>();
         /// <summary>
-        /// Children carries list of identifiers of the objects generated by splitting the current.
+        /// List of identifiers of the objects generated by splitting current one.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> Children {
           get { return children_; }
+        }
+
+        /// <summary>Field number for the "split_id" field.</summary>
+        public const int SplitIdFieldNumber = 6;
+        private pb::ByteString splitId_ = pb::ByteString.Empty;
+        /// <summary>
+        /// 16 byte UUIDv4 used to identify the split object hierarchy parts. Must be
+        /// unique inside container. All objects participating in the split must have
+        /// the same `split_id` value.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pb::ByteString SplitId {
+          get { return splitId_; }
+          set {
+            splitId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1156,6 +1219,7 @@ namespace NeoFS.API.v2.Object {
           if (!object.Equals(ParentSignature, other.ParentSignature)) return false;
           if (!object.Equals(ParentHeader, other.ParentHeader)) return false;
           if(!children_.Equals(other.children_)) return false;
+          if (SplitId != other.SplitId) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -1167,6 +1231,7 @@ namespace NeoFS.API.v2.Object {
           if (parentSignature_ != null) hash ^= ParentSignature.GetHashCode();
           if (parentHeader_ != null) hash ^= ParentHeader.GetHashCode();
           hash ^= children_.GetHashCode();
+          if (SplitId.Length != 0) hash ^= SplitId.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -1197,6 +1262,10 @@ namespace NeoFS.API.v2.Object {
             output.WriteMessage(ParentHeader);
           }
           children_.WriteTo(output, _repeated_children_codec);
+          if (SplitId.Length != 0) {
+            output.WriteRawTag(50);
+            output.WriteBytes(SplitId);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -1218,6 +1287,9 @@ namespace NeoFS.API.v2.Object {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParentHeader);
           }
           size += children_.CalculateSize(_repeated_children_codec);
+          if (SplitId.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeBytesSize(SplitId);
+          }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -1254,6 +1326,9 @@ namespace NeoFS.API.v2.Object {
             ParentHeader.MergeFrom(other.ParentHeader);
           }
           children_.Add(other.children_);
+          if (other.SplitId.Length != 0) {
+            SplitId = other.SplitId;
+          }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -1297,6 +1372,10 @@ namespace NeoFS.API.v2.Object {
                 children_.AddEntriesFrom(input, _repeated_children_codec);
                 break;
               }
+              case 50: {
+                SplitId = input.ReadBytes();
+                break;
+              }
             }
           }
         }
@@ -1309,7 +1388,9 @@ namespace NeoFS.API.v2.Object {
   }
 
   /// <summary>
-  /// Object structure.
+  /// Object structure. Object is immutable and content-addressed. It means
+  /// `ObjectID` will change if header or payload changes. It's calculated as a
+  /// hash of header field, which contains hash of object's payload.
   /// </summary>
   public sealed partial class Object : pb::IMessage<Object> {
     private static readonly pb::MessageParser<Object> _parser = new pb::MessageParser<Object>(() => new Object());
@@ -1353,9 +1434,6 @@ namespace NeoFS.API.v2.Object {
     private global::NeoFS.API.v2.Refs.ObjectID objectId_;
     /// <summary>
     /// Object's unique identifier.
-    /// Object is content-addressed. It means id will change if header or payload
-    /// changes. It's calculated as a hash of header field, which contains hash of
-    /// object's payload
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.ObjectID ObjectId {
@@ -1397,7 +1475,7 @@ namespace NeoFS.API.v2.Object {
     public const int PayloadFieldNumber = 4;
     private pb::ByteString payload_ = pb::ByteString.Empty;
     /// <summary>
-    /// Payload bytes.
+    /// Payload bytes
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Payload {
@@ -1549,6 +1627,221 @@ namespace NeoFS.API.v2.Object {
           }
           case 34: {
             Payload = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Meta information of split hierarchy for object assembly. With last part
+  /// one can traverse linked list of split hierarchy back to first part and
+  /// assemble original object. With linking object one can assembly object
+  /// straight away from the object parts.
+  /// </summary>
+  public sealed partial class SplitInfo : pb::IMessage<SplitInfo> {
+    private static readonly pb::MessageParser<SplitInfo> _parser = new pb::MessageParser<SplitInfo>(() => new SplitInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SplitInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Object.TypesReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SplitInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SplitInfo(SplitInfo other) : this() {
+      splitId_ = other.splitId_;
+      lastPart_ = other.lastPart_ != null ? other.lastPart_.Clone() : null;
+      link_ = other.link_ != null ? other.link_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SplitInfo Clone() {
+      return new SplitInfo(this);
+    }
+
+    /// <summary>Field number for the "split_id" field.</summary>
+    public const int SplitIdFieldNumber = 1;
+    private pb::ByteString splitId_ = pb::ByteString.Empty;
+    /// <summary>
+    /// 16 byte UUID used to identify the split object hierarchy parts.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString SplitId {
+      get { return splitId_; }
+      set {
+        splitId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "last_part" field.</summary>
+    public const int LastPartFieldNumber = 2;
+    private global::NeoFS.API.v2.Refs.ObjectID lastPart_;
+    /// <summary>
+    /// Identifier of the last object in split hierarchy parts. It contains
+    /// split header with original object header.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.ObjectID LastPart {
+      get { return lastPart_; }
+      set {
+        lastPart_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "link" field.</summary>
+    public const int LinkFieldNumber = 3;
+    private global::NeoFS.API.v2.Refs.ObjectID link_;
+    /// <summary>
+    /// Identifier of linking object for split hierarchy parts. It contains
+    /// split header with original object header and sorted list of
+    /// object parts.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.ObjectID Link {
+      get { return link_; }
+      set {
+        link_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SplitInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SplitInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (SplitId != other.SplitId) return false;
+      if (!object.Equals(LastPart, other.LastPart)) return false;
+      if (!object.Equals(Link, other.Link)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (SplitId.Length != 0) hash ^= SplitId.GetHashCode();
+      if (lastPart_ != null) hash ^= LastPart.GetHashCode();
+      if (link_ != null) hash ^= Link.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (SplitId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(SplitId);
+      }
+      if (lastPart_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(LastPart);
+      }
+      if (link_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Link);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (SplitId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(SplitId);
+      }
+      if (lastPart_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LastPart);
+      }
+      if (link_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Link);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SplitInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.SplitId.Length != 0) {
+        SplitId = other.SplitId;
+      }
+      if (other.lastPart_ != null) {
+        if (lastPart_ == null) {
+          LastPart = new global::NeoFS.API.v2.Refs.ObjectID();
+        }
+        LastPart.MergeFrom(other.LastPart);
+      }
+      if (other.link_ != null) {
+        if (link_ == null) {
+          Link = new global::NeoFS.API.v2.Refs.ObjectID();
+        }
+        Link.MergeFrom(other.Link);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            SplitId = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            if (lastPart_ == null) {
+              LastPart = new global::NeoFS.API.v2.Refs.ObjectID();
+            }
+            input.ReadMessage(LastPart);
+            break;
+          }
+          case 26: {
+            if (link_ == null) {
+              Link = new global::NeoFS.API.v2.Refs.ObjectID();
+            }
+            input.ReadMessage(Link);
             break;
           }
         }

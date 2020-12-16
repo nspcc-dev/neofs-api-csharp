@@ -9,7 +9,8 @@ using grpc = global::Grpc.Core;
 
 namespace NeoFS.API.v2.Object {
   /// <summary>
-  /// Object service provides API for manipulating with the object.
+  /// `ObjectService` provides API for manipulating objects. Object operations do
+  /// not interact with sidechain and are only served by nodes in p2p style.
   /// </summary>
   public static partial class ObjectService
   {
@@ -90,11 +91,12 @@ namespace NeoFS.API.v2.Object {
     public abstract partial class ObjectServiceBase
     {
       /// <summary>
-      /// Get the object from container. Response uses gRPC stream. First response
-      /// message carry object of requested address. Chunk messages are parts of
-      /// the object's payload if it is needed. All messages except first carry
-      /// chunks. Requested object can be restored by concatenation of object
-      /// message payload and all chunks keeping receiving order.
+      /// Receive full object structure, including Headers and payload. Response uses
+      /// gRPC stream. First response message carries object with requested address.
+      /// Chunk messages are parts of the object's payload if it is needed. All
+      /// messages, except the first one, carry payload chunks. Requested object can
+      /// be restored by concatenation of object message payload and all chunks
+      /// keeping receiving order.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="responseStream">Used for sending responses back to the client.</param>
@@ -107,11 +109,11 @@ namespace NeoFS.API.v2.Object {
 
       /// <summary>
       /// Put the object into container. Request uses gRPC stream. First message
-      /// SHOULD BE type of PutHeader. Container id and Owner id of object SHOULD
-      /// BE set. Session token SHOULD BE obtained before put operation (see
-      /// session package). Chunk messages considered by server as part of object
-      /// payload. All messages except first SHOULD BE chunks. Chunk messages
-      /// SHOULD BE sent in direct order of fragmentation.
+      /// SHOULD be of PutHeader type. `ContainerID` and `OwnerID` of an object
+      /// SHOULD be set. Session token SHOULD be obtained before `PUT` operation (see
+      /// session package). Chunk messages are considered by server as a part of an
+      /// object payload. All messages, except first one, SHOULD be payload chunks.
+      /// Chunk messages SHOULD be sent in direct order of fragmentation.
       /// </summary>
       /// <param name="requestStream">Used for reading requests from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -122,7 +124,8 @@ namespace NeoFS.API.v2.Object {
       }
 
       /// <summary>
-      /// Delete the object from a container
+      /// Delete the object from a container. There is no immediate removal
+      /// guarantee. Object will be marked for removal and deleted eventually.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -133,9 +136,9 @@ namespace NeoFS.API.v2.Object {
       }
 
       /// <summary>
-      /// Head returns the object without data payload. Object in the
-      /// response has system header only. If full headers flag is set, extended
-      /// headers are also present.
+      /// Returns the object Headers without data payload. By default full header is
+      /// returned. If `main_only` request field is set, the short header with only
+      /// the very minimal information would be returned instead.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -146,9 +149,9 @@ namespace NeoFS.API.v2.Object {
       }
 
       /// <summary>
-      /// Search objects in container. Version of query language format SHOULD BE
-      /// set to 1. Search query represented in serialized format (see query
-      /// package).
+      /// Search objects in container. Search query allows to match by Object
+      /// Header's filed values. Please see the corresponding NeoFS Technical
+      /// Specification section for more details.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="responseStream">Used for sending responses back to the client.</param>
@@ -160,9 +163,10 @@ namespace NeoFS.API.v2.Object {
       }
 
       /// <summary>
-      /// GetRange of data payload. Range is a pair (offset, length).
-      /// Requested range can be restored by concatenation of all chunks
-      /// keeping receiving order.
+      /// Get byte range of data payload. Range is set as an (offset, length) tuple.
+      /// Like in `Get` method, the response uses gRPC stream. Requested range can be
+      /// restored by concatenation of all received payload chunks keeping receiving
+      /// order.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="responseStream">Used for sending responses back to the client.</param>
@@ -174,10 +178,10 @@ namespace NeoFS.API.v2.Object {
       }
 
       /// <summary>
-      /// GetRangeHash returns homomorphic hash of object payload range after XOR
-      /// operation. Ranges are set of pairs (offset, length). Hashes order in
-      /// response corresponds to ranges order in request. Homomorphic hash is
-      /// calculated for XORed data.
+      /// Returns homomorphic or regular hash of object's payload range after
+      /// applying XOR operation with the provided `salt`. Ranges are set of (offset,
+      /// length) tuples. Hashes order in response corresponds to ranges order in
+      /// request. Note that hash is calculated for XORed data.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -213,11 +217,12 @@ namespace NeoFS.API.v2.Object {
       }
 
       /// <summary>
-      /// Get the object from container. Response uses gRPC stream. First response
-      /// message carry object of requested address. Chunk messages are parts of
-      /// the object's payload if it is needed. All messages except first carry
-      /// chunks. Requested object can be restored by concatenation of object
-      /// message payload and all chunks keeping receiving order.
+      /// Receive full object structure, including Headers and payload. Response uses
+      /// gRPC stream. First response message carries object with requested address.
+      /// Chunk messages are parts of the object's payload if it is needed. All
+      /// messages, except the first one, carry payload chunks. Requested object can
+      /// be restored by concatenation of object message payload and all chunks
+      /// keeping receiving order.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -229,11 +234,12 @@ namespace NeoFS.API.v2.Object {
         return Get(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Get the object from container. Response uses gRPC stream. First response
-      /// message carry object of requested address. Chunk messages are parts of
-      /// the object's payload if it is needed. All messages except first carry
-      /// chunks. Requested object can be restored by concatenation of object
-      /// message payload and all chunks keeping receiving order.
+      /// Receive full object structure, including Headers and payload. Response uses
+      /// gRPC stream. First response message carries object with requested address.
+      /// Chunk messages are parts of the object's payload if it is needed. All
+      /// messages, except the first one, carry payload chunks. Requested object can
+      /// be restored by concatenation of object message payload and all chunks
+      /// keeping receiving order.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -244,11 +250,11 @@ namespace NeoFS.API.v2.Object {
       }
       /// <summary>
       /// Put the object into container. Request uses gRPC stream. First message
-      /// SHOULD BE type of PutHeader. Container id and Owner id of object SHOULD
-      /// BE set. Session token SHOULD BE obtained before put operation (see
-      /// session package). Chunk messages considered by server as part of object
-      /// payload. All messages except first SHOULD BE chunks. Chunk messages
-      /// SHOULD BE sent in direct order of fragmentation.
+      /// SHOULD be of PutHeader type. `ContainerID` and `OwnerID` of an object
+      /// SHOULD be set. Session token SHOULD be obtained before `PUT` operation (see
+      /// session package). Chunk messages are considered by server as a part of an
+      /// object payload. All messages, except first one, SHOULD be payload chunks.
+      /// Chunk messages SHOULD be sent in direct order of fragmentation.
       /// </summary>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
@@ -260,11 +266,11 @@ namespace NeoFS.API.v2.Object {
       }
       /// <summary>
       /// Put the object into container. Request uses gRPC stream. First message
-      /// SHOULD BE type of PutHeader. Container id and Owner id of object SHOULD
-      /// BE set. Session token SHOULD BE obtained before put operation (see
-      /// session package). Chunk messages considered by server as part of object
-      /// payload. All messages except first SHOULD BE chunks. Chunk messages
-      /// SHOULD BE sent in direct order of fragmentation.
+      /// SHOULD be of PutHeader type. `ContainerID` and `OwnerID` of an object
+      /// SHOULD be set. Session token SHOULD be obtained before `PUT` operation (see
+      /// session package). Chunk messages are considered by server as a part of an
+      /// object payload. All messages, except first one, SHOULD be payload chunks.
+      /// Chunk messages SHOULD be sent in direct order of fragmentation.
       /// </summary>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
@@ -273,7 +279,8 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.AsyncClientStreamingCall(__Method_Put, null, options);
       }
       /// <summary>
-      /// Delete the object from a container
+      /// Delete the object from a container. There is no immediate removal
+      /// guarantee. Object will be marked for removal and deleted eventually.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -285,7 +292,8 @@ namespace NeoFS.API.v2.Object {
         return Delete(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Delete the object from a container
+      /// Delete the object from a container. There is no immediate removal
+      /// guarantee. Object will be marked for removal and deleted eventually.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -295,7 +303,8 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.BlockingUnaryCall(__Method_Delete, null, options, request);
       }
       /// <summary>
-      /// Delete the object from a container
+      /// Delete the object from a container. There is no immediate removal
+      /// guarantee. Object will be marked for removal and deleted eventually.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -307,7 +316,8 @@ namespace NeoFS.API.v2.Object {
         return DeleteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Delete the object from a container
+      /// Delete the object from a container. There is no immediate removal
+      /// guarantee. Object will be marked for removal and deleted eventually.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -317,9 +327,9 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.AsyncUnaryCall(__Method_Delete, null, options, request);
       }
       /// <summary>
-      /// Head returns the object without data payload. Object in the
-      /// response has system header only. If full headers flag is set, extended
-      /// headers are also present.
+      /// Returns the object Headers without data payload. By default full header is
+      /// returned. If `main_only` request field is set, the short header with only
+      /// the very minimal information would be returned instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -331,9 +341,9 @@ namespace NeoFS.API.v2.Object {
         return Head(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Head returns the object without data payload. Object in the
-      /// response has system header only. If full headers flag is set, extended
-      /// headers are also present.
+      /// Returns the object Headers without data payload. By default full header is
+      /// returned. If `main_only` request field is set, the short header with only
+      /// the very minimal information would be returned instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -343,9 +353,9 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.BlockingUnaryCall(__Method_Head, null, options, request);
       }
       /// <summary>
-      /// Head returns the object without data payload. Object in the
-      /// response has system header only. If full headers flag is set, extended
-      /// headers are also present.
+      /// Returns the object Headers without data payload. By default full header is
+      /// returned. If `main_only` request field is set, the short header with only
+      /// the very minimal information would be returned instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -357,9 +367,9 @@ namespace NeoFS.API.v2.Object {
         return HeadAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Head returns the object without data payload. Object in the
-      /// response has system header only. If full headers flag is set, extended
-      /// headers are also present.
+      /// Returns the object Headers without data payload. By default full header is
+      /// returned. If `main_only` request field is set, the short header with only
+      /// the very minimal information would be returned instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -369,9 +379,9 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.AsyncUnaryCall(__Method_Head, null, options, request);
       }
       /// <summary>
-      /// Search objects in container. Version of query language format SHOULD BE
-      /// set to 1. Search query represented in serialized format (see query
-      /// package).
+      /// Search objects in container. Search query allows to match by Object
+      /// Header's filed values. Please see the corresponding NeoFS Technical
+      /// Specification section for more details.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -383,9 +393,9 @@ namespace NeoFS.API.v2.Object {
         return Search(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Search objects in container. Version of query language format SHOULD BE
-      /// set to 1. Search query represented in serialized format (see query
-      /// package).
+      /// Search objects in container. Search query allows to match by Object
+      /// Header's filed values. Please see the corresponding NeoFS Technical
+      /// Specification section for more details.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -395,9 +405,10 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.AsyncServerStreamingCall(__Method_Search, null, options, request);
       }
       /// <summary>
-      /// GetRange of data payload. Range is a pair (offset, length).
-      /// Requested range can be restored by concatenation of all chunks
-      /// keeping receiving order.
+      /// Get byte range of data payload. Range is set as an (offset, length) tuple.
+      /// Like in `Get` method, the response uses gRPC stream. Requested range can be
+      /// restored by concatenation of all received payload chunks keeping receiving
+      /// order.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -409,9 +420,10 @@ namespace NeoFS.API.v2.Object {
         return GetRange(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// GetRange of data payload. Range is a pair (offset, length).
-      /// Requested range can be restored by concatenation of all chunks
-      /// keeping receiving order.
+      /// Get byte range of data payload. Range is set as an (offset, length) tuple.
+      /// Like in `Get` method, the response uses gRPC stream. Requested range can be
+      /// restored by concatenation of all received payload chunks keeping receiving
+      /// order.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -421,10 +433,10 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.AsyncServerStreamingCall(__Method_GetRange, null, options, request);
       }
       /// <summary>
-      /// GetRangeHash returns homomorphic hash of object payload range after XOR
-      /// operation. Ranges are set of pairs (offset, length). Hashes order in
-      /// response corresponds to ranges order in request. Homomorphic hash is
-      /// calculated for XORed data.
+      /// Returns homomorphic or regular hash of object's payload range after
+      /// applying XOR operation with the provided `salt`. Ranges are set of (offset,
+      /// length) tuples. Hashes order in response corresponds to ranges order in
+      /// request. Note that hash is calculated for XORed data.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -436,10 +448,10 @@ namespace NeoFS.API.v2.Object {
         return GetRangeHash(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// GetRangeHash returns homomorphic hash of object payload range after XOR
-      /// operation. Ranges are set of pairs (offset, length). Hashes order in
-      /// response corresponds to ranges order in request. Homomorphic hash is
-      /// calculated for XORed data.
+      /// Returns homomorphic or regular hash of object's payload range after
+      /// applying XOR operation with the provided `salt`. Ranges are set of (offset,
+      /// length) tuples. Hashes order in response corresponds to ranges order in
+      /// request. Note that hash is calculated for XORed data.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -449,10 +461,10 @@ namespace NeoFS.API.v2.Object {
         return CallInvoker.BlockingUnaryCall(__Method_GetRangeHash, null, options, request);
       }
       /// <summary>
-      /// GetRangeHash returns homomorphic hash of object payload range after XOR
-      /// operation. Ranges are set of pairs (offset, length). Hashes order in
-      /// response corresponds to ranges order in request. Homomorphic hash is
-      /// calculated for XORed data.
+      /// Returns homomorphic or regular hash of object's payload range after
+      /// applying XOR operation with the provided `salt`. Ranges are set of (offset,
+      /// length) tuples. Hashes order in response corresponds to ranges order in
+      /// request. Note that hash is calculated for XORed data.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -464,10 +476,10 @@ namespace NeoFS.API.v2.Object {
         return GetRangeHashAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// GetRangeHash returns homomorphic hash of object payload range after XOR
-      /// operation. Ranges are set of pairs (offset, length). Hashes order in
-      /// response corresponds to ranges order in request. Homomorphic hash is
-      /// calculated for XORed data.
+      /// Returns homomorphic or regular hash of object's payload range after
+      /// applying XOR operation with the provided `salt`. Ranges are set of (offset,
+      /// length) tuples. Hashes order in response corresponds to ranges order in
+      /// request. Note that hash is calculated for XORed data.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

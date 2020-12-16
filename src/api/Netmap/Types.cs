@@ -24,30 +24,34 @@ namespace NeoFS.API.v2.Netmap {
     static TypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJuZXRtYXAvdHlwZXMucHJvdG8SEG5lby5mcy52Mi5uZXRtYXAihgEKBkZp",
-            "bHRlchIMCgRuYW1lGAEgASgJEgsKA2tleRgCIAEoCRInCgJvcBgDIAEoDjIb",
-            "Lm5lby5mcy52Mi5uZXRtYXAuT3BlcmF0aW9uEg0KBXZhbHVlGAQgASgJEikK",
-            "B2ZpbHRlcnMYBSADKAsyGC5uZW8uZnMudjIubmV0bWFwLkZpbHRlciJ0CghT",
-            "ZWxlY3RvchIMCgRuYW1lGAEgASgJEg0KBWNvdW50GAIgASgNEigKBmNsYXVz",
-            "ZRgDIAEoDjIYLm5lby5mcy52Mi5uZXRtYXAuQ2xhdXNlEhEKCWF0dHJpYnV0",
-            "ZRgEIAEoCRIOCgZmaWx0ZXIYBSABKAkiKgoHUmVwbGljYRINCgVjb3VudBgB",
-            "IAEoDRIQCghzZWxlY3RvchgCIAEoCSK5AQoPUGxhY2VtZW50UG9saWN5EisK",
-            "CHJlcGxpY2FzGAEgAygLMhkubmVvLmZzLnYyLm5ldG1hcC5SZXBsaWNhEh8K",
-            "F2NvbnRhaW5lcl9iYWNrdXBfZmFjdG9yGAIgASgNEi0KCXNlbGVjdG9ycxgD",
-            "IAMoCzIaLm5lby5mcy52Mi5uZXRtYXAuU2VsZWN0b3ISKQoHZmlsdGVycxgE",
-            "IAMoCzIYLm5lby5mcy52Mi5uZXRtYXAuRmlsdGVyIocCCghOb2RlSW5mbxIS",
-            "CgpwdWJsaWNfa2V5GAEgASgMEg8KB2FkZHJlc3MYAiABKAkSOAoKYXR0cmli",
-            "dXRlcxgDIAMoCzIkLm5lby5mcy52Mi5uZXRtYXAuTm9kZUluZm8uQXR0cmli",
-            "dXRlEi8KBXN0YXRlGAQgASgOMiAubmVvLmZzLnYyLm5ldG1hcC5Ob2RlSW5m",
-            "by5TdGF0ZRo4CglBdHRyaWJ1dGUSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIg",
-            "ASgJEg8KB3BhcmVudHMYAyADKAkiMQoFU3RhdGUSDwoLVU5TUEVDSUZJRUQQ",
-            "ABIKCgZPTkxJTkUQARILCgdPRkZMSU5FEAIqZwoJT3BlcmF0aW9uEhkKFU9Q",
-            "RVJBVElPTl9VTlNQRUNJRklFRBAAEgYKAkVREAESBgoCTkUQAhIGCgJHVBAD",
-            "EgYKAkdFEAQSBgoCTFQQBRIGCgJMRRAGEgYKAk9SEAcSBwoDQU5EEAgqOAoG",
-            "Q2xhdXNlEhYKEkNMQVVTRV9VTlNQRUNJRklFRBAAEggKBFNBTUUQARIMCghE",
-            "SVNUSU5DVBACQk9aN2dpdGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1n",
-            "by92Mi9uZXRtYXAvZ3JwYztuZXRtYXCqAhNOZW9GUy5BUEkudjIuTmV0bWFw",
-            "YgZwcm90bzM="));
+            "ChJuZXRtYXAvdHlwZXMucHJvdG8SEG5lby5mcy52Mi5uZXRtYXAipQEKBkZp",
+            "bHRlchISCgRuYW1lGAEgASgJUgRuYW1lEhAKA2tleRgCIAEoCVIDa2V5EisK",
+            "Am9wGAMgASgOMhsubmVvLmZzLnYyLm5ldG1hcC5PcGVyYXRpb25SAm9wEhQK",
+            "BXZhbHVlGAQgASgJUgV2YWx1ZRIyCgdmaWx0ZXJzGAUgAygLMhgubmVvLmZz",
+            "LnYyLm5ldG1hcC5GaWx0ZXJSB2ZpbHRlcnMinAEKCFNlbGVjdG9yEhIKBG5h",
+            "bWUYASABKAlSBG5hbWUSFAoFY291bnQYAiABKA1SBWNvdW50EjAKBmNsYXVz",
+            "ZRgDIAEoDjIYLm5lby5mcy52Mi5uZXRtYXAuQ2xhdXNlUgZjbGF1c2USHAoJ",
+            "YXR0cmlidXRlGAQgASgJUglhdHRyaWJ1dGUSFgoGZmlsdGVyGAUgASgJUgZm",
+            "aWx0ZXIiOwoHUmVwbGljYRIUCgVjb3VudBgBIAEoDVIFY291bnQSGgoIc2Vs",
+            "ZWN0b3IYAiABKAlSCHNlbGVjdG9yIu4BCg9QbGFjZW1lbnRQb2xpY3kSNQoI",
+            "cmVwbGljYXMYASADKAsyGS5uZW8uZnMudjIubmV0bWFwLlJlcGxpY2FSCHJl",
+            "cGxpY2FzEjYKF2NvbnRhaW5lcl9iYWNrdXBfZmFjdG9yGAIgASgNUhVjb250",
+            "YWluZXJCYWNrdXBGYWN0b3ISOAoJc2VsZWN0b3JzGAMgAygLMhoubmVvLmZz",
+            "LnYyLm5ldG1hcC5TZWxlY3RvclIJc2VsZWN0b3JzEjIKB2ZpbHRlcnMYBCAD",
+            "KAsyGC5uZW8uZnMudjIubmV0bWFwLkZpbHRlclIHZmlsdGVycyLDAgoITm9k",
+            "ZUluZm8SHQoKcHVibGljX2tleRgBIAEoDFIJcHVibGljS2V5EhgKB2FkZHJl",
+            "c3MYAiABKAlSB2FkZHJlc3MSRAoKYXR0cmlidXRlcxgDIAMoCzIkLm5lby5m",
+            "cy52Mi5uZXRtYXAuTm9kZUluZm8uQXR0cmlidXRlUgphdHRyaWJ1dGVzEjYK",
+            "BXN0YXRlGAQgASgOMiAubmVvLmZzLnYyLm5ldG1hcC5Ob2RlSW5mby5TdGF0",
+            "ZVIFc3RhdGUaTQoJQXR0cmlidXRlEhAKA2tleRgBIAEoCVIDa2V5EhQKBXZh",
+            "bHVlGAIgASgJUgV2YWx1ZRIYCgdwYXJlbnRzGAMgAygJUgdwYXJlbnRzIjEK",
+            "BVN0YXRlEg8KC1VOU1BFQ0lGSUVEEAASCgoGT05MSU5FEAESCwoHT0ZGTElO",
+            "RRACKmcKCU9wZXJhdGlvbhIZChVPUEVSQVRJT05fVU5TUEVDSUZJRUQQABIG",
+            "CgJFURABEgYKAk5FEAISBgoCR1QQAxIGCgJHRRAEEgYKAkxUEAUSBgoCTEUQ",
+            "BhIGCgJPUhAHEgcKA0FORBAIKjgKBkNsYXVzZRIWChJDTEFVU0VfVU5TUEVD",
+            "SUZJRUQQABIICgRTQU1FEAESDAoIRElTVElOQ1QQAkJPWjdnaXRodWIuY29t",
+            "L25zcGNjLWRldi9uZW9mcy1hcGktZ28vdjIvbmV0bWFwL2dycGM7bmV0bWFw",
+            "qgITTmVvRlMuQVBJLnYyLk5ldG1hcGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Netmap.Operation), typeof(global::NeoFS.API.v2.Netmap.Clause), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -105,9 +109,9 @@ namespace NeoFS.API.v2.Netmap {
   }
 
   /// <summary>
-  /// Selector modifier showing how the node set will be formed
-  /// By default selector just groups by attribute into a bucket selecting nodes
-  /// only by their hash distance.
+  /// Selector modifier shows how the node set will be formed. By default selector
+  /// just groups nodes into a bucket by attribute, selecting nodes only by their
+  /// hash distance.
   /// </summary>
   public enum Clause {
     /// <summary>
@@ -128,7 +132,8 @@ namespace NeoFS.API.v2.Netmap {
 
   #region Messages
   /// <summary>
-  /// Filter
+  /// Filter will return the subset of nodes from `NetworkMap` or another filter's
+  /// results, that will satisfy filter's conditions.
   /// </summary>
   public sealed partial class Filter : pb::IMessage<Filter> {
     private static readonly pb::MessageParser<Filter> _parser = new pb::MessageParser<Filter>(() => new Filter());
@@ -172,10 +177,10 @@ namespace NeoFS.API.v2.Netmap {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// Name of the filter or a reference to the named filter.
-    /// '*' means application to the whole unfiltered NetworkMap
-    /// At top level it's used as a filter name. At lower levels it's considered to
-    /// be a reference to another named filter
+    /// Name of the filter or a reference to the named filter. '*' means
+    /// application to the whole unfiltered NetworkMap. At top level it's used as a
+    /// filter name. At lower levels it's considered to be a reference to another
+    /// named filter
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -233,7 +238,8 @@ namespace NeoFS.API.v2.Netmap {
         = pb::FieldCodec.ForMessage(42, global::NeoFS.API.v2.Netmap.Filter.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Netmap.Filter> filters_ = new pbc::RepeatedField<global::NeoFS.API.v2.Netmap.Filter>();
     /// <summary>
-    /// List of inner filters. Top level operation will be applied to the whole list.
+    /// List of inner filters. Top level operation will be applied to the whole
+    /// list.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Netmap.Filter> Filters {
@@ -382,7 +388,8 @@ namespace NeoFS.API.v2.Netmap {
   }
 
   /// <summary>
-  /// Selector
+  /// Selector chooses a number of nodes from the bucket taking the nearest nodes
+  /// to the provided `ContainerID` by hash distance.
   /// </summary>
   public sealed partial class Selector : pb::IMessage<Selector> {
     private static readonly pb::MessageParser<Selector> _parser = new pb::MessageParser<Selector>(() => new Selector());
@@ -440,7 +447,7 @@ namespace NeoFS.API.v2.Netmap {
     public const int CountFieldNumber = 2;
     private uint count_;
     /// <summary>
-    /// How many nodes to select from bucket
+    /// How many nodes to select from the bucket
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Count {
@@ -641,7 +648,9 @@ namespace NeoFS.API.v2.Netmap {
   }
 
   /// <summary>
-  /// Exact bucket for each replica
+  /// Number of object replicas in a set of nodes from the defined selector. If no
+  /// selector set the root bucket containing all possible nodes will be used by
+  /// default.
   /// </summary>
   public sealed partial class Replica : pb::IMessage<Replica> {
     private static readonly pb::MessageParser<Replica> _parser = new pb::MessageParser<Replica>(() => new Replica());
@@ -696,7 +705,7 @@ namespace NeoFS.API.v2.Netmap {
     public const int SelectorFieldNumber = 2;
     private string selector_ = "";
     /// <summary>
-    /// Named selector bucket to put in
+    /// Named selector bucket to put replicas
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Selector {
@@ -807,7 +816,9 @@ namespace NeoFS.API.v2.Netmap {
   }
 
   /// <summary>
-  /// Set of rules to select a subset of nodes able to store container's objects
+  /// Set of rules to select a subset of nodes from `NetworkMap` able to store
+  /// container's objects. The format is simple enough to transpile from different
+  /// storage policy definition languages.
   /// </summary>
   public sealed partial class PlacementPolicy : pb::IMessage<PlacementPolicy> {
     private static readonly pb::MessageParser<PlacementPolicy> _parser = new pb::MessageParser<PlacementPolicy>(() => new PlacementPolicy());
@@ -852,7 +863,8 @@ namespace NeoFS.API.v2.Netmap {
         = pb::FieldCodec.ForMessage(10, global::NeoFS.API.v2.Netmap.Replica.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Netmap.Replica> replicas_ = new pbc::RepeatedField<global::NeoFS.API.v2.Netmap.Replica>();
     /// <summary>
-    /// Rules to set number of object replicas and place each one into a particular bucket
+    /// Rules to set number of object replicas and place each one into a named
+    /// bucket
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Netmap.Replica> Replicas {
@@ -864,7 +876,7 @@ namespace NeoFS.API.v2.Netmap {
     private uint containerBackupFactor_;
     /// <summary>
     /// Container backup factor controls how deep NeoFS will search for nodes
-    /// alternatives to include into container.
+    /// alternatives to include into container's nodes subset
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint ContainerBackupFactor {
@@ -1085,7 +1097,10 @@ namespace NeoFS.API.v2.Netmap {
         = pb::FieldCodec.ForMessage(26, global::NeoFS.API.v2.Netmap.NodeInfo.Types.Attribute.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Netmap.NodeInfo.Types.Attribute> attributes_ = new pbc::RepeatedField<global::NeoFS.API.v2.Netmap.NodeInfo.Types.Attribute>();
     /// <summary>
-    /// Carries list of the NeoFS node attributes in a string key-value format.
+    /// Carries list of the NeoFS node attributes in a key-value form. Key name
+    /// must be a node-unique valid UTF-8 string. Value can't be empty. NodeInfo
+    /// structures with duplicated attribute names or attributes with empty values
+    /// will be considered invalid.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Netmap.NodeInfo.Types.Attribute> Attributes {
@@ -1252,7 +1267,45 @@ namespace NeoFS.API.v2.Netmap {
       }
 
       /// <summary>
-      /// Attributes of the NeoFS node.
+      /// Administrator-defined Attributes of the NeoFS Storage Node.
+      ///
+      /// `Attribute` is a Key-Value metadata pair. Key name must be a valid UTF-8
+      /// string. Value can't be empty.
+      ///
+      /// Node's attributes are mostly used during Storage Policy evaluation to
+      /// calculate object's placement and find a set of nodes satisfying policy
+      /// requirements. There are some "well-known" node attributes common to all the
+      /// Storage Nodes in the network and used implicitly with default values if not
+      /// explicitly set:
+      ///
+      /// * Capacity \
+      ///   Total available disk space in Gigabytes.
+      /// * Price \
+      ///   Price in GAS tokens for storing one GB of data during one Epoch. In node
+      ///   attributes it's a string presenting floating point number with comma or
+      ///   point delimiter for decimal part. In the Network Map it will be saved as
+      ///   64-bit unsigned integer representing number of minimal token fractions.
+      /// * Subnet \
+      ///   String ID of Node's storage subnet. There can be only one subnet served
+      ///   by the Storage Node.
+      /// * Locode \
+      ///   Node's geographic location in
+      ///   [UN/LOCODE](https://www.unece.org/cefact/codesfortrade/codes_index.html)
+      ///   format approximated to the nearest point defined in standard.
+      /// * Country \
+      ///   Country code in
+      ///   [ISO 3166-1_alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+      ///   format. Calculated automatically from `Locode` attribute
+      /// * Region \
+      ///   Country's administative subdivision where node is located. Calculated
+      ///   automatically from `Locode` attribute based on `SubDiv` field. Presented
+      ///   in [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) format.
+      /// * City \
+      ///   City, town, village or rural area name where node is located written
+      ///   without diacritics . Calculated automatically from `Locode` attribute.
+      ///
+      /// For detailed description of each well-known attribute please see the
+      /// corresponding section in NeoFS Technical specification.
       /// </summary>
       public sealed partial class Attribute : pb::IMessage<Attribute> {
         private static readonly pb::MessageParser<Attribute> _parser = new pb::MessageParser<Attribute>(() => new Attribute());
@@ -1324,8 +1377,8 @@ namespace NeoFS.API.v2.Netmap {
             = pb::FieldCodec.ForString(26);
         private readonly pbc::RepeatedField<string> parents_ = new pbc::RepeatedField<string>();
         /// <summary>
-        /// Parent keys, if any
-        /// Example: For City it can be Region or Country
+        /// Parent keys, if any. For example for `City` it could be `Region` and
+        /// `Country`.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<string> Parents {

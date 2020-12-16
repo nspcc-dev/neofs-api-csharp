@@ -25,44 +25,45 @@ namespace NeoFS.API.v2.Acl {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9hY2wvdHlwZXMucHJvdG8SDW5lby5mcy52Mi5hY2waEHJlZnMvdHlwZXMu",
-            "cHJvdG8i7AMKCkVBQ0xSZWNvcmQSNgoJb3BlcmF0aW9uGAEgASgOMhgubmVv",
-            "LmZzLnYyLmFjbC5PcGVyYXRpb25SCU9wZXJhdGlvbhItCgZhY3Rpb24YAiAB",
-            "KA4yFS5uZW8uZnMudjIuYWNsLkFjdGlvblIGQWN0aW9uEjoKB2ZpbHRlcnMY",
-            "AyADKAsyIC5uZW8uZnMudjIuYWNsLkVBQ0xSZWNvcmQuRmlsdGVyUgdGaWx0",
+            "cHJvdG8i2gMKCkVBQ0xSZWNvcmQSNgoJb3BlcmF0aW9uGAEgASgOMhgubmVv",
+            "LmZzLnYyLmFjbC5PcGVyYXRpb25SCW9wZXJhdGlvbhItCgZhY3Rpb24YAiAB",
+            "KA4yFS5uZW8uZnMudjIuYWNsLkFjdGlvblIGYWN0aW9uEjoKB2ZpbHRlcnMY",
+            "AyADKAsyIC5uZW8uZnMudjIuYWNsLkVBQ0xSZWNvcmQuRmlsdGVyUgdmaWx0",
             "ZXJzEjoKB3RhcmdldHMYBCADKAsyIC5uZW8uZnMudjIuYWNsLkVBQ0xSZWNv",
-            "cmQuVGFyZ2V0UgdUYXJnZXRzGrMBCgZGaWx0ZXISOgoLaGVhZGVyX3R5cGUY",
-            "ASABKA4yGS5uZW8uZnMudjIuYWNsLkhlYWRlclR5cGVSCkhlYWRlclR5cGUS",
+            "cmQuVGFyZ2V0Ugd0YXJnZXRzGqUBCgZGaWx0ZXISOgoLaGVhZGVyX3R5cGUY",
+            "ASABKA4yGS5uZW8uZnMudjIuYWNsLkhlYWRlclR5cGVSCmhlYWRlclR5cGUS",
             "NwoKbWF0Y2hfdHlwZRgCIAEoDjIYLm5lby5mcy52Mi5hY2wuTWF0Y2hUeXBl",
-            "UglNYXRjaFR5cGUSGQoLaGVhZGVyX25hbWUYAyABKAlSBE5hbWUSGQoKaGVh",
-            "ZGVyX3ZhbBgEIAEoCVIFVmFsdWUaSQoGVGFyZ2V0EicKBHJvbGUYASABKA4y",
-            "Ey5uZW8uZnMudjIuYWNsLlJvbGVSBFJvbGUSFgoIa2V5X2xpc3QYAiADKAxS",
-            "BEtleXMiqgEKCUVBQ0xUYWJsZRIoCgd2ZXJzaW9uGAEgASgLMhcubmVvLmZz",
-            "LnYyLnJlZnMuVmVyc2lvbhI+Cgxjb250YWluZXJfaWQYAiABKAsyGy5uZW8u",
-            "ZnMudjIucmVmcy5Db250YWluZXJJRFILQ29udGFpbmVySUQSMwoHcmVjb3Jk",
-            "cxgDIAMoCzIZLm5lby5mcy52Mi5hY2wuRUFDTFJlY29yZFIHUmVjb3JkcyLF",
-            "AgoLQmVhcmVyVG9rZW4SLQoEYm9keRgBIAEoCzIfLm5lby5mcy52Mi5hY2wu",
-            "QmVhcmVyVG9rZW4uQm9keRIsCglzaWduYXR1cmUYAiABKAsyGS5uZW8uZnMu",
-            "djIucmVmcy5TaWduYXR1cmUa2AEKBEJvZHkSLAoKZWFjbF90YWJsZRgBIAEo",
-            "CzIYLm5lby5mcy52Mi5hY2wuRUFDTFRhYmxlEikKCG93bmVyX2lkGAIgASgL",
-            "MhcubmVvLmZzLnYyLnJlZnMuT3duZXJJRBI/CghsaWZldGltZRgDIAEoCzIt",
-            "Lm5lby5mcy52Mi5hY2wuQmVhcmVyVG9rZW4uQm9keS5Ub2tlbkxpZmV0aW1l",
-            "GjYKDVRva2VuTGlmZXRpbWUSCwoDZXhwGAEgASgEEgsKA25iZhgCIAEoBBIL",
-            "CgNpYXQYAyABKAQqPgoEUm9sZRIUChBST0xFX1VOU1BFQ0lGSUVEEAASCAoE",
-            "VVNFUhABEgoKBlNZU1RFTRACEgoKBk9USEVSUxADKk8KCU1hdGNoVHlwZRIa",
-            "ChZNQVRDSF9UWVBFX1VOU1BFQ0lGSUVEEAASEAoMU1RSSU5HX0VRVUFMEAES",
-            "FAoQU1RSSU5HX05PVF9FUVVBTBACKnoKCU9wZXJhdGlvbhIZChVPUEVSQVRJ",
-            "T05fVU5TUEVDSUZJRUQQABIHCgNHRVQQARIICgRIRUFEEAISBwoDUFVUEAMS",
-            "CgoGREVMRVRFEAQSCgoGU0VBUkNIEAUSDAoIR0VUUkFOR0UQBhIQCgxHRVRS",
-            "QU5HRUhBU0gQByo1CgZBY3Rpb24SFgoSQUNUSU9OX1VOU1BFQ0lGSUVEEAAS",
-            "CQoFQUxMT1cQARIICgRERU5ZEAIqPQoKSGVhZGVyVHlwZRIWChJIRUFERVJf",
-            "VU5TUEVDSUZJRUQQABILCgdSRVFVRVNUEAESCgoGT0JKRUNUEAJCRloxZ2l0",
-            "aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3YyL2FjbC9ncnBjO2Fj",
-            "bKoCEE5lb0ZTLkFQSS52Mi5BY2xiBnByb3RvMw=="));
+            "UgltYXRjaFR5cGUSEAoDa2V5GAMgASgJUgNrZXkSFAoFdmFsdWUYBCABKAlS",
+            "BXZhbHVlGkUKBlRhcmdldBInCgRyb2xlGAEgASgOMhMubmVvLmZzLnYyLmFj",
+            "bC5Sb2xlUgRyb2xlEhIKBGtleXMYAiADKAxSBGtleXMiswEKCUVBQ0xUYWJs",
+            "ZRIxCgd2ZXJzaW9uGAEgASgLMhcubmVvLmZzLnYyLnJlZnMuVmVyc2lvblIH",
+            "dmVyc2lvbhI+Cgxjb250YWluZXJfaWQYAiABKAsyGy5uZW8uZnMudjIucmVm",
+            "cy5Db250YWluZXJJRFILY29udGFpbmVySUQSMwoHcmVjb3JkcxgDIAMoCzIZ",
+            "Lm5lby5mcy52Mi5hY2wuRUFDTFJlY29yZFIHcmVjb3JkcyKDAwoLQmVhcmVy",
+            "VG9rZW4SMwoEYm9keRgBIAEoCzIfLm5lby5mcy52Mi5hY2wuQmVhcmVyVG9r",
+            "ZW4uQm9keVIEYm9keRI3CglzaWduYXR1cmUYAiABKAsyGS5uZW8uZnMudjIu",
+            "cmVmcy5TaWduYXR1cmVSCXNpZ25hdHVyZRqFAgoEQm9keRI3CgplYWNsX3Rh",
+            "YmxlGAEgASgLMhgubmVvLmZzLnYyLmFjbC5FQUNMVGFibGVSCWVhY2xUYWJs",
+            "ZRIyCghvd25lcl9pZBgCIAEoCzIXLm5lby5mcy52Mi5yZWZzLk93bmVySURS",
+            "B293bmVySUQSSQoIbGlmZXRpbWUYAyABKAsyLS5uZW8uZnMudjIuYWNsLkJl",
+            "YXJlclRva2VuLkJvZHkuVG9rZW5MaWZldGltZVIIbGlmZXRpbWUaRQoNVG9r",
+            "ZW5MaWZldGltZRIQCgNleHAYASABKARSA2V4cBIQCgNuYmYYAiABKARSA25i",
+            "ZhIQCgNpYXQYAyABKARSA2lhdCo+CgRSb2xlEhQKEFJPTEVfVU5TUEVDSUZJ",
+            "RUQQABIICgRVU0VSEAESCgoGU1lTVEVNEAISCgoGT1RIRVJTEAMqTwoJTWF0",
+            "Y2hUeXBlEhoKFk1BVENIX1RZUEVfVU5TUEVDSUZJRUQQABIQCgxTVFJJTkdf",
+            "RVFVQUwQARIUChBTVFJJTkdfTk9UX0VRVUFMEAIqegoJT3BlcmF0aW9uEhkK",
+            "FU9QRVJBVElPTl9VTlNQRUNJRklFRBAAEgcKA0dFVBABEggKBEhFQUQQAhIH",
+            "CgNQVVQQAxIKCgZERUxFVEUQBBIKCgZTRUFSQ0gQBRIMCghHRVRSQU5HRRAG",
+            "EhAKDEdFVFJBTkdFSEFTSBAHKjUKBkFjdGlvbhIWChJBQ1RJT05fVU5TUEVD",
+            "SUZJRUQQABIJCgVBTExPVxABEggKBERFTlkQAio9CgpIZWFkZXJUeXBlEhYK",
+            "EkhFQURFUl9VTlNQRUNJRklFRBAAEgsKB1JFUVVFU1QQARIKCgZPQkpFQ1QQ",
+            "AkJGWjFnaXRodWIuY29tL25zcGNjLWRldi9uZW9mcy1hcGktZ28vdjIvYWNs",
+            "L2dycGM7YWNsqgIQTmVvRlMuQVBJLnYyLkFjbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Acl.Role), typeof(global::NeoFS.API.v2.Acl.MatchType), typeof(global::NeoFS.API.v2.Acl.Operation), typeof(global::NeoFS.API.v2.Acl.Action), typeof(global::NeoFS.API.v2.Acl.HeaderType), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord), global::NeoFS.API.v2.Acl.EACLRecord.Parser, new[]{ "Operation", "Action", "Filters", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter), global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter.Parser, new[]{ "HeaderType", "MatchType", "HeaderName", "HeaderVal" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord.Types.Target), global::NeoFS.API.v2.Acl.EACLRecord.Types.Target.Parser, new[]{ "Role", "KeyList" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord), global::NeoFS.API.v2.Acl.EACLRecord.Parser, new[]{ "Operation", "Action", "Filters", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter), global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter.Parser, new[]{ "HeaderType", "MatchType", "Key", "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLRecord.Types.Target), global::NeoFS.API.v2.Acl.EACLRecord.Types.Target.Parser, new[]{ "Role", "Keys" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.EACLTable), global::NeoFS.API.v2.Acl.EACLTable.Parser, new[]{ "Version", "ContainerId", "Records" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.BearerToken), global::NeoFS.API.v2.Acl.BearerToken.Parser, new[]{ "Body", "Signature" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.BearerToken.Types.Body), global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Parser, new[]{ "EaclTable", "OwnerId", "Lifetime" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime), global::NeoFS.API.v2.Acl.BearerToken.Types.Body.Types.TokenLifetime.Parser, new[]{ "Exp", "Nbf", "Iat" }, null, null, null)})})
           }));
@@ -76,20 +77,20 @@ namespace NeoFS.API.v2.Acl {
   /// </summary>
   public enum Role {
     /// <summary>
-    /// Unspecified  role, default value.
+    /// Unspecified  role, default value
     /// </summary>
     [pbr::OriginalName("ROLE_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
-    /// User target rule is applied if sender is the owner of the container.
+    /// User target rule is applied if sender is the owner of the container
     /// </summary>
     [pbr::OriginalName("USER")] User = 1,
     /// <summary>
     /// System target rule is applied if sender is the storage node within the
-    /// container or inner ring node.
+    /// container or inner ring node
     /// </summary>
     [pbr::OriginalName("SYSTEM")] System = 2,
     /// <summary>
-    /// Others target rule is applied if sender is not user or system target.
+    /// Others target rule is applied if sender is not user nor system target
     /// </summary>
     [pbr::OriginalName("OTHERS")] Others = 3,
   }
@@ -113,11 +114,12 @@ namespace NeoFS.API.v2.Acl {
   }
 
   /// <summary>
-  /// Operation is an enumeration of operation types.
+  /// Request's operation type to match if the rule is applicable to a particular
+  /// request.
   /// </summary>
   public enum Operation {
     /// <summary>
-    /// Unspecified operation, default value.
+    /// Unspecified operation, default value
     /// </summary>
     [pbr::OriginalName("OPERATION_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
@@ -151,11 +153,12 @@ namespace NeoFS.API.v2.Acl {
   }
 
   /// <summary>
-  /// Action is an enumeration of EACL actions.
+  /// Rule execution result action. Either allows or denies access if the rule's
+  /// filters match.
   /// </summary>
   public enum Action {
     /// <summary>
-    /// Unspecified action, default value.
+    /// Unspecified action, default value
     /// </summary>
     [pbr::OriginalName("ACTION_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
@@ -169,7 +172,7 @@ namespace NeoFS.API.v2.Acl {
   }
 
   /// <summary>
-  /// Header is an enumeration of filtering header types.
+  /// Enumeration of possible sources of Headers to apply filters.
   /// </summary>
   public enum HeaderType {
     /// <summary>
@@ -190,7 +193,7 @@ namespace NeoFS.API.v2.Acl {
 
   #region Messages
   /// <summary>
-  /// EACLRecord groups information about extended ACL rule.
+  /// Describes a single eACL rule.
   /// </summary>
   public sealed partial class EACLRecord : pb::IMessage<EACLRecord> {
     private static readonly pb::MessageParser<EACLRecord> _parser = new pb::MessageParser<EACLRecord>(() => new EACLRecord());
@@ -233,7 +236,7 @@ namespace NeoFS.API.v2.Acl {
     public const int OperationFieldNumber = 1;
     private global::NeoFS.API.v2.Acl.Operation operation_ = 0;
     /// <summary>
-    /// Operation carries type of operation.
+    /// NeoFS request Verb to match
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Acl.Operation Operation {
@@ -247,7 +250,7 @@ namespace NeoFS.API.v2.Acl {
     public const int ActionFieldNumber = 2;
     private global::NeoFS.API.v2.Acl.Action action_ = 0;
     /// <summary>
-    /// Action carries ACL target action.
+    /// Rule execution result. Either allows or denies access if filters match.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Acl.Action Action {
@@ -263,7 +266,7 @@ namespace NeoFS.API.v2.Acl {
         = pb::FieldCodec.ForMessage(26, global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter> filters_ = new pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter>();
     /// <summary>
-    /// filters carries set of filters.
+    /// List of filters to match and see if rule is applicable
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Filter> Filters {
@@ -276,7 +279,7 @@ namespace NeoFS.API.v2.Acl {
         = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Acl.EACLRecord.Types.Target.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Target> targets_ = new pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Target>();
     /// <summary>
-    /// targets carries information about extended ACL target list.
+    /// List of target subjects to apply ACL rule to
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord.Types.Target> Targets {
@@ -404,7 +407,30 @@ namespace NeoFS.API.v2.Acl {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Filter definition
+      /// Filter to check particular properties of the request or object.
+      ///
+      /// By default `key` field refers to the corresponding object's `Attribute`.
+      /// Some Object's header fields can also be accessed by adding `$Object:`
+      /// prefix to the name. Here is the list of fields available via this prefix:
+      ///
+      /// * $Object:version \
+      ///   version
+      /// * $Object:objectID \
+      ///   object_id
+      /// * $Object:containerID \
+      ///   container_id
+      /// * $Object:ownerID \
+      ///   owner_id
+      /// * $Object:creationEpoch \
+      ///   creation_epoch
+      /// * $Object:payloadLength \
+      ///   payload_length
+      /// * $Object:payloadHash \
+      ///   payload_hash
+      /// * $Object:objectType \
+      ///   object_type
+      /// * $Object:homomorphicHash \
+      ///   homomorphic_hash
       /// </summary>
       public sealed partial class Filter : pb::IMessage<Filter> {
         private static readonly pb::MessageParser<Filter> _parser = new pb::MessageParser<Filter>(() => new Filter());
@@ -433,8 +459,8 @@ namespace NeoFS.API.v2.Acl {
         public Filter(Filter other) : this() {
           headerType_ = other.headerType_;
           matchType_ = other.matchType_;
-          headerName_ = other.headerName_;
-          headerVal_ = other.headerVal_;
+          key_ = other.key_;
+          value_ = other.value_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -447,7 +473,7 @@ namespace NeoFS.API.v2.Acl {
         public const int HeaderTypeFieldNumber = 1;
         private global::NeoFS.API.v2.Acl.HeaderType headerType_ = 0;
         /// <summary>
-        /// Header carries type of header.
+        /// Define if Object or Request header will be used
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Acl.HeaderType HeaderType {
@@ -461,7 +487,7 @@ namespace NeoFS.API.v2.Acl {
         public const int MatchTypeFieldNumber = 2;
         private global::NeoFS.API.v2.Acl.MatchType matchType_ = 0;
         /// <summary>
-        /// MatchType carries type of match.
+        /// Match operation type
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Acl.MatchType MatchType {
@@ -471,31 +497,31 @@ namespace NeoFS.API.v2.Acl {
           }
         }
 
-        /// <summary>Field number for the "header_name" field.</summary>
-        public const int HeaderNameFieldNumber = 3;
-        private string headerName_ = "";
+        /// <summary>Field number for the "key" field.</summary>
+        public const int KeyFieldNumber = 3;
+        private string key_ = "";
         /// <summary>
-        /// header_name carries name of filtering header.
+        /// Name of the Header to use
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string HeaderName {
-          get { return headerName_; }
+        public string Key {
+          get { return key_; }
           set {
-            headerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
         }
 
-        /// <summary>Field number for the "header_val" field.</summary>
-        public const int HeaderValFieldNumber = 4;
-        private string headerVal_ = "";
+        /// <summary>Field number for the "value" field.</summary>
+        public const int ValueFieldNumber = 4;
+        private string value_ = "";
         /// <summary>
-        /// header_val carries value of filtering header.
+        /// Expected Header Value or pattern to match
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string HeaderVal {
-          get { return headerVal_; }
+        public string Value {
+          get { return value_; }
           set {
-            headerVal_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
         }
 
@@ -514,8 +540,8 @@ namespace NeoFS.API.v2.Acl {
           }
           if (HeaderType != other.HeaderType) return false;
           if (MatchType != other.MatchType) return false;
-          if (HeaderName != other.HeaderName) return false;
-          if (HeaderVal != other.HeaderVal) return false;
+          if (Key != other.Key) return false;
+          if (Value != other.Value) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -524,8 +550,8 @@ namespace NeoFS.API.v2.Acl {
           int hash = 1;
           if (HeaderType != 0) hash ^= HeaderType.GetHashCode();
           if (MatchType != 0) hash ^= MatchType.GetHashCode();
-          if (HeaderName.Length != 0) hash ^= HeaderName.GetHashCode();
-          if (HeaderVal.Length != 0) hash ^= HeaderVal.GetHashCode();
+          if (Key.Length != 0) hash ^= Key.GetHashCode();
+          if (Value.Length != 0) hash ^= Value.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -547,13 +573,13 @@ namespace NeoFS.API.v2.Acl {
             output.WriteRawTag(16);
             output.WriteEnum((int) MatchType);
           }
-          if (HeaderName.Length != 0) {
+          if (Key.Length != 0) {
             output.WriteRawTag(26);
-            output.WriteString(HeaderName);
+            output.WriteString(Key);
           }
-          if (HeaderVal.Length != 0) {
+          if (Value.Length != 0) {
             output.WriteRawTag(34);
-            output.WriteString(HeaderVal);
+            output.WriteString(Value);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -569,11 +595,11 @@ namespace NeoFS.API.v2.Acl {
           if (MatchType != 0) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MatchType);
           }
-          if (HeaderName.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(HeaderName);
+          if (Key.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
           }
-          if (HeaderVal.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(HeaderVal);
+          if (Value.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -592,11 +618,11 @@ namespace NeoFS.API.v2.Acl {
           if (other.MatchType != 0) {
             MatchType = other.MatchType;
           }
-          if (other.HeaderName.Length != 0) {
-            HeaderName = other.HeaderName;
+          if (other.Key.Length != 0) {
+            Key = other.Key;
           }
-          if (other.HeaderVal.Length != 0) {
-            HeaderVal = other.HeaderVal;
+          if (other.Value.Length != 0) {
+            Value = other.Value;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -618,11 +644,11 @@ namespace NeoFS.API.v2.Acl {
                 break;
               }
               case 26: {
-                HeaderName = input.ReadString();
+                Key = input.ReadString();
                 break;
               }
               case 34: {
-                HeaderVal = input.ReadString();
+                Value = input.ReadString();
                 break;
               }
             }
@@ -632,7 +658,8 @@ namespace NeoFS.API.v2.Acl {
       }
 
       /// <summary>
-      /// Information about extended ACL target.
+      /// Target to apply ACL rule. Can be a subject's role class or a list of public
+      /// keys to match.
       /// </summary>
       public sealed partial class Target : pb::IMessage<Target> {
         private static readonly pb::MessageParser<Target> _parser = new pb::MessageParser<Target>(() => new Target());
@@ -660,7 +687,7 @@ namespace NeoFS.API.v2.Acl {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Target(Target other) : this() {
           role_ = other.role_;
-          keyList_ = other.keyList_.Clone();
+          keys_ = other.keys_.Clone();
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -673,7 +700,7 @@ namespace NeoFS.API.v2.Acl {
         public const int RoleFieldNumber = 1;
         private global::NeoFS.API.v2.Acl.Role role_ = 0;
         /// <summary>
-        /// target carries target of ACL rule.
+        /// Target subject's role class
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Acl.Role Role {
@@ -683,17 +710,17 @@ namespace NeoFS.API.v2.Acl {
           }
         }
 
-        /// <summary>Field number for the "key_list" field.</summary>
-        public const int KeyListFieldNumber = 2;
-        private static readonly pb::FieldCodec<pb::ByteString> _repeated_keyList_codec
+        /// <summary>Field number for the "keys" field.</summary>
+        public const int KeysFieldNumber = 2;
+        private static readonly pb::FieldCodec<pb::ByteString> _repeated_keys_codec
             = pb::FieldCodec.ForBytes(18);
-        private readonly pbc::RepeatedField<pb::ByteString> keyList_ = new pbc::RepeatedField<pb::ByteString>();
+        private readonly pbc::RepeatedField<pb::ByteString> keys_ = new pbc::RepeatedField<pb::ByteString>();
         /// <summary>
-        /// key_list carries public keys of ACL target.
+        /// List of public keys to identify target subject
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<pb::ByteString> KeyList {
-          get { return keyList_; }
+        public pbc::RepeatedField<pb::ByteString> Keys {
+          get { return keys_; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -710,7 +737,7 @@ namespace NeoFS.API.v2.Acl {
             return true;
           }
           if (Role != other.Role) return false;
-          if(!keyList_.Equals(other.keyList_)) return false;
+          if(!keys_.Equals(other.keys_)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -718,7 +745,7 @@ namespace NeoFS.API.v2.Acl {
         public override int GetHashCode() {
           int hash = 1;
           if (Role != 0) hash ^= Role.GetHashCode();
-          hash ^= keyList_.GetHashCode();
+          hash ^= keys_.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -736,7 +763,7 @@ namespace NeoFS.API.v2.Acl {
             output.WriteRawTag(8);
             output.WriteEnum((int) Role);
           }
-          keyList_.WriteTo(output, _repeated_keyList_codec);
+          keys_.WriteTo(output, _repeated_keys_codec);
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -748,7 +775,7 @@ namespace NeoFS.API.v2.Acl {
           if (Role != 0) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Role);
           }
-          size += keyList_.CalculateSize(_repeated_keyList_codec);
+          size += keys_.CalculateSize(_repeated_keys_codec);
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -763,7 +790,7 @@ namespace NeoFS.API.v2.Acl {
           if (other.Role != 0) {
             Role = other.Role;
           }
-          keyList_.Add(other.keyList_);
+          keys_.Add(other.keys_);
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -780,7 +807,7 @@ namespace NeoFS.API.v2.Acl {
                 break;
               }
               case 18: {
-                keyList_.AddEntriesFrom(input, _repeated_keyList_codec);
+                keys_.AddEntriesFrom(input, _repeated_keys_codec);
                 break;
               }
             }
@@ -795,7 +822,10 @@ namespace NeoFS.API.v2.Acl {
   }
 
   /// <summary>
-  /// EACLRecord carries the information about extended ACL rules.
+  /// Extended ACL rules table. Defined a list of ACL rules additionally to Basic
+  /// ACL. Extended ACL rules can be attached to the container and can be updated
+  /// or may be defined in `BearerToken` structure. Please see the corresponding
+  /// NeoFS Technical Specification's section for detailed description.
   /// </summary>
   public sealed partial class EACLTable : pb::IMessage<EACLTable> {
     private static readonly pb::MessageParser<EACLTable> _parser = new pb::MessageParser<EACLTable>(() => new EACLTable());
@@ -837,8 +867,8 @@ namespace NeoFS.API.v2.Acl {
     public const int VersionFieldNumber = 1;
     private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// eACL format version.
-    /// Effectively the version of API library used to create eACL Table
+    /// eACL format version. Effectively the version of API library used to create
+    /// eACL Table.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Version Version {
@@ -852,8 +882,7 @@ namespace NeoFS.API.v2.Acl {
     public const int ContainerIdFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.ContainerID containerId_;
     /// <summary>
-    /// Carries identifier of the container that should use given
-    /// access control rules.
+    /// Identifier of the container that should use given access control rules
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
@@ -869,7 +898,7 @@ namespace NeoFS.API.v2.Acl {
         = pb::FieldCodec.ForMessage(26, global::NeoFS.API.v2.Acl.EACLRecord.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord> records_ = new pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord>();
     /// <summary>
-    /// Records carries list of extended ACL rule records.
+    /// List of Extended ACL rules
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Acl.EACLRecord> Records {
@@ -998,7 +1027,15 @@ namespace NeoFS.API.v2.Acl {
   }
 
   /// <summary>
-  /// BearerToken has information about request ACL rules with limited lifetime
+  /// BearerToken allows to attach signed Extended ACL rules to the request in
+  /// `RequestMetaHeader`. If container's Basic ACL rules allow, the attached rule
+  /// set will be checked instead of one attached to the container itself. Just
+  /// like [JWT](https://jwt.io), it has a limited lifetime and scope, hence can be
+  /// used in the similar use cases, like providing authorisation to externally
+  /// authenticated party.
+  ///
+  /// BearerToken can be issued only by container's owner and must be signed using
+  /// the key associated with container's `OwnerID`.
   /// </summary>
   public sealed partial class BearerToken : pb::IMessage<BearerToken> {
     private static readonly pb::MessageParser<BearerToken> _parser = new pb::MessageParser<BearerToken>(() => new BearerToken());
@@ -1178,7 +1215,8 @@ namespace NeoFS.API.v2.Acl {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Bearer Token body
+      /// Bearer Token body structure contains Extended ACL table issued by container
+      /// owner with additional information preventing token's abuse.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -1220,7 +1258,8 @@ namespace NeoFS.API.v2.Acl {
         public const int EaclTableFieldNumber = 1;
         private global::NeoFS.API.v2.Acl.EACLTable eaclTable_;
         /// <summary>
-        /// EACLTable carries table of extended ACL rules
+        /// Table of Extended ACL rules to use instead of the ones attached to the
+        /// container
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Acl.EACLTable EaclTable {
@@ -1234,7 +1273,8 @@ namespace NeoFS.API.v2.Acl {
         public const int OwnerIdFieldNumber = 2;
         private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
         /// <summary>
-        /// OwnerID carries identifier of the token owner
+        /// `OwnerID` to whom the token was issued. Must match the request
+        /// originator's `OwnerID`. If empty, any token bearer will be accepted.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
@@ -1395,7 +1435,8 @@ namespace NeoFS.API.v2.Acl {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
-          /// Lifetime parameters of the token. Filed names taken from rfc7519.
+          /// Lifetime parameters of the token. Field names taken from
+          /// [rfc7519](https://tools.ietf.org/html/rfc7519).
           /// </summary>
           public sealed partial class TokenLifetime : pb::IMessage<TokenLifetime> {
             private static readonly pb::MessageParser<TokenLifetime> _parser = new pb::MessageParser<TokenLifetime>(() => new TokenLifetime());

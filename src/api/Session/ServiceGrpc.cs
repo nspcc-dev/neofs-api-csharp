@@ -9,7 +9,10 @@ using grpc = global::Grpc.Core;
 
 namespace NeoFS.API.v2.Session {
   /// <summary>
-  /// Create Session record on Node side
+  /// `SessionService` allows to establish a temporary trust relationship between
+  /// two peer nodes and generate a `SessionToken` as the proof of trust to be
+  /// attached in requests for further verification. Please see corresponding
+  /// section of NeoFS Technical Specification for details.
   /// </summary>
   public static partial class SessionService
   {
@@ -36,7 +39,7 @@ namespace NeoFS.API.v2.Session {
     public abstract partial class SessionServiceBase
     {
       /// <summary>
-      /// Create opens new session between the client and the server.
+      /// Opens a new session between two peers.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -72,7 +75,7 @@ namespace NeoFS.API.v2.Session {
       }
 
       /// <summary>
-      /// Create opens new session between the client and the server.
+      /// Opens a new session between two peers.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -84,7 +87,7 @@ namespace NeoFS.API.v2.Session {
         return Create(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Create opens new session between the client and the server.
+      /// Opens a new session between two peers.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -94,7 +97,7 @@ namespace NeoFS.API.v2.Session {
         return CallInvoker.BlockingUnaryCall(__Method_Create, null, options, request);
       }
       /// <summary>
-      /// Create opens new session between the client and the server.
+      /// Opens a new session between two peers.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -106,7 +109,7 @@ namespace NeoFS.API.v2.Session {
         return CreateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Create opens new session between the client and the server.
+      /// Opens a new session between two peers.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

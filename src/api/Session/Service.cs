@@ -54,7 +54,7 @@ namespace NeoFS.API.v2.Session {
   }
   #region Messages
   /// <summary>
-  /// CreateRequest carries an information necessary for opening a session.
+  /// Information necessary for opening a session.
   /// </summary>
   public sealed partial class CreateRequest : pb::IMessage<CreateRequest> {
     private static readonly pb::MessageParser<CreateRequest> _parser = new pb::MessageParser<CreateRequest>(() => new CreateRequest());
@@ -110,8 +110,8 @@ namespace NeoFS.API.v2.Session {
     public const int MetaHeaderFieldNumber = 2;
     private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
     /// <summary>
-    /// Carries request meta information. Header data is used only to regulate message
-    /// transport and does not affect request execution.
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
@@ -125,8 +125,9 @@ namespace NeoFS.API.v2.Session {
     public const int VerifyHeaderFieldNumber = 3;
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
-    /// Carries request verification information. This header is used to authenticate
-    /// the nodes of the message route and check the correctness of transmission.
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -273,7 +274,7 @@ namespace NeoFS.API.v2.Session {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Session creation request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -314,7 +315,7 @@ namespace NeoFS.API.v2.Session {
         public const int OwnerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
         /// <summary>
-        /// Carries an identifier of a session initiator.
+        /// Dession initiating user's or node's key derived `OwnerID`.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
@@ -328,7 +329,7 @@ namespace NeoFS.API.v2.Session {
         public const int ExpirationFieldNumber = 2;
         private ulong expiration_;
         /// <summary>
-        /// Expiration Epoch
+        /// Session expiration `Epoch`
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public ulong Expiration {
@@ -450,7 +451,7 @@ namespace NeoFS.API.v2.Session {
   }
 
   /// <summary>
-  /// CreateResponse carries an information about the opened session.
+  /// Information about the opened session.
   /// </summary>
   public sealed partial class CreateResponse : pb::IMessage<CreateResponse> {
     private static readonly pb::MessageParser<CreateResponse> _parser = new pb::MessageParser<CreateResponse>(() => new CreateResponse());
@@ -522,8 +523,8 @@ namespace NeoFS.API.v2.Session {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -670,7 +671,7 @@ namespace NeoFS.API.v2.Session {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Session creation response body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -711,7 +712,7 @@ namespace NeoFS.API.v2.Session {
         public const int IdFieldNumber = 1;
         private pb::ByteString id_ = pb::ByteString.Empty;
         /// <summary>
-        /// id carries an identifier of session token.
+        /// Identifier of a newly created session
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString Id {
@@ -725,7 +726,7 @@ namespace NeoFS.API.v2.Session {
         public const int SessionKeyFieldNumber = 2;
         private pb::ByteString sessionKey_ = pb::ByteString.Empty;
         /// <summary>
-        /// session_key carries a session public key.
+        /// Public key used for session
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pb::ByteString SessionKey {

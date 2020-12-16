@@ -9,7 +9,10 @@ using grpc = global::Grpc.Core;
 
 namespace NeoFS.API.v2.Netmap {
   /// <summary>
-  /// Methods to work with NetworkMap
+  /// `NetmapService` provides methods to work with `Network Map` and information
+  /// required to build it. The resulting `Network Map` is stored in sidechain
+  /// `Netmap` smart contract, while related information can be obtained from other
+  /// NeoFS nodes.
   /// </summary>
   public static partial class NetmapService
   {
@@ -36,7 +39,11 @@ namespace NeoFS.API.v2.Netmap {
     public abstract partial class NetmapServiceBase
     {
       /// <summary>
-      /// Return information about Node
+      /// Get NodeInfo structure from the particular node directly. Node information
+      /// can be taken from `Netmap` smart contract, but in some cases the one may
+      /// want to get recent information directly, or to talk to the node not yet
+      /// present in `Network Map` to find out what API version can be used for
+      /// further communication. Can also be used to check if node is up and running.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -72,7 +79,11 @@ namespace NeoFS.API.v2.Netmap {
       }
 
       /// <summary>
-      /// Return information about Node
+      /// Get NodeInfo structure from the particular node directly. Node information
+      /// can be taken from `Netmap` smart contract, but in some cases the one may
+      /// want to get recent information directly, or to talk to the node not yet
+      /// present in `Network Map` to find out what API version can be used for
+      /// further communication. Can also be used to check if node is up and running.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -84,7 +95,11 @@ namespace NeoFS.API.v2.Netmap {
         return LocalNodeInfo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Return information about Node
+      /// Get NodeInfo structure from the particular node directly. Node information
+      /// can be taken from `Netmap` smart contract, but in some cases the one may
+      /// want to get recent information directly, or to talk to the node not yet
+      /// present in `Network Map` to find out what API version can be used for
+      /// further communication. Can also be used to check if node is up and running.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -94,7 +109,11 @@ namespace NeoFS.API.v2.Netmap {
         return CallInvoker.BlockingUnaryCall(__Method_LocalNodeInfo, null, options, request);
       }
       /// <summary>
-      /// Return information about Node
+      /// Get NodeInfo structure from the particular node directly. Node information
+      /// can be taken from `Netmap` smart contract, but in some cases the one may
+      /// want to get recent information directly, or to talk to the node not yet
+      /// present in `Network Map` to find out what API version can be used for
+      /// further communication. Can also be used to check if node is up and running.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -106,7 +125,11 @@ namespace NeoFS.API.v2.Netmap {
         return LocalNodeInfoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Return information about Node
+      /// Get NodeInfo structure from the particular node directly. Node information
+      /// can be taken from `Netmap` smart contract, but in some cases the one may
+      /// want to get recent information directly, or to talk to the node not yet
+      /// present in `Network Map` to find out what API version can be used for
+      /// further communication. Can also be used to check if node is up and running.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

@@ -14,7 +14,7 @@ namespace NeoFS.API.v2.Object
         {
             filters.Add(new Filter
             {
-                Name = name,
+                Key = name,
                 Value = value,
                 MatchType = op,
             });

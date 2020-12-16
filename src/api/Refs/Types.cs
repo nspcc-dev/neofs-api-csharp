@@ -24,18 +24,20 @@ namespace NeoFS.API.v2.Refs {
     static TypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChByZWZzL3R5cGVzLnByb3RvEg5uZW8uZnMudjIucmVmcyJpCgdBZGRyZXNz",
-            "EjEKDGNvbnRhaW5lcl9pZBgBIAEoCzIbLm5lby5mcy52Mi5yZWZzLkNvbnRh",
-            "aW5lcklEEisKCW9iamVjdF9pZBgCIAEoCzIYLm5lby5mcy52Mi5yZWZzLk9i",
-            "amVjdElEIhkKCE9iamVjdElEEg0KBXZhbHVlGAEgASgMIhwKC0NvbnRhaW5l",
-            "cklEEg0KBXZhbHVlGAEgASgMIhgKB093bmVySUQSDQoFdmFsdWUYASABKAwi",
-            "JwoHVmVyc2lvbhINCgVtYWpvchgBIAEoDRINCgVtaW5vchgCIAEoDSImCglT",
-            "aWduYXR1cmUSCwoDa2V5GAEgASgMEgwKBHNpZ24YAiABKAwiQwoIQ2hlY2tz",
-            "dW0SKgoEdHlwZRgBIAEoDjIcLm5lby5mcy52Mi5yZWZzLkNoZWNrc3VtVHlw",
-            "ZRILCgNzdW0YAiABKAwqQQoMQ2hlY2tzdW1UeXBlEh0KGUNIRUNLU1VNX1RZ",
-            "UEVfVU5TUEVDSUZJRUQQABIGCgJUWhABEgoKBlNIQTI1NhACQklaM2dpdGh1",
-            "Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1nby92Mi9yZWZzL2dycGM7cmVm",
-            "c6oCEU5lb0ZTLkFQSS52Mi5SZWZzYgZwcm90bzM="));
+            "ChByZWZzL3R5cGVzLnByb3RvEg5uZW8uZnMudjIucmVmcyKAAQoHQWRkcmVz",
+            "cxI+Cgxjb250YWluZXJfaWQYASABKAsyGy5uZW8uZnMudjIucmVmcy5Db250",
+            "YWluZXJJRFILY29udGFpbmVySUQSNQoJb2JqZWN0X2lkGAIgASgLMhgubmVv",
+            "LmZzLnYyLnJlZnMuT2JqZWN0SURSCG9iamVjdElEIiAKCE9iamVjdElEEhQK",
+            "BXZhbHVlGAEgASgMUgV2YWx1ZSIjCgtDb250YWluZXJJRBIUCgV2YWx1ZRgB",
+            "IAEoDFIFdmFsdWUiHwoHT3duZXJJRBIUCgV2YWx1ZRgBIAEoDFIFdmFsdWUi",
+            "NQoHVmVyc2lvbhIUCgVtYWpvchgBIAEoDVIFbWFqb3ISFAoFbWlub3IYAiAB",
+            "KA1SBW1pbm9yIjYKCVNpZ25hdHVyZRIQCgNrZXkYASABKAxSA2tleRIXCgRz",
+            "aWduGAIgASgMUglzaWduYXR1cmUiTgoIQ2hlY2tzdW0SMAoEdHlwZRgBIAEo",
+            "DjIcLm5lby5mcy52Mi5yZWZzLkNoZWNrc3VtVHlwZVIEdHlwZRIQCgNzdW0Y",
+            "AiABKAxSA3N1bSpBCgxDaGVja3N1bVR5cGUSHQoZQ0hFQ0tTVU1fVFlQRV9V",
+            "TlNQRUNJRklFRBAAEgYKAlRaEAESCgoGU0hBMjU2EAJCSVozZ2l0aHViLmNv",
+            "bS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3YyL3JlZnMvZ3JwYztyZWZzqgIR",
+            "TmVvRlMuQVBJLnYyLlJlZnNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Refs.ChecksumType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -53,7 +55,7 @@ namespace NeoFS.API.v2.Refs {
   }
   #region Enums
   /// <summary>
-  /// Checksum algorithm type
+  /// Checksum algorithm type.
   /// </summary>
   public enum ChecksumType {
     /// <summary>
@@ -61,7 +63,7 @@ namespace NeoFS.API.v2.Refs {
     /// </summary>
     [pbr::OriginalName("CHECKSUM_TYPE_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
-    /// Tillich-Zemor homomorphic hash funciton
+    /// Tillich-Zemor homomorphic hash function
     /// </summary>
     [pbr::OriginalName("TZ")] Tz = 1,
     /// <summary>
@@ -74,7 +76,10 @@ namespace NeoFS.API.v2.Refs {
 
   #region Messages
   /// <summary>
-  /// Address of object (container id + object id)
+  /// Objects in NeoFS are addressed by their ContainerID and ObjectID.
+  ///
+  /// String presentation of `Address` is the concatenation of string encoded
+  /// `ContainerID` and `ObjectID` delimited by '/' character.
   /// </summary>
   public sealed partial class Address : pb::IMessage<Address> {
     private static readonly pb::MessageParser<Address> _parser = new pb::MessageParser<Address>(() => new Address());
@@ -115,7 +120,7 @@ namespace NeoFS.API.v2.Refs {
     public const int ContainerIdFieldNumber = 1;
     private global::NeoFS.API.v2.Refs.ContainerID containerId_;
     /// <summary>
-    /// container_id carries container identifier.
+    /// Container identifier
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
@@ -129,7 +134,7 @@ namespace NeoFS.API.v2.Refs {
     public const int ObjectIdFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.ObjectID objectId_;
     /// <summary>
-    /// object_id carries object identifier.
+    /// Object identifier
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.ObjectID ObjectId {
@@ -252,7 +257,22 @@ namespace NeoFS.API.v2.Refs {
   }
 
   /// <summary>
-  /// NeoFS object identifier.
+  /// NeoFS Object unique identifier. Objects are immutable and content-addressed.
+  /// It means `ObjectID` will change if `header` or `payload` changes.
+  ///
+  /// `ObjectID` is a 32 byte long
+  /// [SHA256](https://csrc.nist.gov/publications/detail/fips/180/4/final) hash of
+  /// object's `header` field, which, in it's turn, contains hash of object's
+  /// payload.
+  ///
+  /// String presentation is
+  /// [base58](https://tools.ietf.org/html/draft-msporny-base58-02) encoded string.
+  ///
+  /// JSON value will be the data encoded as a string using standard base64
+  /// encoding with paddings. Either
+  /// [standard](https://tools.ietf.org/html/rfc4648#section-4) or
+  /// [URL-safe](https://tools.ietf.org/html/rfc4648#section-5) base64 encoding
+  /// with/without paddings are accepted.
   /// </summary>
   public sealed partial class ObjectID : pb::IMessage<ObjectID> {
     private static readonly pb::MessageParser<ObjectID> _parser = new pb::MessageParser<ObjectID>(() => new ObjectID());
@@ -292,7 +312,7 @@ namespace NeoFS.API.v2.Refs {
     public const int ValueFieldNumber = 1;
     private pb::ByteString value_ = pb::ByteString.Empty;
     /// <summary>
-    /// value carries the object identifier in a binary format.
+    /// Object identifier in a binary format
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Value {
@@ -387,7 +407,21 @@ namespace NeoFS.API.v2.Refs {
   }
 
   /// <summary>
-  /// NeoFS container identifier.
+  /// NeoFS container identifier. Container structures are immutable and
+  /// content-addressed.
+  ///
+  /// `ContainerID` is a 32 byte long
+  /// [SHA256](https://csrc.nist.gov/publications/detail/fips/180/4/final) hash of
+  /// stable-marshalled container message.
+  ///
+  /// String presentation is
+  /// [base58](https://tools.ietf.org/html/draft-msporny-base58-02) encoded string.
+  ///
+  /// JSON value will be the data encoded as a string using standard base64
+  /// encoding with paddings. Either
+  /// [standard](https://tools.ietf.org/html/rfc4648#section-4) or
+  /// [URL-safe](https://tools.ietf.org/html/rfc4648#section-5) base64 encoding
+  /// with/without paddings are accepted.
   /// </summary>
   public sealed partial class ContainerID : pb::IMessage<ContainerID> {
     private static readonly pb::MessageParser<ContainerID> _parser = new pb::MessageParser<ContainerID>(() => new ContainerID());
@@ -427,7 +461,7 @@ namespace NeoFS.API.v2.Refs {
     public const int ValueFieldNumber = 1;
     private pb::ByteString value_ = pb::ByteString.Empty;
     /// <summary>
-    /// value carries the container identifier in a binary format.
+    /// Container identifier in a binary format.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Value {
@@ -522,7 +556,21 @@ namespace NeoFS.API.v2.Refs {
   }
 
   /// <summary>
-  /// OwnerID group information about the owner of the NeoFS container.
+  /// `OwnerID` is a derivative of a user's main public key. The transformation
+  /// algorithm is the same as for Neo3 wallet addresses. Neo3 wallet address can
+  /// be directly used as `OwnerID`.
+  ///
+  /// `OwnerID` is a 25 bytes sequence starting with Neo version prefix byte
+  /// followed by 20 bytes of ScrptHash and 4 bytes of checksum.
+  ///
+  /// String presentation is [Base58
+  /// Check](https://en.bitcoin.it/wiki/Base58Check_encoding) Encoded string.
+  ///
+  /// JSON value will be the data encoded as a string using standard base64
+  /// encoding with paddings. Either
+  /// [standard](https://tools.ietf.org/html/rfc4648#section-4) or
+  /// [URL-safe](https://tools.ietf.org/html/rfc4648#section-5) base64 encoding
+  /// with/without paddings are accepted.
   /// </summary>
   public sealed partial class OwnerID : pb::IMessage<OwnerID> {
     private static readonly pb::MessageParser<OwnerID> _parser = new pb::MessageParser<OwnerID>(() => new OwnerID());
@@ -562,7 +610,7 @@ namespace NeoFS.API.v2.Refs {
     public const int ValueFieldNumber = 1;
     private pb::ByteString value_ = pb::ByteString.Empty;
     /// <summary>
-    /// value carries the identifier of the container owner in a binary format.
+    /// Identifier of the container owner in a binary format
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Value {
@@ -657,7 +705,10 @@ namespace NeoFS.API.v2.Refs {
   }
 
   /// <summary>
-  /// Represents API version used by node.
+  /// API version used by a node.
+  ///
+  /// String presentation is a Semantic Versioning 2.0.0 compatible version string
+  /// with 'v' prefix. I.e. `vX.Y`, where `X` - major number, `Y` - minor number.
   /// </summary>
   public sealed partial class Version : pb::IMessage<Version> {
     private static readonly pb::MessageParser<Version> _parser = new pb::MessageParser<Version>(() => new Version());
@@ -698,7 +749,7 @@ namespace NeoFS.API.v2.Refs {
     public const int MajorFieldNumber = 1;
     private uint major_;
     /// <summary>
-    /// Major API version.
+    /// Major API version
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Major {
@@ -712,7 +763,7 @@ namespace NeoFS.API.v2.Refs {
     public const int MinorFieldNumber = 2;
     private uint minor_;
     /// <summary>
-    /// Minor API version.
+    /// Minor API version
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Minor {
@@ -823,7 +874,7 @@ namespace NeoFS.API.v2.Refs {
   }
 
   /// <summary>
-  /// Signature of something in NeoFS
+  /// Signature of something in NeoFS.
   /// </summary>
   public sealed partial class Signature : pb::IMessage<Signature> {
     private static readonly pb::MessageParser<Signature> _parser = new pb::MessageParser<Signature>(() => new Signature());
@@ -864,7 +915,7 @@ namespace NeoFS.API.v2.Refs {
     public const int KeyFieldNumber = 1;
     private pb::ByteString key_ = pb::ByteString.Empty;
     /// <summary>
-    /// Public key used for signing.
+    /// Public key used for signing
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Key {
@@ -989,7 +1040,13 @@ namespace NeoFS.API.v2.Refs {
   }
 
   /// <summary>
-  /// Checksum message
+  /// Checksum message.
+  /// Depending on checksum algorithm type the string presentation may vary:
+  ///
+  /// * TZ \
+  ///   Hex encoded string without `0x` prefix
+  /// * SHA256 \
+  ///   Hex encoded string without `0x` prefix
   /// </summary>
   public sealed partial class Checksum : pb::IMessage<Checksum> {
     private static readonly pb::MessageParser<Checksum> _parser = new pb::MessageParser<Checksum>(() => new Checksum());

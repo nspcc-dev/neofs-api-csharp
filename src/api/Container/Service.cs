@@ -207,8 +207,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -355,7 +355,11 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Container creation request has container structure's signature as a
+      /// separate field. It's not stored in sidechain, just verified on container
+      /// creation by `Container` smart contract. `ContainerID` is a SHA256 hash of
+      /// the stable-marshalled container strucutre, hence there is no need for
+      /// additional signature checks.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -396,7 +400,7 @@ namespace NeoFS.API.v2.Container {
         public const int ContainerFieldNumber = 1;
         private global::NeoFS.API.v2.Container.Container container_;
         /// <summary>
-        /// Container to create in NeoFS.
+        /// Container structure to register in NeoFS
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Container.Container Container {
@@ -410,7 +414,7 @@ namespace NeoFS.API.v2.Container {
         public const int SignatureFieldNumber = 2;
         private global::NeoFS.API.v2.Refs.Signature signature_;
         /// <summary>
-        ///Signature of stable-marshalled container according to RFC-6979.
+        /// Signature of a stable-marshalled container according to RFC-6979
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Signature Signature {
@@ -610,8 +614,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -758,7 +762,10 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Container put response body contains information about the newly registered
+      /// container as seen by `Container` smart contract. `ContainerID` can be
+      /// calculated beforehand from the container structure and compared to the one
+      /// returned here to make sure everything was done as expected.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -798,7 +805,7 @@ namespace NeoFS.API.v2.Container {
         public const int ContainerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.ContainerID containerId_;
         /// <summary>
-        /// container_id carries identifier of the new container.
+        /// Unique identifier of the newly created container
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
@@ -976,8 +983,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -1124,7 +1131,9 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Container removal request body has a signed `ContainerID` as a proof of
+      /// container owner's intent. The signature will be verified by `Container`
+      /// smart contract, so signing algorithm must be supported by NeoVM.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -1165,8 +1174,7 @@ namespace NeoFS.API.v2.Container {
         public const int ContainerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.ContainerID containerId_;
         /// <summary>
-        /// container_id carries identifier of the container to delete
-        /// from NeoFS.
+        /// Identifier of the container to delete from NeoFS
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
@@ -1180,7 +1188,7 @@ namespace NeoFS.API.v2.Container {
         public const int SignatureFieldNumber = 2;
         private global::NeoFS.API.v2.Refs.Signature signature_;
         /// <summary>
-        /// Signature of container id according to RFC-6979.
+        /// `ContainerID` signed with the container owner's key according to RFC-6979
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Signature Signature {
@@ -1308,8 +1316,8 @@ namespace NeoFS.API.v2.Container {
   }
 
   /// <summary>
-  /// DeleteResponse is empty because delete operation is asynchronous and done
-  /// via consensus in inner ring nodes
+  /// `DeleteResponse` has an empty body because delete operation is asynchronous
+  /// and done via consensus in Inner Ring nodes.
   /// </summary>
   public sealed partial class DeleteResponse : pb::IMessage<DeleteResponse> {
     private static readonly pb::MessageParser<DeleteResponse> _parser = new pb::MessageParser<DeleteResponse>(() => new DeleteResponse());
@@ -1381,8 +1389,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -1529,7 +1537,8 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// `DeleteResponse` has an empty body because delete operation is asynchronous
+      /// and done via consensus in Inner Ring nodes.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -1710,8 +1719,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -1858,7 +1867,7 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Get container structure request body.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -1898,7 +1907,7 @@ namespace NeoFS.API.v2.Container {
         public const int ContainerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.ContainerID containerId_;
         /// <summary>
-        /// container_id carries identifier of the container to get.
+        /// Identifier of the container to get
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
@@ -2076,8 +2085,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -2224,7 +2233,8 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Get container response body does not have container structure signature. It
+      /// was already verified on container creation.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -2264,7 +2274,7 @@ namespace NeoFS.API.v2.Container {
         public const int ContainerFieldNumber = 1;
         private global::NeoFS.API.v2.Container.Container container_;
         /// <summary>
-        /// Container that has been requested.
+        /// Requested container structure
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Container.Container Container {
@@ -2412,7 +2422,7 @@ namespace NeoFS.API.v2.Container {
     public const int BodyFieldNumber = 1;
     private global::NeoFS.API.v2.Container.ListRequest.Types.Body body_;
     /// <summary>
-    /// Body of list containers request message.
+    /// Body of list containers request message
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Container.ListRequest.Types.Body Body {
@@ -2442,8 +2452,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -2590,7 +2600,7 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// List containers request body.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -2630,7 +2640,7 @@ namespace NeoFS.API.v2.Container {
         public const int OwnerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
         /// <summary>
-        /// owner_id carries identifier of the container owner.
+        /// Identifier of the container owner
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
@@ -2808,8 +2818,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -2956,7 +2966,7 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// List containers response body.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -2998,7 +3008,7 @@ namespace NeoFS.API.v2.Container {
             = pb::FieldCodec.ForMessage(10, global::NeoFS.API.v2.Refs.ContainerID.Parser);
         private readonly pbc::RepeatedField<global::NeoFS.API.v2.Refs.ContainerID> containerIds_ = new pbc::RepeatedField<global::NeoFS.API.v2.Refs.ContainerID>();
         /// <summary>
-        /// ContainerIDs carries list of identifiers of the containers that belong to the owner.
+        /// List of `ContainerID`s belonging to the requested `OwnerID`
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<global::NeoFS.API.v2.Refs.ContainerID> ContainerIds {
@@ -3160,8 +3170,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -3308,7 +3318,8 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Set Extended ACL request body does not have separate `ContainerID`
+      /// reference. It will be taken from `EACLTable.container_id` field.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -3349,7 +3360,7 @@ namespace NeoFS.API.v2.Container {
         public const int EaclFieldNumber = 1;
         private global::NeoFS.API.v2.Acl.EACLTable eacl_;
         /// <summary>
-        /// Extended ACL to set for the container.
+        /// Extended ACL table to set for container
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Acl.EACLTable Eacl {
@@ -3363,7 +3374,7 @@ namespace NeoFS.API.v2.Container {
         public const int SignatureFieldNumber = 2;
         private global::NeoFS.API.v2.Refs.Signature signature_;
         /// <summary>
-        /// Signature of stable-marshalled Extended ACL according to RFC-6979.
+        /// Signature of stable-marshalled Extended ACL table according to RFC-6979
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Signature Signature {
@@ -3563,8 +3574,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -3711,7 +3722,9 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// `SetExtendedACLResponse` has an empty body because the operation is
+      /// asynchronous and update should be reflected in `Container` smart contract's
+      /// storage after next block is issued in sidechain.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -3892,8 +3905,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries request verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
@@ -4040,7 +4053,7 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Request body
+      /// Get Extended ACL request body
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -4080,7 +4093,7 @@ namespace NeoFS.API.v2.Container {
         public const int ContainerIdFieldNumber = 1;
         private global::NeoFS.API.v2.Refs.ContainerID containerId_;
         /// <summary>
-        /// container_id carries identifier of the container that has Extended ACL.
+        /// Identifier of the container having Extended ACL
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
@@ -4258,8 +4271,8 @@ namespace NeoFS.API.v2.Container {
     private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
     /// <summary>
     /// Carries response verification information. This header is used to
-    /// authenticate the nodes of the message route and check the correctness
-    /// of transmission.
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
@@ -4406,7 +4419,9 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Response body
+      /// Get Extended ACL Response body can be empty if the requested container did
+      /// not have Extended ACL Table attached or Extended ACL was not allowed at
+      /// container creation.
       /// </summary>
       public sealed partial class Body : pb::IMessage<Body> {
         private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
@@ -4447,7 +4462,7 @@ namespace NeoFS.API.v2.Container {
         public const int EaclFieldNumber = 1;
         private global::NeoFS.API.v2.Acl.EACLTable eacl_;
         /// <summary>
-        /// Extended ACL that has been requested if it was set up.
+        /// Extended ACL requested, if available
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Acl.EACLTable Eacl {
@@ -4461,7 +4476,7 @@ namespace NeoFS.API.v2.Container {
         public const int SignatureFieldNumber = 2;
         private global::NeoFS.API.v2.Refs.Signature signature_;
         /// <summary>
-        /// Signature of stable-marshalled Extended ACL according to RFC-6979.
+        /// Signature of stable-marshalled Extended ACL according to RFC-6979
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::NeoFS.API.v2.Refs.Signature Signature {

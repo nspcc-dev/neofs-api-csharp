@@ -25,10 +25,10 @@ namespace NeoFS.API.v2.Accounting {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZhY2NvdW50aW5nL3R5cGVzLnByb3RvEhRuZW8uZnMudjIuYWNjb3VudGlu",
-            "ZyIrCgdEZWNpbWFsEg0KBXZhbHVlGAEgASgDEhEKCXByZWNpc2lvbhgCIAEo",
-            "DUJbWj9naXRodWIuY29tL25zcGNjLWRldi9uZW9mcy1hcGktZ28vdjIvYWNj",
-            "b3VudGluZy9ncnBjO2FjY291bnRpbmeqAhdOZW9GUy5BUEkudjIuQWNjb3Vu",
-            "dGluZ2IGcHJvdG8z"));
+            "ZyI9CgdEZWNpbWFsEhQKBXZhbHVlGAEgASgDUgV2YWx1ZRIcCglwcmVjaXNp",
+            "b24YAiABKA1SCXByZWNpc2lvbkJbWj9naXRodWIuY29tL25zcGNjLWRldi9u",
+            "ZW9mcy1hcGktZ28vdjIvYWNjb3VudGluZy9ncnBjO2FjY291bnRpbmeqAhdO",
+            "ZW9GUy5BUEkudjIuQWNjb3VudGluZ2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -40,7 +40,13 @@ namespace NeoFS.API.v2.Accounting {
   }
   #region Messages
   /// <summary>
-  /// Decimal represents the decimal numbers.
+  /// Standard floating point data type can't be used in NeoFS due to inexactness
+  /// of the result when doing lots of small number operations. To solve the lost
+  /// precision issue, special `Decimal` format is used for monetary computations.
+  ///
+  /// Please see [The General Decimal Arithmetic
+  /// Specification](http://speleotrove.com/decimal/) for detailed problem
+  /// description.
   /// </summary>
   public sealed partial class Decimal : pb::IMessage<Decimal> {
     private static readonly pb::MessageParser<Decimal> _parser = new pb::MessageParser<Decimal>(() => new Decimal());
@@ -81,7 +87,7 @@ namespace NeoFS.API.v2.Accounting {
     public const int ValueFieldNumber = 1;
     private long value_;
     /// <summary>
-    /// value carries number value.
+    /// Number in smallest Token fractions.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public long Value {
@@ -95,7 +101,8 @@ namespace NeoFS.API.v2.Accounting {
     public const int PrecisionFieldNumber = 2;
     private uint precision_;
     /// <summary>
-    /// precision carries value precision.
+    /// Precision value indicating how many smallest fractions can be in one
+    /// integer.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Precision {

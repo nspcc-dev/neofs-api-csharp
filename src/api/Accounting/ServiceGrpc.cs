@@ -9,8 +9,11 @@ using grpc = global::Grpc.Core;
 
 namespace NeoFS.API.v2.Accounting {
   /// <summary>
-  /// The service provides methods for obtaining information
-  /// about the account balance in NeoFS system.
+  /// Accounting service provides methods for interaction with NeoFS sidechain via
+  /// other NeoFS nodes to get information about the account balance. Deposit and
+  /// Withdraw operations can't be implemented here, as they require Mainnet NeoFS
+  /// smart contract invocation. Transfer operations between internal NeoFS
+  /// accounts are possible, if both use the same token type.
   /// </summary>
   public static partial class AccountingService
   {
@@ -37,7 +40,7 @@ namespace NeoFS.API.v2.Accounting {
     public abstract partial class AccountingServiceBase
     {
       /// <summary>
-      /// Returns the amount of funds for the requested NeoFS account.
+      /// Returns the amount of funds in GAS token for the requested NeoFS account.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -73,7 +76,7 @@ namespace NeoFS.API.v2.Accounting {
       }
 
       /// <summary>
-      /// Returns the amount of funds for the requested NeoFS account.
+      /// Returns the amount of funds in GAS token for the requested NeoFS account.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -85,7 +88,7 @@ namespace NeoFS.API.v2.Accounting {
         return Balance(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Returns the amount of funds for the requested NeoFS account.
+      /// Returns the amount of funds in GAS token for the requested NeoFS account.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -95,7 +98,7 @@ namespace NeoFS.API.v2.Accounting {
         return CallInvoker.BlockingUnaryCall(__Method_Balance, null, options, request);
       }
       /// <summary>
-      /// Returns the amount of funds for the requested NeoFS account.
+      /// Returns the amount of funds in GAS token for the requested NeoFS account.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -107,7 +110,7 @@ namespace NeoFS.API.v2.Accounting {
         return BalanceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Returns the amount of funds for the requested NeoFS account.
+      /// Returns the amount of funds in GAS token for the requested NeoFS account.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

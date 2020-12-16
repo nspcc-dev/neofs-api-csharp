@@ -25,16 +25,18 @@ namespace NeoFS.API.v2.Container {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVjb250YWluZXIvdHlwZXMucHJvdG8SE25lby5mcy52Mi5jb250YWluZXIa",
-            "Em5ldG1hcC90eXBlcy5wcm90bxoQcmVmcy90eXBlcy5wcm90byKmAgoJQ29u",
-            "dGFpbmVyEigKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJz",
-            "aW9uEikKCG93bmVyX2lkGAIgASgLMhcubmVvLmZzLnYyLnJlZnMuT3duZXJJ",
-            "RBINCgVub25jZRgDIAEoDBIRCgliYXNpY19hY2wYBCABKA0SPAoKYXR0cmli",
-            "dXRlcxgFIAMoCzIoLm5lby5mcy52Mi5jb250YWluZXIuQ29udGFpbmVyLkF0",
-            "dHJpYnV0ZRI7ChBwbGFjZW1lbnRfcG9saWN5GAYgASgLMiEubmVvLmZzLnYy",
-            "Lm5ldG1hcC5QbGFjZW1lbnRQb2xpY3kaJwoJQXR0cmlidXRlEgsKA2tleRgB",
-            "IAEoCRINCgV2YWx1ZRgCIAEoCUJYWj1naXRodWIuY29tL25zcGNjLWRldi9u",
-            "ZW9mcy1hcGktZ28vdjIvY29udGFpbmVyL2dycGM7Y29udGFpbmVyqgIWTmVv",
-            "RlMuQVBJLnYyLkNvbnRhaW5lcmIGcHJvdG8z"));
+            "Em5ldG1hcC90eXBlcy5wcm90bxoQcmVmcy90eXBlcy5wcm90byLyAgoJQ29u",
+            "dGFpbmVyEjEKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJz",
+            "aW9uUgd2ZXJzaW9uEjIKCG93bmVyX2lkGAIgASgLMhcubmVvLmZzLnYyLnJl",
+            "ZnMuT3duZXJJRFIHb3duZXJJRBIUCgVub25jZRgDIAEoDFIFbm9uY2USGwoJ",
+            "YmFzaWNfYWNsGAQgASgNUghiYXNpY0FDTBJICgphdHRyaWJ1dGVzGAUgAygL",
+            "MigubmVvLmZzLnYyLmNvbnRhaW5lci5Db250YWluZXIuQXR0cmlidXRlUgph",
+            "dHRyaWJ1dGVzEkwKEHBsYWNlbWVudF9wb2xpY3kYBiABKAsyIS5uZW8uZnMu",
+            "djIubmV0bWFwLlBsYWNlbWVudFBvbGljeVIPcGxhY2VtZW50UG9saWN5GjMK",
+            "CUF0dHJpYnV0ZRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIF",
+            "dmFsdWVCWFo9Z2l0aHViLmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3Yy",
+            "L2NvbnRhaW5lci9ncnBjO2NvbnRhaW5lcqoCFk5lb0ZTLkFQSS52Mi5Db250",
+            "YWluZXJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Netmap.TypesReflection.Descriptor, global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -46,10 +48,10 @@ namespace NeoFS.API.v2.Container {
   }
   #region Messages
   /// <summary>
-  /// Container is a structure that defines object placement behaviour. Objects
-  /// can be stored only within containers. They define placement rule, attributes
-  /// and access control information. ID of the container is a 32 byte long
-  /// SHA256 hash of stable-marshalled container message.
+  /// Container is a structure that defines object placement behaviour. Objects can
+  /// be stored only within containers. They define placement rule, attributes and
+  /// access control information. ID of the container is a 32 byte long SHA256 hash
+  /// of stable-marshalled container message.
   /// </summary>
   public sealed partial class Container : pb::IMessage<Container> {
     private static readonly pb::MessageParser<Container> _parser = new pb::MessageParser<Container>(() => new Container());
@@ -94,8 +96,8 @@ namespace NeoFS.API.v2.Container {
     public const int VersionFieldNumber = 1;
     private global::NeoFS.API.v2.Refs.Version version_;
     /// <summary>
-    /// Container format version.
-    /// Effectively the version of API library used to create container
+    /// Container format version. Effectively the version of API library used to
+    /// create container.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Version Version {
@@ -109,7 +111,7 @@ namespace NeoFS.API.v2.Container {
     public const int OwnerIdFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.OwnerID ownerId_;
     /// <summary>
-    /// OwnerID carries identifier of the container owner.
+    /// Identifier of the container owner
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.OwnerID OwnerId {
@@ -123,7 +125,7 @@ namespace NeoFS.API.v2.Container {
     public const int NonceFieldNumber = 3;
     private pb::ByteString nonce_ = pb::ByteString.Empty;
     /// <summary>
-    /// Nonce is a 16 byte UUID, used to avoid collisions of container id.
+    /// Nonce is a 16 byte UUIDv4, used to avoid collisions of `ContainerID`s
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Nonce {
@@ -137,8 +139,8 @@ namespace NeoFS.API.v2.Container {
     public const int BasicAclFieldNumber = 4;
     private uint basicAcl_;
     /// <summary>
-    /// BasicACL contains access control rules for owner, system, others groups and
-    /// permission bits for bearer token and Extended ACL.
+    /// `BasicACL` contains access control rules for owner, system, others groups
+    /// and permission bits for `BearerToken` and `Extended ACL`
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint BasicAcl {
@@ -154,7 +156,7 @@ namespace NeoFS.API.v2.Container {
         = pb::FieldCodec.ForMessage(42, global::NeoFS.API.v2.Container.Container.Types.Attribute.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Container.Container.Types.Attribute> attributes_ = new pbc::RepeatedField<global::NeoFS.API.v2.Container.Container.Types.Attribute>();
     /// <summary>
-    /// Attributes define any immutable characteristics of container.
+    /// Attributes represent immutable container's meta data
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Container.Container.Types.Attribute> Attributes {
@@ -165,7 +167,7 @@ namespace NeoFS.API.v2.Container {
     public const int PlacementPolicyFieldNumber = 6;
     private global::NeoFS.API.v2.Netmap.PlacementPolicy placementPolicy_;
     /// <summary>
-    /// Placement policy for the object inside the container.
+    /// Placement policy for the object inside the container
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Netmap.PlacementPolicy PlacementPolicy {
@@ -353,7 +355,26 @@ namespace NeoFS.API.v2.Container {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Attribute is a key-value pair of strings.
+      /// `Attribute` is a user-defined Key-Value metadata pair attached to the
+      /// container. Container attributes are immutable. They are set at container
+      /// creation and can never be added or updated.
+      ///
+      /// Key name must be a container-unique valid UTF-8 string. Value can't be
+      /// empty. Containers with duplicated attribute names or attributes with empty
+      /// values will be considered invalid.
+      ///
+      /// There are some "well-known" attributes affecting system behaviour:
+      ///
+      /// * __NEOFS__SUBNET \
+      ///   String ID of container's storage subnet. Container can be attached to
+      ///   only one subnet.
+      ///
+      /// And some well-known attributes used by applications only:
+      ///
+      /// * Name \
+      ///   Human-friendly name
+      /// * Timestamp \
+      ///   User-defined local time of container creation in Unix Timestamp format
       /// </summary>
       public sealed partial class Attribute : pb::IMessage<Attribute> {
         private static readonly pb::MessageParser<Attribute> _parser = new pb::MessageParser<Attribute>(() => new Attribute());
@@ -394,7 +415,7 @@ namespace NeoFS.API.v2.Container {
         public const int KeyFieldNumber = 1;
         private string key_ = "";
         /// <summary>
-        /// Key of immutable container attribute.
+        /// Attribute name key
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public string Key {
@@ -408,7 +429,7 @@ namespace NeoFS.API.v2.Container {
         public const int ValueFieldNumber = 2;
         private string value_ = "";
         /// <summary>
-        /// Value of immutable container attribute.
+        /// Attribute value
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public string Value {

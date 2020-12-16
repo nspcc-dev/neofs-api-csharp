@@ -25,13 +25,14 @@ namespace NeoFS.API.v2.StorageGroup {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhzdG9yYWdlZ3JvdXAvdHlwZXMucHJvdG8SFm5lby5mcy52Mi5zdG9yYWdl",
-            "Z3JvdXAaEHJlZnMvdHlwZXMucHJvdG8ipAEKDFN0b3JhZ2VHcm91cBIcChR2",
-            "YWxpZGF0aW9uX2RhdGFfc2l6ZRgBIAEoBBIxCg92YWxpZGF0aW9uX2hhc2gY",
-            "AiABKAsyGC5uZW8uZnMudjIucmVmcy5DaGVja3N1bRIYChBleHBpcmF0aW9u",
-            "X2Vwb2NoGAMgASgEEikKB21lbWJlcnMYBCADKAsyGC5uZW8uZnMudjIucmVm",
-            "cy5PYmplY3RJREJhWkNnaXRodWIuY29tL25zcGNjLWRldi9uZW9mcy1hcGkt",
-            "Z28vdjIvc3RvcmFnZWdyb3VwL2dycGM7c3RvcmFnZWdyb3VwqgIZTmVvRlMu",
-            "QVBJLnYyLlN0b3JhZ2VHcm91cGIGcHJvdG8z"));
+            "Z3JvdXAaEHJlZnMvdHlwZXMucHJvdG8i4gEKDFN0b3JhZ2VHcm91cBIwChR2",
+            "YWxpZGF0aW9uX2RhdGFfc2l6ZRgBIAEoBFISdmFsaWRhdGlvbkRhdGFTaXpl",
+            "EkEKD3ZhbGlkYXRpb25faGFzaBgCIAEoCzIYLm5lby5mcy52Mi5yZWZzLkNo",
+            "ZWNrc3VtUg52YWxpZGF0aW9uSGFzaBIpChBleHBpcmF0aW9uX2Vwb2NoGAMg",
+            "ASgEUg9leHBpcmF0aW9uRXBvY2gSMgoHbWVtYmVycxgEIAMoCzIYLm5lby5m",
+            "cy52Mi5yZWZzLk9iamVjdElEUgdtZW1iZXJzQmFaQ2dpdGh1Yi5jb20vbnNw",
+            "Y2MtZGV2L25lb2ZzLWFwaS1nby92Mi9zdG9yYWdlZ3JvdXAvZ3JwYztzdG9y",
+            "YWdlZ3JvdXCqAhlOZW9GUy5BUEkudjIuU3RvcmFnZUdyb3VwYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -43,8 +44,10 @@ namespace NeoFS.API.v2.StorageGroup {
   }
   #region Messages
   /// <summary>
-  /// StorageGroup groups the information about the NeoFS storage group.
-  /// The storage group consists of objects from single container.
+  /// StorageGroup keeps verification information for Data Audit sessions. Objects
+  /// that require payed storage guaranties are gathered in `StorageGroups` with
+  /// additional information used for proof of storage. `StorageGroup` only
+  /// contains objects from the same container.
   /// </summary>
   public sealed partial class StorageGroup : pb::IMessage<StorageGroup> {
     private static readonly pb::MessageParser<StorageGroup> _parser = new pb::MessageParser<StorageGroup>(() => new StorageGroup());
@@ -87,8 +90,7 @@ namespace NeoFS.API.v2.StorageGroup {
     public const int ValidationDataSizeFieldNumber = 1;
     private ulong validationDataSize_;
     /// <summary>
-    /// validation_data_size carries the total size of the payloads of the storage
-    /// group members.
+    /// Total size of the payloads of objects in the storage group
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong ValidationDataSize {
@@ -102,10 +104,9 @@ namespace NeoFS.API.v2.StorageGroup {
     public const int ValidationHashFieldNumber = 2;
     private global::NeoFS.API.v2.Refs.Checksum validationHash_;
     /// <summary>
-    /// validation_hash carries homomorphic hash from the concatenation of the
-    /// payloads of the storage group members
-    /// The order of concatenation is the same as the order of the members in the
-    /// Members field.
+    /// Homomorphic hash from the concatenation of the payloads of the storage
+    /// group members. The order of concatenation is the same as the order of the
+    /// members in the `members` field.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NeoFS.API.v2.Refs.Checksum ValidationHash {
@@ -119,8 +120,7 @@ namespace NeoFS.API.v2.StorageGroup {
     public const int ExpirationEpochFieldNumber = 3;
     private ulong expirationEpoch_;
     /// <summary>
-    /// expiration_epoch carries last NeoFS epoch number of the storage group
-    /// lifetime.
+    /// Last NeoFS epoch number of the storage group lifetime
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong ExpirationEpoch {
@@ -136,8 +136,7 @@ namespace NeoFS.API.v2.StorageGroup {
         = pb::FieldCodec.ForMessage(34, global::NeoFS.API.v2.Refs.ObjectID.Parser);
     private readonly pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> members_ = new pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID>();
     /// <summary>
-    /// Members carries the list of identifiers of the object storage group members.
-    /// The list is strictly ordered.
+    /// Strictly ordered list of storage group member objects
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::NeoFS.API.v2.Refs.ObjectID> Members {
