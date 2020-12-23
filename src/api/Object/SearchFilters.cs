@@ -11,6 +11,8 @@ namespace NeoFS.API.v2.Object
 
         public Filter[] Filters => filters.ToArray();
 
+        public SearchFilters() { }
+
         public SearchFilters(IEnumerable<Filter> fs)
         {
             filters = fs.ToList();
