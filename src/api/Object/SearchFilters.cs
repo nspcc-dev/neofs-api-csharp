@@ -1,6 +1,7 @@
 using NeoFS.API.v2.Refs;
 using static NeoFS.API.v2.Object.SearchRequest.Types.Body.Types;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NeoFS.API.v2.Object
 {
@@ -9,6 +10,11 @@ namespace NeoFS.API.v2.Object
         private readonly List<Filter> filters = new List<Filter>();
 
         public Filter[] Filters => filters.ToArray();
+
+        public SearchFilters(IEnumerable<Filter> fs)
+        {
+            filters = fs.ToList();
+        }
 
         public void AddFilter(string name, string value, MatchType op)
         {
