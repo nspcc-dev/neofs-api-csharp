@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace TzHash.UnitTests
+namespace NeoFS.API.v2.UnitTests.TestCryptography.Tz
 {
     [TestClass]
     public class UT_TzHash

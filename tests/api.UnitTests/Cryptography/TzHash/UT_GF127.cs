@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TzHash.UnitTests
+namespace NeoFS.API.v2.UnitTests.TestCryptography.Tz
 {
     [TestClass]
     public class UT_GF127
