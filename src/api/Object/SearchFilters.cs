@@ -67,5 +67,10 @@ namespace NeoFS.API.v2.Object
         {
             AddFilter(Filter.FilterHeaderSplitID, sid.ToString(), op);
         }
+
+        public void AddTypeFilter(byte typ, MatchType op)
+        {
+            AddFilter(Filter.FilterHeaderObjectType, typ.ToString(), op);
+        }
     }
 }
