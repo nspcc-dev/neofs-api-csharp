@@ -431,6 +431,12 @@ namespace NeoFS.API.v2.Acl {
       ///   object_type
       /// * $Object:homomorphicHash \
       ///   homomorphic_hash
+      ///
+      /// Please note, that if request or response does not have object's headers or
+      /// full object (Range, RangeHash, Search, Delete), it will not be possible to
+      /// filter by object header fields or user attributes. From the well-known list
+      /// only `$Object:objectID` and `$Object:containerID` will be available, as
+      /// it's possible to take that information from the requested address.
       /// </summary>
       public sealed partial class Filter : pb::IMessage<Filter> {
         private static readonly pb::MessageParser<Filter> _parser = new pb::MessageParser<Filter>(() => new Filter());

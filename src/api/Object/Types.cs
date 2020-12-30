@@ -25,51 +25,54 @@ namespace NeoFS.API.v2.Object {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJvYmplY3QvdHlwZXMucHJvdG8SEG5lby5mcy52Mi5vYmplY3QaEHJlZnMv",
-            "dHlwZXMucHJvdG8aE3Nlc3Npb24vdHlwZXMucHJvdG8igQIKC1Nob3J0SGVh",
+            "dHlwZXMucHJvdG8aE3Nlc3Npb24vdHlwZXMucHJvdG8igwMKC1Nob3J0SGVh",
             "ZGVyEjEKB3ZlcnNpb24YASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJzaW9u",
             "Ugd2ZXJzaW9uEiUKDmNyZWF0aW9uX2Vwb2NoGAIgASgEUg1jcmVhdGlvbkVw",
             "b2NoEjIKCG93bmVyX2lkGAMgASgLMhcubmVvLmZzLnYyLnJlZnMuT3duZXJJ",
             "RFIHb3duZXJJRBI9CgtvYmplY3RfdHlwZRgEIAEoDjIcLm5lby5mcy52Mi5v",
             "YmplY3QuT2JqZWN0VHlwZVIKb2JqZWN0VHlwZRIlCg5wYXlsb2FkX2xlbmd0",
-            "aBgFIAEoBFINcGF5bG9hZExlbmd0aCL7BwoGSGVhZGVyEjEKB3ZlcnNpb24Y",
-            "ASABKAsyFy5uZW8uZnMudjIucmVmcy5WZXJzaW9uUgd2ZXJzaW9uEj4KDGNv",
-            "bnRhaW5lcl9pZBgCIAEoCzIbLm5lby5mcy52Mi5yZWZzLkNvbnRhaW5lcklE",
-            "Ugtjb250YWluZXJJRBIyCghvd25lcl9pZBgDIAEoCzIXLm5lby5mcy52Mi5y",
-            "ZWZzLk93bmVySURSB293bmVySUQSJQoOY3JlYXRpb25fZXBvY2gYBCABKARS",
-            "DWNyZWF0aW9uRXBvY2gSJQoOcGF5bG9hZF9sZW5ndGgYBSABKARSDXBheWxv",
-            "YWRMZW5ndGgSOwoMcGF5bG9hZF9oYXNoGAYgASgLMhgubmVvLmZzLnYyLnJl",
-            "ZnMuQ2hlY2tzdW1SC3BheWxvYWRIYXNoEj0KC29iamVjdF90eXBlGAcgASgO",
-            "MhwubmVvLmZzLnYyLm9iamVjdC5PYmplY3RUeXBlUgpvYmplY3RUeXBlEkMK",
-            "EGhvbW9tb3JwaGljX2hhc2gYCCABKAsyGC5uZW8uZnMudjIucmVmcy5DaGVj",
-            "a3N1bVIPaG9tb21vcnBoaWNIYXNoEkQKDXNlc3Npb25fdG9rZW4YCSABKAsy",
-            "Hy5uZW8uZnMudjIuc2Vzc2lvbi5TZXNzaW9uVG9rZW5SDHNlc3Npb25Ub2tl",
-            "bhJCCgphdHRyaWJ1dGVzGAogAygLMiIubmVvLmZzLnYyLm9iamVjdC5IZWFk",
-            "ZXIuQXR0cmlidXRlUgphdHRyaWJ1dGVzEjQKBXNwbGl0GAsgASgLMh4ubmVv",
-            "LmZzLnYyLm9iamVjdC5IZWFkZXIuU3BsaXRSBXNwbGl0GjMKCUF0dHJpYnV0",
-            "ZRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWUaxQIK",
-            "BVNwbGl0EjAKBnBhcmVudBgBIAEoCzIYLm5lby5mcy52Mi5yZWZzLk9iamVj",
-            "dElEUgZwYXJlbnQSNAoIcHJldmlvdXMYAiABKAsyGC5uZW8uZnMudjIucmVm",
-            "cy5PYmplY3RJRFIIcHJldmlvdXMSRAoQcGFyZW50X3NpZ25hdHVyZRgDIAEo",
-            "CzIZLm5lby5mcy52Mi5yZWZzLlNpZ25hdHVyZVIPcGFyZW50U2lnbmF0dXJl",
-            "Ej0KDXBhcmVudF9oZWFkZXIYBCABKAsyGC5uZW8uZnMudjIub2JqZWN0Lkhl",
-            "YWRlclIMcGFyZW50SGVhZGVyEjQKCGNoaWxkcmVuGAUgAygLMhgubmVvLmZz",
-            "LnYyLnJlZnMuT2JqZWN0SURSCGNoaWxkcmVuEhkKCHNwbGl0X2lkGAYgASgM",
-            "UgdzcGxpdElEIsQBCgZPYmplY3QSNQoJb2JqZWN0X2lkGAEgASgLMhgubmVv",
-            "LmZzLnYyLnJlZnMuT2JqZWN0SURSCG9iamVjdElEEjcKCXNpZ25hdHVyZRgC",
-            "IAEoCzIZLm5lby5mcy52Mi5yZWZzLlNpZ25hdHVyZVIJc2lnbmF0dXJlEjAK",
-            "BmhlYWRlchgDIAEoCzIYLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyUgZoZWFk",
-            "ZXISGAoHcGF5bG9hZBgEIAEoDFIHcGF5bG9hZCJyCglTcGxpdEluZm8SEAoI",
-            "c3BsaXRfaWQYASABKAwSKwoJbGFzdF9wYXJ0GAIgASgLMhgubmVvLmZzLnYy",
-            "LnJlZnMuT2JqZWN0SUQSJgoEbGluaxgDIAEoCzIYLm5lby5mcy52Mi5yZWZz",
-            "Lk9iamVjdElEKjsKCk9iamVjdFR5cGUSCwoHUkVHVUxBUhAAEg0KCVRPTUJT",
-            "VE9ORRABEhEKDVNUT1JBR0VfR1JPVVAQAio5CglNYXRjaFR5cGUSGgoWTUFU",
-            "Q0hfVFlQRV9VTlNQRUNJRklFRBAAEhAKDFNUUklOR19FUVVBTBABQk9aN2dp",
-            "dGh1Yi5jb20vbnNwY2MtZGV2L25lb2ZzLWFwaS1nby92Mi9vYmplY3QvZ3Jw",
-            "YztvYmplY3SqAhNOZW9GUy5BUEkudjIuT2JqZWN0YgZwcm90bzM="));
+            "aBgFIAEoBFINcGF5bG9hZExlbmd0aBI7CgxwYXlsb2FkX2hhc2gYBiABKAsy",
+            "GC5uZW8uZnMudjIucmVmcy5DaGVja3N1bVILcGF5bG9hZEhhc2gSQwoQaG9t",
+            "b21vcnBoaWNfaGFzaBgHIAEoCzIYLm5lby5mcy52Mi5yZWZzLkNoZWNrc3Vt",
+            "Ug9ob21vbW9ycGhpY0hhc2gi+wcKBkhlYWRlchIxCgd2ZXJzaW9uGAEgASgL",
+            "MhcubmVvLmZzLnYyLnJlZnMuVmVyc2lvblIHdmVyc2lvbhI+Cgxjb250YWlu",
+            "ZXJfaWQYAiABKAsyGy5uZW8uZnMudjIucmVmcy5Db250YWluZXJJRFILY29u",
+            "dGFpbmVySUQSMgoIb3duZXJfaWQYAyABKAsyFy5uZW8uZnMudjIucmVmcy5P",
+            "d25lcklEUgdvd25lcklEEiUKDmNyZWF0aW9uX2Vwb2NoGAQgASgEUg1jcmVh",
+            "dGlvbkVwb2NoEiUKDnBheWxvYWRfbGVuZ3RoGAUgASgEUg1wYXlsb2FkTGVu",
+            "Z3RoEjsKDHBheWxvYWRfaGFzaBgGIAEoCzIYLm5lby5mcy52Mi5yZWZzLkNo",
+            "ZWNrc3VtUgtwYXlsb2FkSGFzaBI9CgtvYmplY3RfdHlwZRgHIAEoDjIcLm5l",
+            "by5mcy52Mi5vYmplY3QuT2JqZWN0VHlwZVIKb2JqZWN0VHlwZRJDChBob21v",
+            "bW9ycGhpY19oYXNoGAggASgLMhgubmVvLmZzLnYyLnJlZnMuQ2hlY2tzdW1S",
+            "D2hvbW9tb3JwaGljSGFzaBJECg1zZXNzaW9uX3Rva2VuGAkgASgLMh8ubmVv",
+            "LmZzLnYyLnNlc3Npb24uU2Vzc2lvblRva2VuUgxzZXNzaW9uVG9rZW4SQgoK",
+            "YXR0cmlidXRlcxgKIAMoCzIiLm5lby5mcy52Mi5vYmplY3QuSGVhZGVyLkF0",
+            "dHJpYnV0ZVIKYXR0cmlidXRlcxI0CgVzcGxpdBgLIAEoCzIeLm5lby5mcy52",
+            "Mi5vYmplY3QuSGVhZGVyLlNwbGl0UgVzcGxpdBozCglBdHRyaWJ1dGUSEAoD",
+            "a2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlGsUCCgVTcGxp",
+            "dBIwCgZwYXJlbnQYASABKAsyGC5uZW8uZnMudjIucmVmcy5PYmplY3RJRFIG",
+            "cGFyZW50EjQKCHByZXZpb3VzGAIgASgLMhgubmVvLmZzLnYyLnJlZnMuT2Jq",
+            "ZWN0SURSCHByZXZpb3VzEkQKEHBhcmVudF9zaWduYXR1cmUYAyABKAsyGS5u",
+            "ZW8uZnMudjIucmVmcy5TaWduYXR1cmVSD3BhcmVudFNpZ25hdHVyZRI9Cg1w",
+            "YXJlbnRfaGVhZGVyGAQgASgLMhgubmVvLmZzLnYyLm9iamVjdC5IZWFkZXJS",
+            "DHBhcmVudEhlYWRlchI0CghjaGlsZHJlbhgFIAMoCzIYLm5lby5mcy52Mi5y",
+            "ZWZzLk9iamVjdElEUghjaGlsZHJlbhIZCghzcGxpdF9pZBgGIAEoDFIHc3Bs",
+            "aXRJRCLEAQoGT2JqZWN0EjUKCW9iamVjdF9pZBgBIAEoCzIYLm5lby5mcy52",
+            "Mi5yZWZzLk9iamVjdElEUghvYmplY3RJRBI3CglzaWduYXR1cmUYAiABKAsy",
+            "GS5uZW8uZnMudjIucmVmcy5TaWduYXR1cmVSCXNpZ25hdHVyZRIwCgZoZWFk",
+            "ZXIYAyABKAsyGC5uZW8uZnMudjIub2JqZWN0LkhlYWRlclIGaGVhZGVyEhgK",
+            "B3BheWxvYWQYBCABKAxSB3BheWxvYWQicgoJU3BsaXRJbmZvEhAKCHNwbGl0",
+            "X2lkGAEgASgMEisKCWxhc3RfcGFydBgCIAEoCzIYLm5lby5mcy52Mi5yZWZz",
+            "Lk9iamVjdElEEiYKBGxpbmsYAyABKAsyGC5uZW8uZnMudjIucmVmcy5PYmpl",
+            "Y3RJRCo7CgpPYmplY3RUeXBlEgsKB1JFR1VMQVIQABINCglUT01CU1RPTkUQ",
+            "ARIRCg1TVE9SQUdFX0dST1VQEAIqOQoJTWF0Y2hUeXBlEhoKFk1BVENIX1RZ",
+            "UEVfVU5TUEVDSUZJRUQQABIQCgxTVFJJTkdfRVFVQUwQAUJPWjdnaXRodWIu",
+            "Y29tL25zcGNjLWRldi9uZW9mcy1hcGktZ28vdjIvb2JqZWN0L2dycGM7b2Jq",
+            "ZWN0qgITTmVvRlMuQVBJLnYyLk9iamVjdGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Session.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Object.ObjectType), typeof(global::NeoFS.API.v2.Object.MatchType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.ShortHeader), global::NeoFS.API.v2.Object.ShortHeader.Parser, new[]{ "Version", "CreationEpoch", "OwnerId", "ObjectType", "PayloadLength" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.ShortHeader), global::NeoFS.API.v2.Object.ShortHeader.Parser, new[]{ "Version", "CreationEpoch", "OwnerId", "ObjectType", "PayloadLength", "PayloadHash", "HomomorphicHash" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header), global::NeoFS.API.v2.Object.Header.Parser, new[]{ "Version", "ContainerId", "OwnerId", "CreationEpoch", "PayloadLength", "PayloadHash", "ObjectType", "HomomorphicHash", "SessionToken", "Attributes", "Split" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header.Types.Attribute), global::NeoFS.API.v2.Object.Header.Types.Attribute.Parser, new[]{ "Key", "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Header.Types.Split), global::NeoFS.API.v2.Object.Header.Types.Split.Parser, new[]{ "Parent", "Previous", "ParentSignature", "ParentHeader", "Children", "SplitId" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Object.Object), global::NeoFS.API.v2.Object.Object.Parser, new[]{ "ObjectId", "Signature", "Header", "Payload" }, null, null, null, null),
@@ -156,6 +159,8 @@ namespace NeoFS.API.v2.Object {
       ownerId_ = other.ownerId_ != null ? other.ownerId_.Clone() : null;
       objectType_ = other.objectType_;
       payloadLength_ = other.payloadLength_;
+      payloadHash_ = other.payloadHash_ != null ? other.payloadHash_.Clone() : null;
+      homomorphicHash_ = other.homomorphicHash_ != null ? other.homomorphicHash_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -236,6 +241,34 @@ namespace NeoFS.API.v2.Object {
       }
     }
 
+    /// <summary>Field number for the "payload_hash" field.</summary>
+    public const int PayloadHashFieldNumber = 6;
+    private global::NeoFS.API.v2.Refs.Checksum payloadHash_;
+    /// <summary>
+    /// Hash of payload bytes
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Checksum PayloadHash {
+      get { return payloadHash_; }
+      set {
+        payloadHash_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "homomorphic_hash" field.</summary>
+    public const int HomomorphicHashFieldNumber = 7;
+    private global::NeoFS.API.v2.Refs.Checksum homomorphicHash_;
+    /// <summary>
+    /// Homomorphic hash of the object payload
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Refs.Checksum HomomorphicHash {
+      get { return homomorphicHash_; }
+      set {
+        homomorphicHash_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ShortHeader);
@@ -254,6 +287,8 @@ namespace NeoFS.API.v2.Object {
       if (!object.Equals(OwnerId, other.OwnerId)) return false;
       if (ObjectType != other.ObjectType) return false;
       if (PayloadLength != other.PayloadLength) return false;
+      if (!object.Equals(PayloadHash, other.PayloadHash)) return false;
+      if (!object.Equals(HomomorphicHash, other.HomomorphicHash)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -265,6 +300,8 @@ namespace NeoFS.API.v2.Object {
       if (ownerId_ != null) hash ^= OwnerId.GetHashCode();
       if (ObjectType != global::NeoFS.API.v2.Object.ObjectType.Regular) hash ^= ObjectType.GetHashCode();
       if (PayloadLength != 0UL) hash ^= PayloadLength.GetHashCode();
+      if (payloadHash_ != null) hash ^= PayloadHash.GetHashCode();
+      if (homomorphicHash_ != null) hash ^= HomomorphicHash.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -298,6 +335,14 @@ namespace NeoFS.API.v2.Object {
         output.WriteRawTag(40);
         output.WriteUInt64(PayloadLength);
       }
+      if (payloadHash_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(PayloadHash);
+      }
+      if (homomorphicHash_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(HomomorphicHash);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -320,6 +365,12 @@ namespace NeoFS.API.v2.Object {
       }
       if (PayloadLength != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PayloadLength);
+      }
+      if (payloadHash_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PayloadHash);
+      }
+      if (homomorphicHash_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HomomorphicHash);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -352,6 +403,18 @@ namespace NeoFS.API.v2.Object {
       }
       if (other.PayloadLength != 0UL) {
         PayloadLength = other.PayloadLength;
+      }
+      if (other.payloadHash_ != null) {
+        if (payloadHash_ == null) {
+          PayloadHash = new global::NeoFS.API.v2.Refs.Checksum();
+        }
+        PayloadHash.MergeFrom(other.PayloadHash);
+      }
+      if (other.homomorphicHash_ != null) {
+        if (homomorphicHash_ == null) {
+          HomomorphicHash = new global::NeoFS.API.v2.Refs.Checksum();
+        }
+        HomomorphicHash.MergeFrom(other.HomomorphicHash);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -388,6 +451,20 @@ namespace NeoFS.API.v2.Object {
           }
           case 40: {
             PayloadLength = input.ReadUInt64();
+            break;
+          }
+          case 50: {
+            if (payloadHash_ == null) {
+              PayloadHash = new global::NeoFS.API.v2.Refs.Checksum();
+            }
+            input.ReadMessage(PayloadHash);
+            break;
+          }
+          case 58: {
+            if (homomorphicHash_ == null) {
+              HomomorphicHash = new global::NeoFS.API.v2.Refs.Checksum();
+            }
+            input.ReadMessage(HomomorphicHash);
             break;
           }
         }
