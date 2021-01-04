@@ -46,7 +46,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
         {
             var sf = new SearchFilters();
             var oid = ObjectID.FromBase58String("vWt34r4ddnq61jcPec4rVaXHg7Y7GiEYFmcTB2Qwhtx");
-            sf.AddParentIDFilter(oid, MatchType.StringEqual);
+            sf.AddParentIDFilter(MatchType.StringEqual, oid);
 
             Assert.AreEqual(1, sf.Filters.Length);
             var f = sf.Filters[0];
@@ -61,7 +61,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
         {
             var sf = new SearchFilters();
             var oid = ObjectID.FromBase58String("vWt34r4ddnq61jcPec4rVaXHg7Y7GiEYFmcTB2Qwhtx");
-            sf.AddObjectIDFilter(oid, MatchType.StringEqual);
+            sf.AddObjectIDFilter(MatchType.StringEqual, oid);
 
             Assert.AreEqual(1, sf.Filters.Length);
             var f = sf.Filters[0];
@@ -77,7 +77,7 @@ namespace NeoFS.API.v2.UnitTests.TestObject
             var sf = new SearchFilters();
             var sid = new SplitID();
             sid.Parse("5dee2659-583f-492f-9ae1-2f5766ccab5c");
-            sf.AddSplitIDFilter(sid, MatchType.StringEqual);
+            sf.AddSplitIDFilter(MatchType.StringEqual, sid);
             Assert.AreEqual(1, sf.Filters.Length);
             var f = sf.Filters[0];
 

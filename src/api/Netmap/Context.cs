@@ -10,7 +10,7 @@ namespace NeoFS.API.v2.Netmap
         public NetMap Map;
         public Dictionary<string, Filter> Filters = new Dictionary<string, Filter>();
         public Dictionary<string, Selector> Selectors = new Dictionary<string, Selector>();
-        public Dictionary<string, List<Node[]>> Selections = new Dictionary<string, List<Node[]>>();
+        public Dictionary<string, List<List<Node>>> Selections = new Dictionary<string, List<List<Node>>>();
         public Dictionary<Filter, UInt64> NumCache = new Dictionary<Filter, ulong>();
         private byte[] pivot;
         private UInt64 pivotHash;

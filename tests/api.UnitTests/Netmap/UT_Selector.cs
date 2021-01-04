@@ -31,7 +31,7 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
             };
             var nm = new NetMap(nodes);
             var result = nm.GetContainerNodes(p, null);
-            Assert.AreEqual(4, result.Flatten().Length);
+            Assert.AreEqual(4, result.Flatten().Count);
         }
 
         [TestMethod]
@@ -73,15 +73,15 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
             var nm = new NetMap(nodes);
             var result = nm.GetContainerNodes(p, null);
             Assert.AreEqual(2, result.Count);
-            Assert.AreEqual(6, result.Flatten().Length);
-            Assert.AreEqual(2, result[0].Length);
+            Assert.AreEqual(6, result.Flatten().Count);
+            Assert.AreEqual(2, result[0].Count);
             foreach (var ni in result[0])
             {
                 Assert.AreEqual("RU", ni.Attributes["Country"]);
                 Assert.AreEqual("St.Petersburg", ni.Attributes["City"]);
                 Assert.AreEqual("1", ni.Attributes["SSD"]);
             }
-            Assert.AreEqual(4, result[1].Length);
+            Assert.AreEqual(4, result[1].Count);
             foreach (var ni in result[1])
             {
                 ni.Attributes["Continent"].Should().BeOneOf("NA", "SA");

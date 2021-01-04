@@ -98,7 +98,7 @@ namespace NeoFS.API.v2.UnitTests.TestCryptography.Tz
             foreach (var item in ConcatTestCases)
             {
                 var expected = item.Item1;
-                var hashes = item.Item2.Select(p => p.HexToBytes()).ToArray();
+                var hashes = item.Item2.Select(p => p.HexToBytes()).ToList();
                 var actual = TzHash.Concat(hashes);
                 Assert.AreEqual(expected, actual.ToHexString());
             }
@@ -109,7 +109,7 @@ namespace NeoFS.API.v2.UnitTests.TestCryptography.Tz
         {
             foreach (var item in ConcatTestCases)
             {
-                var result = TzHash.Validate(item.Item1.HexToBytes(), item.Item2.Select(p => p.HexToBytes()).ToArray());
+                var result = TzHash.Validate(item.Item1.HexToBytes(), item.Item2.Select(p => p.HexToBytes()).ToList());
                 Assert.AreEqual(true, result);
             }
         }

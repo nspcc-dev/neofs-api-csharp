@@ -39,9 +39,9 @@ namespace NeoFS.API.v2.Netmap
             return acc;
         }
 
-        public static Node[] Flatten(this List<Node[]> ns)
+        public static List<Node> Flatten(this List<List<Node>> ns)
         {
-            return ns.Aggregate((ns1, ns2) => ns1.Concat(ns2).ToArray());
+            return ns.Aggregate((ns1, ns2) => ns1.Concat(ns2).ToList());
         }
 
         public static int GetBucketCount(this Selector selector)

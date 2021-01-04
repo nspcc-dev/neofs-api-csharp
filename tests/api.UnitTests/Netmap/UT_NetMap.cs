@@ -11,12 +11,12 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
         [TestMethod]
         public void TestFlattenNodes()
         {
-            var ns1 = new Node[] { Helper.GenerateTestNode(0, ("Raing", "1")) };
-            var ns2 = new Node[] { Helper.GenerateTestNode(0, ("Raing", "2")) };
-            var list = new List<Node[]>();
+            var ns1 = new List<Node> { Helper.GenerateTestNode(0, ("Raing", "1")) };
+            var ns2 = new List<Node> { Helper.GenerateTestNode(0, ("Raing", "2")) };
+            var list = new List<List<Node>>();
             list.Add(ns1);
             list.Add(ns2);
-            Assert.AreEqual(2, list.Flatten().Length);
+            Assert.AreEqual(2, list.Flatten().Count);
         }
     }
 }
