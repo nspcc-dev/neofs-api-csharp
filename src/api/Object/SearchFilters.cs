@@ -28,17 +28,17 @@ namespace NeoFS.API.v2.Object
             });
         }
 
-        public void AddObjectVersionFilter(Version v, MatchType op)
+        public void AddObjectVersionFilter(MatchType op, Version v)
         {
             AddFilter(Filter.FilterHeaderVersion, v.Major + "." + v.Minor, op);
         }
 
-        public void AddObjectContainerIDFilter(ContainerID cid, MatchType op)
+        public void AddObjectContainerIDFilter(MatchType op, ContainerID cid)
         {
             AddFilter(Filter.FilterHeaderContainerID, cid.ToBase58String(), op);
         }
 
-        public void AddObjectOwnerIDFilter(OwnerID oid, MatchType op)
+        public void AddObjectOwnerIDFilter(MatchType op, OwnerID oid)
         {
             AddFilter(Filter.FilterHeaderOwnerID, oid.ToBase58String(), op);
         }
@@ -53,22 +53,22 @@ namespace NeoFS.API.v2.Object
             AddFilter(Filter.FilterPropertyPhy, "", MatchType.Unspecified);
         }
 
-        public void AddParentIDFilter(ObjectID oid, MatchType op)
+        public void AddParentIDFilter(MatchType op, ObjectID oid)
         {
             AddFilter(Filter.FilterHeaderParent, oid.ToBase58String(), op);
         }
 
-        public void AddObjectIDFilter(ObjectID oid, MatchType op)
+        public void AddObjectIDFilter(MatchType op, ObjectID oid)
         {
             AddFilter(Filter.FilterHeaderObjectID, oid.ToBase58String(), op);
         }
 
-        public void AddSplitIDFilter(SplitID sid, MatchType op)
+        public void AddSplitIDFilter(MatchType op, SplitID sid)
         {
             AddFilter(Filter.FilterHeaderSplitID, sid.ToString(), op);
         }
 
-        public void AddTypeFilter(byte typ, MatchType op)
+        public void AddTypeFilter(MatchType op, ObjectType typ)
         {
             AddFilter(Filter.FilterHeaderObjectType, typ.ToString(), op);
         }

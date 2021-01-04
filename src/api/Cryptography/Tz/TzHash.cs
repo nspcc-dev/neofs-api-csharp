@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography;
@@ -157,18 +158,18 @@ namespace NeoFS.API.v2.Cryptography.Tz
         }
 
         // Concat() performs combining of hashes based on homomorphic characteristic.
-        public static byte[] Concat(byte[][] hs)
+        public static byte[] Concat(List<byte[]> hs)
         {
             var r = SL2.ID;
-            for (int i = 0; i < hs.Length; i++)
+            foreach (var h in hs)
             {
-                r *= new SL2().FromByteArray(hs[i]);
+                r *= new SL2().FromByteArray(h);
             }
             return r.ToByteArray();
         }
 
         // Validate() checks if hashes in hs combined are equal to h.
-        public static bool Validate(byte[] h, byte[][] hs)
+        public static bool Validate(byte[] h, List<byte[]> hs)
         {
             var expected = new SL2().FromByteArray(h);
             var actual = new SL2().FromByteArray(Concat(hs));
