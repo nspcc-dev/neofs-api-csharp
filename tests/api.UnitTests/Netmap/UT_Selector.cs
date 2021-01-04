@@ -129,7 +129,7 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
                 Assert.AreEqual(bc, ns.Count);
                 foreach (var res in ns)
                 {
-                    Assert.AreEqual(nib, res.Length);
+                    Assert.AreEqual(nib, res.Count);
                     foreach (var j in res)
                         Assert.IsTrue(c.ApplyFilter(sel.Filter, j));
                 }

@@ -20,7 +20,7 @@ namespace NeoFS.API.v2.Netmap
             }
         }
 
-        public List<Node[]> GetSelection(PlacementPolicy policy, Selector sel)
+        public List<List<Node>> GetSelection(PlacementPolicy policy, Selector sel)
         {
             int bucket_count = sel.GetBucketCount();
             int node_in_bucket = sel.GetNodesInBucket(policy);
@@ -34,12 +34,12 @@ namespace NeoFS.API.v2.Netmap
                 else
                     buckets.Sort((b1, b2) => b1.Item1.CompareTo(b2.Item1));
             }
-            var nodes = new List<Node[]>();
+            var nodes = new List<List<Node>>();
             foreach (var it in buckets)
             {
-                if (node_in_bucket <= it.Item2.Length)
+                if (node_in_bucket <= it.Item2.Count)
                 {
-                    nodes.Add(it.Item2[..node_in_bucket]);
+                    nodes.Add(it.Item2.Take(node_in_bucket).ToList());
                 }
             }
             if (nodes.Count() < bucket_count)
@@ -60,20 +60,20 @@ namespace NeoFS.API.v2.Netmap
             return nodes.GetRange(0, bucket_count);
         }
 
-        public IEnumerable<(string, Node[])> GetSelectionBase(Selector sel)
+        public IEnumerable<(string, List<Node>)> GetSelectionBase(Selector sel)
         {
             Filters.TryGetValue(sel.Filter, out Filter filter);
             if (sel.Attribute == "")
             {
                 foreach (var node in Map.Nodes.Where(p => sel.Filter == MainFilterName || Match(filter, p)))
-                    yield return ("", new Node[] { node });
+                    yield return ("", new List<Node> { node });
             }
             else
             {
                 foreach (var group in Map.Nodes.Where(p => sel.Filter == MainFilterName || Match(filter, p)).GroupBy(p => p.Attributes[sel.Attribute]))
                 {
                     if (pivot is null)
-                        yield return (group.Key, group.ToArray());
+                        yield return (group.Key, group.ToList());
                     else
                     {
                         var list = group.Select(p =>
@@ -89,7 +89,7 @@ namespace NeoFS.API.v2.Netmap
                             return w1.CompareTo(w2);
                         });
                         list.Reverse();
-                        yield return (group.Key, list.ToArray());
+                        yield return (group.Key, list.ToList());
                     }
 
                 }
