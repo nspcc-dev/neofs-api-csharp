@@ -1,5 +1,6 @@
 using Google.Protobuf;
 using Grpc.Core;
+using NeoFS.API.v2.Client.ObjectParams;
 using NeoFS.API.v2.Cryptography;
 using NeoFS.API.v2.Object;
 using NeoFS.API.v2.Refs;
@@ -7,15 +8,17 @@ using NeoFS.API.v2.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
-        public async Task<Object.Object> GetObject(Address object_address, CallOptions options = null)
+        public async Task<Object.Object> GetObject(CancellationToken context, GetObjectParams param, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
+            var object_address = param.Address;
             var opts = ApplyCustomOptions(options);
             var req = new GetRequest
             {
@@ -29,7 +32,7 @@ namespace NeoFS.API.v2.Client
             req.MetaHeader = meta;
             req.SignRequest(key);
 
-            var stream = object_client.Get(req).ResponseStream;
+            var stream = object_client.Get(req, cancellationToken: context).ResponseStream;
             var obj = new Object.Object();
             var payload = new byte[] { };
             int offset = 0;
@@ -62,10 +65,11 @@ namespace NeoFS.API.v2.Client
             return obj;
         }
 
-        public async Task<ObjectID> PutObject(Object.Object obj, CallOptions options = null)
+        public async Task<ObjectID> PutObject(CancellationToken context, PutObjectParams param, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
-            var call = object_client.Put();
+            var obj = param.Object;
+            var call = object_client.Put(cancellationToken: context);
             var opts = ApplyCustomOptions(options);
             var req_stream = call.RequestStream;
 
@@ -113,9 +117,10 @@ namespace NeoFS.API.v2.Client
             return resp.Body.ObjectId;
         }
 
-        public bool DeleteObject(Address object_address, CallOptions options = null)
+        public bool DeleteObject(CancellationToken context, DeleteObjectParams param, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
+            var object_address = param.Address;
             var opts = ApplyCustomOptions(options);
             var req = new DeleteRequest
             {
@@ -129,16 +134,18 @@ namespace NeoFS.API.v2.Client
             req.MetaHeader = meta;
             req.SignRequest(key);
 
-            var resp = object_client.Delete(req);
+            var resp = object_client.Delete(req, cancellationToken: context);
             if (!resp.VerifyResponse())
                 throw new InvalidOperationException("invalid object delete response");
             return true;
         }
 
-        public Object.Object GetObjectHeader(Address object_address, bool minimal, CallOptions options = null)
+        public Object.Object GetObjectHeader(CancellationToken context, ObjectHeaderParams param, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var opts = ApplyCustomOptions(options);
+            var object_address = param.Address;
+            var minimal = param.Short;
             var req = new HeadRequest
             {
                 Body = new HeadRequest.Types.Body
@@ -152,7 +159,7 @@ namespace NeoFS.API.v2.Client
             req.MetaHeader = meta;
             req.SignRequest(key);
 
-            var resp = object_client.Head(req);
+            var resp = object_client.Head(req, cancellationToken: context);
             if (!resp.VerifyResponse())
                 throw new InvalidOperationException("invalid object get header response");
             var header = new Header();
@@ -198,10 +205,12 @@ namespace NeoFS.API.v2.Client
             return obj;
         }
 
-        public async Task<byte[]> GetObjectPayloadRangeData(Address object_address, Object.Range range, CallOptions options = null)
+        public async Task<byte[]> GetObjectPayloadRangeData(CancellationToken context, RangeDataParams param, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var opts = ApplyCustomOptions(options);
+            var object_address = param.Address;
+            var range = param.Range;
             var req = new GetRangeRequest
             {
                 Body = new GetRangeRequest.Types.Body
@@ -214,7 +223,7 @@ namespace NeoFS.API.v2.Client
             AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Range);
             req.SignRequest(key);
 
-            var stream = object_client.GetRange(req).ResponseStream;
+            var stream = object_client.GetRange(req, cancellationToken: context).ResponseStream;
             var payload = new byte[range.Length];
             var offset = 0;
             while (await stream.MoveNext())
@@ -229,32 +238,33 @@ namespace NeoFS.API.v2.Client
             return payload;
         }
 
-        public List<byte[]> GetObjectPayloadRangeHash(Address object_address, Object.Range[] range, byte[] salt, ChecksumType check_sum_type, CallOptions options = null)
+        public List<byte[]> GetObjectPayloadRangeHash(CancellationToken context, RangeChecksumParams param, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var opts = ApplyCustomOptions(options);
+            var object_address = param.Address;
             var req = new GetRangeHashRequest
             {
                 Body = new GetRangeHashRequest.Types.Body
                 {
                     Address = object_address,
-                    Salt = ByteString.CopyFrom(salt),
-                    Type = check_sum_type,
+                    Salt = ByteString.CopyFrom(param.Salt),
+                    Type = param.Type,
                 }
             };
-            req.Body.Ranges.AddRange(range);
+            req.Body.Ranges.AddRange(param.Range);
             var meta = opts.GetRequestMetaHeader();
             AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Rangehash);
             req.MetaHeader = meta;
             req.SignRequest(key);
 
-            var resp = object_client.GetRangeHash(req);
+            var resp = object_client.GetRangeHash(req, cancellationToken: context);
             if (!resp.VerifyResponse())
                 throw new FormatException("invalid object range hash response");
             return resp.Body.HashList.Select(p => p.ToByteArray()).ToList();
         }
 
-        public async Task<List<ObjectID>> SearchObject(ContainerID cid, SearchRequest.Types.Body.Types.Filter[] filters, CallOptions options = null)
+        public async Task<List<ObjectID>> SearchObject(CancellationToken context, SearchObjectParams param, CallOptions options = null)
         {
             var object_client = new ObjectService.ObjectServiceClient(channel);
             var opts = ApplyCustomOptions(options);
@@ -262,17 +272,17 @@ namespace NeoFS.API.v2.Client
             {
                 Body = new SearchRequest.Types.Body
                 {
-                    ContainerId = cid,
+                    ContainerId = param.ContainerID,
                     Version = SearchObjectVersion,
                 }
             };
-            req.Body.Filters.AddRange(filters);
+            req.Body.Filters.AddRange(param.Filters.Filters);
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, new Address { ContainerId = cid }, ObjectSessionContext.Types.Verb.Search);
+            AttachObjectSessionToken(options, meta, new Address { ContainerId = param.ContainerID }, ObjectSessionContext.Types.Verb.Search);
             req.MetaHeader = meta;
             req.SignRequest(key);
 
-            var stream = object_client.Search(req).ResponseStream;
+            var stream = object_client.Search(req, cancellationToken: context).ResponseStream;
             var result = new List<ObjectID>();
             while (await stream.MoveNext())
             {
