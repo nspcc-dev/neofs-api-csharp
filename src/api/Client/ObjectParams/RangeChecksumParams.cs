@@ -8,7 +8,7 @@ namespace NeoFS.API.v2.Client.ObjectParams
     {
         public Address Address;
         public bool Raw;
-        public List<Range> Range;
+        public List<Range> Ranges;
         public ChecksumType Type;
         public byte[] Salt;
     }

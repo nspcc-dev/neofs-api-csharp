@@ -252,7 +252,7 @@ namespace NeoFS.API.v2.Client
                     Type = param.Type,
                 }
             };
-            req.Body.Ranges.AddRange(param.Range);
+            req.Body.Ranges.AddRange(param.Ranges);
             var meta = opts.GetRequestMetaHeader();
             AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Rangehash);
             req.MetaHeader = meta;
