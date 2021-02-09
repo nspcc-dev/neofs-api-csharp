@@ -4604,6 +4604,10 @@ namespace NeoFS.API.v2.Object {
           /// * $Object:PHY \
           ///   Returns only objects physically stored in the system. This filter is
           ///   activated if the `key` exists, disregarding the value and matcher type.
+          ///
+          /// Note: using filters with a key with prefix `$Object:` and match type
+          /// `NOT_PRESENT `is not recommended since this is not a cross-version approach.
+          /// Behavior when processing this kind of filters is undefined.
           /// </summary>
           public sealed partial class Filter : pb::IMessage<Filter> {
             private static readonly pb::MessageParser<Filter> _parser = new pb::MessageParser<Filter>(() => new Filter());

@@ -65,10 +65,11 @@ namespace NeoFS.API.v2.Object {
             "X2lkGAEgASgMEisKCWxhc3RfcGFydBgCIAEoCzIYLm5lby5mcy52Mi5yZWZz",
             "Lk9iamVjdElEEiYKBGxpbmsYAyABKAsyGC5uZW8uZnMudjIucmVmcy5PYmpl",
             "Y3RJRCo7CgpPYmplY3RUeXBlEgsKB1JFR1VMQVIQABINCglUT01CU1RPTkUQ",
-            "ARIRCg1TVE9SQUdFX0dST1VQEAIqOQoJTWF0Y2hUeXBlEhoKFk1BVENIX1RZ",
-            "UEVfVU5TUEVDSUZJRUQQABIQCgxTVFJJTkdfRVFVQUwQAUJPWjdnaXRodWIu",
-            "Y29tL25zcGNjLWRldi9uZW9mcy1hcGktZ28vdjIvb2JqZWN0L2dycGM7b2Jq",
-            "ZWN0qgITTmVvRlMuQVBJLnYyLk9iamVjdGIGcHJvdG8z"));
+            "ARIRCg1TVE9SQUdFX0dST1VQEAIqYAoJTWF0Y2hUeXBlEhoKFk1BVENIX1RZ",
+            "UEVfVU5TUEVDSUZJRUQQABIQCgxTVFJJTkdfRVFVQUwQARIUChBTVFJJTkdf",
+            "Tk9UX0VRVUFMEAISDwoLTk9UX1BSRVNFTlQQA0JPWjdnaXRodWIuY29tL25z",
+            "cGNjLWRldi9uZW9mcy1hcGktZ28vdjIvb2JqZWN0L2dycGM7b2JqZWN0qgIT",
+            "TmVvRlMuQVBJLnYyLk9iamVjdGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Session.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NeoFS.API.v2.Object.ObjectType), typeof(global::NeoFS.API.v2.Object.MatchType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -121,6 +122,14 @@ namespace NeoFS.API.v2.Object {
     /// Full string match
     /// </summary>
     [pbr::OriginalName("STRING_EQUAL")] StringEqual = 1,
+    /// <summary>
+    /// Full string mismatch
+    /// </summary>
+    [pbr::OriginalName("STRING_NOT_EQUAL")] StringNotEqual = 2,
+    /// <summary>
+    /// Lack of key
+    /// </summary>
+    [pbr::OriginalName("NOT_PRESENT")] NotPresent = 3,
   }
 
   #endregion

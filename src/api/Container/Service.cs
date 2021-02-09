@@ -98,21 +98,38 @@ namespace NeoFS.API.v2.Container {
             "ZXJpZnlfaGVhZGVyGAMgASgLMi0ubmVvLmZzLnYyLnNlc3Npb24uUmVzcG9u",
             "c2VWZXJpZmljYXRpb25IZWFkZXIaXAoEQm9keRImCgRlYWNsGAEgASgLMhgu",
             "bmVvLmZzLnYyLmFjbC5FQUNMVGFibGUSLAoJc2lnbmF0dXJlGAIgASgLMhku",
-            "bmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlMpwEChBDb250YWluZXJTZXJ2aWNl",
-            "EkgKA1B1dBIfLm5lby5mcy52Mi5jb250YWluZXIuUHV0UmVxdWVzdBogLm5l",
-            "by5mcy52Mi5jb250YWluZXIuUHV0UmVzcG9uc2USUQoGRGVsZXRlEiIubmVv",
-            "LmZzLnYyLmNvbnRhaW5lci5EZWxldGVSZXF1ZXN0GiMubmVvLmZzLnYyLmNv",
-            "bnRhaW5lci5EZWxldGVSZXNwb25zZRJICgNHZXQSHy5uZW8uZnMudjIuY29u",
-            "dGFpbmVyLkdldFJlcXVlc3QaIC5uZW8uZnMudjIuY29udGFpbmVyLkdldFJl",
-            "c3BvbnNlEksKBExpc3QSIC5uZW8uZnMudjIuY29udGFpbmVyLkxpc3RSZXF1",
-            "ZXN0GiEubmVvLmZzLnYyLmNvbnRhaW5lci5MaXN0UmVzcG9uc2USaQoOU2V0",
-            "RXh0ZW5kZWRBQ0wSKi5uZW8uZnMudjIuY29udGFpbmVyLlNldEV4dGVuZGVk",
-            "QUNMUmVxdWVzdBorLm5lby5mcy52Mi5jb250YWluZXIuU2V0RXh0ZW5kZWRB",
-            "Q0xSZXNwb25zZRJpCg5HZXRFeHRlbmRlZEFDTBIqLm5lby5mcy52Mi5jb250",
-            "YWluZXIuR2V0RXh0ZW5kZWRBQ0xSZXF1ZXN0GisubmVvLmZzLnYyLmNvbnRh",
-            "aW5lci5HZXRFeHRlbmRlZEFDTFJlc3BvbnNlQlhaPWdpdGh1Yi5jb20vbnNw",
-            "Y2MtZGV2L25lb2ZzLWFwaS1nby92Mi9jb250YWluZXIvZ3JwYztjb250YWlu",
-            "ZXKqAhZOZW9GUy5BUEkudjIuQ29udGFpbmVyYgZwcm90bzM="));
+            "bmVvLmZzLnYyLnJlZnMuU2lnbmF0dXJlIqMDChhBbm5vdW5jZVVzZWRTcGFj",
+            "ZVJlcXVlc3QSQAoEYm9keRgBIAEoCzIyLm5lby5mcy52Mi5jb250YWluZXIu",
+            "QW5ub3VuY2VVc2VkU3BhY2VSZXF1ZXN0LkJvZHkSOQoLbWV0YV9oZWFkZXIY",
+            "AiABKAsyJC5uZW8uZnMudjIuc2Vzc2lvbi5SZXF1ZXN0TWV0YUhlYWRlchJD",
+            "Cg12ZXJpZnlfaGVhZGVyGAMgASgLMiwubmVvLmZzLnYyLnNlc3Npb24uUmVx",
+            "dWVzdFZlcmlmaWNhdGlvbkhlYWRlchrEAQoEQm9keRJWCg1hbm5vdW5jZW1l",
+            "bnRzGAEgAygLMj8ubmVvLmZzLnYyLmNvbnRhaW5lci5Bbm5vdW5jZVVzZWRT",
+            "cGFjZVJlcXVlc3QuQm9keS5Bbm5vdW5jZW1lbnQaZAoMQW5ub3VuY2VtZW50",
+            "Eg0KBWVwb2NoGAEgASgEEjEKDGNvbnRhaW5lcl9pZBgCIAEoCzIbLm5lby5m",
+            "cy52Mi5yZWZzLkNvbnRhaW5lcklEEhIKCnVzZWRfc3BhY2UYAyABKAQi6AEK",
+            "GUFubm91bmNlVXNlZFNwYWNlUmVzcG9uc2USQQoEYm9keRgBIAEoCzIzLm5l",
+            "by5mcy52Mi5jb250YWluZXIuQW5ub3VuY2VVc2VkU3BhY2VSZXNwb25zZS5C",
+            "b2R5EjoKC21ldGFfaGVhZGVyGAIgASgLMiUubmVvLmZzLnYyLnNlc3Npb24u",
+            "UmVzcG9uc2VNZXRhSGVhZGVyEkQKDXZlcmlmeV9oZWFkZXIYAyABKAsyLS5u",
+            "ZW8uZnMudjIuc2Vzc2lvbi5SZXNwb25zZVZlcmlmaWNhdGlvbkhlYWRlchoG",
+            "CgRCb2R5MpAFChBDb250YWluZXJTZXJ2aWNlEkgKA1B1dBIfLm5lby5mcy52",
+            "Mi5jb250YWluZXIuUHV0UmVxdWVzdBogLm5lby5mcy52Mi5jb250YWluZXIu",
+            "UHV0UmVzcG9uc2USUQoGRGVsZXRlEiIubmVvLmZzLnYyLmNvbnRhaW5lci5E",
+            "ZWxldGVSZXF1ZXN0GiMubmVvLmZzLnYyLmNvbnRhaW5lci5EZWxldGVSZXNw",
+            "b25zZRJICgNHZXQSHy5uZW8uZnMudjIuY29udGFpbmVyLkdldFJlcXVlc3Qa",
+            "IC5uZW8uZnMudjIuY29udGFpbmVyLkdldFJlc3BvbnNlEksKBExpc3QSIC5u",
+            "ZW8uZnMudjIuY29udGFpbmVyLkxpc3RSZXF1ZXN0GiEubmVvLmZzLnYyLmNv",
+            "bnRhaW5lci5MaXN0UmVzcG9uc2USaQoOU2V0RXh0ZW5kZWRBQ0wSKi5uZW8u",
+            "ZnMudjIuY29udGFpbmVyLlNldEV4dGVuZGVkQUNMUmVxdWVzdBorLm5lby5m",
+            "cy52Mi5jb250YWluZXIuU2V0RXh0ZW5kZWRBQ0xSZXNwb25zZRJpCg5HZXRF",
+            "eHRlbmRlZEFDTBIqLm5lby5mcy52Mi5jb250YWluZXIuR2V0RXh0ZW5kZWRB",
+            "Q0xSZXF1ZXN0GisubmVvLmZzLnYyLmNvbnRhaW5lci5HZXRFeHRlbmRlZEFD",
+            "TFJlc3BvbnNlEnIKEUFubm91bmNlVXNlZFNwYWNlEi0ubmVvLmZzLnYyLmNv",
+            "bnRhaW5lci5Bbm5vdW5jZVVzZWRTcGFjZVJlcXVlc3QaLi5uZW8uZnMudjIu",
+            "Y29udGFpbmVyLkFubm91bmNlVXNlZFNwYWNlUmVzcG9uc2VCWFo9Z2l0aHVi",
+            "LmNvbS9uc3BjYy1kZXYvbmVvZnMtYXBpLWdvL3YyL2NvbnRhaW5lci9ncnBj",
+            "O2NvbnRhaW5lcqoCFk5lb0ZTLkFQSS52Mi5Db250YWluZXJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NeoFS.API.v2.Acl.TypesReflection.Descriptor, global::NeoFS.API.v2.Container.TypesReflection.Descriptor, global::NeoFS.API.v2.Refs.TypesReflection.Descriptor, global::NeoFS.API.v2.Session.TypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -127,7 +144,9 @@ namespace NeoFS.API.v2.Container {
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.SetExtendedACLRequest), global::NeoFS.API.v2.Container.SetExtendedACLRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.SetExtendedACLRequest.Types.Body), global::NeoFS.API.v2.Container.SetExtendedACLRequest.Types.Body.Parser, new[]{ "Eacl", "Signature" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.SetExtendedACLResponse), global::NeoFS.API.v2.Container.SetExtendedACLResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.SetExtendedACLResponse.Types.Body), global::NeoFS.API.v2.Container.SetExtendedACLResponse.Types.Body.Parser, null, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.GetExtendedACLRequest), global::NeoFS.API.v2.Container.GetExtendedACLRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.GetExtendedACLRequest.Types.Body), global::NeoFS.API.v2.Container.GetExtendedACLRequest.Types.Body.Parser, new[]{ "ContainerId" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.GetExtendedACLResponse), global::NeoFS.API.v2.Container.GetExtendedACLResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.GetExtendedACLResponse.Types.Body), global::NeoFS.API.v2.Container.GetExtendedACLResponse.Types.Body.Parser, new[]{ "Eacl", "Signature" }, null, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.GetExtendedACLResponse), global::NeoFS.API.v2.Container.GetExtendedACLResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.GetExtendedACLResponse.Types.Body), global::NeoFS.API.v2.Container.GetExtendedACLResponse.Types.Body.Parser, new[]{ "Eacl", "Signature" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest), global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body), global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Parser, new[]{ "Announcements" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement), global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement.Parser, new[]{ "Epoch", "ContainerId", "UsedSpace" }, null, null, null, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse), global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Parser, new[]{ "Body", "MetaHeader", "VerifyHeader" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Types.Body), global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Types.Body.Parser, null, null, null, null, null)})
           }));
     }
     #endregion
@@ -4592,6 +4611,900 @@ namespace NeoFS.API.v2.Container {
                 input.ReadMessage(Signature);
                 break;
               }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// Announce container used space
+  /// </summary>
+  public sealed partial class AnnounceUsedSpaceRequest : pb::IMessage<AnnounceUsedSpaceRequest> {
+    private static readonly pb::MessageParser<AnnounceUsedSpaceRequest> _parser = new pb::MessageParser<AnnounceUsedSpaceRequest>(() => new AnnounceUsedSpaceRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AnnounceUsedSpaceRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Container.ServiceReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AnnounceUsedSpaceRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AnnounceUsedSpaceRequest(AnnounceUsedSpaceRequest other) : this() {
+      body_ = other.body_ != null ? other.body_.Clone() : null;
+      metaHeader_ = other.metaHeader_ != null ? other.metaHeader_.Clone() : null;
+      verifyHeader_ = other.verifyHeader_ != null ? other.verifyHeader_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AnnounceUsedSpaceRequest Clone() {
+      return new AnnounceUsedSpaceRequest(this);
+    }
+
+    /// <summary>Field number for the "body" field.</summary>
+    public const int BodyFieldNumber = 1;
+    private global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body body_;
+    /// <summary>
+    /// Body of announce used space request message.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body Body {
+      get { return body_; }
+      set {
+        body_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "meta_header" field.</summary>
+    public const int MetaHeaderFieldNumber = 2;
+    private global::NeoFS.API.v2.Session.RequestMetaHeader metaHeader_;
+    /// <summary>
+    /// Carries request meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.RequestMetaHeader MetaHeader {
+      get { return metaHeader_; }
+      set {
+        metaHeader_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "verify_header" field.</summary>
+    public const int VerifyHeaderFieldNumber = 3;
+    private global::NeoFS.API.v2.Session.RequestVerificationHeader verifyHeader_;
+    /// <summary>
+    /// Carries request verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.RequestVerificationHeader VerifyHeader {
+      get { return verifyHeader_; }
+      set {
+        verifyHeader_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as AnnounceUsedSpaceRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(AnnounceUsedSpaceRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Body, other.Body)) return false;
+      if (!object.Equals(MetaHeader, other.MetaHeader)) return false;
+      if (!object.Equals(VerifyHeader, other.VerifyHeader)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (body_ != null) hash ^= Body.GetHashCode();
+      if (metaHeader_ != null) hash ^= MetaHeader.GetHashCode();
+      if (verifyHeader_ != null) hash ^= VerifyHeader.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (body_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Body);
+      }
+      if (metaHeader_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MetaHeader);
+      }
+      if (verifyHeader_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(VerifyHeader);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (body_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Body);
+      }
+      if (metaHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MetaHeader);
+      }
+      if (verifyHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(VerifyHeader);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(AnnounceUsedSpaceRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.body_ != null) {
+        if (body_ == null) {
+          Body = new global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body();
+        }
+        Body.MergeFrom(other.Body);
+      }
+      if (other.metaHeader_ != null) {
+        if (metaHeader_ == null) {
+          MetaHeader = new global::NeoFS.API.v2.Session.RequestMetaHeader();
+        }
+        MetaHeader.MergeFrom(other.MetaHeader);
+      }
+      if (other.verifyHeader_ != null) {
+        if (verifyHeader_ == null) {
+          VerifyHeader = new global::NeoFS.API.v2.Session.RequestVerificationHeader();
+        }
+        VerifyHeader.MergeFrom(other.VerifyHeader);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (body_ == null) {
+              Body = new global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body();
+            }
+            input.ReadMessage(Body);
+            break;
+          }
+          case 18: {
+            if (metaHeader_ == null) {
+              MetaHeader = new global::NeoFS.API.v2.Session.RequestMetaHeader();
+            }
+            input.ReadMessage(MetaHeader);
+            break;
+          }
+          case 26: {
+            if (verifyHeader_ == null) {
+              VerifyHeader = new global::NeoFS.API.v2.Session.RequestVerificationHeader();
+            }
+            input.ReadMessage(VerifyHeader);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the AnnounceUsedSpaceRequest message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// Container used space announcement body.
+      /// </summary>
+      public sealed partial class Body : pb::IMessage<Body> {
+        private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Body> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body(Body other) : this() {
+          announcements_ = other.announcements_.Clone();
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body Clone() {
+          return new Body(this);
+        }
+
+        /// <summary>Field number for the "announcements" field.</summary>
+        public const int AnnouncementsFieldNumber = 1;
+        private static readonly pb::FieldCodec<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement> _repeated_announcements_codec
+            = pb::FieldCodec.ForMessage(10, global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement.Parser);
+        private readonly pbc::RepeatedField<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement> announcements_ = new pbc::RepeatedField<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement>();
+        /// <summary>
+        /// List of announcements. If nodes share several containers, then
+        /// announcements transferred in a batch.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement> Announcements {
+          get { return announcements_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Body);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Body other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if(!announcements_.Equals(other.announcements_)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          hash ^= announcements_.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          announcements_.WriteTo(output, _repeated_announcements_codec);
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          size += announcements_.CalculateSize(_repeated_announcements_codec);
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Body other) {
+          if (other == null) {
+            return;
+          }
+          announcements_.Add(other.announcements_);
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                announcements_.AddEntriesFrom(input, _repeated_announcements_codec);
+                break;
+              }
+            }
+          }
+        }
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the Body message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static partial class Types {
+          /// <summary>
+          /// Announcement contains used space information about single container.
+          /// </summary>
+          public sealed partial class Announcement : pb::IMessage<Announcement> {
+            private static readonly pb::MessageParser<Announcement> _parser = new pb::MessageParser<Announcement>(() => new Announcement());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<Announcement> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Announcement() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Announcement(Announcement other) : this() {
+              epoch_ = other.epoch_;
+              containerId_ = other.containerId_ != null ? other.containerId_.Clone() : null;
+              usedSpace_ = other.usedSpace_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Announcement Clone() {
+              return new Announcement(this);
+            }
+
+            /// <summary>Field number for the "epoch" field.</summary>
+            public const int EpochFieldNumber = 1;
+            private ulong epoch_;
+            /// <summary>
+            /// Epoch number for which container size estimation was produced.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong Epoch {
+              get { return epoch_; }
+              set {
+                epoch_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "container_id" field.</summary>
+            public const int ContainerIdFieldNumber = 2;
+            private global::NeoFS.API.v2.Refs.ContainerID containerId_;
+            /// <summary>
+            /// Identifier of the container.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public global::NeoFS.API.v2.Refs.ContainerID ContainerId {
+              get { return containerId_; }
+              set {
+                containerId_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "used_space" field.</summary>
+            public const int UsedSpaceFieldNumber = 3;
+            private ulong usedSpace_;
+            /// <summary>
+            /// Used space is a sum of object payload sizes of specified
+            /// container, stored in the node. It must not include inhumed objects.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ulong UsedSpace {
+              get { return usedSpace_; }
+              set {
+                usedSpace_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as Announcement);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(Announcement other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Epoch != other.Epoch) return false;
+              if (!object.Equals(ContainerId, other.ContainerId)) return false;
+              if (UsedSpace != other.UsedSpace) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Epoch != 0UL) hash ^= Epoch.GetHashCode();
+              if (containerId_ != null) hash ^= ContainerId.GetHashCode();
+              if (UsedSpace != 0UL) hash ^= UsedSpace.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (Epoch != 0UL) {
+                output.WriteRawTag(8);
+                output.WriteUInt64(Epoch);
+              }
+              if (containerId_ != null) {
+                output.WriteRawTag(18);
+                output.WriteMessage(ContainerId);
+              }
+              if (UsedSpace != 0UL) {
+                output.WriteRawTag(24);
+                output.WriteUInt64(UsedSpace);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (Epoch != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Epoch);
+              }
+              if (containerId_ != null) {
+                size += 1 + pb::CodedOutputStream.ComputeMessageSize(ContainerId);
+              }
+              if (UsedSpace != 0UL) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UsedSpace);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(Announcement other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Epoch != 0UL) {
+                Epoch = other.Epoch;
+              }
+              if (other.containerId_ != null) {
+                if (containerId_ == null) {
+                  ContainerId = new global::NeoFS.API.v2.Refs.ContainerID();
+                }
+                ContainerId.MergeFrom(other.ContainerId);
+              }
+              if (other.UsedSpace != 0UL) {
+                UsedSpace = other.UsedSpace;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 8: {
+                    Epoch = input.ReadUInt64();
+                    break;
+                  }
+                  case 18: {
+                    if (containerId_ == null) {
+                      ContainerId = new global::NeoFS.API.v2.Refs.ContainerID();
+                    }
+                    input.ReadMessage(ContainerId);
+                    break;
+                  }
+                  case 24: {
+                    UsedSpace = input.ReadUInt64();
+                    break;
+                  }
+                }
+              }
+            }
+
+          }
+
+        }
+        #endregion
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// Announce container used space
+  /// </summary>
+  public sealed partial class AnnounceUsedSpaceResponse : pb::IMessage<AnnounceUsedSpaceResponse> {
+    private static readonly pb::MessageParser<AnnounceUsedSpaceResponse> _parser = new pb::MessageParser<AnnounceUsedSpaceResponse>(() => new AnnounceUsedSpaceResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AnnounceUsedSpaceResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NeoFS.API.v2.Container.ServiceReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AnnounceUsedSpaceResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AnnounceUsedSpaceResponse(AnnounceUsedSpaceResponse other) : this() {
+      body_ = other.body_ != null ? other.body_.Clone() : null;
+      metaHeader_ = other.metaHeader_ != null ? other.metaHeader_.Clone() : null;
+      verifyHeader_ = other.verifyHeader_ != null ? other.verifyHeader_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AnnounceUsedSpaceResponse Clone() {
+      return new AnnounceUsedSpaceResponse(this);
+    }
+
+    /// <summary>Field number for the "body" field.</summary>
+    public const int BodyFieldNumber = 1;
+    private global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Types.Body body_;
+    /// <summary>
+    /// Body of announce used space response message.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Types.Body Body {
+      get { return body_; }
+      set {
+        body_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "meta_header" field.</summary>
+    public const int MetaHeaderFieldNumber = 2;
+    private global::NeoFS.API.v2.Session.ResponseMetaHeader metaHeader_;
+    /// <summary>
+    /// Carries response meta information. Header data is used only to regulate
+    /// message transport and does not affect request execution.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.ResponseMetaHeader MetaHeader {
+      get { return metaHeader_; }
+      set {
+        metaHeader_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "verify_header" field.</summary>
+    public const int VerifyHeaderFieldNumber = 3;
+    private global::NeoFS.API.v2.Session.ResponseVerificationHeader verifyHeader_;
+    /// <summary>
+    /// Carries response verification information. This header is used to
+    /// authenticate the nodes of the message route and check the correctness of
+    /// transmission.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NeoFS.API.v2.Session.ResponseVerificationHeader VerifyHeader {
+      get { return verifyHeader_; }
+      set {
+        verifyHeader_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as AnnounceUsedSpaceResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(AnnounceUsedSpaceResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Body, other.Body)) return false;
+      if (!object.Equals(MetaHeader, other.MetaHeader)) return false;
+      if (!object.Equals(VerifyHeader, other.VerifyHeader)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (body_ != null) hash ^= Body.GetHashCode();
+      if (metaHeader_ != null) hash ^= MetaHeader.GetHashCode();
+      if (verifyHeader_ != null) hash ^= VerifyHeader.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (body_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Body);
+      }
+      if (metaHeader_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MetaHeader);
+      }
+      if (verifyHeader_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(VerifyHeader);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (body_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Body);
+      }
+      if (metaHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MetaHeader);
+      }
+      if (verifyHeader_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(VerifyHeader);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(AnnounceUsedSpaceResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.body_ != null) {
+        if (body_ == null) {
+          Body = new global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Types.Body();
+        }
+        Body.MergeFrom(other.Body);
+      }
+      if (other.metaHeader_ != null) {
+        if (metaHeader_ == null) {
+          MetaHeader = new global::NeoFS.API.v2.Session.ResponseMetaHeader();
+        }
+        MetaHeader.MergeFrom(other.MetaHeader);
+      }
+      if (other.verifyHeader_ != null) {
+        if (verifyHeader_ == null) {
+          VerifyHeader = new global::NeoFS.API.v2.Session.ResponseVerificationHeader();
+        }
+        VerifyHeader.MergeFrom(other.VerifyHeader);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (body_ == null) {
+              Body = new global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Types.Body();
+            }
+            input.ReadMessage(Body);
+            break;
+          }
+          case 18: {
+            if (metaHeader_ == null) {
+              MetaHeader = new global::NeoFS.API.v2.Session.ResponseMetaHeader();
+            }
+            input.ReadMessage(MetaHeader);
+            break;
+          }
+          case 26: {
+            if (verifyHeader_ == null) {
+              VerifyHeader = new global::NeoFS.API.v2.Session.ResponseVerificationHeader();
+            }
+            input.ReadMessage(VerifyHeader);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the AnnounceUsedSpaceResponse message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// `AnnounceUsedSpaceResponse` has an empty body because announcements are
+      /// one way communication.
+      /// </summary>
+      public sealed partial class Body : pb::IMessage<Body> {
+        private static readonly pb::MessageParser<Body> _parser = new pb::MessageParser<Body>(() => new Body());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Body> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body(Body other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Body Clone() {
+          return new Body(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Body);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Body other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Body other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
             }
           }
         }

@@ -30,6 +30,8 @@ namespace NeoFS.API.v2.Container {
     static readonly grpc::Marshaller<global::NeoFS.API.v2.Container.SetExtendedACLResponse> __Marshaller_neo_fs_v2_container_SetExtendedACLResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.v2.Container.SetExtendedACLResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::NeoFS.API.v2.Container.GetExtendedACLRequest> __Marshaller_neo_fs_v2_container_GetExtendedACLRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.v2.Container.GetExtendedACLRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::NeoFS.API.v2.Container.GetExtendedACLResponse> __Marshaller_neo_fs_v2_container_GetExtendedACLResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.v2.Container.GetExtendedACLResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest> __Marshaller_neo_fs_v2_container_AnnounceUsedSpaceRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse> __Marshaller_neo_fs_v2_container_AnnounceUsedSpaceResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::NeoFS.API.v2.Container.PutRequest, global::NeoFS.API.v2.Container.PutResponse> __Method_Put = new grpc::Method<global::NeoFS.API.v2.Container.PutRequest, global::NeoFS.API.v2.Container.PutResponse>(
         grpc::MethodType.Unary,
@@ -72,6 +74,13 @@ namespace NeoFS.API.v2.Container {
         "GetExtendedACL",
         __Marshaller_neo_fs_v2_container_GetExtendedACLRequest,
         __Marshaller_neo_fs_v2_container_GetExtendedACLResponse);
+
+    static readonly grpc::Method<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest, global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse> __Method_AnnounceUsedSpace = new grpc::Method<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest, global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "AnnounceUsedSpace",
+        __Marshaller_neo_fs_v2_container_AnnounceUsedSpaceRequest,
+        __Marshaller_neo_fs_v2_container_AnnounceUsedSpaceResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -154,6 +163,17 @@ namespace NeoFS.API.v2.Container {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::NeoFS.API.v2.Container.GetExtendedACLResponse> GetExtendedACL(global::NeoFS.API.v2.Container.GetExtendedACLRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Announce container used space values for P2P synchronization.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse> AnnounceUsedSpace(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -483,6 +503,50 @@ namespace NeoFS.API.v2.Container {
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetExtendedACL, null, options, request);
       }
+      /// <summary>
+      /// Announce container used space values for P2P synchronization.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse AnnounceUsedSpace(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AnnounceUsedSpace(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Announce container used space values for P2P synchronization.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse AnnounceUsedSpace(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AnnounceUsedSpace, null, options, request);
+      }
+      /// <summary>
+      /// Announce container used space values for P2P synchronization.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse> AnnounceUsedSpaceAsync(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AnnounceUsedSpaceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Announce container used space values for P2P synchronization.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse> AnnounceUsedSpaceAsync(global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AnnounceUsedSpace, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override ContainerServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -500,7 +564,8 @@ namespace NeoFS.API.v2.Container {
           .AddMethod(__Method_Get, serviceImpl.Get)
           .AddMethod(__Method_List, serviceImpl.List)
           .AddMethod(__Method_SetExtendedACL, serviceImpl.SetExtendedACL)
-          .AddMethod(__Method_GetExtendedACL, serviceImpl.GetExtendedACL).Build();
+          .AddMethod(__Method_GetExtendedACL, serviceImpl.GetExtendedACL)
+          .AddMethod(__Method_AnnounceUsedSpace, serviceImpl.AnnounceUsedSpace).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -515,6 +580,7 @@ namespace NeoFS.API.v2.Container {
       serviceBinder.AddMethod(__Method_List, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NeoFS.API.v2.Container.ListRequest, global::NeoFS.API.v2.Container.ListResponse>(serviceImpl.List));
       serviceBinder.AddMethod(__Method_SetExtendedACL, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NeoFS.API.v2.Container.SetExtendedACLRequest, global::NeoFS.API.v2.Container.SetExtendedACLResponse>(serviceImpl.SetExtendedACL));
       serviceBinder.AddMethod(__Method_GetExtendedACL, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NeoFS.API.v2.Container.GetExtendedACLRequest, global::NeoFS.API.v2.Container.GetExtendedACLResponse>(serviceImpl.GetExtendedACL));
+      serviceBinder.AddMethod(__Method_AnnounceUsedSpace, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NeoFS.API.v2.Container.AnnounceUsedSpaceRequest, global::NeoFS.API.v2.Container.AnnounceUsedSpaceResponse>(serviceImpl.AnnounceUsedSpace));
     }
 
   }
