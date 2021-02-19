@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using UsedSpaceAnnouncement = NeoFS.API.v2.Container.AnnounceUsedSpaceRequest.Types.Body.Types.Announcement;
 
 namespace NeoFS.API.v2.Client
 {
@@ -151,6 +152,24 @@ namespace NeoFS.API.v2.Client
             var resp = container_client.SetExtendedACL(req, cancellationToken: context);
             if (!resp.VerifyResponse())
                 throw new InvalidOperationException("invalid container put response");
+        }
+
+        public void AnnounceContainerUsedSpace(CancellationToken context, List<UsedSpaceAnnouncement> announcements, CallOptions options = null)
+        {
+            var container_client = new ContainerService.ContainerServiceClient(channel);
+            var opts = DefaultCallOptions.ApplyCustomOptions(options);
+            var body = new AnnounceUsedSpaceRequest.Types.Body();
+            body.Announcements.AddRange(announcements);
+            var req = new AnnounceUsedSpaceRequest
+            {
+                Body = body,
+            };
+            req.MetaHeader = opts.GetRequestMetaHeader();
+            req.SignRequest(key);
+
+            var resp = container_client.AnnounceUsedSpace(req, cancellationToken: context);
+            if (!resp.VerifyResponse())
+                throw new InvalidOperationException("invalid announce used space response");
         }
     }
 }
