@@ -1,6 +1,7 @@
 using Google.Protobuf;
 using NeoFS.API.v2.Refs;
 using NeoFS.API.v2.Cryptography;
+using System;
 
 namespace NeoFS.API.v2.Container
 {
@@ -17,6 +18,18 @@ namespace NeoFS.API.v2.Container
                         Value = this.Sha256()
                     };
                 return _id;
+            }
+        }
+
+        public Guid NonceUUID
+        {
+            get
+            {
+                return new Guid(nonce_.ToByteArray());
+            }
+            set
+            {
+                nonce_ = ByteString.CopyFrom(value.ToByteArray());
             }
         }
 

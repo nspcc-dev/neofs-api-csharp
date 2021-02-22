@@ -25,6 +25,7 @@ namespace NeoFS.API.v2.Client
             {
                 Body = new GetRequest.Types.Body
                 {
+                    Raw = param.Raw,
                     Address = object_address,
                 }
             };
@@ -157,6 +158,7 @@ namespace NeoFS.API.v2.Client
                 {
                     Address = object_address,
                     MainOnly = minimal,
+                    Raw = param.Raw,
                 }
             };
             var meta = opts.GetRequestMetaHeader();
@@ -226,6 +228,7 @@ namespace NeoFS.API.v2.Client
                 {
                     Address = object_address,
                     Range = range,
+                    Raw = param.Raw,
                 }
             };
             var meta = opts.GetRequestMetaHeader();

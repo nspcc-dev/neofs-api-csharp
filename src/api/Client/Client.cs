@@ -9,16 +9,17 @@ namespace NeoFS.API.v2.Client
 {
     public partial class Client
     {
+        public const int DefaultConnectTimeoutMilliSeconds = 120000;
         const uint SearchObjectVersion = 1;
         private readonly ECDsa key;
         private readonly Channel channel;
         private SessionToken session;
         private BearerToken bearer;
 
-        public Client(string host, ECDsa k)
+        public Client(ECDsa key, string host, int milliSecondTimeout = DefaultConnectTimeoutMilliSeconds)
         {
-            channel = new Channel(host, ChannelCredentials.Insecure);
-            key = k;
+            channel = new Channel(host, ChannelCredentials.Insecure, new ChannelOption[] { new ChannelOption("grpc.server_handshake_timeout_ms", milliSecondTimeout) });
+            this.key = key;
         }
 
         public CallOptions DefaultCallOptions

@@ -53,13 +53,13 @@ namespace NeoFS.API.v2.Netmap
             return (int)selector.Count;
         }
 
-        public static int GetNodesInBucket(this Selector selector, PlacementPolicy policy)
+        public static int GetNodesInBucket(this Selector selector)
         {
             if (selector.Clause == Clause.Same)
             {
-                return (int)(policy.ContainerBackupFactor * selector.Count);
+                return (int)selector.Count;
             }
-            return (int)policy.ContainerBackupFactor;
+            return 1;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace NeoFS.API.v2.Netmap
 {
     public partial class Context
     {
-        private const string MainFilterName = "*";
+        public const string MainFilterName = "*";
 
         public bool ApplyFilter(string name, Node n)
         {
@@ -21,7 +21,7 @@ namespace NeoFS.API.v2.Netmap
 
         private void ProcessFilter(Filter filter, bool top)
         {
-            if (filter is null) throw new ArgumentNullException(nameof(ProcessFilter));
+            if (filter is null) throw new ArgumentNullException(nameof(filter));
             if (filter.Name == MainFilterName) throw new ArgumentException(nameof(ProcessFilter) + " '*' is reversed");
             if (top && filter.Name == "") throw new ArgumentException(nameof(ProcessFilter) + " filters on top level must be named");
             if (!top && filter.Name != "" && !Filters.ContainsKey(filter.Name))
@@ -51,7 +51,7 @@ namespace NeoFS.API.v2.Netmap
                             case Operation.Lt:
                             case Operation.Le:
                                 {
-                                    if (!UInt64.TryParse(filter.Value, out UInt64 n))
+                                    if (!ulong.TryParse(filter.Value, out ulong n))
                                         throw new ArgumentException(nameof(ProcessFilter) + " invalid number");
                                     NumCache[filter] = n;
                                     break;
@@ -87,10 +87,10 @@ namespace NeoFS.API.v2.Netmap
                         UInt64 attribute;
                         switch (filter.Key)
                         {
-                            case Node.PriceAttribute:
+                            case Node.AttributePrice:
                                 attribute = n.Price;
                                 break;
-                            case Node.CapacityAttribute:
+                            case Node.AttributeCapacity:
                                 attribute = n.Capacity;
                                 break;
                             default:
@@ -116,7 +116,7 @@ namespace NeoFS.API.v2.Netmap
                         break;
                     }
             }
-            return true;
+            return false;
         }
 
         public bool Match(Filter filter, Node n)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Akka;
 
 namespace NeoFS.API.v2.Netmap
 {
@@ -23,28 +24,38 @@ namespace NeoFS.API.v2.Netmap
         public List<List<Node>> GetSelection(PlacementPolicy policy, Selector sel)
         {
             int bucket_count = sel.GetBucketCount();
-            int node_in_bucket = sel.GetNodesInBucket(policy);
+            int nodes_in_bucket = sel.GetNodesInBucket();
             var buckets = GetSelectionBase(sel).ToList();
-            if (buckets.Count() < bucket_count)
+            if (buckets.Count < bucket_count)
                 throw new InvalidOperationException(nameof(GetSelection) + " not enough nodes");
-            if (pivot is null)
+            if (pivot is null || pivot.Length == 0)
             {
                 if (sel.Attribute == "")
                     buckets.Sort((b1, b2) => b1.Item2[0].ID.CompareTo(b2.Item2[0].ID));
                 else
                     buckets.Sort((b1, b2) => b1.Item1.CompareTo(b2.Item1));
             }
+            var max_nodes_in_bucket = nodes_in_bucket * (int)cbf;
             var nodes = new List<List<Node>>();
-            foreach (var it in buckets)
+            var fallback = new List<List<Node>>();
+            foreach (var (_, ns) in buckets)
             {
-                if (node_in_bucket <= it.Item2.Count)
+                if (max_nodes_in_bucket <= ns.Count)
                 {
-                    nodes.Add(it.Item2.Take(node_in_bucket).ToList());
+                    nodes.Add(ns.Take(max_nodes_in_bucket).ToList());
+                }
+                else if (nodes_in_bucket <= ns.Count)
+                {
+                    fallback.Add(ns);
                 }
             }
-            if (nodes.Count() < bucket_count)
-                throw new InvalidOperationException(nameof(GetSelection) + " not enough nodes");
-            if (pivot != null)
+            if (nodes.Count < bucket_count)
+            {
+                nodes = nodes.Concat(fallback).ToList();
+                if (nodes.Count < bucket_count)
+                    throw new InvalidOperationException(nameof(GetSelection) + " not enough nodes");
+            }
+            if (pivot != null && 0 < pivot.Length)
             {
                 var list = nodes.Select(p =>
                 {
@@ -56,6 +67,17 @@ namespace NeoFS.API.v2.Netmap
                 list.Sort((i1, i2) => i1.Item1.CompareTo(i2.Item1));
                 list.Reverse();
                 return list.Take(bucket_count).Select(p => p.p).ToList();
+            }
+            if (sel.Attribute == "")
+            {
+                fallback = nodes.GetRange(bucket_count, nodes.Count - bucket_count);
+                nodes = nodes.GetRange(0, bucket_count);
+                for (int i = 0; i < fallback.Count; i++)
+                {
+                    var index = i % bucket_count;
+                    if (nodes[index].Count >= max_nodes_in_bucket) break;
+                    nodes[index] = nodes[index].Concat(fallback[i]).ToList();
+                }
             }
             return nodes.GetRange(0, bucket_count);
         }

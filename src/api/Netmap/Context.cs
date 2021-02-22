@@ -7,21 +7,24 @@ namespace NeoFS.API.v2.Netmap
 {
     public partial class Context
     {
+        public const uint DefaultCBF = 3;
         public NetMap Map;
         public Dictionary<string, Filter> Filters = new Dictionary<string, Filter>();
         public Dictionary<string, Selector> Selectors = new Dictionary<string, Selector>();
         public Dictionary<string, List<List<Node>>> Selections = new Dictionary<string, List<List<Node>>>();
         public Dictionary<Filter, UInt64> NumCache = new Dictionary<Filter, ulong>();
         private byte[] pivot;
-        private UInt64 pivotHash;
+        private ulong pivotHash;
         private Func<IAggregator> newAggregator;
         private Func<Node, double> weightFunc;
+        public uint cbf { get; private set; }
 
         public Context(NetMap map)
         {
             Map = map;
             newAggregator = () => new MeanIQRAgg(0);
             weightFunc = map.Nodes.GenarateWeightFunc();
+            cbf = DefaultCBF;
         }
 
         public void SetPivot(byte[] pivot)
@@ -39,6 +42,14 @@ namespace NeoFS.API.v2.Netmap
         public void SetAggregator(Func<IAggregator> agg)
         {
             newAggregator = agg;
+        }
+
+        public void SetCBF(uint cbf)
+        {
+            if (cbf == 0)
+                this.cbf = DefaultCBF;
+            else
+                this.cbf = cbf;
         }
     }
 }

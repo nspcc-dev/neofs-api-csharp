@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -32,6 +33,147 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
             var nm = new NetMap(nodes);
             var result = nm.GetContainerNodes(p, null);
             Assert.AreEqual(4, result.Flatten().Count);
+        }
+
+        [TestMethod]
+        public void TestPlacementPolicyMinimal()
+        {
+            var nodes = new Node[] {
+                Helper.GenerateTestNode(0, ("City", "Saint-Petersburg")),
+                Helper.GenerateTestNode(1, ("City", "Moscow")),
+                Helper.GenerateTestNode(2, ("City", "Berlin")),
+                Helper.GenerateTestNode(3, ("City", "Paris")),
+            };
+            var nm = new NetMap(nodes);
+            void RunTest(uint rep, bool error)
+            {
+                var p = new PlacementPolicy(0, new Replica[] { new Replica(rep, "") }, null, null);
+                try
+                {
+                    var v = nm.GetContainerNodes(p, null);
+                    var count = (int)(rep * Context.DefaultCBF);
+                    if (nodes.Length < count) count = nodes.Length;
+                    Assert.AreEqual(count, v.Flatten().Count);
+                }
+                catch (Exception e)
+                {
+                    if (error) return;
+                    Console.WriteLine(e.Message);
+                    Assert.Fail();
+                }
+            }
+            Console.WriteLine("REP 1");
+            RunTest(1, false);
+            Console.WriteLine("REP 3");
+            RunTest(3, false);
+            Console.WriteLine("REP 5");
+            RunTest(5, true);
+        }
+
+        [TestMethod]
+        public void TestPlacementPolicyMutipleREP()
+        {
+            var p = new PlacementPolicy(
+                1,
+                new Replica[] {
+                    new Replica(1, "LOC_SPB_PLACE"),
+                    new Replica(1, "LOC_MSK_PLACE")
+                },
+                new Selector[] {
+                    new Selector("LOC_SPB_PLACE", "", Clause.Unspecified, 1, "LOC_SPB"),
+                    new Selector("LOC_MSK_PLACE", "", Clause.Unspecified, 1, "LOC_MSK"),
+                },
+                new Filter[] {
+                    new Filter("LOC_SPB", "City", "Saint-Petersburg", Operation.Eq),
+                    new Filter("LOC_MSK", "City", "Moscow", Operation.Eq),
+                }
+            );
+            var nodes = new Node[] {
+                Helper.GenerateTestNode(0, ("City", "Saint-Petersburg")),
+                Helper.GenerateTestNode(1, ("City", "Moscow")),
+                Helper.GenerateTestNode(2, ("City", "Berlin")),
+                Helper.GenerateTestNode(3, ("City", "Paris")),
+            };
+            var nm = new NetMap(nodes);
+            var v = nm.GetContainerNodes(p, null);
+            Assert.AreEqual(2, v.Count);
+            Assert.AreEqual(1, v[0].Count);
+            Assert.AreEqual("Saint-Petersburg", v[0][0].Attributes["City"]);
+            Assert.AreEqual(1, v[1].Count);
+            Assert.AreEqual("Moscow", v[1][0].Attributes["City"]);
+        }
+
+        [TestMethod]
+        public void TestPlacementPolicyDefaultCBF()
+        {
+            var p = new PlacementPolicy(
+                0,
+                new Replica[] {
+                    new Replica(1, "EU"),
+                },
+                new Selector[] {
+                    new Selector("EU", "Location", Clause.Same, 1, "*"),
+                },
+                null
+            );
+            var nodes = new Node[] {
+                Helper.GenerateTestNode(0, ("Location", "Europe"), ("Country", "RU"), ("City", "St.Petersburg")),
+                Helper.GenerateTestNode(1, ("Location", "Europe"), ("Country", "RU"), ("City", "Moscow")),
+                Helper.GenerateTestNode(2, ("Location", "Europe"), ("Country", "DE"), ("City", "Berlin")),
+                Helper.GenerateTestNode(3, ("Location", "Europe"), ("Country", "FR"), ("City", "Paris")),
+            };
+            var nm = new NetMap(nodes);
+            var v = nm.GetContainerNodes(p, null);
+            Assert.AreEqual((int)Context.DefaultCBF, v.Flatten().Count);
+        }
+
+        [TestMethod]
+        public void TestPlacementPolicyLowerBound()
+        {
+            var p = new PlacementPolicy(
+                2,
+                new Replica[] {
+                    new Replica(1, "X"),
+                },
+                new Selector[] {
+                    new Selector("X", "Country", Clause.Same, 2, "*"),
+                },
+                null
+            );
+            var nodes = new Node[] {
+                Helper.GenerateTestNode(0, ("ID", "1"), ("Country", "DE")),
+                Helper.GenerateTestNode(1, ("ID", "2"), ("Country", "DE")),
+                Helper.GenerateTestNode(2, ("ID", "3"), ("Country", "DE")),
+            };
+            var nm = new NetMap(nodes);
+            var v = nm.GetContainerNodes(p, null);
+            Assert.AreEqual(3, v.Flatten().Count);
+        }
+
+        [TestMethod]
+        public void TestIssue213()
+        {
+            var p = new PlacementPolicy(
+                1,
+                new Replica[] {
+                    new Replica(4, ""),
+                },
+                new Selector[] {
+                    new Selector("", "", Clause.Distinct, 4, "LOC_EU"),
+                },
+                new Filter[] {
+                    new Filter("LOC_EU", "Location", "Europe", Operation.Eq),
+                }
+            );
+            var nodes = new Node[] {
+                Helper.GenerateTestNode(0, ("Location", "Europe"), ("Country", "Russia"), ("City", "Moscow")),
+                Helper.GenerateTestNode(1, ("Location", "Europe"), ("Country", "Russia"), ("City", "Saint-Petersburg")),
+                Helper.GenerateTestNode(2, ("Location", "Europe"), ("Country", "Sweden"), ("City", "Stockholm")),
+                Helper.GenerateTestNode(3, ("Location", "Europe"), ("Country", "Finalnd"), ("City", "Helsinki")),
+            };
+            var nm = new NetMap(nodes);
+            var v = nm.GetContainerNodes(p, null);
+            Assert.AreEqual(4, v.Flatten().Count);
         }
 
         [TestMethod]
@@ -118,6 +260,7 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
             };
             var nm = new NetMap(nodes);
             var c = new Context(nm);
+            c.SetCBF(p.ContainerBackupFactor);
             c.ProcessFilters(p);
             c.ProcessSelectors(p);
             foreach (var s in p.Selectors)
@@ -125,7 +268,8 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
                 var ns = c.Selections[s.Name];
                 var sel = c.Selectors[s.Name];
                 var bc = sel.GetBucketCount();
-                var nib = sel.GetNodesInBucket(p);
+                var nib = sel.GetNodesInBucket();
+                nib *= (int)c.cbf;
                 Assert.AreEqual(bc, ns.Count);
                 foreach (var res in ns)
                 {
@@ -146,20 +290,20 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
                 null
             );
             var nodes = new Node[]{
-                Helper.GenerateTestNode(0,("Country", "Germany"), (Node.PriceAttribute, "2"), (Node.CapacityAttribute, "10000")),
-                Helper.GenerateTestNode(1,("Country", "Germany"), (Node.PriceAttribute, "4"), (Node.CapacityAttribute, "1")),
-                Helper.GenerateTestNode(2,("Country", "France"), (Node.PriceAttribute, "3"), (Node.CapacityAttribute, "10")),
-                Helper.GenerateTestNode(3,("Country", "Russia"), (Node.PriceAttribute, "2"), (Node.CapacityAttribute, "10000")),
-                Helper.GenerateTestNode(4,("Country", "Russia"), (Node.PriceAttribute, "1"), (Node.CapacityAttribute, "10000")),
-                Helper.GenerateTestNode(5,("Country", "Russia"), (Node.CapacityAttribute, "10000")),
-                Helper.GenerateTestNode(6,("Country", "France"), (Node.PriceAttribute, "100"), (Node.CapacityAttribute, "1")),
-                Helper.GenerateTestNode(7,("Country", "France"), (Node.PriceAttribute, "7"), (Node.CapacityAttribute, "10000")),
-                Helper.GenerateTestNode(8,("Country", "Russia"), (Node.PriceAttribute, "2"), (Node.CapacityAttribute, "1")),
-
+                Helper.GenerateTestNode(0,("Country", "Germany"), (Node.AttributePrice, "2"), (Node.AttributeCapacity, "10000")),
+                Helper.GenerateTestNode(1,("Country", "Germany"), (Node.AttributePrice, "4"), (Node.AttributeCapacity, "1")),
+                Helper.GenerateTestNode(2,("Country", "France"), (Node.AttributePrice, "3"), (Node.AttributeCapacity, "10")),
+                Helper.GenerateTestNode(3,("Country", "Russia"), (Node.AttributePrice, "2"), (Node.AttributeCapacity, "10000")),
+                Helper.GenerateTestNode(4,("Country", "Russia"), (Node.AttributePrice, "1"), (Node.AttributeCapacity, "10000")),
+                Helper.GenerateTestNode(5,("Country", "Russia"), (Node.AttributeCapacity, "10000")),
+                Helper.GenerateTestNode(6,("Country", "France"), (Node.AttributePrice, "100"), (Node.AttributeCapacity, "1")),
+                Helper.GenerateTestNode(7,("Country", "France"), (Node.AttributePrice, "7"), (Node.AttributeCapacity, "10000")),
+                Helper.GenerateTestNode(8,("Country", "Russia"), (Node.AttributePrice, "2"), (Node.AttributeCapacity, "1")),
             };
             var nm = new NetMap(nodes);
             var c = new Context(nm);
             c.SetPivot(Encoding.ASCII.GetBytes("containerID"));
+            c.SetCBF(p.ContainerBackupFactor);
             c.SetWeightFunc(Netmap.Helper.WeightFunc(new MaxNorm(10000), new ReverseMinNorm(1)));
             c.SetAggregator(() => new MaxAgg());
             c.ProcessFilters(p);
@@ -215,6 +359,7 @@ namespace NeoFS.API.v2.UnitTests.TestNetmap
             {
                 var nm = new NetMap(nodes);
                 var c = new Context(nm);
+                c.SetCBF(t.Policy.ContainerBackupFactor);
                 c.ProcessFilters(t.Policy);
                 try
                 {

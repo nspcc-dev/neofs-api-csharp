@@ -14,7 +14,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var client = new Client.Client(host, key);
+            var client = new Client.Client(key, host);
             var source = new CancellationTokenSource();
             source.CancelAfter(10000);
             var token = client.CreateSession(source.Token, ulong.MaxValue);

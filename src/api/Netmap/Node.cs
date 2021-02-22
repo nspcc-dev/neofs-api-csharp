@@ -6,18 +6,27 @@ namespace NeoFS.API.v2.Netmap
 {
     public class Node : IEquatable<Node>, IComparable<Node>
     {
-        public const string CapacityAttribute = "Capacity";
-        public const string PriceAttribute = "Price";
-        public UInt64 ID;
-        public UInt64 Capacity;
-        public UInt64 Price;
+        public const string AttributeCapacity = "Capacity";
+        public const string AttributePrice = "Price";
+        public const string AttributeSubnet = "Subnet";
+        public const string AttributeUNLOCODE = "UN-LOCODE";
+        public const string AttributeCountryCode = "ConuntryCode";
+        public const string AttributeCountry = "Country";
+        public const string AttributeLocation = "Location";
+        public const string AttributeSubDivCode = "SubDivCode";
+        public const string AttributeSubDiv = "SubDiv";
+        public const string AttributeContinent = "Continent";
+
+        public ulong ID;
+        public ulong Capacity;
+        public ulong Price;
         public int Index;
         public NodeInfo Info;
         public Dictionary<string, string> Attributes = new Dictionary<string, string>();
         public double Weight;
-        public UInt64 Distance;
+        public ulong Distance;
 
-        public UInt64 Hash => ID;
+        public ulong Hash => ID;
         public string NetworkAddress => Info.Address;
         public byte[] PublicKey => Info.PublicKey.ToByteArray();
 
@@ -28,10 +37,10 @@ namespace NeoFS.API.v2.Netmap
             Info = ni;
             foreach (var attr in ni.Attributes)
             {
-                if (attr.Key == CapacityAttribute)
-                    Capacity = UInt64.Parse(attr.Value);
-                else if (attr.Key == PriceAttribute)
-                    Price = UInt64.Parse(attr.Value);
+                if (attr.Key == AttributeCapacity)
+                    Capacity = ulong.Parse(attr.Value);
+                else if (attr.Key == AttributePrice)
+                    Price = ulong.Parse(attr.Value);
                 Attributes.Add(attr.Key, attr.Value);
             }
         }

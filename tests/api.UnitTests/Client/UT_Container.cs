@@ -16,7 +16,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var client = new Client.Client(host, key);
+            var client = new Client.Client(key, host);
             var replica = new Replica(1, "*");
             var policy = new PlacementPolicy(2, new Replica[] { replica }, null, null);
             var container = new Container.Container
@@ -39,7 +39,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var client = new Client.Client(host, key);
+            var client = new Client.Client(key, host);
             var cid = ContainerID.FromBase58String("Bun3sfMBpnjKc3Tx7SdwrMxyNi8ha8JT3dhuFGvYBRTz");
             var source = new CancellationTokenSource();
             source.CancelAfter(10000);
@@ -52,7 +52,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var client = new Client.Client(host, key);
+            var client = new Client.Client(key, host);
             var cid = ContainerID.FromBase58String("Bun3sfMBpnjKc3Tx7SdwrMxyNi8ha8JT3dhuFGvYBRTz");
             var source = new CancellationTokenSource();
             source.CancelAfter(10000);
@@ -64,7 +64,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var client = new Client.Client(host, key);
+            var client = new Client.Client(key, host);
             var source = new CancellationTokenSource();
             source.CancelAfter(10000);
             var cids = client.ListContainers(source.Token, key.ToOwnerID());
@@ -78,7 +78,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
             var cid = ContainerID.FromBase58String("Bun3sfMBpnjKc3Tx7SdwrMxyNi8ha8JT3dhuFGvYBRTz");
-            var client = new Client.Client(host, key);
+            var client = new Client.Client(key, host);
             var source = new CancellationTokenSource();
             source.CancelAfter(10000);
             var eacl = client.GetEACL(source.Token, cid);
@@ -91,7 +91,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
             var cid = ContainerID.FromBase58String("Bun3sfMBpnjKc3Tx7SdwrMxyNi8ha8JT3dhuFGvYBRTz");
-            var client = new Client.Client(host, key);
+            var client = new Client.Client(key, host);
             var eacl = new EACLTable
             {
                 Version = Refs.Version.SDKVersion(),

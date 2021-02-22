@@ -1,5 +1,6 @@
 using Google.Protobuf;
 using NeoFS.API.v2.Cryptography;
+using Neo;
 using System;
 
 namespace NeoFS.API.v2.Refs
@@ -21,6 +22,27 @@ namespace NeoFS.API.v2.Refs
                     }
                 default:
                     throw new InvalidOperationException(nameof(Verify) + " unsupported checksum type " + type_);
+            }
+        }
+
+        public string String()
+        {
+            return sum_.ToByteArray().ToHexString();
+        }
+
+        public void Parse(string str)
+        {
+            sum_ = ByteString.CopyFrom(str.HexToBytes());
+            switch (sum_.Length)
+            {
+                case 32:
+                    type_ = ChecksumType.Sha256;
+                    break;
+                case 64:
+                    type_ = ChecksumType.Tz;
+                    break;
+                default:
+                    throw new FormatException($"unsupported checksum length {sum_.Length}");
             }
         }
     }

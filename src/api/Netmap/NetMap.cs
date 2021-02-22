@@ -43,21 +43,34 @@ namespace NeoFS.API.v2.Netmap
         {
             var context = new Context(this);
             context.SetPivot(pivot);
+            context.SetCBF(policy.ContainerBackupFactor);
             context.ProcessFilters(policy);
             context.ProcessSelectors(policy);
             var result = new List<List<Node>>();
             foreach (var replica in policy.Replicas)
             {
-                var r = new List<Node>();
                 if (replica is null)
                     throw new ArgumentNullException(nameof(GetContainerNodes) + " missing Replicas");
+                var r = new List<Node>();
                 if (replica.Selector == "")
+                {
+                    if (policy.Selectors.Count == 0)
+                    {
+                        var s = new Selector
+                        {
+                            Count = replica.Count,
+                            Filter = Context.MainFilterName,
+                        };
+                        var ns = context.GetSelection(policy, s);
+                        r = ns.Flatten().ToList();
+                    }
                     foreach (var selector in policy.Selectors)
                         r = r.Concat(context.Selections[selector.Name].Flatten()).ToList();
-                else if (context.Selections.TryGetValue(replica.Selector, out List<List<Node>> ns))
-                    r = r.Concat(ns.Flatten()).ToList();
-                else
-                    throw new InvalidOperationException(nameof(GetContainerNodes) + " selection not found");
+                    result.Add(r);
+                    continue;
+                }
+                var nodes = context.Selections[replica.Selector];
+                r = nodes.Flatten().ToList();
                 result.Add(r);
             }
             return result;
