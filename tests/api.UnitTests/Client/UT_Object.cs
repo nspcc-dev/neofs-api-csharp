@@ -24,7 +24,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var cid = ContainerID.FromBase58String("F9rNFr9yWBFcSMpksNK5fJrDz8G6vzhhJaSsaCPFDtcZ");
+            var cid = ContainerID.FromBase58String("BehtQKcGavPBgXrHAhWoPeDWGmNcAg4tn7GtXmEj4BEi");
             var payload = Encoding.ASCII.GetBytes("hello");
             var obj = new V2Object
             {
@@ -52,8 +52,8 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var cid = ContainerID.FromBase58String("Bun3sfMBpnjKc3Tx7SdwrMxyNi8ha8JT3dhuFGvYBRTz");
-            var oid = ObjectID.FromBase58String("vWt34r4ddnq61jcPec4rVaXHg7Y7GiEYFmcTB2Qwhtx");
+            var cid = ContainerID.FromBase58String("BehtQKcGavPBgXrHAhWoPeDWGmNcAg4tn7GtXmEj4BEi");
+            var oid = ObjectID.FromBase58String("8t9u2U4kPTVDpiCKGR7GERjTfGgC68xhMz2F3RFJ59xP");
             var address = new Address(cid, oid);
             var client = new Client.Client(key, host);
             var source1 = new CancellationTokenSource();
@@ -159,6 +159,13 @@ namespace NeoFS.API.v2.UnitTests.FSClient
             var o = client.SearchObject(source2.Token, new SearchObjectParams { ContainerID = cid, Filters = new SearchFilters() }, new CallOptions { Ttl = 2, Session = session }).Result;
             Console.WriteLine(o.Count);
             Assert.IsTrue(o.Select(p => p.ToBase58String()).ToList().Contains("vWt34r4ddnq61jcPec4rVaXHg7Y7GiEYFmcTB2Qwhtx"));
+        }
+
+        [TestMethod]
+        public void TestClient()
+        {
+            var key = "7310c4da083264666cc3567d5cb4a5b060ca34fb68959de58bd04959f3cbc6b2".HexToBytes().LoadPrivateKey();
+            var client = new Client.Client(key, "127.0.0.1:8080");
         }
     }
 }
