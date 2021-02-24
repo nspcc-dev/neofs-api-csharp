@@ -24,7 +24,7 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var cid = ContainerID.FromBase58String("BehtQKcGavPBgXrHAhWoPeDWGmNcAg4tn7GtXmEj4BEi");
+            var cid = ContainerID.FromBase58String("RuzuV3RDstuVtWoDzsTsuNFiakaaGGN24EbNSUFGaiQ");
             var payload = Encoding.ASCII.GetBytes("hello");
             var obj = new V2Object
             {
@@ -52,8 +52,8 @@ namespace NeoFS.API.v2.UnitTests.FSClient
         {
             var host = "localhost:8080";
             var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
-            var cid = ContainerID.FromBase58String("BehtQKcGavPBgXrHAhWoPeDWGmNcAg4tn7GtXmEj4BEi");
-            var oid = ObjectID.FromBase58String("8t9u2U4kPTVDpiCKGR7GERjTfGgC68xhMz2F3RFJ59xP");
+            var cid = ContainerID.FromBase58String("RuzuV3RDstuVtWoDzsTsuNFiakaaGGN24EbNSUFGaiQ");
+            var oid = ObjectID.FromBase58String("6VLqsZAvYTRzt8yY4NvGweWfGmqBiAfQwd6novRNFYiG");
             var address = new Address(cid, oid);
             var client = new Client.Client(key, host);
             var source1 = new CancellationTokenSource();
@@ -63,6 +63,21 @@ namespace NeoFS.API.v2.UnitTests.FSClient
             var source2 = new CancellationTokenSource();
             source2.CancelAfter(TimeSpan.FromMinutes(1));
             var o = client.GetObject(source2.Token, new GetObjectParams { Address = address }, new CallOptions { Ttl = 2, Session = session }).Result;
+            Assert.AreEqual(oid, o.ObjectId);
+        }
+
+        [TestMethod]
+        public void TestObjectGetWithoutOptions()
+        {
+            var host = "localhost:8080";
+            var key = "KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr".LoadWif();
+            var cid = ContainerID.FromBase58String("RuzuV3RDstuVtWoDzsTsuNFiakaaGGN24EbNSUFGaiQ");
+            var oid = ObjectID.FromBase58String("6VLqsZAvYTRzt8yY4NvGweWfGmqBiAfQwd6novRNFYiG");
+            var address = new Address(cid, oid);
+            var client = new Client.Client(key, host);
+            var source = new CancellationTokenSource();
+            source.CancelAfter(TimeSpan.FromMinutes(1));
+            var o = client.GetObject(source.Token, new GetObjectParams { Address = address }).Result;
             Assert.AreEqual(oid, o.ObjectId);
         }
 

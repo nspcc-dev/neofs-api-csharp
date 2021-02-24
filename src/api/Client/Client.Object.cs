@@ -30,7 +30,7 @@ namespace NeoFS.API.v2.Client
                 }
             };
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Get);
+            AttachObjectSessionToken(opts, meta, object_address, ObjectSessionContext.Types.Verb.Get);
             req.MetaHeader = meta;
             req.SignRequest(key);
 
@@ -88,7 +88,7 @@ namespace NeoFS.API.v2.Client
                 ObjectId = obj.ObjectId,
             };
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, address, ObjectSessionContext.Types.Verb.Put);
+            AttachObjectSessionToken(opts, meta, address, ObjectSessionContext.Types.Verb.Put);
             req.MetaHeader = meta;
             var init = new PutRequest.Types.Body.Types.Init
             {
@@ -136,7 +136,7 @@ namespace NeoFS.API.v2.Client
                 }
             };
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Delete);
+            AttachObjectSessionToken(opts, meta, object_address, ObjectSessionContext.Types.Verb.Delete);
             req.MetaHeader = meta;
             req.SignRequest(key);
 
@@ -162,7 +162,7 @@ namespace NeoFS.API.v2.Client
                 }
             };
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Head);
+            AttachObjectSessionToken(opts, meta, object_address, ObjectSessionContext.Types.Verb.Head);
             req.MetaHeader = meta;
             req.SignRequest(key);
 
@@ -232,7 +232,7 @@ namespace NeoFS.API.v2.Client
                 }
             };
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Range);
+            AttachObjectSessionToken(opts, meta, object_address, ObjectSessionContext.Types.Verb.Range);
             req.SignRequest(key);
 
             var stream = object_client.GetRange(req, cancellationToken: context).ResponseStream;
@@ -266,7 +266,7 @@ namespace NeoFS.API.v2.Client
             };
             req.Body.Ranges.AddRange(param.Ranges);
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, object_address, ObjectSessionContext.Types.Verb.Rangehash);
+            AttachObjectSessionToken(opts, meta, object_address, ObjectSessionContext.Types.Verb.Rangehash);
             req.MetaHeader = meta;
             req.SignRequest(key);
 
@@ -290,7 +290,7 @@ namespace NeoFS.API.v2.Client
             };
             req.Body.Filters.AddRange(param.Filters.Filters);
             var meta = opts.GetRequestMetaHeader();
-            AttachObjectSessionToken(options, meta, new Address { ContainerId = param.ContainerID }, ObjectSessionContext.Types.Verb.Search);
+            AttachObjectSessionToken(opts, meta, new Address { ContainerId = param.ContainerID }, ObjectSessionContext.Types.Verb.Search);
             req.MetaHeader = meta;
             req.SignRequest(key);
 
