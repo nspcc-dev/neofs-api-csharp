@@ -16,7 +16,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <Company>The Neo Project</Company>
-    <Description>CShrp API for NeoFS</Description>
+    <Description>NeoFS API for CSharp</Description>
   </PropertyGroup>
 
   <ItemGroup>
