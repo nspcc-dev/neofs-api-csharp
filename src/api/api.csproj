@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Copyright>2020-2021 The Neo Project</Copyright>
     <AssemblyTitle>NeoFS.API</AssemblyTitle>
-    <Version>0.0.20</Version>
+    <Version>0.0.21</Version>
     <Authors>The Neo Project</Authors>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>NeoFS.API</PackageId>
