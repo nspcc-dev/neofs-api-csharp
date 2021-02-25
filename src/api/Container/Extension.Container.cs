@@ -7,6 +7,14 @@ namespace NeoFS.API.v2.Container
 {
     public partial class Container
     {
+        // AttributeName is an attribute key that is commonly used to denote
+        // human-friendly name.
+        public const string AttributeName = "Name";
+
+        // AttributeTimestamp is an attribute key that is commonly used to denote
+        // user-defined local time of container creation in Unix Timestamp format.
+        public const string AttributeTimestamp = "Timestamp";
+
         private ContainerID _id;
         public ContainerID CalCulateAndGetID
         {
