@@ -1,29 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Copyright>2020-2021 The Neo Project</Copyright>
     <AssemblyTitle>NeoFS.API</AssemblyTitle>
+    <Version>0.0.21</Version>
+    <Authors>The Neo Project</Authors>
+    <TargetFramework>net5.0</TargetFramework>
     <PackageId>NeoFS.API</PackageId>
-    <Product>NeoFS.API</Product>
-    <Description>NeoFS.API</Description>
+    <PackageTags>NEO;NeoFS</PackageTags>
+    <PackageProjectUrl>https://github.com/neo-project/neofs-api-csharp</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/neo-project/neofs-api-csharp.git</RepositoryUrl>
     <RootNamespace>NeoFS.API</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <Company>The Neo Project</Company>
+    <Description>NeoFS API for CSharp</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../gogoprotobuf/gogoprotobuf.csproj" />
-    <ProjectReference Include="../netmap/netmap.csproj" />
-    <ProjectReference Include="../crypto/crypto.csproj" />
-    <ProjectReference Include="../utils/utils.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.11.4" />
-    <PackageReference Include="Grpc" Version="2.27.0" />
-    <PackageReference Include="Grpc.Core" Version="2.27.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.27.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Google.Protobuf" Version="3.15.2" />
+    <PackageReference Include="Grpc.Core" Version="2.35.0" />
+    <PackageReference Include="Neo" Version="3.0.0-CI01194" />
   </ItemGroup>
 
 </Project>
